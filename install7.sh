@@ -188,7 +188,6 @@ EOF
         apt -y install iptables-persistent
         iptables -t nat -A PREROUTING -i $(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1) -p udp --dport 20000:50000 -j DNAT --to-destination :$UDP_PORT
         ip6tables -t nat -A PREROUTING -i $(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1) -p udp --dport 20000:50000 -j DNAT --to-destination :$UDP_PORT
-        netfilter-persistent save
         sysctl net.ipv4.conf.all.rp_filter=0
         sysctl net.ipv4.conf.$(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1).rp_filter=0
         echo "net.ipv4.ip_forward = 1
@@ -199,14 +198,8 @@ EOF
         sudo ip6tables-save > /etc/iptables/rules.v6
         systemctl enable hysteria-server.service
         systemctl start hysteria-server.service
-        echo "HYSTERIA INITIALISED SUCCESSFULLY"
-        exit 1
-
-        clear
-    figlet -k Resleeved | awk '{gsub(/./,"\033[3"int(rand()*5+1)"m&\033[0m")}1' && figlet -k Net | awk '{gsub(/./,"\033[3"int(rand()*5+1)"m&\033[0m")}1'
-    echo "──────────────────────────────────────────────────────────•"
-        echo ""
         echo "${T_GREEN}RESLEEVED NET HYSTERIA SERVER Installation completed!${T_RESET}"
         exit 1
         ;;
+        
 esac
