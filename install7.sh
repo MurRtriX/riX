@@ -199,7 +199,8 @@ EOF
         sudo ip6tables-save > /etc/iptables/rules.v6
         systemctl enable hysteria-server.service
         systemctl start hysteria-server.service
-        sleep 3
+        echo "HYSTERIA INITIALISED SUCCESSFULLY"
+        exit 1
 
         clear
     figlet -k Resleeved | awk '{gsub(/./,"\033[3"int(rand()*5+1)"m&\033[0m")}1' && figlet -k Net | awk '{gsub(/./,"\033[3"int(rand()*5+1)"m&\033[0m")}1'
