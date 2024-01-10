@@ -1,4 +1,4 @@
- #!/bin/bash
+#!/bin/bash
 YELLOW='\033[1;33m'
 NC='\033[0m'
 if [ "$(whoami)" != "root" ]; then
