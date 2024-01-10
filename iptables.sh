@@ -31,5 +31,6 @@ iptables -P INPUT ACCEPT
 iptables -P OUTPUT ACCEPT
 iptables -P FORWARD ACCEPT
 netfilter-persistent save
-echo -e "$NC"
-exit 1
+
+echo reboot
+reboot
