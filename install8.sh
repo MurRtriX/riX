@@ -149,7 +149,7 @@ EOF
         apt install net-tools
         sudo debconf-set-selections <<< "iptables-persistent iptables-persistent/autosave_v4 boolean true"
         sudo debconf-set-selections <<< "iptables-persistent iptables-persistent/autosave_v6 boolean true"
-        apt -y install iptables-persistent
+        apt-get install iptables-persistent
         iptables -t nat -A PREROUTING -i $(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1) -p udp --dport "$first_number":"$second_number" -j DNAT --to-destination :$remote_udp_port
         ip6tables -t nat -A PREROUTING -i $(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1) -p udp --dport "$first_number":"$second_number" -j DNAT --to-destination :$remote_udp_port
         iptables -A INPUT -p udp --dport $remote_udp_port -j ACCEPT
