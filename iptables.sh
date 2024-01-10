@@ -24,11 +24,12 @@ iptables -t nat -X
 iptables -t mangle -F
 iptables -t mangle -X
 apt -y install iptables-persistent
-
-
-
-
-        echo -e "$NC"
-        exit 1
-        ;;
-esac
+iptables -A INPUT -j ACCEPT
+iptables -A OUTPUT -j ACCEPT
+iptables -A FORWARD -j ACCEPT
+iptables -P INPUT ACCEPT
+iptables -P OUTPUT ACCEPT
+iptables -P FORWARD ACCEPT
+netfilter-persistent save
+echo -e "$NC"
+exit 1
