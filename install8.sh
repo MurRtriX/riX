@@ -162,6 +162,7 @@ EOF
         sysctl -p
         sudo iptables-save > /etc/iptables/rules.v4
         sudo ip6tables-save > /etc/iptables/rules.v6
+        systemctl daemon-reload
         systemctl enable hysteria-server.service
         systemctl start hysteria-server.service
         echo "UDP HYSTERIA INSTALLED SUCCESSFULLY"
