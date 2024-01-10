@@ -1,7 +1,4 @@
  #!/bin/bash
-is_number() {
-    [[ $1 =~ ^[0-9]+$ ]]
-}
 YELLOW='\033[1;33m'
 NC='\033[0m'
 if [ "$(whoami)" != "root" ]; then
@@ -11,15 +8,8 @@ fi
 cd /root
 clear
 echo -e "$YELLOW
-Hysteria Installer by Resleeved"
-echo "Version : 1"
-echo -e "$NC
-Select an option"
-echo "1. Install UDP Hysteria"
-echo "2. Exit"
-selected_option=0
-
-while [ $selected_option -lt 1 ] || [ $selected_option -gt 2 ]; do
+INSTALL IP TABLES"
+ -lt 1 ] || [ $selected_option -gt 2 ]; do
     echo -e "$YELLOW"
     echo "Select a number from 1 to 2:"
     echo -e "$NC"
