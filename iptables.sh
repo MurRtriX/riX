@@ -8,7 +8,7 @@ fi
 cd /root
 clear
 echo -e "$YELLOW"
-echo "INSTALLING    IPTABLES"
+echo "IPTABLES"
 echo -e "$NC"
 apt-get update && apt-get upgrade
 apt update && apt upgrade
