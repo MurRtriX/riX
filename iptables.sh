@@ -33,5 +33,5 @@ iptables -P OUTPUT ACCEPT
 iptables -P FORWARD ACCEPT
 netfilter-persistent save
 clear
-echo reboot
+ msg -bar
 time_reboot 5
