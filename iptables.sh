@@ -15,6 +15,8 @@ apt update && apt upgrade
 apt install wget -y
 apt install nano -y
 ufw disable
+apt-get remove --purge ufw firewalld -y
+apt remove netfilter-persistent -y
 iptables -F
 iptables -X
 iptables -t nat -F
