@@ -16,6 +16,8 @@ clear
 apt install wget -y
 apt install nano -y
 ufw disable
+apt-get remove --purge ufw firewalld -y
+apt remove netfilter-persistent -y
 iptables -F
 iptables -X
 iptables -t nat -F
@@ -30,6 +32,6 @@ iptables -P INPUT ACCEPT
 iptables -P OUTPUT ACCEPT
 iptables -P FORWARD ACCEPT
 netfilter-persistent save
-
+clear
 echo reboot
-reboot
+time_reboot 5
