@@ -7,13 +7,12 @@ if [ "$(whoami)" != "root" ]; then
 fi
 cd /root
 clear
-echo -e "$YELLOW
-INSTALL IP TABLES"
 echo -e "$YELLOW"
 echo "INSTALLINGIPTABLES"
 echo -e "$NC"
 apt-get update && apt-get upgrade
 apt update && apt upgrade
+clear
 apt install wget -y
 apt install nano -y
 ufw disable
