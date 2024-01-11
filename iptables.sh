@@ -35,4 +35,16 @@ iptables -P FORWARD ACCEPT
 netfilter-persistent save
 clear
 echo "rebooting"
-reboot
+time_reboot() {
+  print_center -ama "${a92:-System/Server Reboot In} $1 ${a93:-Seconds}"
+  REBOOT_TIMEOUT="$1"
+
+  while [ $REBOOT_TIMEOUT -gt 0 ]; do
+    print_center -ne "-$REBOOT_TIMEOUT-\r"
+    sleep 1
+    : $((REBOOT_TIMEOUT--))
+  done
+}  
+msg -bar
+  time_reboot 5
+fi
