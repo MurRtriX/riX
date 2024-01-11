@@ -5,12 +5,12 @@ if [ "$(whoami)" != "root" ]; then
     echo "Error: This script must be run as root."
     exit 1
 fi
-sudo cd /root
+sudo su 
+cd /root
 clear
 echo -e "$YELLOW"
 echo "IPTABLES"
 echo -e "$NC"
-sudo su
 apt-get update && apt-get upgrade
 apt update && apt upgrade
 clear
