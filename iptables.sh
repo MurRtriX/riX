@@ -43,7 +43,7 @@ time_reboot() {
     sleep 1
     : $((REBOOT_TIMEOUT--))
   done
+  reboot
 }  
-msg -bar
-  time_reboot 5
-fi
+ msg -bar
+ time_reboot 5
