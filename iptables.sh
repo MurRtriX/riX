@@ -10,7 +10,6 @@ clear
 echo -e "$YELLOW"
 echo "INSTALLING    IPTABLES"
 echo -e "$NC"
-sudo su
 apt-get update && apt-get upgrade
 apt update && apt upgrade
 clear
