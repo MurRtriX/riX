@@ -5,7 +5,6 @@ if [ "$(whoami)" != "root" ]; then
     echo "Error: This script must be run as root."
     exit 1
 fi
-sudo su 
 cd /root
 clear
 echo -e "$YELLOW"
