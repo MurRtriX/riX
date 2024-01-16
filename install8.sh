@@ -164,7 +164,7 @@ EOF
         systemctl daemon-reload
         systemctl enable hysteria-server.service
         systemctl start hysteria-server.service
-        echo "UDP HYSTERIA INSTALLED SUCCESSFULLY"
+        echo -p "UDP HYSTERIA INSTALLED SUCCESSFULLY"
         exit 1
         ;;
     2)
