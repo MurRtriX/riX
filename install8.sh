@@ -152,7 +152,6 @@ EOF
         apt-get install iptables-persistent
         iptables -t nat -A PREROUTING -i $(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1) -p udp --dport "$first_number":"$second_number" -j DNAT --to-destination :$remote_udp_port
         ip6tables -t nat -A PREROUTING -i $(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1) -p udp --dport "$first_number":"$second_number" -j DNAT --to-destination :$remote_udp_port
-        netfilter-persistent save
         sysctl net.ipv4.conf.all.rp_filter=0
         sysctl net.ipv4.conf.$(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1).rp_filter=0
         echo "net.ipv4.ip_forward = 1
@@ -161,10 +160,13 @@ EOF
         sysctl -p
         sudo iptables-save > /etc/iptables/rules.v4
         sudo ip6tables-save > /etc/iptables/rules.v6
+        netfilter-persistent save
         systemctl daemon-reload
         systemctl enable hysteria-server.service
         systemctl start hysteria-server.service
-        echo -p "UDP HYSTERIA INSTALLED SUCCESSFULLY"
+        echo -e "$YELLOW"
+        echo "UDP HYSTERIA INSTALLED SUCCESSFULLY"
+        echo -e "$NC"
         exit 1
         ;;
     2)
