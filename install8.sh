@@ -88,7 +88,7 @@ case $selected_option in
             fi
         done
         file_path="/root/hy/config.json"
-        json_content='{"listen":":'"$remote_udp_port"'","protocol":"udp","cert":"/root/hy/ca.crt","key":"/root/hy/ca.key","up":"100 Mbps","up_mbps":100,"down":"100 Mbps","down_mbps":100,"disable_udp":false,"resolver":"https://8.8.8.8/dns-query","disable_mtu_discovery":true,"obfs":"'"$obfs"'","auth_str":"'"$auth_str"'"}'
+        json_content='{"listen":":'"$remote_udp_port"'","protocol":"udp","cert":"/root/hy/ca.crt","key":"/root/hy/ca.key","up":"100 Mbps","up_mbps":100,"down":"100 Mbps","down_mbps":100,"disable_udp":false,"obfs":"'"$obfs"'","auth_str":"'"$auth_str"'"}'
         echo "$json_content" > "$file_path"
         if [ ! -e "$file_path" ]; then
             echo -e "$YELLOW"
