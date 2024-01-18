@@ -11,11 +11,11 @@ fi
 cd /root
 clear
 echo -e "$YELLOW
-Hysteria Installer by Resleeved"
-echo "Version : 1"
+RESLEEVED NET UDP HYSTERIA INSTALLER"
+echo "RESLEEVED NET HYSTERIA VERSION"
 echo -e "$NC
 Select an option"
-echo "1. Install UDP Hysteria"
+echo "1. INSTALL UDP HYSTERIA"
 echo "2. Exit"
 selected_option=0
 
@@ -38,7 +38,8 @@ clear
 case $selected_option in
     1)
         echo -e "$YELLOW"
-        echo "Installing UDP Hysteria ..."
+        echo "RELAX......RESLEEVED NET UDP HYSTERIA AUTO INSTALLATION IN PROCESS"
+        echo "UDP HYSTERIA INSTALLING....."
         echo -e "$NC"
         apt-get update && apt-get upgrade
         apt install wget -y
