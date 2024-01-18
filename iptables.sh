@@ -8,7 +8,7 @@ fi
 cd /root
 clear
 echo -e "$YELLOW"
-echo "IPTABLES"
+echo "🧡IPTABLES......🧡SETTING UP YOUR FIREWALL....🧡"
 echo -e "$NC"
 apt-get update && apt-get upgrade
 apt update && apt upgrade
@@ -29,6 +29,8 @@ iptables -P INPUT ACCEPT
 iptables -P OUTPUT ACCEPT
 iptables -P FORWARD ACCEPT
 netfilter-persistent save
-
-echo "rebooting"
+echo -e "$YELLOW"
+echo "🧡FIREWALL CONFIGURED.....🧡"
+echo "💚REBOOTING........💚"
+echo -e "$NC"
 reboot
