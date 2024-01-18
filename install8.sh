@@ -39,7 +39,7 @@ case $selected_option in
     1)
         echo -e "$YELLOW"
         echo "RELAX......RESLEEVED NET UDP HYSTERIA AUTO INSTALLATION IN PROCESS"
-        echo "UDP HYSTERIA INSTALLING....."
+        echo "INSTALLING HYSTERIA BINARIES ......"
         echo -e "$NC"
         apt-get update && apt-get upgrade
         apt install wget -y
