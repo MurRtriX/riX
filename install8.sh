@@ -168,6 +168,7 @@ EOF
         systemctl start hysteria-server.service
         echo -e "$YELLOW"
         echo "UDP HYSTERIA INSTALLED SUCCESSFULLY"
+        echo "Resleeved Net Community >>>>> t.me/Am_The_Last_Envoy"
         echo -e "$NC"
         exit 1
         ;;
