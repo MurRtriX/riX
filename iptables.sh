@@ -8,7 +8,7 @@ fi
 cd /root
 clear
 echo -e "$YELLOW"
-echo "🧡 IPTABLES....SETTING UP YOUR FIREWALL....🧡"
+echo "🧡 IPTABLES....SETTING UP YOUR FIREWALL.... 🧡"
 echo "          💚 Resleeved Net Firewall 💚          "
 echo -e "$NC"
 apt-get update && apt-get upgrade
@@ -37,7 +37,7 @@ netfilter-persistent save
 sudo systemctl enable iptables
 sudo systemctl start iptables
 echo -e "$YELLOW"
-echo "🧡 FIREWALL CONFIGURED.....🧡"
-echo "💚 REBOOTING........💚"
+echo "🧡 FIREWALL CONFIGURED..... 🧡"
+echo "💚 REBOOTING........ 💚"
 echo -e "$NC"
 reboot
