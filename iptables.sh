@@ -30,6 +30,7 @@ iptables -t mangle -F
 iptables -t mangle -X
 iptables -F
 iptables -X
+apt-get install iptables 
 apt-get install iptables-persistent
 iptables -A INPUT -i lo -j ACCEPT
 iptables -A OUTPUT -o lo -j ACCEPT
@@ -41,7 +42,8 @@ iptables -A INPUT -j ACCEPT
 iptables -A OUTPUT -j ACCEPT
 iptables -A FORWARD -j ACCEPT
 iptables-save > /etc/iptables/rules.v4
-sudo systemctl start iptables
+sudo systemctl enable netfilter-persistent
+sudo systemctl start netfilter-persistent
 echo -e "$YELLOW"
 echo "🧡 FIREWALL CONFIGURED..... 🧡"
 echo "💚 REBOOTING........ 💚"
