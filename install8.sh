@@ -11,8 +11,8 @@ fi
 cd /root
 clear
 echo -e "$YELLOW
-RESLEEVED NET UDP HYSTERIA INSTALLER"
-echo "RESLEEVED NET HYSTERIA VERSION"
+🧡 RESLEEVED NET HYSTERIA SCRIPT 🧡"
+echo "Resleeved Net UDP HYSTERIA"
 echo -e "$NC
 Select an option"
 echo "1. INSTALL UDP HYSTERIA"
@@ -38,8 +38,8 @@ clear
 case $selected_option in
     1)
         echo -e "$YELLOW"
-        echo "RELAX......RESLEEVED NET UDP HYSTERIA AUTO INSTALLATION IN PROCESS"
-        echo "INSTALLING HYSTERIA BINARIES ......"
+        echo "🧡......UDP HYSTERIA AUTO INSTALLATION.......🧡"
+        echo "💚........INSTALLING HYSTERIA BINARIES ........💚"
         echo -e "$NC"
         apt-get update && apt-get upgrade
         apt install wget -y
@@ -169,7 +169,7 @@ EOF
         systemctl enable hysteria-server.service
         systemctl start hysteria-server.service
         echo -e "$YELLOW"
-        echo "UDP HYSTERIA INSTALLED SUCCESSFULLY"
+        echo "🧡 UDP HYSTERIA INSTALLED SUCCESSFULLY 🧡"
         echo "Resleeved Net Community >>>>> t.me/Am_The_Last_Envoy"
         echo -e "$NC"
         exit 1
