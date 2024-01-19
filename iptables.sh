@@ -13,6 +13,7 @@ echo "          💚 Resleeved Net Firewall 💚          "
 echo -e "$NC"
 apt-get update && apt-get upgrade
 apt update && apt upgrade
+apt update -y  && apt install -y curl
 apt install wget -y
 apt install nano -y
 ufw disable
