@@ -163,6 +163,8 @@ EOF
         sudo iptables-save > /etc/iptables/rules.v4
         sudo ip6tables-save > /etc/iptables/rules.v6
         netfilter-persistent save
+        sudo systemctl enable iptables
+        sudo systemctl restart iptables
         systemctl daemon-reload
         systemctl enable hysteria-server.service
         systemctl start hysteria-server.service
