@@ -30,6 +30,10 @@ iptables -t mangle -X
 iptables -F
 iptables -X
 apt-get install iptables-persistent
+iptables -A INPUT -i lo -j ACCEPT
+iptables -A OUTPUT -o lo -j ACCEPT
+iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+iptables -A OUTPUT -m conntrack --ctstate ESTABLISHED -j ACCEPT
 iptables -A INPUT -j ACCEPT
 iptables -A OUTPUT -j ACCEPT
 iptables -A FORWARD -j ACCEPT
