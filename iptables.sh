@@ -15,26 +15,26 @@ apt update && apt upgrade
 apt install wget -y
 apt install nano -y
 ufw disable
-sudo apt-get remove --auto-remove ufw
-sudo apt-get purge ufw
-sudo apt-get purge --auto-remove ufw
-sudo apt-get remove ufw
-iptables -F
-iptables -Z
-iptables -X
+apt-get remove --auto-remove ufw
+apt-get purge ufw
+apt-get purge --auto-remove ufw
+apt-get remove ufw
+iptables -P INPUT ACCEPT
+iptables -P FORWARD ACCEPT
+iptables -P OUTPUT ACCEPT
 iptables -t nat -F
 iptables -t nat -X
 iptables -t mangle -F
 iptables -t mangle -X
+iptables -F
+iptables -Z
+iptables -X
 for ufw in iptables -L |grep ufw|awk '{ print $2 }'; do iptables -F $ufw; done
 for ufw in iptables -L |grep ufw|awk '{ print $2 }'; do iptables -X $ufw; done
 apt-get install iptables-persistent
 iptables -A INPUT -j ACCEPT
 iptables -A OUTPUT -j ACCEPT
 iptables -A FORWARD -j ACCEPT
-iptables -P INPUT ACCEPT
-iptables -P OUTPUT ACCEPT
-iptables -P FORWARD ACCEPT
 netfilter-persistent save
 sudo systemctl enable iptables
 sudo systemctl start iptables
