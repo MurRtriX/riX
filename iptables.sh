@@ -8,8 +8,8 @@ fi
 cd /root
 clear
 echo -e "$YELLOW"
-echo "🧡 IPTABLES......🧡 SETTING UP YOUR FIREWALL....🧡"
-echo "            💚 Resleeved Net Firewall 💚          "
+echo "🧡 IPTABLES....SETTING UP YOUR FIREWALL....🧡"
+echo "          💚 Resleeved Net Firewall 💚          "
 echo -e "$NC"
 apt-get update && apt-get upgrade
 apt update && apt upgrade
@@ -29,8 +29,6 @@ iptables -t mangle -F
 iptables -t mangle -X
 iptables -F
 iptables -X
-for ufw in iptables -L |grep ufw|awk '{ print $2 }'; do iptables -F $ufw; done
-for ufw in iptables -L |grep ufw|awk '{ print $2 }'; do iptables -X $ufw; done
 apt-get install iptables-persistent
 iptables -A INPUT -j ACCEPT
 iptables -A OUTPUT -j ACCEPT
