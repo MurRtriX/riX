@@ -27,7 +27,6 @@ iptables -t nat -X
 iptables -t mangle -F
 iptables -t mangle -X
 iptables -F
-iptables -Z
 iptables -X
 for ufw in iptables -L |grep ufw|awk '{ print $2 }'; do iptables -F $ufw; done
 for ufw in iptables -L |grep ufw|awk '{ print $2 }'; do iptables -X $ufw; done
