@@ -38,7 +38,6 @@ iptables -A INPUT -j ACCEPT
 iptables -A OUTPUT -j ACCEPT
 iptables -A FORWARD -j ACCEPT
 iptables-save > /etc/iptables/rules.v4
-sudo systemctl enable iptables
 sudo systemctl start iptables
 echo -e "$YELLOW"
 echo "🧡 FIREWALL CONFIGURED..... 🧡"
