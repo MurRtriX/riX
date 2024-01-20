@@ -42,6 +42,9 @@ iptables -A FORWARD -i lo -j ACCEPT
 iptables -A FORWARD -o lo -j ACCEPT
 iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
 iptables -A OUTPUT -m conntrack --ctstate ESTABLISHED -j ACCEPT
+iptables -I INPUT -j ACCEPT
+iptables -I OUTPUT -j ACCEPT
+iptables -I FORWARD -j ACCEPT
 iptables -A INPUT -j ACCEPT
 iptables -A OUTPUT -j ACCEPT
 iptables -A FORWARD -j ACCEPT
