@@ -16,6 +16,7 @@ apt update && apt upgrade
 apt update -y  && apt install -y curl
 apt install wget -y
 apt install nano -y
+apt-get install tcpdump
 ufw disable
 apt-get remove --auto-remove ufw
 apt-get purge ufw
