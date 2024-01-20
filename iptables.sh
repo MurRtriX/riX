@@ -29,8 +29,7 @@ iptables -t nat -X
 iptables -t mangle -F
 iptables -t mangle -X
 iptables -F
-iptables -X
-apt-get install iptables 
+iptables -X 
 apt-get install iptables-persistent
 iptables -A INPUT -i lo -j ACCEPT
 iptables -A OUTPUT -o lo -j ACCEPT
