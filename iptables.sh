@@ -43,8 +43,9 @@ iptables -A INPUT -j ACCEPT
 iptables -A OUTPUT -j ACCEPT
 iptables -A FORWARD -j ACCEPT
 netfilter-persistent save
-sudo systemctl enable netfilter-persistent
-sudo systemctl start netfilter-persistent
+netfilter-persistent reload
+netfilter-persistent enable
+netfilter-persistent start
 echo -e "$YELLOW"
 echo "🧡 FIREWALL CONFIGURED..... 🧡"
 echo "💚 REBOOTING........ 💚"
