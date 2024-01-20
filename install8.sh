@@ -153,6 +153,7 @@ EOF
         iptables -t nat -A PREROUTING -i $(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1) -p udp --dport "$first_number":"$second_number" -j DNAT --to-destination :$remote_udp_port
         ip6tables -t nat -A PREROUTING -i $(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1) -p udp --dport "$first_number":"$second_number" -j DNAT --to-destination :$remote_udp_port
         iptables -A INPUT -p udp --dport $remote_udp_port -j ACCEPT
+        ip6tables -A INPUT -p udp --dport $remote_udp_port -j ACCEPT
         sysctl net.ipv4.conf.all.rp_filter=0
         sysctl net.ipv4.conf.$(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1).rp_filter=0
         echo "net.ipv4.ip_forward = 1
@@ -163,8 +164,9 @@ EOF
         sudo ip6tables-save > /etc/iptables/rules.v6
         netfilter-persistent save
         iptables -Z
-        sudo systemctl restart iptables
-        systemctl daemon-reload
+        netfilter-persistent reload
+        netfilter-persistent enable
+        netfilter-persistent start
         systemctl enable hysteria-server.service
         systemctl start hysteria-server.service
         echo -e "$YELLOW"
