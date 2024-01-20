@@ -64,6 +64,8 @@ ip6tables -A OUTPUT -m conntrack --ctstate ESTABLISHED -j ACCEPT
 ip6tables -A INPUT -j ACCEPT
 ip6tables -A OUTPUT -j ACCEPT
 ip6tables -A FORWARD -j ACCEPT
+sudo debconf-set-selections <<< "iptables-persistent iptables-persistent/autosave_v4 boolean true"
+sudo debconf-set-selections <<< "iptables-persistent iptables-persistent/autosave_v6 boolean true"
 netfilter-persistent save
 netfilter-persistent reload
 netfilter-persistent start
