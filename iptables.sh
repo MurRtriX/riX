@@ -24,12 +24,15 @@ apt-get remove ufw
 iptables -P INPUT ACCEPT
 iptables -P FORWARD ACCEPT
 iptables -P OUTPUT ACCEPT
+iptables -F
+iptables -X 
+iptables -Z
 iptables -t nat -F
 iptables -t nat -X
 iptables -t mangle -F
 iptables -t mangle -X
-iptables -F
-iptables -X 
+iptables -t raw -F
+iptables -t raw -X
 apt-get install iptables-persistent
 iptables -A INPUT -i lo -j ACCEPT
 iptables -A OUTPUT -o lo -j ACCEPT
@@ -40,6 +43,27 @@ iptables -A OUTPUT -m conntrack --ctstate ESTABLISHED -j ACCEPT
 iptables -A INPUT -j ACCEPT
 iptables -A OUTPUT -j ACCEPT
 iptables -A FORWARD -j ACCEPT
+ip6tables -P INPUT ACCEPT
+ip6tables -P FORWARD ACCEPT
+ip6tables -P OUTPUT ACCEPT
+ip6tables -F
+ip6tables -X 
+ip6tables -Z
+ip6tables -t nat -F
+ip6tables -t nat -X
+ip6tables -t mangle -F
+ip6tables -t mangle -X
+ip6tables -t raw -F
+ip6tables -t raw -X
+ip6tables -A INPUT -i lo -j ACCEPT
+ip6tables -A OUTPUT -o lo -j ACCEPT
+ip6tables -A FORWARD -i lo -j ACCEPT
+ip6tables -A FORWARD -o lo -j ACCEPT
+ip6tables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+ip6tables -A OUTPUT -m conntrack --ctstate ESTABLISHED -j ACCEPT
+ip6tables -A INPUT -j ACCEPT
+ip6tables -A OUTPUT -j ACCEPT
+ip6tables -A FORWARD -j ACCEPT
 netfilter-persistent save
 netfilter-persistent reload
 netfilter-persistent start
