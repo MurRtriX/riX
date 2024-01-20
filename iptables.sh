@@ -42,7 +42,7 @@ iptables -A OUTPUT -m conntrack --ctstate ESTABLISHED -j ACCEPT
 iptables -A INPUT -j ACCEPT
 iptables -A OUTPUT -j ACCEPT
 iptables -A FORWARD -j ACCEPT
-iptables-save > /etc/iptables/rules.v4
+netfilter-persistent save
 sudo systemctl enable netfilter-persistent
 sudo systemctl start netfilter-persistent
 echo -e "$YELLOW"
