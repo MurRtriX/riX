@@ -162,7 +162,6 @@ EOF
         sysctl -p
         netfilter-persistent save
         netfilter-persistent reload
-        netfilter-persistent enable
         netfilter-persistent start
         systemctl enable hysteria-server.service
         systemctl start hysteria-server.service
