@@ -158,8 +158,6 @@ EOF
         net.ipv4.conf.all.rp_filter=0
         net.ipv4.conf.$(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1).rp_filter=0" > /etc/sysctl.conf
         sysctl -p
-        iptables -A INPUT -p udp --dport $remote_udp_port -j ACCEPT
-        ip6tables -A INPUT -p udp --dport $remote_udp_port -j ACCEPT
         netfilter-persistent save
         netfilter-persistent reload
         netfilter-persistent start
