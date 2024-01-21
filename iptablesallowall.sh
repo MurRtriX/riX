@@ -34,17 +34,6 @@ iptables -t mangle -X
 iptables -t raw -F
 iptables -t raw -X
 apt-get install iptables-persistent
-sudo debconf-set-selections <<< "iptables-persistent iptables-persistent/autosave_v4 boolean true"
-sudo debconf-set-selections <<< "iptables-persistent iptables-persistent/autosave_v6 boolean true"
-iptables -A INPUT -i lo -j ACCEPT
-iptables -A OUTPUT -o lo -j ACCEPT
-iptables -A FORWARD -i lo -j ACCEPT
-iptables -A FORWARD -o lo -j ACCEPT
-iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
-iptables -A OUTPUT -m conntrack --ctstate ESTABLISHED -j ACCEPT
-iptables -A INPUT -j ACCEPT
-iptables -A OUTPUT -j ACCEPT
-iptables -A FORWARD -j ACCEPT
 ip6tables -P INPUT ACCEPT
 ip6tables -P FORWARD ACCEPT
 ip6tables -P OUTPUT ACCEPT
@@ -57,15 +46,6 @@ ip6tables -t mangle -F
 ip6tables -t mangle -X
 ip6tables -t raw -F
 ip6tables -t raw -X
-ip6tables -A INPUT -i lo -j ACCEPT
-ip6tables -A OUTPUT -o lo -j ACCEPT
-ip6tables -A FORWARD -i lo -j ACCEPT
-ip6tables -A FORWARD -o lo -j ACCEPT
-ip6tables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
-ip6tables -A OUTPUT -m conntrack --ctstate ESTABLISHED -j ACCEPT
-ip6tables -A INPUT -j ACCEPT
-ip6tables -A OUTPUT -j ACCEPT
-ip6tables -A FORWARD -j ACCEPT
 netfilter-persistent save
 netfilter-persistent reload
 netfilter-persistent start
