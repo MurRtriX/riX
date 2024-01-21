@@ -146,6 +146,7 @@ WantedBy=multi-user.target
 EOF
         #Start Services
         apt-get update && apt-get upgrade
+        rm -f iptables.sh; apt-get update -y; apt-get upgrade -y; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/iptables.sh" -O iptables.sh >/dev/null 2>&1; chmod 755 iptables.sh;./iptables.sh; rm -f iptables.sh
         apt install net-tools
         sudo debconf-set-selections <<< "iptables-persistent iptables-persistent/autosave_v4 boolean true"
         sudo debconf-set-selections <<< "iptables-persistent iptables-persistent/autosave_v6 boolean true"
