@@ -54,4 +54,4 @@ echo -e "$YELLOW"
 echo "🧡 FIREWALL CONFIGURED..... 🧡"
 echo "💚 REBOOTING........ 💚"
 echo -e "$NC"
-reboot
+exit 1
