@@ -33,6 +33,7 @@ iptables -t mangle -F
 iptables -t mangle -X
 iptables -t raw -F
 iptables -t raw -X
+apt-get install iptables
 apt-get install iptables-persistent
 ip6tables -P INPUT ACCEPT
 ip6tables -P FORWARD ACCEPT
