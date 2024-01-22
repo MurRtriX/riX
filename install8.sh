@@ -51,7 +51,7 @@ case $selected_option in
         cd hy
         udp_script="/root/hy/hysteria-linux-amd64"
         if [ ! -e "$udp_script" ]; then
-            wget github.com/JohnReaJR/A/releases/download/V1/hysteria-linux-amd64
+            wget https://github.com/JohnReaJR/A/releases/download/V1/hysteria-linux-amd64
         fi
         chmod 755 hysteria-linux-amd64
         openssl ecparam -genkey -name prime256v1 -out ca.key
@@ -132,7 +132,7 @@ case $selected_option in
         rm -f /etc/systemd/system/udpgw.service
         rm -f /usr/bin/udpgw
         cd /usr/bin
-        wget github.com/JohnReaJR/A/releases/download/V1/udpgw
+        wget https://github.com/JohnReaJR/A/releases/download/V1/udpgw
         chmod 755 udpgw
         cat <<EOF >/etc/systemd/system/udpgw.service
 [Unit]
