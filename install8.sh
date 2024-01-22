@@ -44,6 +44,9 @@ case $selected_option in
         apt install wget -y
         apt install nano -y
         apt install net-tools
+        systemctl stop hysteria-server.service
+        rm -f /etc/systemd/system/hysteria-server.service
+        rm -rf /root/hy
         mkdir hy
         cd hy
         udp_script="/root/hy/hysteria-linux-amd64"
