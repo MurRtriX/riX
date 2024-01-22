@@ -89,6 +89,10 @@ EOF
         echo "UDP HTTP CUSTOM installed successfully"
 
         #Install Badvpn
+        cd /root
+        systemctl stop udpgw.service
+        rm -f /etc/systemd/system/udpgw.service
+        rm -f /usr/bin/udpgw
         cd /usr/bin
         wget github.com/JohnReaJR/A/releases/download/V1/udpgw
         chmod 755 udpgw
@@ -110,8 +114,11 @@ EOF
         #start badvpn
         systemctl enable udpgw.service
         systemctl start udpgw.service
-        echo "P2P Service Activated"
-        echo "Welcome To Resleeved Net"
+        echo -e "$YELLOW"
+        echo "     🧡 P2P SERVICE INITIALIZED 🧡     "
+        echo "        💚 Badvpn Activated 💚         "
+        echo "    💚 UDP HTTP CUSTOM SUCCESSFULLY INSTALLED 💚       "
+        echo -e "$NC"
         exit 1
         ;;
     2)
