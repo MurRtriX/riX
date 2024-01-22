@@ -197,8 +197,8 @@ EOF
         cd /root
         rm .bash_history && history -c
         echo -e "$YELLOW"
-        echo "         💚 UDP HYSTERIA INSTALLED SUCCESSFULLY 💚                 "
-        echo "     ✅ Resleeved Net Community ✅ >>>>> t.me/Am_The_Last_Envoy   "
+        echo "         💚 UDP HYSTERIA INSTALLED SUCCESSFULLY 💚        "
+        echo "            🧡 Telegram >>> t.me/Am_The_Last_Envoy 🧡   "
         echo -e "$NC"
         exit 1
         ;;
