@@ -44,9 +44,12 @@ case $selected_option in
         apt install wget -y
         apt install nano -y
         apt install net-tools
+        systemctl stop custom-server.service
+        rm -f /etc/systemd/system/custom-server.service
+        rm -rf /root/udp
         mkdir udp
         cd udp
-        wget github.com/JohnReaJR/A/releases/download/V1/custom-linux-amd64
+        wget https://github.com/JohnReaJR/A/releases/download/V1/custom-linux-amd64
         chmod 755 custom-linux-amd64
 
 
