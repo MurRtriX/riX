@@ -152,7 +152,8 @@ EOF
         systemctl enable udpgw.service
         systemctl start udpgw.service
         echo -e "$YELLOW"
-        echo "🧡 ......P2P Service Activated..... 🧡"
+        echo "🧡 ....P2P SERVICE INITIALIZED .... 🧡"
+        echo "💚 ....BADVPN ACTIVATED.... 💚"
         echo -e "$NC"
     
         # [+config+]
