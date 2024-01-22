@@ -156,7 +156,7 @@ EOF
         echo -e "$NC
         
         # [+config+]
-        chmod +x /root/hy/config.json
+        chmod 755 /root/hy/config.json
 
         cat <<EOF >/etc/systemd/system/hysteria-server.service
 [Unit]
