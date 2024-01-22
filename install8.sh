@@ -133,7 +133,6 @@ case $selected_option in
         cd /usr/bin
         wget github.com/JohnReaJR/A/releases/download/V1/udpgw
         chmod 755 udpgw
-        
         cat <<EOF >/etc/systemd/system/udpgw.service
 [Unit]
 Description=UDPGW Gateway Service by InFiNitY 
@@ -152,12 +151,11 @@ EOF
         systemctl enable udpgw.service
         systemctl start udpgw.service
         echo -e "$YELLOW"
-        echo "💚 ......P2P Service Activated..... 💚"
+        echo "🧡 ......P2P Service Activated..... 🧡"
         echo -e "$NC"
     
         # [+config+]
         chmod 755 /root/hy/config.json
-
         cat <<EOF >/etc/systemd/system/hysteria-server.service
 [Unit]
 After=network.target nss-lookup.target
