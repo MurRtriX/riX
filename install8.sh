@@ -151,10 +151,10 @@ EOF
         #start badvpn
         systemctl enable udpgw.service
         systemctl start udpgw.service
-        echo -e "$YELLOW
+        echo -e "$YELLOW"
         echo "💚 ......P2P Service Activated..... 💚"
-        echo -e "$NC
-        
+        echo -e "$NC"
+    
         # [+config+]
         chmod 755 /root/hy/config.json
 
