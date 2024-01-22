@@ -50,9 +50,6 @@ ip6tables -t raw -X
 netfilter-persistent save
 netfilter-persistent reload
 netfilter-persistent start
-systemctl stop hysteria-server.service
-rm -f /etc/systemd/system/hysteria-server.service
-rm -rf /root/hy
 echo -e "$YELLOW"
 echo "🧡 FIREWALL CONFIGURED..... 🧡"
 echo "💚 REBOOTING........ 💚"
