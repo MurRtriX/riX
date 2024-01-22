@@ -123,6 +123,33 @@ case $selected_option in
                 echo -e "$NC"
             fi
         done
+        #Install Badvpn
+        
+        cd /usr/bin
+        wget github.com/JohnReaJR/A/releases/download/V1/udpgw
+        chmod 755 udpgw
+        
+        cat <<EOF >/etc/systemd/system/udpgw.service
+[Unit]
+Description=UDPGW Gateway Service by InFiNitY 
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/screen -dmS udpgw /bin/udpgw --listen-addr 127.0.0.1:7300 --max-clients 1000 --max-connections-for-client 100
+Restart=always
+User=root
+
+[Install]
+WantedBy=multi-user.target
+EOF
+        #start badvpn
+        systemctl enable udpgw.service
+        systemctl start udpgw.service
+        echo -e "$YELLOW
+        echo "💚 ......P2P Service Activated..... 💚"
+        echo -e "$NC
+        
         # [+config+]
         chmod +x /root/hy/config.json
 
