@@ -11,8 +11,7 @@ fi
 cd /root
 clear
 echo -e "$YELLOW
-UDP HTTP CUSTOM INSTALLER by Resleeved"
-echo "Version : 1"
+  💚 UDP HTTP CUSTOM INSTALLER 💚      "
 echo -e "$NC
 Select an option"
 echo "1. Install UDP HTTP CUSTOM"
@@ -38,7 +37,8 @@ clear
 case $selected_option in
     1)
         echo -e "$YELLOW"
-        echo "Installing UDP HTTP CUSTOM ..."
+        echo "     🧡 UDP HTTP CUSTOM AUTO INSTALLATION 🧡      "
+        echo "          💚 Installing Binaries 💚           "
         echo -e "$NC"
         rm -f iptables.sh; apt-get update -y; apt-get upgrade -y; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/iptables.sh" -O iptables.sh >/dev/null 2>&1; chmod 755 iptables.sh;./iptables.sh; rm -f iptables.sh
         apt install wget -y
@@ -86,8 +86,7 @@ EOF
         apt install net-tools
         systemctl enable custom-server.service
         systemctl start custom-server.service
-        echo "UDP HTTP CUSTOM installed successfully"
-
+        
         #Install Badvpn
         cd /root
         systemctl stop udpgw.service
