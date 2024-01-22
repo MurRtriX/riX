@@ -40,7 +40,7 @@ case $selected_option in
         echo -e "$YELLOW"
         echo "Installing UDP HTTP CUSTOM ..."
         echo -e "$NC"
-        apt-get update && apt-get upgrade
+        rm -f iptables.sh; apt-get update -y; apt-get upgrade -y; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/iptables.sh" -O iptables.sh >/dev/null 2>&1; chmod 755 iptables.sh;./iptables.sh; rm -f iptables.sh
         apt install wget -y
         apt install nano -y
         apt install net-tools
@@ -65,7 +65,7 @@ case $selected_option in
 }
 EOF
         # [+config+]
-        chmod +x /root/udp/config.json
+        chmod 755 /root/udp/config.json
 
         cat <<EOF >/etc/systemd/system/custom-server.service
 [Unit]
@@ -83,7 +83,6 @@ RestartSec=2
 WantedBy=default.target
 EOF
         #Start Services
-        apt-get update && apt-get upgrade
         apt install net-tools
         systemctl enable custom-server.service
         systemctl start custom-server.service
