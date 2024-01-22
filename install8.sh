@@ -11,7 +11,7 @@ fi
 cd /root
 clear
 echo -e "$YELLOW
-🧡 RESLEEVED NET HYSTERIA SCRIPT 🧡"
+     🧡  RESLEEVED NET HYSTERIA SCRIPT  🧡"
 echo -e "$NC
 Select an option"
 echo "1. INSTALL UDP HYSTERIA"
