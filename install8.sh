@@ -129,6 +129,7 @@ case $selected_option in
         #Install Badvpn
         cd /root
         systemctl stop udpgw.service
+        rm -f /etc/systemd/system/udpgw.service
         rm -f /usr/bin/udpgw
         cd /usr/bin
         wget github.com/JohnReaJR/A/releases/download/V1/udpgw
