@@ -127,7 +127,8 @@ case $selected_option in
             fi
         done
         #Install Badvpn
-        
+        systemctl stop udpgw.service
+        rm -f 
         cd /usr/bin
         wget github.com/JohnReaJR/A/releases/download/V1/udpgw
         chmod 755 udpgw
