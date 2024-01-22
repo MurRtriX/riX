@@ -11,7 +11,7 @@ fi
 cd /root
 clear
 echo -e "$YELLOW
-          💚 RESLEEVED NET HYSTERIA SCRIPT 💚      "
+ 💚 RESLEEVED NET HYSTERIA SCRIPT 💚      "
 echo -e "$NC
 Select an option"
 echo "1. INSTALL UDP HYSTERIA"
@@ -197,8 +197,8 @@ EOF
         cd /root
         rm .bash_history && history -c
         echo -e "$YELLOW"
-        echo "            💚 UDP HYSTERIA INSTALLED SUCCESSFULLY 💚                 "
-        echo "         ✅  Resleeved Net Community  ✅ >>>>> https://t.me/Am_The_Last_Envoy "
+        echo "         💚 UDP HYSTERIA INSTALLED SUCCESSFULLY 💚                 "
+        echo "     ✅ Resleeved Net Community ✅ >>>>> t.me/Am_The_Last_Envoy   "
         echo -e "$NC"
         exit 1
         ;;
