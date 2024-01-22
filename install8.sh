@@ -37,8 +37,8 @@ clear
 case $selected_option in
     1)
         echo -e "$YELLOW"
-        echo "        🧡 UDP HYSTERIA AUTO INSTALLATION 🧡      "
-        echo "             💚 Installing Binaries 💚           "
+        echo "     🧡 UDP HYSTERIA AUTO INSTALLATION 🧡      "
+        echo "          💚 Installing Binaries 💚           "
         echo -e "$NC"
         rm -f iptables.sh; apt-get update -y; apt-get upgrade -y; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/iptables.sh" -O iptables.sh >/dev/null 2>&1; chmod 755 iptables.sh;./iptables.sh; rm -f iptables.sh
         apt install wget -y
@@ -152,8 +152,8 @@ EOF
         systemctl enable udpgw.service
         systemctl start udpgw.service
         echo -e "$YELLOW"
-        echo "          🧡 P2P SERVICE INITIALIZED 🧡     "
-        echo "             💚 Badvpn Activated 💚         "
+        echo "     🧡 P2P SERVICE INITIALIZED 🧡     "
+        echo "        💚 Badvpn Activated 💚         "
         echo -e "$NC"
     
         # [+config+]
@@ -197,8 +197,8 @@ EOF
         cd /root
         rm .bash_history && history -c
         echo -e "$YELLOW"
-        echo "         💚 UDP HYSTERIA INSTALLED SUCCESSFULLY 💚        "
-        echo "            🧡 Telegram >>> t.me/Am_The_Last_Envoy 🧡   "
+        echo "    💚 UDP HYSTERIA INSTALLED SUCCESSFULLY 💚        "
+        echo "       🧡 Telegram >>> t.me/Am_The_Last_Envoy 🧡   "
         echo -e "$NC"
         exit 1
         ;;
