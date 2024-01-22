@@ -8,8 +8,8 @@ fi
 cd /root
 clear
 echo -e "$YELLOW"
-echo "🧡 IPTABLES....SETTING UP YOUR FIREWALL.... 🧡"
-echo "          💚 Resleeved Net Firewall 💚          "
+echo "          🧡 IPTABLES....SETTING UP YOUR FIREWALL 🧡    "
+echo "                 💚 Resleeved Net Firewall 💚          "
 echo -e "$NC"
 apt-get update && apt-get upgrade
 apt update && apt upgrade
@@ -51,7 +51,7 @@ netfilter-persistent save
 netfilter-persistent reload
 netfilter-persistent start
 echo -e "$YELLOW"
-echo "🧡 FIREWALL CONFIGURED..... 🧡"
-echo "💚 REBOOTING........ 💚"
+echo "           🧡 FIREWALL CONFIGURED 🧡      "
+echo "                 💚 Active 💚             "
 echo -e "$NC"
 exit 1
