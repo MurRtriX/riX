@@ -185,6 +185,7 @@ EOF
         net.ipv4.conf.all.rp_filter=0
         net.ipv4.conf.$(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1).rp_filter=0" > /etc/sysctl.conf
         sysctl -p
+        apt-get install iptables-persistent
         netfilter-persistent save
         netfilter-persistent reload
         netfilter-persistent start
