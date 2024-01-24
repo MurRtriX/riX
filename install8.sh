@@ -41,8 +41,7 @@ case $selected_option in
         echo "Installing UDP Hysteria ..."
         echo -e "$NC"
         apt-get update && apt-get upgrade
-        apt install wget -y
-        apt install nano -y
+        apt update && apt upgrade
         apt install net-tools
         mkdir hy
         cd hy
@@ -124,7 +123,7 @@ case $selected_option in
             fi
         done
         # [+config+]
-        chmod +x /root/hy/config.json
+        chmod 755 /root/hy/config.json
 
         cat <<EOF >/etc/systemd/system/hysteria-server.service
 [Unit]
@@ -145,14 +144,9 @@ LimitNOFILE=infinity
 WantedBy=multi-user.target
 EOF
         #Start Services
-        apt-get update && apt-get upgrade
-        apt install net-tools
-        sudo debconf-set-selections <<< "iptables-persistent iptables-persistent/autosave_v4 boolean true"
-        sudo debconf-set-selections <<< "iptables-persistent iptables-persistent/autosave_v6 boolean true"
         apt -y install iptables-persistent
         iptables -t nat -A PREROUTING -i $(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1) -p udp --dport "$first_number":"$second_number" -j DNAT --to-destination :$remote_udp_port
         ip6tables -t nat -A PREROUTING -i $(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1) -p udp --dport "$first_number":"$second_number" -j DNAT --to-destination :$remote_udp_port
-        netfilter-persistent save
         sysctl net.ipv4.conf.all.rp_filter=0
         sysctl net.ipv4.conf.$(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1).rp_filter=0
         echo "net.ipv4.ip_forward = 1
