@@ -11,8 +11,7 @@ fi
 cd /root
 clear
 echo -e "$YELLOW
-UDP HTTP CUSTOM INSTALLER by Resleeved"
-echo "Version : 1"
+  💚 UDP HTTP CUSTOM INSTALLER 💚      "
 echo -e "$NC
 Select an option"
 echo "1. Install UDP HTTP CUSTOM"
@@ -38,22 +37,22 @@ clear
 case $selected_option in
     1)
         echo -e "$YELLOW"
-        echo "Installing UDP HTTP CUSTOM ..."
+        echo "     🧡 UDP HTTP CUSTOM AUTO INSTALLATION 🧡      "
+        echo "          💚 Installing Binaries 💚           "
         echo -e "$NC"
-        apt-get update && apt-get upgrade
-        apt install wget -y
-        apt install nano -y
-        apt install net-tools
+        systemctl stop custom-server.service
+        rm -f /etc/systemd/system/custom-server.service
+        rm -rf /root/udp
         mkdir udp
         cd udp
-        wget github.com/JohnReaJR/A/releases/download/V1/custom-linux-amd64
+        wget https://github.com/JohnReaJR/A/releases/download/V1/custom-linux-amd64
         chmod 755 custom-linux-amd64
 
 
         rm -f /root/udp/config.json
         cat <<EOF >/root/udp/config.json
-        {
-  "listen": ":8444",
+{
+  "listen": ":36712",
   "stream_buffer": 16777216,
   "receive_buffer": 33554432,
   "auth": {
@@ -62,7 +61,7 @@ case $selected_option in
 }
 EOF
         # [+config+]
-        chmod +x /root/udp/config.json
+        chmod 755 /root/udp/config.json
 
         cat <<EOF >/etc/systemd/system/custom-server.service
 [Unit]
@@ -80,13 +79,15 @@ RestartSec=2
 WantedBy=default.target
 EOF
         #Start Services
-        apt-get update && apt-get upgrade
         apt install net-tools
         systemctl enable custom-server.service
         systemctl start custom-server.service
-        echo "UDP HTTP CUSTOM installed successfully"
-
+        
         #Install Badvpn
+        cd /root
+        systemctl stop udpgw.service
+        rm -f /etc/systemd/system/udpgw.service
+        rm -f /usr/bin/udpgw
         cd /usr/bin
         wget github.com/JohnReaJR/A/releases/download/V1/udpgw
         chmod 755 udpgw
@@ -108,8 +109,11 @@ EOF
         #start badvpn
         systemctl enable udpgw.service
         systemctl start udpgw.service
-        echo "P2P Service Activated"
-        echo "Welcome To Resleeved Net"
+        echo -e "$YELLOW"
+        echo "     🧡 P2P SERVICE INITIALIZED 🧡     "
+        echo "        💚 Badvpn Activated 💚         "
+        echo "    💚 UDP HTTP CUSTOM SUCCESSFULLY INSTALLED 💚       "
+        echo -e "$NC"
         exit 1
         ;;
     2)
