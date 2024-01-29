@@ -96,38 +96,20 @@ sysctl -w net.ipv4.tcp_syn_retries=2
 sysctl -w net.ipv4.tcp_synack_retries=2
 sysctl -w net.ipv4.tcp_syncookies=0
 sysctl -w net.ipv4.tcp_max_syn_backlog=4096
-/////////////////
-
-echo "net.ipv4.neigh.default.proxy_qlen=64" >> /etc/sysctl.conf
-echo "net.ipv4.tcp_congestion_control=htcp" >> /etc/sysctl.conf
-echo "net.ipv4.conf.all.accept_source_route=0" >> /etc/sysctl.conf
-echo "net.ipv4.inet_peer_threshold=65664" >> /etc/sysctl.conf
-echo "net.ipv4.inet_peer_minttl=120" >> /etc/sysctl.conf
-echo "net.ipv4.inet_peer_maxttl=600" >> /etc/sysctl.conf
-echo "net.ipv4.tcp_sack=1" >> /etc/sysctl.conf
-echo "net.ipv4.tcp_adv_win_scale=3" >> /etc/sysctl.conf
-echo "net.ipv4.ipfrag_time=30" >> /etc/sysctl.conf
-echo "net.ipv4.ipfrag_low_thresh=196608" >> /etc/sysctl.conf
-echo "net.ipv4.tcp_tw_reuse=1" >> /etc/sysctl.conf
-echo "net.ipv4.tcp_window_scaling=1" >> /etc/sysctl.conf
-echo "net.ipv4.tcp_timestamps=1" >> /etc/sysctl.conf
-echo "net.ipv4.ip_forward=1" >> /etc/sysctl.conf
-echo "net.ipv4.tcp_no_metrics_save=0" >> /etc/sysctl.conf
-echo "net.ipv4.tcp_slow_start_after_idle=0" >> /etc/sysctl.conf
-echo "net.ipv4.udp_rmem_min=16384" >> /etc/sysctl.conf
-echo "net.ipv4.udp_mem=65536 131072 262144" >> /etc/sysctl.conf
-echo "net.ipv4.tcp_mem=786432 1048576 26777216" >> /etc/sysctl.conf
-echo "net.ipv4.tcp_orphan_retries=0" >> /etc/sysctl.conf
-
-
-
-
-
-
-
-
-//////////////
-
+echo "net.core.optmem_max=25165824" >> /etc/sysctl.conf
+echo "net.core.somaxconn=65535" >> /etc/sysctl.conf
+echo "net.netfilter.nf_conntrack_max=1048576" >> /etc/sysctl.conf
+echo "net.ipv4.neigh.default.unres_qlen=101" >> /etc/sysctl.conf
+echo "net.ipv4.tcp_fin_timeout=15" >> /etc/sysctl.conf
+echo "net.ipv4.tcp_rfc1337=1" >> /etc/sysctl.conf
+echo "net.ipv4.tcp_keepalive_intvl=15" >> /etc/sysctl.conf
+echo "net.ipv4.tcp_keepalive_probes=5" >> /etc/sysctl.conf
+echo "net.ipv4.tcp_keepalive_time=300" >> /etc/sysctl.conf
+echo "net.ipv4.ip_local_port_range=1024 65535" >> /etc/sysctl.conf
+echo "net.ipv4.tcp_syn_retries=2" >> /etc/sysctl.conf
+echo "net.ipv4.tcp_synack_retries=2" >> /etc/sysctl.conf
+echo "net.ipv4.tcp_syncookies=0" >> /etc/sysctl.conf
+echo "net.ipv4.tcp_max_syn_backlog=4096" >> /etc/sysctl.conf
 echo "net.ipv4.neigh.default.proxy_qlen=64" >> /etc/sysctl.conf
 echo "net.ipv4.tcp_congestion_control=htcp" >> /etc/sysctl.conf
 echo "net.ipv4.conf.all.accept_source_route=0" >> /etc/sysctl.conf
