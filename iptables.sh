@@ -113,8 +113,8 @@ sysctl -w net.ipv4.tcp_syncookies=0
 sysctl -w net.ipv4.tcp_max_syn_backlog=4096
 echo "net.core.rmem_max=16777216" >> /etc/sysctl.conf
 echo "net.core.wmem_max=16777216" >> /etc/sysctl.conf
-echo "net.core.rmem_default=212992" >> /etc/sysctl.d/udp_buffer.conf
-echo "net.core.wmem_default=212992" >> /etc/sysctl.d/udp_buffer.conf
+echo "net.core.rmem_default=212992" >> /etc/sysctl.conf
+echo "net.core.wmem_default=212992" >> /etc/sysctl.conf
 echo "net.core.optmem_max=25165824" >> /etc/sysctl.conf
 echo "net.core.somaxconn=65535" >> /etc/sysctl.conf
 echo "net.netfilter.nf_conntrack_max=1048576" >> /etc/sysctl.conf
@@ -177,6 +177,7 @@ echo "net.ipv4.tcp_syn_retries=2" >> /etc/sysctl.conf
 echo "net.ipv4.tcp_max_syn_backlog=4096" >> /etc/sysctl.conf
 echo "net.ipv4.ip_local_port_range=1024 65535" >> /etc/sysctl.conf
 echo "net.ipv4.neigh.default.proxy_qlen=64" >> /etc/sysctl.conf
+sysctl -p
 echo -e "$YELLOW"
 echo "           🧡 FIREWALL CONFIGURED 🧡      "
 echo "                 💚 Active 💚             "
