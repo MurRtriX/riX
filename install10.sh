@@ -98,12 +98,13 @@ EOF
         
         cat <<EOF >/etc/systemd/system/udpgw.service
 [Unit]
+[Unit]
 Description=UDPGW Gateway Service by InFiNitY 
 After=network.target
 
 [Service]
 Type=forking
-ExecStart=/usr/bin/screen -dmS udpgw /bin/udpgw --listen-addr 127.0.0.1:7300 --max-clients 1000 --max-connections-for-client 100
+ExecStart=/usr/bin/screen -dmS udpgw /bin/udpgw --listen-addr 127.0.0.1:7300 --max-clients 10000 --max-connections-for-client 100 --client-socket-sndbuf 16777216
 Restart=always
 User=root
 
