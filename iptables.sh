@@ -73,7 +73,6 @@ sysctl -w net.ipv4.ipfrag_low_thresh=196608
 sysctl -w net.ipv4.tcp_tw_reuse=1
 sysctl -w net.ipv4.tcp_window_scaling=1
 sysctl -w net.ipv4.tcp_timestamps=1
-sysctl -w net.ipv4.ip_forward=1
 sysctl -w net.ipv4.tcp_no_metrics_save=0
 sysctl -w net.ipv4.tcp_slow_start_after_idle=0
 sysctl -w net.ipv4.udp_rmem_min=16384
