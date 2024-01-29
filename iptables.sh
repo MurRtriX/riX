@@ -52,9 +52,20 @@ netfilter-persistent reload
 netfilter-persistent start
 rm -f /etc/sysctl.d/udp_buffer.conf
 sysctl -w net.core.rmem_max=16777216
-echo "net.core.rmem_max=16777216" >> /etc/sysctl.d/udp_buffer.conf
+sysctl -w net.ipv4.neigh.default.proxy_qlen = 64
+sysctl -w net.ipv4.tcp_congestion_control = htcp
+sysctl -w net.ipv4.conf.all.accept_source_route = 0
+sysctl -w net.ipv4.inet_peer_threshold = 65664
+sysctl -w net.ipv4.inet_peer_minttl = 120
+sysctl -w net.ipv4.inet_peer_maxttl = 600
+sysctl -w net.ipv4.tcp_sack = 1
+sysctl -w net.ipv4.tcp_adv_win_scale = 3
+sysctl -w net.ipv4.ipfrag_time = 30
+sysctl -w net.ipv4.ipfrag_low_thresh = 196608
+
+echo "net.core.rmem_max=16777216" >> /etc/sysctl.conf
 sysctl -w net.core.wmem_max=16777216
-echo "net.core.wmem_max=16777216" >> /etc/sysctl.d/udp_buffer.conf
+echo "net.core.wmem_max=16777216" >> /etc/sysctl.conf
 echo -e "$YELLOW"
 echo "           🧡 FIREWALL CONFIGURED 🧡      "
 echo "                 💚 Active 💚             "
