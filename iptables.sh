@@ -51,6 +51,7 @@ netfilter-persistent save
 netfilter-persistent reload
 netfilter-persistent start
 rm -f /etc/sysctl.d/udp_buffer.conf
+rm -f /etc/sysctl.conf
 sysctl -w net.core.rmem_max=16777216
 sysctl -w net.core.wmem_max=16777216
 sysctl -w net.core.rmem_default=212992
