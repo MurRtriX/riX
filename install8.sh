@@ -183,12 +183,6 @@ EOF
         ip6tables -t nat -A PREROUTING -i $(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1) -p udp --dport "$first_number":"$second_number" -j DNAT --to-destination :$remote_udp_port
         iptables -A INPUT -p udp --dport $remote_udp_port -j ACCEPT
         ip6tables -A INPUT -p udp --dport $remote_udp_port -j ACCEPT
-        sysctl net.ipv4.conf.all.rp_filter=0
-        sysctl net.ipv4.conf.$(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1).rp_filter=0
-        echo "net.ipv4.ip_forward = 1
-        net.ipv4.conf.all.rp_filter=0
-        net.ipv4.conf.$(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1).rp_filter=0" > /etc/sysctl.conf
-        sysctl -p
         netfilter-persistent save
         netfilter-persistent reload
         netfilter-persistent start
