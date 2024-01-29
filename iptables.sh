@@ -150,7 +150,6 @@ echo "net.core.netdev_max_backlog=65536" >> /etc/sysctl.conf
 echo "vm.swappiness=10" >> /etc/sysctl.conf
 echo "vm.dirty_ratio=60" >> /etc/sysctl.conf
 echo "vm.dirty_background_ratio=2" >> /etc/sysctl.conf
-echo "kernel.sched_migration_cost_ns=5000000" >> /etc/sysctl.conf
 echo "net.ipv4.tcp_synack_retries=2" >> /etc/sysctl.conf
 echo "net.ipv4.tcp_syncookies=0" >> /etc/sysctl.conf
 echo "net.ipv4.tcp_syn_retries=2" >> /etc/sysctl.conf
