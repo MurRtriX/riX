@@ -53,6 +53,10 @@ netfilter-persistent start
 rm -f /etc/sysctl.d/udp_buffer.conf
 sysctl -w net.core.rmem_max=16777216
 sysctl -w net.core.wmem_max=16777216
+sysctl -w vm.swappiness=10
+sysctl -w vm.dirty_ratio=60
+sysctl -w vm.dirty_background_ratio=2
+sysctl -w fs.file-max=1000000
 sysctl -w net.ipv4.neigh.default.proxy_qlen=64
 sysctl -w net.ipv4.tcp_congestion_control=htcp
 sysctl -w net.ipv4.conf.all.accept_source_route=0
