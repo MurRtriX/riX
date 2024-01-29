@@ -50,14 +50,11 @@ ip6tables -t raw -X
 netfilter-persistent save
 netfilter-persistent reload
 netfilter-persistent start
+rm -f /etc/sysctl.d/udp_buffer.conf
 sysctl -w net.core.rmem_max=16777216
-sysctl -w net.core.rmem_default=16777216
 echo "net.core.rmem_max=16777216" >> /etc/sysctl.d/udp_buffer.conf
-echo "net.core.rmem_default=16777216" >> /etc/sysctl.d/udp_buffer.conf
 sysctl -w net.core.wmem_max=16777216
-sysctl -w net.core.wmem_default=16777216
 echo "net.core.wmem_max=16777216" >> /etc/sysctl.d/udp_buffer.conf
-echo "net.core.wmem_default=16777216" >> /etc/sysctl.d/udp_buffer.conf
 echo -e "$YELLOW"
 echo "           🧡 FIREWALL CONFIGURED 🧡      "
 echo "                 💚 Active 💚             "
