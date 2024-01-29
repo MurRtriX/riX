@@ -136,7 +136,6 @@ echo "net.ipv4.udp_rmem_min=16384" >> /etc/sysctl.conf
 echo "net.ipv4.tcp_orphan_retries=0" >> /etc/sysctl.conf
 echo "net.ipv4.tcp_max_orphans=16384" >> /etc/sysctl.conf
 echo "net.ipv4.tcp_tw_reuse=1" >> /etc/sysctl.conf
-echo "net.ipv4.tcp_tw_recycle=1" >> /etc/sysctl.conf
 echo "net.ipv4.tcp_max_tw_buckets=1440000" >> /etc/sysctl.conf
 echo "net.ipv4.udp_wmem_min=16384" >> /etc/sysctl.conf
 echo "net.core.netdev_budget=500" >> /etc/sysctl.conf
