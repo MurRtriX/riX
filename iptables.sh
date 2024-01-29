@@ -118,7 +118,6 @@ echo "net.ipv4.tcp_rfc1337=1" >> /etc/sysctl.conf
 echo "net.ipv4.tcp_keepalive_intvl=15" >> /etc/sysctl.conf
 echo "net.ipv4.tcp_keepalive_probes=5" >> /etc/sysctl.conf
 echo "net.ipv4.tcp_keepalive_time=300" >> /etc/sysctl.conf
-echo "net.ipv4.ip_local_port_range=1024 65535" >> /etc/sysctl.conf
 echo "net.ipv4.tcp_syn_retries=2" >> /etc/sysctl.conf
 echo "net.ipv4.tcp_synack_retries=2" >> /etc/sysctl.conf
 echo "net.ipv4.tcp_syncookies=0" >> /etc/sysctl.conf
@@ -154,7 +153,6 @@ echo "net.ipv4.tcp_synack_retries=2" >> /etc/sysctl.conf
 echo "net.ipv4.tcp_syncookies=0" >> /etc/sysctl.conf
 echo "net.ipv4.tcp_syn_retries=2" >> /etc/sysctl.conf
 echo "net.ipv4.tcp_max_syn_backlog=4096" >> /etc/sysctl.conf
-echo "net.ipv4.ip_local_port_range=1024 65535" >> /etc/sysctl.conf
 echo "net.ipv4.neigh.default.proxy_qlen=64" >> /etc/sysctl.conf
 sysctl -p /etc/sysctl.conf
 echo -e "$YELLOW"
