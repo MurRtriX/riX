@@ -53,6 +53,8 @@ netfilter-persistent start
 rm -f /etc/sysctl.d/udp_buffer.conf
 sysctl -w net.core.rmem_max=16777216
 sysctl -w net.core.wmem_max=16777216
+sysctl -w net.core.rmem_default=212992
+sysctl -w net.core.wmem_default=212992
 sysctl -w vm.swappiness=10
 sysctl -w vm.dirty_ratio=60
 sysctl -w vm.dirty_background_ratio=2
@@ -102,6 +104,8 @@ sysctl -w net.ipv4.tcp_syncookies=0
 sysctl -w net.ipv4.tcp_max_syn_backlog=4096
 echo "net.core.rmem_max=16777216" >> /etc/sysctl.conf
 echo "net.core.wmem_max=16777216" >> /etc/sysctl.conf
+echo "net.core.rmem_default=212992" >> /etc/sysctl.d/udp_buffer.conf
+echo "net.core.wmem_default=212992" >> /etc/sysctl.d/udp_buffer.conf
 echo "net.core.optmem_max=25165824" >> /etc/sysctl.conf
 echo "net.core.somaxconn=65535" >> /etc/sysctl.conf
 echo "net.netfilter.nf_conntrack_max=1048576" >> /etc/sysctl.conf
