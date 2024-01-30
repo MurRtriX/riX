@@ -109,6 +109,7 @@ echo "net.core.wmem_max=16777216" >> /etc/sysctl.conf
 echo "net.core.rmem_default=212992" >> /etc/sysctl.conf
 echo "net.core.wmem_default=212992" >> /etc/sysctl.conf
 echo "net.core.optmem_max=20480" >> /etc/sysctl.conf
+echo "net.ipv4.tcp_congestion_control=bbrplus" >> /etc/sysctl.conf
 echo "net.ipv4.ip_local_port_range=1024 65535" >> /etc/sysctl.conf
 echo "net.ipv4.tcp_wmem=4096 5242880 16777216" >> /etc/sysctl.conf
 echo "net.ipv4.tcp_rmem=4096 5242880 16777216" >> /etc/sysctl.conf
