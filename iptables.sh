@@ -9,7 +9,7 @@ cd /root
 clear
 echo -e "$YELLOW"
 echo "          💚 IPTABLES....SETTING UP YOUR FIREWALL 💚    "
-echo "                 💚 Resleeved Net Firewall 💚          "
+echo "             ╰┈➤💚 Resleeved Net Firewall 💚          "
 echo -e "$NC"
 apt-get update && apt-get upgrade
 apt update && apt upgrade
@@ -89,6 +89,6 @@ echo "net.ipv4.tcp_max_syn_backlog=4096" >> /etc/sysctl.conf
 sysctl -p /etc/sysctl.conf
 echo -e "$YELLOW"
 echo "           💚 FIREWALL CONFIGURED 💚      "
-echo "                 💚 Active 💚             "
+echo "              ╰┈➤💚 Active 💚             "
 echo -e "$NC"
 exit 1
