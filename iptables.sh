@@ -50,7 +50,6 @@ ip6tables -t raw -X
 netfilter-persistent save
 netfilter-persistent reload
 netfilter-persistent start
-rm -f /etc/sysctl.d/udp_buffer.conf
 rm -f /etc/sysctl.conf
 sysctl net.ipv4.conf.all.rp_filter=0
 sysctl net.ipv4.conf.$(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1).rp_filter=0
