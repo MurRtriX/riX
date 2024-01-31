@@ -11,7 +11,7 @@ fi
 cd /root
 clear
 echo -e "$YELLOW
-  💚 UDP HTTP CUSTOM INSTALLER 💚      "
+╰┈➤💚 UDP HTTP CUSTOM INSTALLER 💚      "
 echo -e "$NC
 Select an option"
 echo "1. Install UDP HTTP CUSTOM"
@@ -37,8 +37,8 @@ clear
 case $selected_option in
     1)
         echo -e "$YELLOW"
-        echo "     🧡 UDP HTTP CUSTOM AUTO INSTALLATION 🧡      "
-        echo "          💚 Installing Binaries 💚           "
+        echo "     💚 UDP HTTP CUSTOM AUTO INSTALLATION 💚      "
+        echo "        ╰┈➤💚 Installing Binaries 💚           "
         echo -e "$NC"
         apt install wget -y
         apt install nano -y
@@ -115,9 +115,9 @@ EOF
         systemctl enable udpgw.service
         systemctl start udpgw.service
         echo -e "$YELLOW"
-        echo "     🧡 P2P SERVICE INITIALIZED 🧡     "
-        echo "        💚 Badvpn Activated 💚         "
-        echo "    💚 UDP HTTP CUSTOM SUCCESSFULLY INSTALLED 💚       "
+        echo "     💚 P2P SERVICE INITIALIZED 💚     "
+        echo "     ╰┈➤💚 Badvpn Activated 💚         "
+        echo " ╰┈➤ 💚 UDP HTTP CUSTOM SUCCESSFULLY INSTALLED 💚       "
         echo -e "$NC"
         exit 1
         ;;
