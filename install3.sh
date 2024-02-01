@@ -87,8 +87,8 @@ RestartSec=2
 WantedBy=default.target
 EOF
 
-./dnstt-server -udp :5300 -privkey-file server.key $ns 127.0.0.1:8000
-ncat -lkv 127.0.0.1 8000
+./dnstt-server -udp :5300 -privkey-file server.key $ns 127.0.0.1:22
+ncat -lkv 127.0.0.1 22
 systemctl enable dnstt-server.service
 systemctl start dnstt-server.service
 echo -e "$YELLOW"
