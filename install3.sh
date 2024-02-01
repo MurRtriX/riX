@@ -44,18 +44,10 @@ ip6tables -t mangle -F
 ip6tables -t mangle -X
 ip6tables -t raw -F
 ip6tables -t raw -X
-iptables -I INPUT -p udp --dport 5300 -j ACCEPT
-iptables -I INPUT -p tcp --dport 5300 -j ACCEPT
 iptables -A INPUT -p udp --dport 53 -j ACCEPT
-iptables -A INPUT -p tcp --dport 53 -j ACCEPT
 iptables -t nat -I PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 5300
-iptables -t nat -A PREROUTING -p tcp --dport 53 -j REDIRECT --to-port 5300
-ip6tables -I INPUT -p udp --dport 5300 -j ACCEPT
-ip6tables -I INPUT -p tcp --dport 5300 -j ACCEPT
-ip6tables -A INPUT -p tcp --dport 53 -j ACCEPT
 ip6tables -A INPUT -p udp --dport 53 -j ACCEPT
 ip6tables -t nat -I PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 5300
-ip6tables -t nat -A PREROUTING -p tcp --dport 53 -j REDIRECT --to-port 5300
 netfilter-persistent save
 netfilter-persistent reload
 netfilter-persistent start
