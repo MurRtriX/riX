@@ -71,7 +71,7 @@ cat server.pub
 read -p "Copy the pubkey above and press Enter when done"
 read -p "Enter your Nameserver : " ns
 echo -e "$NC"
-        cat <<EOF >/etc/systemd/system/custom-server.service
+        cat <<EOF >/etc/systemd/system/dnstt-server.service
 [Unit]
 Description=DNSTT by InFiNitY
 
