@@ -63,7 +63,7 @@ systemctl stop dnstt-server.service
 rm -rf /root/dnstt/dnstt-server
 apt install -y git golang-go
 git clone https://www.bamsoftware.com/git/dnstt.git
-cd dnstt/dnstt-server
+cd /root/dnstt/dnstt-server
 go build
 ./dnstt-server -gen-key -privkey-file server.key -pubkey-file server.pub
 echo -e "$YELLOW"
@@ -86,6 +86,8 @@ RestartSec=2
 [Install]
 WantedBy=default.target
 EOF
+
+screen -dmS slowdns ./dnstt-server -udp :5300 -privkey-file server.key $ns 127.0.0.1:22
 systemctl enable dnstt-server.service
 systemctl start dnstt-server.service
 echo -e "$YELLOW"
