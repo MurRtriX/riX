@@ -44,6 +44,10 @@ ip6tables -t mangle -F
 ip6tables -t mangle -X
 ip6tables -t raw -F
 ip6tables -t raw -X
+iptables -I INPUT -p udp --dport 5300 -j ACCEPT
+iptables -t nat -I PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 5300
+ip6tables -I INPUT -p udp --dport 5300 -j ACCEPT
+ip6tables -t nat -I PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 5300
 netfilter-persistent save
 netfilter-persistent reload
 netfilter-persistent start
@@ -56,8 +60,6 @@ echo -e "$YELLOW"
 cat server.pub
 read -p "Copy the pubkey above and press Enter when done"
 read -p "Enter your Nameserver : " ns
-iptables -I INPUT -p udp --dport 5300 -j ACCEPT
-iptables -t nat -I PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 5300
 screen -dmS slowdns ./dnstt-server -udp :5300 -privkey-file server.key $ns 127.0.0.1:22
 echo -e "$NC"
 echo -e "$YELLOW"
