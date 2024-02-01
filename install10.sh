@@ -43,7 +43,6 @@ case $selected_option in
         apt install wget -y
         apt install nano -y
         apt install net-tools
-        rm -f iptables.sh; apt-get update -y; apt-get upgrade -y; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/iptables.sh" -O iptables.sh >/dev/null 2>&1; chmod 755 iptables.sh;./iptables.sh; rm -f iptables.sh
         systemctl stop custom-server.service
         rm -f /etc/systemd/system/custom-server.service
         rm -rf /root/udp
