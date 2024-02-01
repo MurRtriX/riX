@@ -59,6 +59,7 @@ ip6tables -t nat -A PREROUTING -p tcp --dport 53 -j REDIRECT --to-port 5300
 netfilter-persistent save
 netfilter-persistent reload
 netfilter-persistent start
+systemctl stop dnstt-server.service
 rm -rf /root/dnstt/dnstt-server
 apt install -y git golang-go
 git clone https://www.bamsoftware.com/git/dnstt.git
@@ -85,7 +86,8 @@ RestartSec=2
 [Install]
 WantedBy=default.target
 EOF
-
+systemctl enable dnstt-server.service
+systemctl start dnstt-server.service
 echo -e "$YELLOW"
 echo "           💚 DNSTT INSTALLED 💚      "
 echo "           ╰┈➤💚 Active 💚             "
