@@ -71,25 +71,7 @@ cat server.pub
 read -p "Copy the pubkey above and press Enter when done"
 read -p "Enter your Nameserver : " ns
 echo -e "$NC"
-        cat <<EOF >/etc/systemd/system/dnstt-server.service
-[Unit]
-Description=DNSTT by InFiNitY
-
-[Service]
-User=root
-Type=simple
-ExecStart=/root/dnstt/dnstt-server server
-WorkingDirectory=/root
-Restart=always
-RestartSec=2
-
-[Install]
-WantedBy=default.target
-EOF
-
 ./dnstt-server -udp :5300 -privkey-file server.key $ns 127.0.0.1:8000
-systemctl enable dnstt-server.service
-systemctl start dnstt-server.service
 echo -e "$YELLOW"
 echo "           💚 DNSTT INSTALLED 💚      "
 echo "           ╰┈➤💚 Active 💚             "
