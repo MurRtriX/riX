@@ -69,6 +69,22 @@ cat server.pub
 read -p "Copy the pubkey above and press Enter when done"
 read -p "Enter your Nameserver : " ns
 echo -e "$NC"
+        cat <<EOF >/etc/systemd/system/custom-server.service
+[Unit]
+Description=DNSTT by InFiNitY
+
+[Service]
+User=root
+Type=simple
+ExecStart=/root/dnstt/dnstt-server server
+WorkingDirectory=/root/dnstt/
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=default.target
+EOF
+
 echo -e "$YELLOW"
 echo "           💚 DNSTT INSTALLED 💚      "
 echo "           ╰┈➤💚 Active 💚             "
