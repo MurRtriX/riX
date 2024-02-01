@@ -79,7 +79,7 @@ Description=DNSTT by InFiNitY
 User=root
 Type=simple
 ExecStart=/root/dnstt/dnstt-server server
-WorkingDirectory=/root/dnstt/
+WorkingDirectory=/root
 Restart=always
 RestartSec=2
 
