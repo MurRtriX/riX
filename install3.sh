@@ -70,8 +70,8 @@ echo -e "$YELLOW"
 cat server.pub
 read -p "Copy the pubkey above and press Enter when done"
 read -p "Enter your Nameserver : " ns
+screen -dmS slowdns ./dnstt-server -udp :5300 -privkey-file server.key $ns 127.0.0.1:8000
 echo -e "$NC"
-./dnstt-server -udp :5300 -privkey-file server.key $ns 127.0.0.1:8000
 echo -e "$YELLOW"
 echo "           💚 DNSTT INSTALLED 💚      "
 echo "           ╰┈➤💚 Active 💚             "
