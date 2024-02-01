@@ -59,7 +59,6 @@ ip6tables -t nat -A PREROUTING -p tcp --dport 53 -j REDIRECT --to-port 5300
 netfilter-persistent save
 netfilter-persistent reload
 netfilter-persistent start
-systemctl stop dnstt-server.service
 rm -rf /root/dnstt
 apt install -y git golang-go
 git clone https://www.bamsoftware.com/git/dnstt.git
@@ -70,7 +69,7 @@ echo -e "$YELLOW"
 cat server.pub
 read -p "Copy the pubkey above and press Enter when done"
 read -p "Enter your Nameserver : " ns
-screen -dmS slowdns ./dnstt-server -udp :5300 -privkey-file server.key $ns 127.0.0.1:8000
+./dnstt-server -udp :5300 -privkey-file server.key $ns 127.0.0.1:8000
 echo -e "$NC"
 echo -e "$YELLOW"
 echo "           💚 DNSTT INSTALLED 💚      "
