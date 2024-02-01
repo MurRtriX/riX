@@ -60,7 +60,7 @@ netfilter-persistent save
 netfilter-persistent reload
 netfilter-persistent start
 systemctl stop dnstt-server.service
-rm -rf /root/dnstt/dnstt-server
+rm -rf /root/dnstt
 apt install -y git golang-go
 git clone https://www.bamsoftware.com/git/dnstt.git
 cd /root/dnstt/dnstt-server
