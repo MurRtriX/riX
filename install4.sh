@@ -51,6 +51,7 @@ sudo iptables -A OUTPUT -o tap0 -j ACCEP
 iptables -A FORWARD -i tap0 -o eth0 -m state –state NEW,ESTABLISHED,RELATED -j ACCEPT
 iptables -A FORWARD -i eth0 -o tap0 -m state –state ESTABLISHED,RELATED -j ACCEPT
 iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+netfilter-persistent save
 netfilter-persistent reload
 netfilter-persistent start
 echo 1 > /proc/sys/net/ipv4/ip_forward
