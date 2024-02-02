@@ -61,7 +61,6 @@ apt-get install iodine
 wget http://code.kryo.se/iodine/iodine-0.7.0.tar.gz
 tar xzvf iodine-0.7.0.tar.gz
 cd iodine-0.7.0
-make
 sudo ./bin/iodined -c -P ReslvdnetZ -d tap0 192.168.233.1/24 iodine5.infinityy.cloudns.biz
 echo -e "$YELLOW"
 echo "           💚 IODINE INSTALLED 💚      "
