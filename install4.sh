@@ -55,20 +55,13 @@ netfilter-persistent reload
 netfilter-persistent start
 echo 1 > /proc/sys/net/ipv4/ip_forward
 sysctl -p
-rm -rf /root/dnstt
-apt install -y git golang-go
-git clone https://www.bamsoftware.com/git/dnstt.git
-cd /root/dnstt/dnstt-server
-go build
-./dnstt-server -gen-key -privkey-file server.key -pubkey-file server.pub
+wget http://code.kryo.se/iodine/iodine-0.7.0.tar.gz
+tar xzvf iodine-0.7.0.tar.gz
+cd iodine-0.7.0
+make
+sudo ./bin/iodined -c -P ReslvdnetZ -d tap0 192.168.233.1/24 iodine5.infinityy.cloudns.biz
 echo -e "$YELLOW"
-cat server.pub
-read -p "Copy the pubkey above and press Enter when done"
-read -p "Enter your Nameserver : " ns
-screen -dmS slowdns ./dnstt-server -udp :5300 -privkey-file server.key $ns 127.0.0.1:22
-echo -e "$NC"
-echo -e "$YELLOW"
-echo "           💚 DNSTT INSTALLED 💚      "
+echo "           💚 IODINE INSTALLED 💚      "
 echo "           ╰┈➤💚 Active 💚             "
 echo -e "$NC"
 exit 1
