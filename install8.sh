@@ -40,7 +40,6 @@ case $selected_option in
         echo "     💚 UDP HYSTERIA AUTO INSTALLATION 💚      "
         echo "       ╰┈➤💚 Installing Binaries 💚           "
         echo -e "$NC"
-        rm -f iptables.sh; apt-get update -y; apt-get upgrade -y; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/iptables.sh" -O iptables.sh >/dev/null 2>&1; chmod 755 iptables.sh;./iptables.sh; rm -f iptables.sh
         apt install wget -y
         apt install nano -y
         apt install net-tools
