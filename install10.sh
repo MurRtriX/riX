@@ -11,7 +11,8 @@ fi
 cd /root
 clear
 echo -e "$YELLOW
-╰┈➤💚 UDP HTTP CUSTOM INSTALLER 💚      "
+      💚 UDP HTTP CUSTOM INSTALLER 💚      
+        ╰┈➤ 💚 Resleeved Net 💚            "
 echo -e "$NC
 Select an option"
 echo "1. Install UDP HTTP CUSTOM"
@@ -38,7 +39,7 @@ case $selected_option in
     1)
         echo -e "$YELLOW"
         echo "     💚 UDP HTTP CUSTOM AUTO INSTALLATION 💚      "
-        echo "        ╰┈➤💚 Installing Binaries 💚           "
+        echo "       ╰┈➤ 💚 Installing Binaries 💚           "
         echo -e "$NC"
         apt install wget -y
         apt install nano -y
@@ -92,7 +93,7 @@ EOF
         rm -f /etc/systemd/system/udpgw.service
         rm -f /usr/bin/udpgw
         cd /usr/bin
-        wget github.com/JohnReaJR/A/releases/download/V1/udpgw
+        wget https://github.com/JohnReaJR/A/releases/download/V1/udpgw
         chmod 755 udpgw
         
         cat <<EOF >/etc/systemd/system/udpgw.service
