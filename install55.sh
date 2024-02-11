@@ -1,6 +1,6 @@
 #!/bin/bash
 is_number() {
-    [[ $1 =~ ^[0-20]+$ ]]
+    [[ $1 =~ ^[0-9]+$ ]]
 }
 YELLOW='\033[1;33m'
 NC='\033[0m'
@@ -34,7 +34,7 @@ while [ $selected_option -lt 1 ] || [ $selected_option -gt 10 ]; do
     read input
 
     # Check if input is a number
-    if [[ $input =~ ^[0-20]+$ ]]; then
+    if [[ $input =~ ^[0-9]+$ ]]; then
         selected_option=$input
     else
         echo -e "$YELLOW"
