@@ -23,12 +23,13 @@ echo "5. Install IODINE TUNNEL"
 echo "6. Install RESLEEVED NET FIREWALL"
 echo "7. Install V2RAY PANNEL"
 echo "8. RESET VPS"
-echo "9. Exit Script" 
+echo "9. Install HYSTERIA V2 UDP"
+echo "10. Exit Script" 
 selected_option=0
 
-while [ $selected_option -lt 1 ] || [ $selected_option -gt 9 ]; do
+while [ $selected_option -lt 1 ] || [ $selected_option -gt 10 ]; do
     echo -e "$YELLOW"
-    echo "Select a number from 1 to 9:"
+    echo "Select a number from 1 to 10:"
     echo -e "$NC"
     read input
 
@@ -76,6 +77,10 @@ case $selected_option in
         exit 1
         ;;
     9)
+        rm -f install11.sh; apt-get update -y; apt-get upgrade -y; wget "https://raw.githubusercontent.com/JohnReaJR/A/main/install11.sh" -O install11.sh >/dev/null 2>&1; chmod 755 install11.sh;./install11.sh; rm -f install11.sh
+        exit 1
+        ;;
+    10)
         echo -e "$YELLOW"
         echo "     💚 RESLEEVED NET SCRIPT EXITED 💚     "
         echo "     ╰┈➤💚 Resleeved Net 💚         "
