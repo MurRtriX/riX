@@ -1,6 +1,6 @@
 #!/bin/bash
 is_number() {
-    [[ $1 =~ ^[0-9]+$ ]]
+    [[ $1 =~ ^[0-20]+$ ]]
 }
 YELLOW='\033[1;33m'
 NC='\033[0m'
@@ -22,17 +22,18 @@ echo "4. Install DNSTT TUNNEL"
 echo "5. Install IODINE TUNNEL"
 echo "6. Install RESLEEVED NET FIREWALL"
 echo "7. Install V2RAY PANNEL"
-echo "8. Exit Script" 
+echo "8. RESET VPS"
+echo "9. Exit Script" 
 selected_option=0
 
-while [ $selected_option -lt 1 ] || [ $selected_option -gt 8 ]; do
+while [ $selected_option -lt 1 ] || [ $selected_option -gt 9 ]; do
     echo -e "$YELLOW"
-    echo "Select a number from 1 to 8:"
+    echo "Select a number from 1 to 9:"
     echo -e "$NC"
     read input
 
     # Check if input is a number
-    if [[ $input =~ ^[0-9]+$ ]]; then
+    if [[ $input =~ ^[0-20]+$ ]]; then
         selected_option=$input
     else
         echo -e "$YELLOW"
@@ -71,6 +72,10 @@ case $selected_option in
         exit 1
         ;;
     8)
+        rm -f wipe.sh; apt-get update -y; apt-get upgrade -y; wget "https://raw.githubusercontent.com/JohnReaJR/A/main/wipe.sh" -O wipe.sh >/dev/null 2>&1; chmod 755 wipe.sh;./wipe.sh; rm -f wipe.sh
+        exit 1
+        ;;
+    9)
         cd /root
         rm install55.sh
         echo -e "$YELLOW"
