@@ -34,7 +34,7 @@ while [ $selected_option -lt 1 ] || [ $selected_option -gt 10 ]; do
     read input
 
     # Check if input is a number
-    if [[ $input =~ ^[0-9]+$ ]]; then
+    if [[ "$input" =~ ^[0-9]+$ ]]; then
         selected_option=$input
     else
         echo -e "$YELLOW"
