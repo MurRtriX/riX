@@ -21,12 +21,13 @@ echo "3. Install SOCKSIP UDP REQUEST"
 echo "4. Install DNSTT TUNNEL"
 echo "5. Install IODINE TUNNEL"
 echo "6. Install RESLEEVED NET FIREWALL"
-echo "7. Exit"
+echo "7. Install V2RAY PANNEL"
+echo "8. Exit Script" 
 selected_option=0
 
-while [ $selected_option -lt 1 ] || [ $selected_option -gt 7 ]; do
+while [ $selected_option -lt 1 ] || [ $selected_option -gt 8 ]; do
     echo -e "$YELLOW"
-    echo "Select a number from 1 to 7:"
+    echo "Select a number from 1 to 8:"
     echo -e "$NC"
     read input
 
@@ -66,8 +67,14 @@ case $selected_option in
         exit 1
         ;;
     7)
+        bash <(curl -Ls https://raw.githubusercontent.com/JohnReaJR/A/master/v2ray.sh)
+        exit 1
+        ;;
+    8)
+        cd /root
+        rm install55.sh
         echo -e "$YELLOW"
-        echo "Good Bye"
+        echo "Thanks For Supporting Resleeved Net"
         echo -e "$NC"
         exit 1
         ;;
