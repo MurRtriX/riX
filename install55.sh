@@ -79,9 +79,9 @@ case $selected_option in
         cd /root
         rm install55.sh
         echo -e "$YELLOW"
-        echo "     💚 P2P SERVICE INITIALIZED 💚     "
-        echo "     ╰┈➤💚 Badvpn Activated 💚         "
-        echo " ╰┈➤ 💚 UDP HTTP CUSTOM SUCCESSFULLY INSTALLED 💚       "
+        echo "     💚 RESLEEVED NET SCRIPT EXITED 💚     "
+        echo "     ╰┈➤💚 Resleeved Net 💚         "
+        echo " ╰┈➤ 💚 Telegram >>> t.me/Am_The_Last_Envoy 💚       "
         echo -e "$NC"
         exit 1
         ;;
