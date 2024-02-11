@@ -12,7 +12,7 @@ cd /root
 clear
 echo -e "$YELLOW
  💚 RESLEEVED NET AUTO INSTALLER 💚      
-  ╰┈➤ 💚 Resleeved Net 💚               "
+   ╰┈➤ 💚 Resleeved Net 💚               "
 echo -e "$NC
 Select an option"
 echo "1. Install UDP HYSTERIA"
