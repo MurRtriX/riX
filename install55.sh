@@ -76,8 +76,6 @@ case $selected_option in
         exit 1
         ;;
     9)
-        cd /root
-        rm install55.sh
         echo -e "$YELLOW"
         echo "     💚 RESLEEVED NET SCRIPT EXITED 💚     "
         echo "     ╰┈➤💚 Resleeved Net 💚         "
