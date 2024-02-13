@@ -68,12 +68,9 @@ sysctl -w net.core.somaxconn=65535
 sysctl -w net.netfilter.nf_conntrack_max=1048576
 sysctl -w net.ipv4.tcp_max_syn_backlog=4096
 sysctl -w kernel.msgmnb=65536
-///
 sysctl -w net.ipv4.tcp_keepalive_time=300
 sysctl -w net.ipv4.tcp_keepalive_probes=5
 sysctl -w net.ipv4.tcp_keepalive_intvl=15
-
-//////
 sysctl -w net.core.netdev_budget=500
 sysctl -w net.ipv4.tcp_adv_win_scale=3
 sysctl -w net.ipv4.tcp_rfc1337=0
@@ -90,11 +87,9 @@ echo "net.core.netdev_budget=500" >> /etc/sysctl.conf
 echo "fs.file-max=9223372036854775807" >> /etc/sysctl.conf
 echo "net.core.netdev_max_backlog=65536" >> /etc/sysctl.conf
 echo "vm.swappiness=10" >> /etc/sysctl.conf
-////
 echo "net.ipv4.tcp_keepalive_time=300" >> /etc/sysctl.conf
 echo "net.ipv4.tcp_keepalive_probes=5" >> /etc/sysctl.conf
 echo "net.ipv4.tcp_keepalive_intvl=15" >> /etc/sysctl.conf
-/////
 echo "vm.dirty_ratio=60" >> /etc/sysctl.conf
 echo "kernel.msgmnb=65536" >> /etc/sysctl.conf
 echo "net.ipv4.tcp_rfc1337=0" >> /etc/sysctl.conf
