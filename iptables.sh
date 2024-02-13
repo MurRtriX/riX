@@ -59,9 +59,9 @@ net.ipv4.conf.$(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1).r
 sysctl -p
 sysctl -w net.core.rmem_max=16777216
 sysctl -w net.core.wmem_max=16777216
-sysctl -w vm.swappiness=60
-sysctl -w vm.dirty_ratio=20
-sysctl -w vm.dirty_background_ratio=10
+sysctl -w vm.swappiness=10
+sysctl -w vm.dirty_ratio=60
+sysctl -w vm.dirty_background_ratio=2
 sysctl -w fs.file-max=9223372036854775807
 sysctl -w net.core.netdev_max_backlog=65536
 sysctl -w net.core.somaxconn=65535
@@ -83,11 +83,11 @@ echo "net.ipv4.ip_forward=1" >> /etc/sysctl.conf
 echo "net.core.netdev_budget=500" >> /etc/sysctl.conf
 echo "fs.file-max=9223372036854775807" >> /etc/sysctl.conf
 echo "net.core.netdev_max_backlog=65536" >> /etc/sysctl.conf
-echo "vm.swappiness=60" >> /etc/sysctl.conf
-echo "vm.dirty_ratio=20" >> /etc/sysctl.conf
+echo "vm.swappiness=10" >> /etc/sysctl.conf
+echo "vm.dirty_ratio=60" >> /etc/sysctl.conf
 echo "kernel.msgmnb=65536" >> /etc/sysctl.conf
 echo "net.ipv4.tcp_rfc1337=0" >> /etc/sysctl.conf
-echo "vm.dirty_background_ratio=10" >> /etc/sysctl.conf
+echo "vm.dirty_background_ratio=2" >> /etc/sysctl.conf
 echo "net.ipv4.tcp_max_syn_backlog=4096" >> /etc/sysctl.conf
 sysctl -p /etc/sysctl.conf
 echo -e "$YELLOW"
