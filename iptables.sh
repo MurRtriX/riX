@@ -68,6 +68,12 @@ sysctl -w net.core.somaxconn=65535
 sysctl -w net.netfilter.nf_conntrack_max=1048576
 sysctl -w net.ipv4.tcp_max_syn_backlog=4096
 sysctl -w kernel.msgmnb=65536
+///
+sysctl -w net.ipv4.tcp_keepalive_time=300
+net.ipv4.tcp_keepalive_probes=5
+net.ipv4.tcp_keepalive_intvl=15
+
+//////
 sysctl -w net.core.netdev_budget=500
 sysctl -w net.ipv4.tcp_adv_win_scale=3
 sysctl -w net.ipv4.tcp_rfc1337=0
