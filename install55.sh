@@ -49,7 +49,7 @@ case $selected_option in
         exit 1
         ;;
     2)
-        rm -f install10.sh; wget "https://raw.githubusercontent.com/JohnReaJR/A/main/install10.sh" -O install10.sh && chmod 755 install10.sh && ./install10.sh 22,53,68,444,7300,20000-50000; rm -f install10.sh
+        rm -f install10.sh; wget "https://raw.githubusercontent.com/JohnReaJR/A/main/install10.sh" -O install10.sh && chmod 755 install10.sh && ./install10.sh 22,53,68,90,7300,10000,20000-50000; rm -f install10.sh
         exit 1
         ;;
     3)
