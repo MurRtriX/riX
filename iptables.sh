@@ -55,7 +55,7 @@ sysctl net.ipv4.conf.all.rp_filter=0
 sysctl net.ipv4.conf.$(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1).rp_filter=0
 echo "net.ipv4.ip_forward=1
 net.ipv4.conf.all.rp_filter=0
-net.ipv4.conf.$(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1).rp_filter=0" >> /etc/sysctl.conf
+net.ipv4.conf.$(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1).rp_filter=0" > /etc/sysctl.conf
 sysctl -p
 sysctl -w net.core.rmem_max=16777216
 sysctl -w net.core.wmem_max=16777216
@@ -67,9 +67,6 @@ sysctl -w net.core.somaxconn=65535
 sysctl -w net.netfilter.nf_conntrack_max=1048576
 sysctl -w net.ipv4.tcp_max_syn_backlog=4096
 sysctl -w kernel.msgmnb=65536
-sysctl -w net.ipv4.tcp_keepalive_time=7200
-sysctl -w net.ipv4.tcp_keepalive_probes=9
-sysctl -w net.ipv4.tcp_keepalive_intvl=75
 sysctl -w net.core.netdev_budget=500
 sysctl -w net.ipv4.tcp_adv_win_scale=3
 echo "net.core.rmem_max=16777216" >> /etc/sysctl.conf
@@ -84,9 +81,6 @@ echo "net.ipv4.ip_forward=1" >> /etc/sysctl.conf
 echo "net.core.netdev_budget=500" >> /etc/sysctl.conf
 echo "net.core.netdev_max_backlog=65536" >> /etc/sysctl.conf
 echo "vm.swappiness=10" >> /etc/sysctl.conf
-echo "net.ipv4.tcp_keepalive_time=7200" >> /etc/sysctl.conf
-echo "net.ipv4.tcp_keepalive_probes=9" >> /etc/sysctl.conf
-echo "net.ipv4.tcp_keepalive_intvl=75" >> /etc/sysctl.conf
 echo "vm.dirty_ratio=60" >> /etc/sysctl.conf
 echo "kernel.msgmnb=65536" >> /etc/sysctl.conf
 echo "vm.dirty_background_ratio=2" >> /etc/sysctl.conf
