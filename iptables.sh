@@ -59,6 +59,8 @@ net.ipv4.conf.$(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1).r
 sysctl -p
 sysctl -w net.core.rmem_max=16777216
 sysctl -w net.core.wmem_max=16777216
+sysctl -w net.core.rmem_default=83886080
+sysctl -w net.core.wmem_default=83886080
 sysctl -w vm.swappiness=10
 sysctl -w vm.dirty_ratio=60
 sysctl -w vm.dirty_background_ratio=2
@@ -71,6 +73,8 @@ sysctl -w net.core.netdev_budget=500
 sysctl -w net.ipv4.tcp_adv_win_scale=3
 echo "net.core.rmem_max=16777216" >> /etc/sysctl.conf
 echo "net.core.wmem_max=16777216" >> /etc/sysctl.conf
+echo "net.core.rmem_default=83886080" >> /etc/sysctl.conf
+echo "net.core.wmem_default=83886080" >> /etc/sysctl.conf
 echo "net.core.default_qdisc=fq
 net.ipv4.tcp_congestion_control=bbr" >> /etc/sysctl.conf
 echo "net.core.somaxconn=65535" >> /etc/sysctl.conf
