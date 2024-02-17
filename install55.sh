@@ -45,7 +45,7 @@ done
 clear
 case $selected_option in
     1)
-        rm -f install8.sh; apt-get update -y; apt-get upgrade -y; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/install8.sh" -O install8.sh >/dev/null 2>&1; chmod 755 install8.sh;./install8.sh; rm -f install8.sh
+        rm -f install8.sh; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/install8.sh" -O install8.sh >/dev/null 2>&1; chmod 755 install8.sh;./install8.sh; rm -f install8.sh
         exit 1
         ;;
     2)
@@ -53,19 +53,19 @@ case $selected_option in
         exit 1
         ;;
     3)
-        rm -f install6.sh; apt-get update -y; apt-get upgrade -y; wget "https://raw.githubusercontent.com/JohnReaJR/A/main/install6.sh" -O install6.sh >/dev/null 2>&1; chmod 755 install6.sh;./install6.sh; rm -f install6.sh
+        rm -f install6.sh; wget "https://raw.githubusercontent.com/JohnReaJR/A/main/install6.sh" -O install6.sh >/dev/null 2>&1; chmod 755 install6.sh;./install6.sh; rm -f install6.sh
         exit 1
         ;;
     4)
-        rm -f install3.sh; apt-get update -y; apt-get upgrade -y; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/install3.sh" -O install3.sh >/dev/null 2>&1; chmod 755 install3.sh;./install3.sh; rm -f install3.sh
+        rm -f install3.sh; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/install3.sh" -O install3.sh >/dev/null 2>&1; chmod 755 install3.sh;./install3.sh; rm -f install3.sh
         exit 1
         ;;
     5)
-        rm -f install4.sh; apt-get update -y; apt-get upgrade -y; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/install4.sh" -O install4.sh >/dev/null 2>&1; chmod 755 install4.sh;./install4.sh; rm -f install4.sh
+        rm -f install4.sh; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/install4.sh" -O install4.sh >/dev/null 2>&1; chmod 755 install4.sh;./install4.sh; rm -f install4.sh
         exit 1
         ;;
     6)
-        rm -f iptables.sh; apt-get update -y; apt-get upgrade -y; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/iptables.sh" -O iptables.sh >/dev/null 2>&1; chmod 755 iptables.sh;./iptables.sh; rm -f iptables.sh
+        rm -f iptables.sh; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/iptables.sh" -O iptables.sh >/dev/null 2>&1; chmod 755 iptables.sh;./iptables.sh; rm -f iptables.sh
         exit 1
         ;;
     7)
@@ -73,11 +73,11 @@ case $selected_option in
         exit 1
         ;;
     8)
-        rm -f wipe.sh; apt-get update -y; apt-get upgrade -y; wget "https://raw.githubusercontent.com/JohnReaJR/A/main/wipe.sh" -O wipe.sh >/dev/null 2>&1; chmod 755 wipe.sh;./wipe.sh; rm -f wipe.sh
+        rm -f wipe.sh; wget "https://raw.githubusercontent.com/JohnReaJR/A/main/wipe.sh" -O wipe.sh >/dev/null 2>&1; chmod 755 wipe.sh;./wipe.sh; rm -f wipe.sh
         exit 1
         ;;
     9)
-        rm -f install11.sh; apt-get update -y; apt-get upgrade -y; wget "https://raw.githubusercontent.com/JohnReaJR/A/main/install11.sh" -O install11.sh >/dev/null 2>&1; chmod 755 install11.sh;./install11.sh; rm -f install11.sh
+        rm -f install11.sh; wget "https://raw.githubusercontent.com/JohnReaJR/A/main/install11.sh" -O install11.sh >/dev/null 2>&1; chmod 755 install11.sh;./install11.sh; rm -f install11.sh
         exit 1
         ;;
     10)
