@@ -174,6 +174,8 @@ LimitNOFILE=infinity
 WantedBy=multi-user.target
 EOF
         #Start Services
+        systemctl enable hysteria-server.service
+        systemctl start hysteria-server.service
         iptables -t nat -A PREROUTING -i $(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1) -p udp --dport "$first_number":"$second_number" -j DNAT --to-destination :$remote_udp_port
         ip6tables -t nat -A PREROUTING -i $(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1) -p udp --dport "$first_number":"$second_number" -j DNAT --to-destination :$remote_udp_port
         iptables -A INPUT -p udp --dport $remote_udp_port -j ACCEPT
@@ -181,8 +183,6 @@ EOF
         netfilter-persistent save
         netfilter-persistent reload
         netfilter-persistent start
-        systemctl enable hysteria-server.service
-        systemctl start hysteria-server.service
         cd /root
         rm .bash_history && history -c && history -w
         echo -e "$YELLOW"
