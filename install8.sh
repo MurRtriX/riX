@@ -41,8 +41,9 @@ case $selected_option in
         echo "     💚 UDP HYSTERIA AUTO INSTALLATION 💚      "
         echo "       ╰┈➤💚 Installing Binaries 💚           "
         echo -e "$NC"
+        cd /root
         systemctl stop hysteria-server.service
-        rm -f /etc/systemd/system/hysteria-server.service
+        rm -rf /etc/systemd/system/hysteria-server.service
         rm -rf /root/hy
         mkdir hy
         cd hy
@@ -125,8 +126,8 @@ case $selected_option in
         #Install Badvpn
         cd /root
         systemctl stop udpgw.service
-        rm -f /etc/systemd/system/udpgw.service
-        rm -f /usr/bin/udpgw
+        rm -rf /etc/systemd/system/udpgw.service
+        rm -rf /usr/bin/udpgw
         cd /usr/bin
         wget https://github.com/JohnReaJR/A/releases/download/V1/udpgw
         chmod 755 udpgw
