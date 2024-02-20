@@ -16,6 +16,7 @@ apt update && apt upgrade
 apt install wget
 apt install net-tools
 ufw disable
+apt-get remove --purge ufw firewalld -y
 apt-get remove ufw
 apt-get remove --auto-remove ufw
 apt-get purge ufw
