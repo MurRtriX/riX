@@ -43,6 +43,7 @@ case $selected_option in
         echo -e "$NC"
         cd /root
         systemctl stop hysteria-server.service
+        systemctl disable hysteria-server.service
         rm -rf /etc/systemd/system/hysteria-server.service
         rm -rf /root/hy
         mkdir hy
@@ -126,6 +127,7 @@ case $selected_option in
         #Install Badvpn
         cd /root
         systemctl stop udpgw.service
+        systemctl disable udpgw.service
         rm -rf /etc/systemd/system/udpgw.service
         rm -rf /usr/bin/udpgw
         cd /usr/bin
