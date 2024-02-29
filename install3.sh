@@ -18,6 +18,8 @@ ip6tables -t nat -I PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 5300
 netfilter-persistent save
 netfilter-persistent reload
 netfilter-persistent start
+cd /root
+rm -rf go
 rm -rf /root/dnstt
 apt install -y git golang-go
 git clone https://www.bamsoftware.com/git/dnstt.git
