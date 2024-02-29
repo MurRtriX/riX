@@ -11,39 +11,6 @@ echo -e "$YELLOW"
 echo "          💚 DNSTT INSTALLATION SCRIPT 💚    "
 echo "        ╰┈➤💚 Installing DNSTT Binaries 💚          "
 echo -e "$NC"
-apt-get update && apt-get upgrade
-apt update && apt upgrade
-ufw disable
-apt-get remove --auto-remove ufw
-apt-get purge ufw
-apt-get purge --auto-remove ufw
-apt-get remove ufw
-iptables -P INPUT ACCEPT
-iptables -P FORWARD ACCEPT
-iptables -P OUTPUT ACCEPT
-iptables -F
-iptables -X 
-iptables -Z
-iptables -t nat -F
-iptables -t nat -X
-iptables -t mangle -F
-iptables -t mangle -X
-iptables -t raw -F
-iptables -t raw -X
-apt-get install iptables
-apt-get install iptables-persistent
-ip6tables -P INPUT ACCEPT
-ip6tables -P FORWARD ACCEPT
-ip6tables -P OUTPUT ACCEPT
-ip6tables -F
-ip6tables -X 
-ip6tables -Z
-ip6tables -t nat -F
-ip6tables -t nat -X
-ip6tables -t mangle -F
-ip6tables -t mangle -X
-ip6tables -t raw -F
-ip6tables -t raw -X
 iptables -A INPUT -p udp --dport 53 -j ACCEPT
 iptables -t nat -I PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 5300
 ip6tables -A INPUT -p udp --dport 53 -j ACCEPT
