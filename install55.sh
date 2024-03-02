@@ -16,20 +16,21 @@ echo -e "$YELLOW
 echo -e "$NC
 Select an option"
 echo "1.  Install UDP HYSTERIA"
-echo "2.  Install HTTP CUSTOM UDP"
-echo "3.  Install SOCKSIP UDP REQUEST"
-echo "4.  Install DNSTT TUNNEL"
-echo "5.  Install IODINE TUNNEL"
-echo "6.  Install RESLEEVED NET FIREWALL"
-echo "7.  Install V2RAY PANNEL"
-echo "8.  RESET VPS"
-echo "9.  Install HYSTERIA V2 UDP"
-echo "10. Exit Script" 
+echo "2.  CUSTOM UDP Exclude Hysteria"
+echo "3.  CUSTOM UDP No Hysteria"
+echo "4.  Install SOCKSIP UDP REQUEST"
+echo "5.  Install DNSTT TUNNEL"
+echo "6.  Install IODINE TUNNEL"
+echo "7.  Install RESLEEVED NET FIREWALL"
+echo "8.  Install V2RAY PANNEL"
+echo "9.  RESET VPS"
+echo "10.  Install HYSTERIA V2 UDP"
+echo "11. Exit Script" 
 selected_option=0
 
-while [ $selected_option -lt 1 ] || [ $selected_option -gt 10 ]; do
+while [ $selected_option -lt 1 ] || [ $selected_option -gt 11 ]; do
     echo -e "$YELLOW"
-    echo "Select a number from 1 to 10:"
+    echo "Select a number from 1 to 11:"
     echo -e "$NC"
     read input
 
@@ -53,34 +54,38 @@ case $selected_option in
         exit 1
         ;;
     3)
-        rm -f install6.sh; wget "https://raw.githubusercontent.com/JohnReaJR/A/main/install6.sh" -O install6.sh >/dev/null 2>&1; chmod 755 install6.sh;./install6.sh; rm -f install6.sh
+        rm -f install10.sh; wget "https://raw.githubusercontent.com/JohnReaJR/A/main/install10.sh" -O install10.sh && chmod 755 install10.sh && ./install10.sh 22,53,68,7300; rm -f install10.sh
         exit 1
         ;;
     4)
-        rm -f install3.sh; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/install3.sh" -O install3.sh >/dev/null 2>&1; chmod 755 install3.sh;./install3.sh; rm -f install3.sh
+        rm -f install6.sh; wget "https://raw.githubusercontent.com/JohnReaJR/A/main/install6.sh" -O install6.sh >/dev/null 2>&1; chmod 755 install6.sh;./install6.sh; rm -f install6.sh
         exit 1
         ;;
     5)
-        rm -f install4.sh; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/install4.sh" -O install4.sh >/dev/null 2>&1; chmod 755 install4.sh;./install4.sh; rm -f install4.sh
+        rm -f install3.sh; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/install3.sh" -O install3.sh >/dev/null 2>&1; chmod 755 install3.sh;./install3.sh; rm -f install3.sh
         exit 1
         ;;
     6)
-        rm -f iptables.sh; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/iptables.sh" -O iptables.sh >/dev/null 2>&1; chmod 755 iptables.sh;./iptables.sh; rm -f iptables.sh
+        rm -f install4.sh; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/install4.sh" -O install4.sh >/dev/null 2>&1; chmod 755 install4.sh;./install4.sh; rm -f install4.sh
         exit 1
         ;;
     7)
-        bash <(curl -Ls https://raw.githubusercontent.com/JohnReaJR/A/master/v2ray.sh)
+        rm -f iptables.sh; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/iptables.sh" -O iptables.sh >/dev/null 2>&1; chmod 755 iptables.sh;./iptables.sh; rm -f iptables.sh
         exit 1
         ;;
     8)
-        rm -f wipe.sh; wget "https://raw.githubusercontent.com/JohnReaJR/A/main/wipe.sh" -O wipe.sh >/dev/null 2>&1; chmod 755 wipe.sh;./wipe.sh; rm -f wipe.sh
+        bash <(curl -Ls https://raw.githubusercontent.com/JohnReaJR/A/master/v2ray.sh)
         exit 1
         ;;
     9)
-        rm -f install11.sh; wget "https://raw.githubusercontent.com/JohnReaJR/A/main/install11.sh" -O install11.sh >/dev/null 2>&1; chmod 755 install11.sh;./install11.sh; rm -f install11.sh
+        rm -f wipe.sh; wget "https://raw.githubusercontent.com/JohnReaJR/A/main/wipe.sh" -O wipe.sh >/dev/null 2>&1; chmod 755 wipe.sh;./wipe.sh; rm -f wipe.sh
         exit 1
         ;;
     10)
+        rm -f install11.sh; wget "https://raw.githubusercontent.com/JohnReaJR/A/main/install11.sh" -O install11.sh >/dev/null 2>&1; chmod 755 install11.sh;./install11.sh; rm -f install11.sh
+        exit 1
+        ;;
+    11)
         echo -e "$YELLOW"
         echo "     💚 RESLEEVED NET SCRIPT EXITED 💚     "
         echo "     ╰┈➤💚 Resleeved Net 💚         "
