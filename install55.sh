@@ -24,7 +24,7 @@ echo "6.  Install IODINE TUNNEL"
 echo "7.  Install RESLEEVED NET FIREWALL"
 echo "8.  Install V2RAY PANNEL"
 echo "9.  RESET VPS"
-echo "10.  Install HYSTERIA V2 UDP"
+echo "10. Install HYSTERIA V2 UDP"
 echo "11. Exit Script" 
 selected_option=0
 
