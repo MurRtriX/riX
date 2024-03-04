@@ -61,7 +61,7 @@ rm -rf /root/iodine-0.7.0
 wget http://code.kryo.se/iodine/iodine-0.7.0.tar.gz
 tar xzvf iodine-0.7.0.tar.gz
 cd iodine-0.7.0
-iodined -f -c -P ReslvdnetZ -d tap0 192.168.99.1 iye67r995.infinityy.cloudns.biz
+iodined -f -c -P ReslvdnetZ 192.168.99.1 iye67r995.infinityy.cloudns.biz
 echo -e "$YELLOW"
 echo "           💚 IODINE INSTALLED 💚      "
 echo "           ╰┈➤💚 Active 💚             "
