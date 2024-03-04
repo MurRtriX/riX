@@ -54,10 +54,10 @@ iptables -t nat -A POSTROUTING -o $(ip -4 route ls|grep default|grep -Po '(?<=de
 netfilter-persistent save
 netfilter-persistent reload
 netfilter-persistent start
-sysctl -w net.ipv4.ip_forward=1
-echo 1 > /proc/sys/net/ipv4/ip_forward
-sysctl -p
+cd /root
 rm -rf /root/iodine-0.7.0
+rm -rf /root/iodine-0.7.0.tar.gz
+apt-get install iodine
 wget http://code.kryo.se/iodine/iodine-0.7.0.tar.gz
 tar xzvf iodine-0.7.0.tar.gz
 cd iodine-0.7.0
