@@ -44,12 +44,13 @@ ip6tables -t mangle -F
 ip6tables -t mangle -X
 ip6tables -t raw -F
 ip6tables -t raw -X
-iptables -A INPUT -p udp -m multiport –dports 53 -i $(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1) -j ACCEPT
-iptables -A OUTPUT -p udp -m multiport –dports 53 -o $(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1) -j ACCEPT
-iptables -A INPUT -i tap0 -j ACCEPT
-sudo iptables -A OUTPUT -o tap0 -j ACCEP
-iptables -A FORWARD -i tap0 -o $(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1) -m state –state NEW,ESTABLISHED,RELATED -j ACCEPT
-iptables -A FORWARD -i $(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1) -o tap0 -m state –state ESTABLISHED,RELATED -j ACCEPT
+iptables -A INPUT -p udp -m multiport --dport 53 -i $(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1) -j ACCEPT
+iptables -A OUTPUT -p udp -m multiport --dport 53 -o $(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1) -j ACCEPT
+iptables -A INPUT -i dns0 -j ACCEPT
+iptables -A OUTPUT -o dns0 -j ACCEPT
+iptables -A FORWARD -i dns0 -o enp1s0 -j ACCEPT
+iptables -A FORWARD -i $(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1) -o dns0 -m state --state  NEW,RELATED,ESTABLISHED -j ACCEPT
+iptables -A FORWARD -i $(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1) -o dns0 -m state --state RELATED,ESTABLISHED -j ACCEPT
 iptables -t nat -A POSTROUTING -o $(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1) -j MASQUERADE
 netfilter-persistent save
 netfilter-persistent reload
