@@ -56,7 +56,10 @@ netfilter-persistent save
 netfilter-persistent reload
 netfilter-persistent start
 cd /root
-apt remove iodine
+apt-get remove iodine
+apt-get remove --auto-remove iodine
+apt-get purge iodine
+apt-get purge --auto-remove iodine
 rm -rf /usr/local/sbin/iodined
 rm -rf /usr/local/sbin/iodine
 apt-get install iodine
