@@ -67,7 +67,7 @@ tar xzvf iodine-0.7.0.tar.gz
 cd iodine-0.7.0
 make
 make install
-sudo ./bin/iodined -f -c -P ReslvdnetZ -d dns0 192.168.99.1/24 cxujp9d.infinityy.cloudns.biz
+iodined -f 192.168.99.2 cxujp9d.infinityy.cloudns.biz
 echo -e "$YELLOW"
 echo "           💚 IODINE INSTALLED 💚      "
 echo "           ╰┈➤💚 Active 💚             "
