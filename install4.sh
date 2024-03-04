@@ -56,6 +56,7 @@ netfilter-persistent reload
 netfilter-persistent start
 cd /root
 apt remove iodine
+rm -rf /usr/local/sbin/iodined
 rm -rf /usr/local/sbin/iodine
 rm -rf /root/iodine-0.7.0
 rm -rf /root/iodine-0.7.0.tar.gz
