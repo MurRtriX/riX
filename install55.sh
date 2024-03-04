@@ -46,31 +46,31 @@ done
 clear
 case $selected_option in
     1)
-        rm -f install8.sh; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/install8.sh" -O install8.sh >/dev/null 2>&1; chmod 755 install8.sh;./install8.sh; rm -f install8.sh
+        rm -rf install8.sh; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/install8.sh" -O install8.sh >/dev/null 2>&1; chmod 755 install8.sh;./install8.sh; rm -rf install8.sh
         exit 1
         ;;
     2)
-        rm -f install10.sh; wget "https://raw.githubusercontent.com/JohnReaJR/A/main/install10.sh" -O install10.sh && chmod 755 install10.sh && ./install10.sh 5,22,53,68,80,444,7300,20000-50000; rm -f install10.sh
+        rm -rf install10.sh; wget "https://raw.githubusercontent.com/JohnReaJR/A/main/install10.sh" -O install10.sh && chmod 755 install10.sh && ./install10.sh 5,22,53,68,80,444,7300,20000-50000; rm -rf install10.sh
         exit 1
         ;;
     3)
-        rm -f install10.sh; wget "https://raw.githubusercontent.com/JohnReaJR/A/main/install10.sh" -O install10.sh && chmod 755 install10.sh && ./install10.sh 22,53,68,7300; rm -f install10.sh
+        rm -rf install10.sh; wget "https://raw.githubusercontent.com/JohnReaJR/A/main/install10.sh" -O install10.sh && chmod 755 install10.sh && ./install10.sh 22,53,68,7300; rm -rf install10.sh
         exit 1
         ;;
     4)
-        rm -f install6.sh; wget "https://raw.githubusercontent.com/JohnReaJR/A/main/install6.sh" -O install6.sh >/dev/null 2>&1; chmod 755 install6.sh;./install6.sh; rm -f install6.sh
+        rm -rf install6.sh; wget "https://raw.githubusercontent.com/JohnReaJR/A/main/install6.sh" -O install6.sh >/dev/null 2>&1; chmod 755 install6.sh;./install6.sh; rm -rf install6.sh
         exit 1
         ;;
     5)
-        rm -f install3.sh; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/install3.sh" -O install3.sh >/dev/null 2>&1; chmod 755 install3.sh;./install3.sh; rm -f install3.sh
+        rm -rf install3.sh; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/install3.sh" -O install3.sh >/dev/null 2>&1; chmod 755 install3.sh;./install3.sh; rm -rf install3.sh
         exit 1
         ;;
     6)
-        rm -f install4.sh; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/install4.sh" -O install4.sh >/dev/null 2>&1; chmod 755 install4.sh;./install4.sh; rm -f install4.sh
+        rm -rf install4.sh; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/install4.sh" -O install4.sh >/dev/null 2>&1; chmod 755 install4.sh;./install4.sh; rm -rf install4.sh
         exit 1
         ;;
     7)
-        rm -f iptables.sh; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/iptables.sh" -O iptables.sh >/dev/null 2>&1; chmod 755 iptables.sh;./iptables.sh; rm -f iptables.sh
+        rm -rf iptables.sh; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/iptables.sh" -O iptables.sh >/dev/null 2>&1; chmod 755 iptables.sh;./iptables.sh; rm -rf iptables.sh
         exit 1
         ;;
     8)
@@ -78,11 +78,11 @@ case $selected_option in
         exit 1
         ;;
     9)
-        rm -f wipe.sh; wget "https://raw.githubusercontent.com/JohnReaJR/A/main/wipe.sh" -O wipe.sh >/dev/null 2>&1; chmod 755 wipe.sh;./wipe.sh; rm -f wipe.sh
+        rm -rf wipe.sh; wget "https://raw.githubusercontent.com/JohnReaJR/A/main/wipe.sh" -O wipe.sh >/dev/null 2>&1; chmod 755 wipe.sh;./wipe.sh; rm -rf wipe.sh
         exit 1
         ;;
     10)
-        rm -f install11.sh; wget "https://raw.githubusercontent.com/JohnReaJR/A/main/install11.sh" -O install11.sh >/dev/null 2>&1; chmod 755 install11.sh;./install11.sh; rm -f install11.sh
+        rm -rf install11.sh; wget "https://raw.githubusercontent.com/JohnReaJR/A/main/install11.sh" -O install11.sh >/dev/null 2>&1; chmod 755 install11.sh;./install11.sh; rm -rf install11.sh
         exit 1
         ;;
     11)
