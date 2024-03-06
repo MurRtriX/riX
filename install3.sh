@@ -34,6 +34,8 @@ read -p "Copy the pubkey above and press Enter when done"
 read -p "Enter your Nameserver : " ns
 screen -dmS slowdns ./dnstt-server -udp :5300 -privkey-file server.key $ns 127.0.0.1:22
 echo -e "$NC"
+apt-get remove ncat
+apt install ncat
 echo -e "$YELLOW"
 echo "           💚 DNSTT INSTALLED 💚      "
 echo "           ╰┈➤💚 Active 💚             "
