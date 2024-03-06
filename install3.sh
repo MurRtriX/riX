@@ -11,12 +11,10 @@ echo -e "$YELLOW"
 echo "          💚 DNSTT INSTALLATION SCRIPT 💚    "
 echo "        ╰┈➤💚 Installing DNSTT Binaries 💚          "
 echo -e "$NC"
-iptables -A INPUT -p udp --dport 53 -j ACCEPT
-iptables -A OUTPUT -p udp --dport 53 -j ACCEPT
-iptables -A INPUT -p udp -m multiport --dport 53 -i $(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1) -j ACCEPT
-iptables -A OUTPUT -p udp -m multiport --dport 53 -o $(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1) -j ACCEPT
-iptables -t nat -A PREROUTING -i $(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1) -p udp --dport 53 -j REDIRECT --to-ports 53
-iptables -t nat -A PREROUTING -o $(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1) -p udp --dport 53 -j REDIRECT --to-ports 53
+iptables -A INPUT -p udp --dport 5300 -j ACCEPT
+iptables -t nat -I PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 5300
+ip6tables -A INPUT -p udp --dport 5300 -j ACCEPT
+ip6tables -t nat -I PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 5300
 netfilter-persistent save
 netfilter-persistent reload
 netfilter-persistent start
@@ -32,7 +30,7 @@ echo -e "$YELLOW"
 cat server.pub
 read -p "Copy the pubkey above and press Enter when done"
 read -p "Enter your Nameserver : " ns
-screen -dmS slowdns ./dnstt-server -udp :53 -privkey-file server.key $ns 127.0.0.1:22
+screen -dmS slowdns ./dnstt-server -udp :5300 -privkey-file server.key $ns 127.0.0.1:22
 echo -e "$NC"
 echo -e "$YELLOW"
 echo "           💚 DNSTT INSTALLED 💚      "
