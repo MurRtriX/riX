@@ -23,11 +23,6 @@ netfilter-persistent start
 cd /root
 rm -rf go
 rm -rf /root/dnstt
-apt-get remove ncat
-apt-get remove --auto-remove ncat
-apt-get purge ncat
-apt-get purge --auto-remove ncat
-apt install ncat
 apt install -y git golang-go
 git clone https://www.bamsoftware.com/git/dnstt.git
 cd /root/dnstt/dnstt-server
