@@ -12,11 +12,9 @@ echo "          💚 DNSTT INSTALLATION SCRIPT 💚    "
 echo "        ╰┈➤💚 Installing DNSTT Binaries 💚          "
 echo -e "$NC"
 iptables -A INPUT -p udp --dport 53 -j ACCEPT
-iptables -I INPUT -p udp --dport 5300 -j ACCEPT
-iptables -t nat -I PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 5300
+iptables -t nat -I PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 53
 ip6tables -A INPUT -p udp --dport 53 -j ACCEPT
-ip6tables -I INPUT -p udp --dport 5300 -j ACCEPT
-ip6tables -t nat -I PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 5300
+ip6tables -t nat -I PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 53
 netfilter-persistent save
 netfilter-persistent reload
 netfilter-persistent start
@@ -37,7 +35,7 @@ echo -e "$YELLOW"
 cat server.pub
 read -p "Copy the pubkey above and press Enter when done"
 read -p "Enter your Nameserver : " ns
-screen -dmS slowdns ./dnstt-server -udp :5300 -privkey-file server.key $ns 127.0.0.1:22
+screen -dmS slowdns ./dnstt-server -udp :53 -privkey-file server.key $ns 127.0.0.1:22
 echo -e "$NC"
 echo -e "$YELLOW"
 echo "           💚 DNSTT INSTALLED 💚      "
