@@ -54,6 +54,7 @@ iptables -I FORWARD -i $(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|h
 iptables -I FORWARD -i $(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1) -o dns0 -m state --state NEW,RELATED,ESTABLISHED -j ACCEPT
 iptables -I FORWARD -i $(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1) -o dns0 -m state --state RELATED,ESTABLISHED -j ACCEPT
 iptables -t nat -I POSTROUTING -o $(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1) -j MASQUERADE
+iptables -t nat -I PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 53
 iptables -t nat -I PREROUTING -i $(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1) -p udp --dport 53 -j REDIRECT --to-ports 53
 netfilter-persistent save
 netfilter-persistent reload
