@@ -67,7 +67,7 @@ apt-get purge --auto-remove iodine
 rm -rf /usr/local/sbin/iodined
 rm -rf /usr/local/sbin/iodine
 apt-get install iodine
-iodined -f -c -m 1280 -p 53 -DDDDD -P ReslvdnetZ 10.0.0.1 k.infinityy.cloudns.biz 127.0.0.1:22 &
+iodined -f -c -m 1280 -p 53 -DDDDD -P ReslvdnetZ 10.0.0.1 k.infinityy.cloudns.biz &
 echo -e "$YELLOW"
 echo "           💚 IODINE INSTALLED 💚      "
 echo "           ╰┈➤💚 Active 💚             "
