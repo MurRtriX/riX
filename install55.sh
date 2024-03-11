@@ -25,12 +25,13 @@ echo "7.  Install RESLEEVED NET FIREWALL"
 echo "8.  Install V2RAY PANNEL"
 echo "9.  RESET VPS"
 echo "10. Install HYSTERIA V2 UDP"
-echo "11. Exit Script" 
+echo "11. Install Mieru TCP"
+echo "12. Exit Script" 
 selected_option=0
 
-while [ $selected_option -lt 1 ] || [ $selected_option -gt 11 ]; do
+while [ $selected_option -lt 1 ] || [ $selected_option -gt 12 ]; do
     echo -e "$YELLOW"
-    echo "Select a number from 1 to 11:"
+    echo "Select a number from 1 to 12:"
     echo -e "$NC"
     read input
 
@@ -86,6 +87,10 @@ case $selected_option in
         exit 1
         ;;
     11)
+        rm -rf install65.sh; wget "https://raw.githubusercontent.com/JohnReaJR/A/main/install65.sh" -O install65.sh && chmod 755 install65.sh && ./install65.sh; rm -rf install65.sh
+        exit 1
+        ;;
+    12)
         echo -e "$YELLOW"
         echo "     💚 RESLEEVED NET SCRIPT EXITED 💚     "
         echo "     ╰┈➤💚 Resleeved Net 💚         "
