@@ -119,6 +119,7 @@ echo "net.core.optmem_max=20480" >> /etc/sysctl.conf
 echo "vm.dirty_background_ratio=2" >> /etc/sysctl.conf
 sysctl -p /etc/sysctl.conf
 sysctl -w net.ipv4.tcp_congestion_control=htcp
+systemctl daemon-reload
 echo -e "$YELLOW"
 echo "           💚 FIREWALL CONFIGURED 💚      "
 echo "              ╰┈➤💚 Active 💚             "
