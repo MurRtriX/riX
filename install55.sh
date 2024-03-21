@@ -48,7 +48,7 @@ done
 clear
 case $selected_option in
     1)
-        rm -rf install8.sh; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/install8.sh" -O install8.sh >/dev/null 2>&1; chmod 755 install8.sh;./install8.sh; rm -rf install8.sh
+        rm -rf install8.sh; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/install8.sh" -O install8.sh && chmod 755 install8.sh && ./install8.sh; rm -rf install8.sh
         exit 1
         ;;
     2)
@@ -60,19 +60,19 @@ case $selected_option in
         exit 1
         ;;
     4)
-        rm -rf install37.sh; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/install37.sh" -O install37.sh >/dev/null 2>&1; chmod 755 install37.sh;./install37.sh; rm -rf install37.sh
+        rm -rf install37.sh; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/install37.sh" -O install37.sh && chmod 755 install37.sh && ./install37.sh; rm -rf install37.sh
         exit 1
         ;;
     5)
-        rm -rf install3.sh; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/install3.sh" -O install3.sh >/dev/null 2>&1; chmod 755 install3.sh;./install3.sh; rm -rf install3.sh
+        rm -rf install3.sh; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/install3.sh" -O install3.sh && chmod 755 install3.sh && ./install3.sh; rm -rf install3.sh
         exit 1
         ;;
     6)
-        rm -rf install4.sh; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/install4.sh" -O install4.sh >/dev/null 2>&1; chmod 755 install4.sh;./install4.sh; rm -rf install4.sh
+        rm -rf install4.sh; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/install4.sh" -O install4.sh && chmod 755 install4.sh && ./install4.sh; rm -rf install4.sh
         exit 1
         ;;
     7)
-        rm -rf iptables.sh; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/iptables.sh" -O iptables.sh >/dev/null 2>&1; chmod 755 iptables.sh;./iptables.sh; rm -rf iptables.sh
+        rm -rf iptables.sh; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/iptables.sh" -O iptables.sh && chmod 755 iptables.sh && ./iptables.sh; rm -rf iptables.sh
         exit 1
         ;;
     8)
@@ -80,11 +80,11 @@ case $selected_option in
         exit 1
         ;;
     9)
-        rm -rf wipe.sh; wget "https://raw.githubusercontent.com/JohnReaJR/A/main/wipe.sh" -O wipe.sh >/dev/null 2>&1; chmod 755 wipe.sh;./wipe.sh; rm -rf wipe.sh
+        rm -rf wipe.sh; wget "https://raw.githubusercontent.com/JohnReaJR/A/main/wipe.sh" -O wipe.sh && chmod 755 wipe.sh && ./wipe.sh; rm -rf wipe.sh
         exit 1
         ;;
     10)
-        rm -rf install11.sh; wget "https://raw.githubusercontent.com/JohnReaJR/A/main/install11.sh" -O install11.sh >/dev/null 2>&1; chmod 755 install11.sh;./install11.sh; rm -rf install11.sh
+        rm -rf install11.sh; wget "https://raw.githubusercontent.com/JohnReaJR/A/main/install11.sh" -O install11.sh && chmod 755 install11.sh && ./install11.sh; rm -rf install11.sh
         exit 1
         ;;
     11)
@@ -92,7 +92,7 @@ case $selected_option in
         exit 1
         ;;
     12)
-        rm -rf install6.sh; wget "https://raw.githubusercontent.com/JohnReaJR/A/main/install6.sh" -O install6.sh >/dev/null 2>&1; chmod 755 install6.sh;./install6.sh; rm -rf install6.sh
+        rm -rf install6.sh; wget "https://raw.githubusercontent.com/JohnReaJR/A/main/install6.sh" -O install6.sh && chmod 755 install6.sh && ./install6.sh; rm -rf install6.sh
         exit 1
         ;;
     13)
