@@ -20,7 +20,7 @@ rm -rf /usr/bin/udpgw
 cd /usr/bin
 wget http://github.com/JohnReaJR/A/releases/download/V1/udpgw
 chmod 755 udpgw
-        
+cd /root        
 cat <<EOF >/etc/systemd/system/udpgw.service
 [Unit]
 [Unit]
