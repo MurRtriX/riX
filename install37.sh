@@ -11,64 +11,36 @@ echo -e "$YELLOW"
 echo "          💚 INSTALL BADVPN FOR VOIP SERVICES 💚    "
 echo "             ╰┈➤    💚 BadVpn 💚          "
 echo -e "$NC"
-apt install wget
-apt install net-tools
-ufw disable
-apt-get remove --purge ufw firewalld -y
-apt-get remove ufw
-apt-get remove --auto-remove ufw
-apt-get purge ufw
-apt-get purge --auto-remove ufw
-iptables -P INPUT ACCEPT
-iptables -P FORWARD ACCEPT
-iptables -P OUTPUT ACCEPT
-iptables -F
-iptables -X 
-iptables -Z
-iptables -t nat -F
-iptables -t nat -X
-iptables -t mangle -F
-iptables -t mangle -X
-iptables -t raw -F
-iptables -t raw -X
-apt-get install iptables
-apt-get install iptables-persistent
-ip6tables -P INPUT ACCEPT
-ip6tables -P FORWARD ACCEPT
-ip6tables -P OUTPUT ACCEPT
-ip6tables -F
-ip6tables -X 
-ip6tables -Z
-ip6tables -t nat -F
-ip6tables -t nat -X
-ip6tables -t mangle -F
-ip6tables -t mangle -X
-ip6tables -t raw -F
-ip6tables -t raw -X
-netfilter-persistent save
-netfilter-persistent reload
-netfilter-persistent start
-rm -f /etc/sysctl.conf
-sysctl net.ipv4.conf.all.rp_filter=0
-sysctl net.ipv4.conf.$(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1).rp_filter=0
-echo "net.ipv4.ip_forward=1
-net.ipv4.conf.all.rp_filter=0
-net.ipv4.conf.$(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1).rp_filter=0" >> /etc/sysctl.conf
-sysctl -p
-sysctl -w net.core.rmem_default=83886080
-sysctl -w net.core.wmem_default=83886080
-sysctl -w net.core.rmem_max=16777216
-sysctl -w net.core.wmem_max=16777216
-sysctl -w net.ipv4.tcp_rmem=8192
-sysctl -w net.ipv4.tcp_wmem=8192
-echo "net.core.rmem_default=83886080" >> /etc/sysctl.conf
-echo "net.core.wmem_default=83886080" >> /etc/sysctl.conf
-echo "net.core.rmem_max=16777216" >> /etc/sysctl.conf
-echo "net.core.wmem_max=16777216" >> /etc/sysctl.conf
-echo "net.ipv4.ip_forward=1" >> /etc/sysctl.conf
-sysctl -p /etc/sysctl.conf
+#Install Badvpn
+cd /root
+systemctl stop udpgw.service
+systemctl disable udpgw.service
+rm -rf /etc/systemd/system/udpgw.service
+rm -rf /usr/bin/udpgw
+cd /usr/bin
+wget http://github.com/JohnReaJR/A/releases/download/V1/udpgw
+chmod 755 udpgw
+        
+cat <<EOF >/etc/systemd/system/udpgw.service
+[Unit]
+[Unit]
+Description=UDPGW Gateway Service by InFiNitY 
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/screen -dmS udpgw /bin/udpgw --listen-addr 127.0.0.1:7300 --max-clients 1000 --max-connections-for-client 1000
+Restart=always
+User=root
+
+[Install]
+WantedBy=multi-user.target
+EOF
+#start badvpn
+systemctl enable udpgw.service
+systemctl start udpgw.service
 echo -e "$YELLOW"
 echo "           💚 BADVPN INSTALLED SUCCESSFULLY 💚      "
-echo "              ╰┈➤   💚 Active 💚             "
+echo "              ╰┈➤ 💚 BadVpn Actived 💚             "
 echo -e "$NC"
 exit 1
