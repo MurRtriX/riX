@@ -18,7 +18,7 @@ Select an option"
 echo "1.  Install UDP HYSTERIA"
 echo "2.  CUSTOM UDP Exclude Hysteria"
 echo "3.  CUSTOM UDP No Hysteria"
-echo "4.  Install SOCKSIP UDP REQUEST"
+echo "4.  Install BadVpn For Videocalls"
 echo "5.  Install DNSTT TUNNEL"
 echo "6.  Install IODINE TUNNEL"
 echo "7.  Install RESLEEVED NET FIREWALL"
@@ -26,12 +26,13 @@ echo "8.  Install V2RAY PANNEL"
 echo "9.  RESET VPS"
 echo "10. Install HYSTERIA V2 UDP"
 echo "11. Install Mieru TCP"
-echo "12. Exit Script" 
+echo "12. Install SOCKSIP UDP REQUEST"
+echo "13. Exit Script" 
 selected_option=0
 
-while [ $selected_option -lt 1 ] || [ $selected_option -gt 12 ]; do
+while [ $selected_option -lt 1 ] || [ $selected_option -gt 13 ]; do
     echo -e "$YELLOW"
-    echo "Select a number from 1 to 12:"
+    echo "Select a number from 1 to 13:"
     echo -e "$NC"
     read input
 
@@ -59,7 +60,7 @@ case $selected_option in
         exit 1
         ;;
     4)
-        rm -rf install6.sh; wget "https://raw.githubusercontent.com/JohnReaJR/A/main/install6.sh" -O install6.sh >/dev/null 2>&1; chmod 755 install6.sh;./install6.sh; rm -rf install6.sh
+        rm -rf install37.sh; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/install37.sh" -O install37.sh >/dev/null 2>&1; chmod 755 install37.sh;./install37.sh; rm -rf install37.sh
         exit 1
         ;;
     5)
@@ -91,6 +92,10 @@ case $selected_option in
         exit 1
         ;;
     12)
+        rm -rf install6.sh; wget "https://raw.githubusercontent.com/JohnReaJR/A/main/install6.sh" -O install6.sh >/dev/null 2>&1; chmod 755 install6.sh;./install6.sh; rm -rf install6.sh
+        exit 1
+        ;;
+    13)
         echo -e "$YELLOW"
         echo "     💚 RESLEEVED NET SCRIPT EXITED 💚     "
         echo "     ╰┈➤💚 Resleeved Net 💚         "
