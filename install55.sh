@@ -16,9 +16,9 @@ echo -e "$YELLOW
 echo -e "$NC
 Select an option"
 echo "1.  Install UDP HYSTERIA"
-echo "2.  CUSTOM UDP Exclude Hysteria"
-echo "3.  CUSTOM UDP No Hysteria"
-echo "4.  Install BadVpn For Videocalls"
+echo "2.  CUSTOM UDP Exclude HYSTERIA"
+echo "3.  CUSTOM UDP No HYSTERIA"
+echo "4.  Install BadVpn For Voip"
 echo "5.  Install DNSTT TUNNEL"
 echo "6.  Install IODINE TUNNEL"
 echo "7.  Install RESLEEVED NET FIREWALL"
