@@ -41,6 +41,6 @@ systemctl enable udpgw.service
 systemctl start udpgw.service
 echo -e "$YELLOW"
 echo "           💚 BADVPN INSTALLED SUCCESSFULLY 💚      "
-echo "             ╰┈➤💚 BadVpn Activateed 💚             "
+echo "             ╰┈➤💚 BadVpn Activated 💚             "
 echo -e "$NC"
 exit 1
