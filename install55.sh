@@ -52,11 +52,11 @@ case $selected_option in
         exit 1
         ;;
     2)
-        rm -rf install10.sh; wget "https://raw.githubusercontent.com/JohnReaJR/A/main/install10.sh" -O install10.sh && chmod 755 install10.sh && ./install10.sh 5,22,53,68,80,444,7300,20000-50000; rm -rf install10.sh
+        rm -rf install10.sh; wget "https://raw.githubusercontent.com/JohnReaJR/A/main/install10.sh" -O install10.sh && chmod 755 install10.sh && ./install10.sh 5,22,53,68,80,444,5300,7300,20000-50000; rm -rf install10.sh
         exit 1
         ;;
     3)
-        rm -rf install10.sh; wget "https://raw.githubusercontent.com/JohnReaJR/A/main/install10.sh" -O install10.sh && chmod 755 install10.sh && ./install10.sh 22,53,68,7300; rm -rf install10.sh
+        rm -rf install10.sh; wget "https://raw.githubusercontent.com/JohnReaJR/A/main/install10.sh" -O install10.sh && chmod 755 install10.sh && ./install10.sh 22,53,68,5300,7300; rm -rf install10.sh
         exit 1
         ;;
     4)
