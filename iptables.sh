@@ -20,10 +20,6 @@ apt-get remove ufw
 apt-get remove --auto-remove ufw
 apt-get purge ufw
 apt-get purge --auto-remove ufw
-apt-get remove xz-utils
-apt-get remove --auto-remove xz-utils
-apt-get purge xz-utils
-apt-get purge --auto-remove xz-utils
 apt-get remove
 apt-get autoremove
 apt-get clean
