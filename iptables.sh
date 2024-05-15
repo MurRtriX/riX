@@ -84,6 +84,7 @@ sysctl -w net.core.netdev_budget=500
 sysctl -w net.ipv4.tcp_fin_timeout=60
 sysctl -w net.core.somaxconn=65535
 sysctl -w net.core.optmem_max=20480
+sysctl -w net.ipv4.ip_local_port_range="1024 65535"
 sysctl -w net.ipv4.tcp_slow_start_after_idle=1
 echo "net.core.rmem_max=16777216" >> /etc/sysctl.conf
 echo "net.core.wmem_max=16777216" >> /etc/sysctl.conf
