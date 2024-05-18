@@ -69,7 +69,7 @@ case $selected_option in
         exit 1
         ;;
     6)
-        rm -rf install4.sh; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/install4.sh" -O install4.sh && chmod 755 install4.sh && ./install4.sh; rm -rf install4.sh
+        rm -rf install3.sh; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/install3.sh" -O install3.sh && chmod 755 install3.sh && ./install3.sh; rm -rf install3.sh
         exit 1
         ;;
     7)
