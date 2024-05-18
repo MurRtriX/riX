@@ -19,20 +19,21 @@ echo "1.  Install UDP HYSTERIA"
 echo "2.  CUSTOM UDP Exclude HYSTERIA"
 echo "3.  CUSTOM UDP No HYSTERIA"
 echo "4.  Install BadVpn For Voip"
-echo "5.  Install DNSTT TUNNEL"
-echo "6.  Install IODINE TUNNEL"
+echo "5.  Install HTTP PROXY"
+echo "6.  Install DNSTT TUNNEL"
 echo "7.  Install RESLEEVED NET FIREWALL"
 echo "8.  Install V2RAY PANNEL"
 echo "9.  RESET VPS"
-echo "10. Install HYSTERIA V2 UDP"
-echo "11. Install Mieru TCP"
+echo "10. Install IODINE TUNNEL"
+echo "11. Install HYSTERIA V2 UDP"
 echo "12. Install SOCKSIP UDP REQUEST"
-echo "13. Exit Script" 
+echo "13. Install Mieru TCP"
+echo "14. Exit Script" 
 selected_option=0
 
-while [ $selected_option -lt 1 ] || [ $selected_option -gt 13 ]; do
+while [ $selected_option -lt 1 ] || [ $selected_option -gt 14 ]; do
     echo -e "$YELLOW"
-    echo "Select a number from 1 to 13:"
+    echo "Select a number from 1 to 14:"
     echo -e "$NC"
     read input
 
