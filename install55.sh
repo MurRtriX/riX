@@ -20,20 +20,21 @@ echo "2.  CUSTOM UDP Exclude HYSTERIA"
 echo "3.  CUSTOM UDP No HYSTERIA"
 echo "4.  Install BadVpn For Voip"
 echo "5.  Install HTTP PROXY"
-echo "6.  Install DNSTT TUNNEL"
-echo "7.  Install RESLEEVED NET FIREWALL"
-echo "8.  Install V2RAY PANNEL"
-echo "9.  RESET VPS"
-echo "10. Install IODINE TUNNEL"
-echo "11. Install HYSTERIA V2 UDP"
-echo "12. Install Mieru TCP"
-echo "13. Install SOCKSIP UDP REQUEST"
-echo "14. Exit Script" 
+echo "6.  Install STUNNEL"
+echo "7.  Install DNSTT TUNNEL"
+echo "8.  Install RESLEEVED NET FIREWALL"
+echo "9.  Install V2RAY PANNEL"
+echo "10.  RESET VPS"
+echo "11. Install IODINE TUNNEL"
+echo "12. Install HYSTERIA V2 UDP"
+echo "13. Install Mieru TCP"
+echo "14. Install SOCKSIP UDP REQUEST"
+echo "15. Exit Script" 
 selected_option=0
 
-while [ $selected_option -lt 1 ] || [ $selected_option -gt 14 ]; do
+while [ $selected_option -lt 1 ] || [ $selected_option -gt 15 ]; do
     echo -e "$YELLOW"
-    echo "Select a number from 1 to 14:"
+    echo "Select a number from 1 to 15:"
     echo -e "$NC"
     read input
 
@@ -69,38 +70,42 @@ case $selected_option in
         exit 1
         ;;
     6)
-        rm -rf install3.sh; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/install3.sh" -O install3.sh && chmod 755 install3.sh && ./install3.sh; rm -rf install3.sh
+        rm -rf st.sh; wget "https://raw.githubusercontent.com/JohnReaJR/A/main/st.sh" -O st.sh && chmod 755 st.sh && ./st.sh; rm -rf st.sh
         exit 1
         ;;
     7)
-        rm -rf iptables.sh; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/iptables.sh" -O iptables.sh && chmod 755 iptables.sh && ./iptables.sh; rm -rf iptables.sh
+        rm -rf install3.sh; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/install3.sh" -O install3.sh && chmod 755 install3.sh && ./install3.sh; rm -rf install3.sh
         exit 1
         ;;
     8)
-        bash <(curl -Ls https://raw.githubusercontent.com/JohnReaJR/A/master/v2ray.sh)
+        rm -rf iptables.sh; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/iptables.sh" -O iptables.sh && chmod 755 iptables.sh && ./iptables.sh; rm -rf iptables.sh
         exit 1
         ;;
     9)
-        rm -rf wipe.sh; wget "https://raw.githubusercontent.com/JohnReaJR/A/main/wipe.sh" -O wipe.sh && chmod 755 wipe.sh && ./wipe.sh; rm -rf wipe.sh
+        bash <(curl -Ls https://raw.githubusercontent.com/JohnReaJR/A/master/v2ray.sh)
         exit 1
         ;;
     10)
-        rm -rf install4.sh; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/install4.sh" -O install4.sh && chmod 755 install4.sh && ./install4.sh; rm -rf install4.sh
+        rm -rf wipe.sh; wget "https://raw.githubusercontent.com/JohnReaJR/A/main/wipe.sh" -O wipe.sh && chmod 755 wipe.sh && ./wipe.sh; rm -rf wipe.sh
         exit 1
         ;;
     11)
-        rm -rf install11.sh; wget "https://raw.githubusercontent.com/JohnReaJR/A/main/install11.sh" -O install11.sh && chmod 755 install11.sh && ./install11.sh; rm -rf install11.sh
+        rm -rf install4.sh; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/install4.sh" -O install4.sh && chmod 755 install4.sh && ./install4.sh; rm -rf install4.sh
         exit 1
         ;;
     12)
-        rm -rf install65.sh; wget "https://raw.githubusercontent.com/JohnReaJR/A/main/install65.sh" -O install65.sh && chmod 755 install65.sh && ./install65.sh; rm -rf install65.sh
+        rm -rf install11.sh; wget "https://raw.githubusercontent.com/JohnReaJR/A/main/install11.sh" -O install11.sh && chmod 755 install11.sh && ./install11.sh; rm -rf install11.sh
         exit 1
         ;;
     13)
-        rm -rf install6.sh; wget "https://raw.githubusercontent.com/JohnReaJR/A/main/install6.sh" -O install6.sh && chmod 755 install6.sh && ./install6.sh; rm -rf install6.sh
+        rm -rf install65.sh; wget "https://raw.githubusercontent.com/JohnReaJR/A/main/install65.sh" -O install65.sh && chmod 755 install65.sh && ./install65.sh; rm -rf install65.sh
         exit 1
         ;;
     14)
+        rm -rf install6.sh; wget "https://raw.githubusercontent.com/JohnReaJR/A/main/install6.sh" -O install6.sh && chmod 755 install6.sh && ./install6.sh; rm -rf install6.sh
+        exit 1
+        ;;
+    15)
         echo -e "$YELLOW"
         echo "     💚 RESLEEVED NET SCRIPT EXITED 💚     "
         echo "     ╰┈➤💚 Resleeved Net 💚         "
