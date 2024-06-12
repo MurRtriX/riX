@@ -15,8 +15,7 @@ echo -e "$YELLOW
    ╰┈➤ 💚 Resleeved Net 💚               "
 echo -e "$NC
 Select an option"
-echo "1.  Install UDP HYSTERIA"
-echo "2.  CUSTOM UDP Exclude HYSTERIA"
+echo "1.  Install UDP HYSTERIA  2.  CUSTOM UDP Exclude HYSTERIA"
 echo "3.  CUSTOM UDP No HYSTERIA"
 echo "4.  Install BadVpn For Voip"
 echo "5.  Install HTTP PROXY"
