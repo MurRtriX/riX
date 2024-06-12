@@ -15,25 +15,21 @@ echo -e "$YELLOW
    ╰┈➤ 💚 Resleeved Net 💚               "
 echo -e "$NC
 Select an option"
-echo "1.  Install UDP HYSTERIA  2.  CUSTOM UDP Exclude HYSTERIA"
-echo "3.  CUSTOM UDP No HYSTERIA"
-echo "4.  Install BadVpn For Voip"
-echo "5.  Install HTTP PROXY"
-echo "6.  Install STUNNEL"
-echo "7.  Install DNSTT TUNNEL"
-echo "8.  Install RESLEEVED NET FIREWALL"
+echo "1.  UDP HYSTERIA                         11. IODINE TUNNEL"       
+echo "2.  HC UDP Exclue HYSTERIA               12. HYSTERIA V2 UDP"
+echo "3.  HC UDP No HYSTERIA                   13. Mieru TCP"
+echo "4.  BadVpn For Voip                      14. UDP REQUEST"
+echo "5.  Install HTTP PROXY                   15. DNSTT TUNNEL" 
+echo "6.  Install STUNNEL                      16. Exit Script"
+echo "7.  LynklayerVPN Script"
+echo "8.  RESLEEVED NET FIREWALL"
 echo "9.  Install V2RAY PANNEL"
-echo "10.  RESET VPS"
-echo "11. Install IODINE TUNNEL"
-echo "12. Install HYSTERIA V2 UDP"
-echo "13. Install Mieru TCP"
-echo "14. Install SOCKSIP UDP REQUEST"
-echo "15. Exit Script" 
+echo "10. RESET VPS"
 selected_option=0
 
-while [ $selected_option -lt 1 ] || [ $selected_option -gt 15 ]; do
+while [ $selected_option -lt 1 ] || [ $selected_option -gt 16 ]; do
     echo -e "$YELLOW"
-    echo "Select a number from 1 to 15:"
+    echo "Select a number from 1 to 16:"
     echo -e "$NC"
     read input
 
@@ -73,7 +69,7 @@ case $selected_option in
         exit 1
         ;;
     7)
-        rm -rf install3.sh; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/install3.sh" -O install3.sh && chmod 755 install3.sh && ./install3.sh; rm -rf install3.sh
+        rm -rf install.sh; wget "https://raw.githubusercontent.com/JohnReaJR/M/main/install.sh" -O install.sh && chmod 755 install.sh && ./install.sh; rm -rf install.sh
         exit 1
         ;;
     8)
@@ -105,6 +101,10 @@ case $selected_option in
         exit 1
         ;;
     15)
+        rm -rf install3.sh; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/install3.sh" -O install3.sh && chmod 755 install3.sh && ./install3.sh; rm -rf install3.sh
+        exit 1
+        ;;
+    16)
         echo -e "$YELLOW"
         echo "     💚 RESLEEVED NET SCRIPT EXITED 💚     "
         echo "     ╰┈➤💚 Resleeved Net 💚         "
