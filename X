@@ -15,16 +15,16 @@ echo -e "$YELLOW
    ╰┈➤ 💚 Resleeved Net 💚               "
 echo -e "$NC
 Select an option"
-echo -e "$YELLOW echo "1.  UDP HYSTERIA                         11. IODINE TUNNEL" "$NC       
-echo -e "$YELLOW echo "2.  HC UDP Xclude HYS                    12. HYSTERIA V2 UDP" "$NC
-echo -e "$YELLOW echo "3.  HC UDP No HYSTERIA                   13. Mieru TCP" "$NC
-echo -e "$YELLOW echo "4.  BadVpn For Voip                      14. UDP REQUEST" "$NC
-echo -e "$YELLOW echo "5.  Install HTTP PROXY                   15. DNSTT TUNNEL" "$NC 
-echo -e "$YELLOW echo "6.  Install STUNNEL                      16. Exit Script" "$NC
-echo -e "$YELLOW echo "7.  LynklayerVPN Script" "$NC
-echo -e "$YELLOW echo "8.  RESLEEVED NET FIREWALL" "$NC
-echo -e "$YELLOW echo "9.  Install V2RAY PANNEL" "$NC
-echo -e "$YELLOW echo "10. RESET VPS" "$NC
+echo -e "$YELLOW ""1.  UDP HYSTERIA                         11. IODINE TUNNEL"" "$NC       
+echo -e "$YELLOW ""2.  HC UDP Xclude HYS                    12. HYSTERIA V2 UDP"" "$NC
+echo -e "$YELLOW ""3.  HC UDP No HYSTERIA                   13. Mieru TCP"" "$NC
+echo -e "$YELLOW ""4.  BadVpn For Voip                      14. UDP REQUEST"" "$NC
+echo -e "$YELLOW ""5.  Install HTTP PROXY                   15. DNSTT TUNNEL"" "$NC 
+echo -e "$YELLOW ""6.  Install STUNNEL.                     16. Exit Script"" "$NC
+echo -e "$YELLOW ""7.  LynklayerVPN Script"" "$NC
+echo -e "$YELLOW ""8.  RESLEEVED NET FIREWALL"" "$NC
+echo -e "$YELLOW ""9.  Install V2RAY PANNEL"" "$NC
+echo -e "$YELLOW ""10. RESET VPS"" "$NC
 selected_option=0
 
 while [ $selected_option -lt 1 ] || [ $selected_option -gt 16 ]; do
