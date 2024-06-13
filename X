@@ -30,9 +30,7 @@ echo -e "$NC
 selected_option=0
 
 while [ $selected_option -lt 1 ] || [ $selected_option -gt 16 ]; do
-    echo -e "$YELLOW"
     echo "Select a number from 1 to 16:"
-    echo -e "$NC"
     read input
 
     # Check if input is a number
