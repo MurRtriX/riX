@@ -16,7 +16,7 @@ echo -e "$YELLOW
 echo -e "$NC
 Select an option"
 echo -e "$YELLOW "1.  UDP HYSTERIA                         11. IODINE TUNNEL" "$NC       
-echo -e "$YELLOW "2.  HC UDP Exclue HYSTERIA               12. HYSTERIA V2 UDP" "$NC
+echo -e "$YELLOW "2.  HC UDP Xclude HYS                    12. HYSTERIA V2 UDP" "$NC
 echo -e "$YELLOW "3.  HC UDP No HYSTERIA                   13. Mieru TCP" "$NC
 echo -e "$YELLOW "4.  BadVpn For Voip                      14. UDP REQUEST" "$NC
 echo -e "$YELLOW "5.  Install HTTP PROXY                   15. DNSTT TUNNEL" "$NC 
