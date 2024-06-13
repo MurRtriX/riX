@@ -15,6 +15,7 @@ echo -e "$YELLOW
    ╰┈➤ 💚 Resleeved Net 💚               "
 echo -e "$NC
 Select an option"
+echo -e "$YELLOW
 echo "1.  UDP HYSTERIA                         11. IODINE TUNNEL"       
 echo "2.  HC UDP Exclue HYSTERIA               12. HYSTERIA V2 UDP"
 echo "3.  HC UDP No HYSTERIA                   13. Mieru TCP"
@@ -25,6 +26,7 @@ echo "7.  LynklayerVPN Script"
 echo "8.  RESLEEVED NET FIREWALL"
 echo "9.  Install V2RAY PANNEL"
 echo "10. RESET VPS"
+echo -e "$NC
 selected_option=0
 
 while [ $selected_option -lt 1 ] || [ $selected_option -gt 16 ]; do
