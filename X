@@ -21,22 +21,22 @@ echo -e "\t\e\033[94m             • ResleevedNet v.5       \033[0m"
 echo -e "\t\e\033[94m                 • нαωkiиѕ          \033[0m"
 echo -e "\e[1m\e[34m───────────────────────────────────────────────────────────────────────•\e[0m"
 echo -e "$YELLOW ResleevedNet v.5 Ultimate Installer Menu" "$NC
-Select an option"
-echo "1.  UDP HYSTERIA                         11. IODINE TUNNEL"       
-echo "2.  HC UDP Exclue HYSTERIA               12. HYSTERIA V2 UDP"
-echo "3.  HC UDP No HYSTERIA                   13. Mieru TCP"
-echo "4.  BadVpn For Voip                      14. UDP REQUEST"
-echo "5.  Install HTTP PROXY                   15. DNSTT TUNNEL" 
-echo "6.  Install STUNNEL                      16. Exit Script"
-echo "7.  LynklayerVPN Script"
-echo "8.  RESLEEVED NET FIREWALL"
-echo "9.  Install V2RAY PANNEL"
-echo "10. RESET VPS"
-selected_option=0
+ Select an option"
+ echo " 1.  UDP HYSTERIA                         11. IODINE TUNNEL"       
+ echo " 2.  HC UDP Exclue HYSTERIA               12. HYSTERIA V2 UDP"
+ echo " 3.  HC UDP No HYSTERIA                   13. Mieru TCP"
+ echo " 4.  BadVpn For Voip                      14. UDP REQUEST"
+ echo " 5.  Install HTTP PROXY                   15. DNSTT TUNNEL" 
+ echo " 6.  Install STUNNEL                      16. Exit Script"
+ echo " 7.  LynklayerVPN Script"
+ echo " 8.  RESLEEVED NET FIREWALL"
+ echo " 9.  Install V2RAY PANNEL"
+ echo " 10. RESET VPS"
+ selected_option=0
 
 while [ $selected_option -lt 1 ] || [ $selected_option -gt 16 ]; do
-    echo "Select a number from 1 to 16:"
-    read input
+    echo " Select a number from 1 to 16:" 
+    read -p " " input
 
     # Check if input is a number
     if [[ "$input" =~ ^[0-9]+$ ]]; then
