@@ -104,10 +104,9 @@ case $selected_option in
         exit 1
         ;;
     16)
-        echo -e "$YELLOW"
-        echo "     💚 RESLEEVED NET SCRIPT EXITED 💚     "
-        echo "     ╰┈➤💚 Resleeved Net 💚         "
-        echo -e "$NC"
+        echo -e "$YELLOW
+        ""     💚 RESLEEVED NET SCRIPT EXITED 💚     ""
+        ""       ╰┈➤💚 Resleeved Net 💚         "" "$NC
         exit 1
         ;;
 esac
