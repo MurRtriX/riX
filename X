@@ -107,7 +107,6 @@ case $selected_option in
         echo -e "$YELLOW"
         echo "     💚 RESLEEVED NET SCRIPT EXITED 💚     "
         echo "     ╰┈➤💚 Resleeved Net 💚         "
-        echo " ╰┈➤ 💚 Telegram >>> t.me/Am_The_Last_Envoy 💚       "
         echo -e "$NC"
         exit 1
         ;;
