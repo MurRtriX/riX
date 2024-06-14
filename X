@@ -20,8 +20,7 @@ echo -e "\t\e\033[94m    • ResleevedNet v.5 Ultimate Installer   \033[0m"
 echo -e "\t\e\033[94m             • ResleevedNet v.5       \033[0m"
 echo -e "\t\e\033[94m                 • нαωkiиѕ          \033[0m"
 echo -e "\e[1m\e[34m───────────────────────────────────────────────────────────────────────•\e[0m"
-echo -e "$YELLOW ResleevedNet v.5 Menu" "$NC
- Select an option"
+echo -e "$YELLOW ResleevedNet v.5 Menu "$NC
  echo -e "\033[94m 1.  UDP HYSTERIA                         11. IODINE TUNNEL    \033[0m"
  echo -e "\033[94m 2.  HC UDP Exclue HYSTERIA               12. HYSTERIA V2 UDP \033[0m"
  echo -e "\033[94m 3.  HC UDP No HYSTERIA                   13. Mieru TCP \033[0m"
