@@ -12,10 +12,6 @@ if [ "$(whoami)" != "root" ]; then
 fi
 cd /root
 clear
-echo -e "$YELLOW
- 💚 RESLEEVED NET AUTO INSTALLER 💚      
-   ╰┈➤ 💚 Resleeved Net 💚               "
-echo -e "$NC
 Select an option"
 echo -e "$YELLOW ""1.  UDP HYSTERIA                         11. IODINE TUNNEL"" "$NC       
 echo -e "$YELLOW ""2.  HC UDP Xclude HYS                    12. HYSTERIA V2 UDP"" "$NC
