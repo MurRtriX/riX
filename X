@@ -20,23 +20,23 @@ echo -e "\t\e\033[94m    • ResleevedNet v.5 Ultimate Installer   \033[0m"
 echo -e "\t\e\033[94m             • ResleevedNet v.5       \033[0m"
 echo -e "\t\e\033[94m                 • нαωkiиѕ          \033[0m"
 echo -e "\e[1m\e[34m───────────────────────────────────────────────────────────────────────•\e[0m"
-echo -e "$YELLOW ResleevedNet v.5 Ultimate Installer Menu" "$NC
+echo -e "$YELLOW ResleevedNet Menu" "$NC
  Select an option"
- echo " 1.  UDP HYSTERIA                         11. IODINE TUNNEL"       
- echo " 2.  HC UDP Exclue HYSTERIA               12. HYSTERIA V2 UDP"
- echo " 3.  HC UDP No HYSTERIA                   13. Mieru TCP"
- echo " 4.  BadVpn For Voip                      14. UDP REQUEST"
- echo " 5.  Install HTTP PROXY                   15. DNSTT TUNNEL" 
- echo " 6.  Install STUNNEL                      16. Exit Script"
- echo " 7.  LynklayerVPN Script"
- echo " 8.  RESLEEVED NET FIREWALL"
- echo " 9.  Install V2RAY PANNEL"
- echo " 10. RESET VPS"
+ echo -e "$YELLOW ""1.  UDP HYSTERIA                         11. IODINE TUNNEL"" "$NC     
+ echo -e "$YELLOW ""2.  HC UDP Exclue HYSTERIA               12. HYSTERIA V2 UDP"" "$NC
+ echo -e "$YELLOW ""3.  HC UDP No HYSTERIA                   13. Mieru TCP"" "$NC
+ echo -e "$YELLOW ""4.  BadVpn For Voip                      14. UDP REQUEST"" "$NC
+ echo -e "$YELLOW ""5.  Install HTTP PROXY                   15. DNSTT TUNNEL"" "$NC
+ echo -e "$YELLOW ""6.  Install STUNNEL                      16. Exit Script"" "$NC
+ echo -e "$YELLOW ""7.  LynklayerVPN Script"" "$NC
+ echo -e "$YELLOW ""8.  RESLEEVED NET FIREWALL"" "$NC
+ echo -e "$YELLOW ""9.  Install V2RAY PANNEL"" "$NC
+ echo -e "$YELLOW ""10. RESET VPS"" "$NC 
  selected_option=0
 
 while [ $selected_option -lt 1 ] || [ $selected_option -gt 16 ]; do
     echo " Select a number from 1 to 16:" 
-    read -p " " input
+read -p " " input
 
     # Check if input is a number
     if [[ "$input" =~ ^[0-9]+$ ]]; then
