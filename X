@@ -12,11 +12,6 @@ if [ "$(whoami)" != "root" ]; then
 fi
 cd /root
 clear
-figlet -k ResleevedNet | lolcat
-echo -e "\t\e\033[94m    • ResleevedNet v.5 Ultimate Installer   \033[0m"
-echo -e "\t\e\033[94m             • ResleevedNet v.5       \033[0m"
-echo -e "\t\e\033[94m                • нαωkiиѕ          \033[0m"
-echo -e "\e[1m\e[34m───────────────────────────────────────────────────────────────────────•\e[0m"
 echo -e "$YELLOW
  💚 RESLEEVED NET AUTO INSTALLER 💚      
    ╰┈➤ 💚 Resleeved Net 💚               "
