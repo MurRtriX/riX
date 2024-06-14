@@ -105,9 +105,7 @@ case $selected_option in
         exit 1
         ;;
     16)
-        echo -e "$YELLOW"
-        ""     💚 RESLEEVED NET SCRIPT EXITED 💚     ""
-        ""       ╰┈➤💚 Resleeved Net 💚         "" "$NC"
+        echo " Exiting ResleevedNet v.5 Ultimate Installer "
         exit 1
         ;;
 esac
