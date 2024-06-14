@@ -10,6 +10,11 @@ if [ "$(whoami)" != "root" ]; then
 fi
 cd /root
 clear
+figlet -k ResleevedNet | lolcat
+echo -e "\t\e\033[94m    • ResleevedNet v.5 Ultimate Installer   \033[0m"
+echo -e "\t\e\033[94m             • ResleevedNet v.5       \033[0m"
+echo -e "\t\e\033[94m                • нαωkiиѕ          \033[0m"
+echo -e "\e[1m\e[34m───────────────────────────────────────────────────────────────────────•\e[0m"
 echo -e "$YELLOW
  💚 RESLEEVED NET AUTO INSTALLER 💚      
    ╰┈➤ 💚 Resleeved Net 💚               "
@@ -28,9 +33,7 @@ echo "10. RESET VPS"
 selected_option=0
 
 while [ $selected_option -lt 1 ] || [ $selected_option -gt 16 ]; do
-    echo -e "$YELLOW"
     echo "Select a number from 1 to 16:"
-    echo -e "$NC"
     read input
 
     # Check if input is a number
