@@ -29,7 +29,6 @@ echo -e "$YELLOW ""    💚 ResleevedNet v.5 Ultimate Installer 💚 "" "$NC
 echo -e "$YELLOW ""              💚 нєιι ♡ нαωkiиѕ 💚               "" "$NC
 sudo apt-get update && sudo apt-get upgrade -y
 clear
-rm -rf /usr/local/bin/lolcat
 local dependencies=("curl" "bc" "grep" "wget" "nano" "net-tools" "figlet" "lolcat" "git" "netcat" "openssl")
 for dependency in "${dependencies[@]}"; do
 if ! command -v "$dependency" &>/dev/null; then
