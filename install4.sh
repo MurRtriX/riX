@@ -72,4 +72,5 @@ echo -e "$YELLOW"
 echo "           💚 IODINE INSTALLED 💚      "
 echo "           ╰┈➤💚 Active 💚             "
 echo -e "$NC"
+X
 exit 1
