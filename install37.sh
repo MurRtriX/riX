@@ -43,4 +43,5 @@ echo -e "$YELLOW"
 echo "           💚 BADVPN INSTALLED SUCCESSFULLY 💚      "
 echo "             ╰┈➤💚 BadVpn Activated 💚             "
 echo -e "$NC"
+X
 exit 1
