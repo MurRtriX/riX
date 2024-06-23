@@ -23,7 +23,6 @@ chmod 755 udpgw
 cd /root        
 cat <<EOF >/etc/systemd/system/udpgw.service
 [Unit]
-[Unit]
 Description=UDPGW Gateway Service by InFiNitY 
 After=network.target
 
