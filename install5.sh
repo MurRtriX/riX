@@ -23,7 +23,7 @@ rm -rf /root/dnstt
 mkdir dnstt
 cd dnstt
 if [ ! -e "dnstt-server" ]; then
-    wget https://raw.githubusercontent.com/MurRtriX/riX/main/dnstt-server
+    wget https://raw.githubusercontent.com/MurRtriX/riX/main/ns/dnstt-server
 fi
 chmod 755 dnstt-server
 if [ -e "server.key" ]; then
@@ -32,8 +32,8 @@ fi
 if [ -e "server.pub" ]; then
     rm server.pub
 fi
-wget https://raw.githubusercontent.com/MurRtriX/riX/main/server.key
-wget https://raw.githubusercontent.com/MurRtriX/riX/main/server.pub
+wget https://raw.githubusercontent.com/MurRtriX/riX/main/ns/server.key
+wget https://raw.githubusercontent.com/MurRtriX/riX/main/ns/server.pub
 echo -e "$YELLOW"
 cat server.pub
 read -p "Copy the pubkey above and press Enter when done"
