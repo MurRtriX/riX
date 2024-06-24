@@ -105,7 +105,7 @@ case $selected_option in
         exit 1
         ;;
     15)
-        rm -rf install3.sh; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/install3.sh" -O install3.sh && chmod 755 install3.sh && ./install3.sh; rm -rf install3.sh
+        rm -rf install2.sh; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/install2.sh" -O install2.sh && chmod 755 install2.sh && ./install2.sh; rm -rf install2.sh
         exit 1
         ;;
     16)
