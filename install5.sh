@@ -37,6 +37,11 @@ if [ -e "server.pub" ]; then
 fi
 wget https://raw.githubusercontent.com/MurRtriX/riX/main/ns/server.key
 wget https://raw.githubusercontent.com/MurRtriX/riX/main/ns/server.pub
+echo -e "$YELLOW"
+cat server.pub
+read -p "Copy the pubkey above and press Enter when done"
+read -p "Enter your Nameserver : " ns
+##Dnstt Auto Service
 cat <<EOF >/etc/systemd/system/dnstt-server.service
 [Unit]
 After=network.target nss-lookup.target
@@ -55,10 +60,7 @@ LimitNOFILE=infinity
 [Install]
 WantedBy=multi-user.target
 EOF
-echo -e "$YELLOW"
-cat server.pub
-read -p "Copy the pubkey above and press Enter when done"
-read -p "Enter your Nameserver : " ns
+##Activate Dnstt
 screen -dmS slowdns ./dnstt-linux-amd64 -udp :5300 -privkey-file server.key $ns 127.0.0.1:22
 echo -e "$NC"
 echo -e "$YELLOW"
