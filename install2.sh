@@ -57,6 +57,7 @@ User=root
 WantedBy=multi-user.target
 EOF
 ##Activate Dnstt
+systemctl daemon-reload
 systemctl enable dnstt-server.service
 systemctl start dnstt-server.service
 echo -e "$NC"
