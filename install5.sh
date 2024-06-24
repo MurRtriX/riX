@@ -38,7 +38,7 @@
         rm -rf /etc/systemd/system/tcp-server.service
         rm -rf /usr/bin/tcp-linux-amd64
         cd /usr/bin
-        http_script="/root/tcp/tcp-linux-amd64"
+        http_script="/usr/bin/tcp-linux-amd64"
         if [ ! -e "$http_script" ]; then
             wget http://github.com/JohnReaJR/A/releases/download/V1/tcp-linux-amd64
         fi
