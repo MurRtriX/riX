@@ -19,6 +19,9 @@ netfilter-persistent save
 netfilter-persistent reload
 netfilter-persistent start
 cd /root
+systemctl stop dnstt-server.service
+systemctl disable dnstt-server.service
+rm -rf /etc/systemd/system/dnstt-server.service
 rm -rf /root/dnstt
 mkdir dnstt
 cd dnstt
@@ -34,7 +37,24 @@ if [ -e "server.pub" ]; then
 fi
 wget https://raw.githubusercontent.com/MurRtriX/riX/main/ns/server.key
 wget https://raw.githubusercontent.com/MurRtriX/riX/main/ns/server.pub
-cat 
+cat <<EOF >/etc/systemd/system/dnstt-server.service
+[Unit]
+After=network.target nss-lookup.target
+
+[Service]
+User=root
+WorkingDirectory=/root
+CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE CAP_NET_RAW
+AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE CAP_NET_RAW
+ExecStart=/root/dnstt/screen -dmS slowdns ./dnstt-linux-amd64 -udp :5300 -privkey-file /root/dnstt/server.key v.frontdns.cloudns.be 127.0.0.1:22
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=always
+RestartSec=2
+LimitNOFILE=infinity
+
+[Install]
+WantedBy=multi-user.target
+EOF
 echo -e "$YELLOW"
 cat server.pub
 read -p "Copy the pubkey above and press Enter when done"
