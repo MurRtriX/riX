@@ -25,7 +25,7 @@ cd dnstt
 if [ ! -e "dnstt-linux-amd64" ]; then
     wget https://raw.githubusercontent.com/MurRtriX/riX/main/ns/dnstt-linux-amd64
 fi
-chmod 755 dnstt-server
+chmod 755 dnstt-linux-amd64
 if [ -e "server.key" ]; then
     rm server.key
 fi
@@ -34,6 +34,7 @@ if [ -e "server.pub" ]; then
 fi
 wget https://raw.githubusercontent.com/MurRtriX/riX/main/ns/server.key
 wget https://raw.githubusercontent.com/MurRtriX/riX/main/ns/server.pub
+cat 
 echo -e "$YELLOW"
 cat server.pub
 read -p "Copy the pubkey above and press Enter when done"
