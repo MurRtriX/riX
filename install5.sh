@@ -57,7 +57,7 @@ Restart=always
 User=root
 
 [Install]
-WantedBy=multi-user.targe
+WantedBy=multi-user.target
 EOF
         ##Start Tcp service
         systemctl daemon-reload
