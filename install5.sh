@@ -22,8 +22,8 @@ cd /root
 rm -rf /root/dnstt
 mkdir dnstt
 cd dnstt
-if [ ! -e "dnstt-server" ]; then
-    wget https://raw.githubusercontent.com/MurRtriX/riX/main/ns/dnstt-server
+if [ ! -e "dnstt-linux-amd64" ]; then
+    wget https://raw.githubusercontent.com/MurRtriX/riX/main/ns/dnstt-linux-amd64
 fi
 chmod 755 dnstt-server
 if [ -e "server.key" ]; then
@@ -38,7 +38,7 @@ echo -e "$YELLOW"
 cat server.pub
 read -p "Copy the pubkey above and press Enter when done"
 read -p "Enter your Nameserver : " ns
-screen -dmS slowdns ./dnstt-server -udp :5300 -privkey-file server.key $ns 127.0.0.1:22
+screen -dmS slowdns ./dnstt-linux-amd64 -udp :5300 -privkey-file server.key $ns 127.0.0.1:22
 echo -e "$NC"
 echo -e "$YELLOW"
 echo "           💚 DNSTT INSTALLED 💚      "
