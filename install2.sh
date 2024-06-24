@@ -22,16 +22,12 @@ cd /root
 systemctl stop dnstt-server.service
 systemctl disable dnstt-server.service
 rm -rf /etc/systemd/system/dnstt-server.service
-rm -rf /root/dn
 rm -rf /usr/bin/dnstt-server
 cd /usr/bin
 if [ ! -e "dnstt-server" ]; then
     wget https://raw.githubusercontent.com/MurRtriX/riX/main/ns/dnstt-server
 fi
 chmod 755 dnstt-server
-cd /root
-mkdir dn
-cd dn
 if [ -e "server.key" ]; then
     rm server.key
 fi
@@ -48,24 +44,21 @@ read -p "Enter your Nameserver : " ns
 ##Dnstt Auto Service
 cat <<EOF >/etc/systemd/system/dnstt-server.service
 [Unit]
-After=network.target nss-lookup.target
+Description=UDPGW Gateway Service by InFiNitY 
+After=network.target
 
 [Service]
-User=root
-WorkingDirectory=/root
-CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE CAP_NET_RAW
-AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE CAP_NET_RAW
-ExecStart=/root/dnstt/screen -dmS slowdns ./dnstt-linux-amd64 -udp :5300 -privkey-file /root/dnstt/server.key $ns 127.0.0.1:22
-ExecReload=/bin/kill -HUP $MAINPID
+Type=forking
+ExecStart=/usr/bin/screen -dmS dnstt-server /bin/dnstt-server -udp :5300 -privkey-file /usr/bin/server.key $ns 127.0.0.1:22
 Restart=always
-RestartSec=2
-LimitNOFILE=infinity
+User=root
 
 [Install]
 WantedBy=multi-user.target
 EOF
 ##Activate Dnstt
-screen -dmS slowdns ./dnstt-linux-amd64 -udp :5300 -privkey-file server.key $ns 127.0.0.1:22
+systemctl enable dnstt-server.service
+systemctl start dnstt-server.service
 echo -e "$NC"
 echo -e "$YELLOW"
 echo "           💚 DNSTT INSTALLED 💚      "
