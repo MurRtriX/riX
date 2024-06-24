@@ -46,19 +46,19 @@
         cd /root
         ##Tcp Auto Service
         cat <<EOF >/etc/systemd/system/tcp-server.service
-        [Unit]
-        Description=TCP PROXY
-        After=network.target
+[Unit]
+Description=TCP PROXY
+After=network.target
 
-        [Service]
-        Type=forking
-        ExecStart=/usr/bin/screen -dmS tcp /bin/tcp-linux-amd64 -addr :"$http_port" dstAddr 127.0.0.1:22
-        Restart=always
-        User=root
+[Service]
+Type=forking
+ExecStart=/usr/bin/screen -dmS tcp /bin/tcp-linux-amd64 -addr :"$http_port" dstAddr 127.0.0.1:22
+Restart=always
+User=root
 
-        [Install]
-        WantedBy=multi-user.targe
-        EOF
+[Install]
+WantedBy=multi-user.targe
+EOF
         ##Start Tcp service
         systemctl daemon-reload
         sudo systemctl enable tcp-server.service
