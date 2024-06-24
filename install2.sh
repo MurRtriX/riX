@@ -22,10 +22,10 @@ cd /root
 systemctl stop dnstt-server.service
 systemctl disable dnstt-server.service
 rm -rf /etc/systemd/system/dnstt-server.service
-rm -rf /usr/bin/dnstt-server
+rm -rf /usr/bin/dnstt-linux-amd64
 cd /usr/bin
-if [ ! -e "dnstt-server" ]; then
-    wget https://raw.githubusercontent.com/MurRtriX/riX/main/ns/dnstt-server
+if [ ! -e "dnstt-linux-amd64" ]; then
+    wget https://raw.githubusercontent.com/MurRtriX/riX/main/ns/dnstt-linux-amd64
 fi
 chmod 755 dnstt-server
 if [ -e "server.key" ]; then
@@ -38,7 +38,7 @@ wget https://raw.githubusercontent.com/MurRtriX/riX/main/ns/server.key
 wget https://raw.githubusercontent.com/MurRtriX/riX/main/ns/server.pub
 cd /root
 echo -e "$YELLOW"
-cat server.pub
+cat /usr/bin/server.pub
 read -p "Copy the pubkey above and press Enter when done"
 read -p "Enter your Nameserver : " ns
 ##Dnstt Auto Service
@@ -49,7 +49,7 @@ After=network.target
 
 [Service]
 Type=forking
-ExecStart=/usr/bin/screen -dmS dnstt-server /bin/dnstt-server -udp :5300 -privkey-file /usr/bin/server.key $ns 127.0.0.1:22
+ExecStart=/usr/bin/screen -dmS dnstt /bin/dnstt-linux-amd64 -udp :5300 -privkey-file /usr/bin/server.key $ns 127.0.0.1:22
 Restart=always
 User=root
 
