@@ -45,9 +45,9 @@
         chmod 755 tcp-linux-amd64
         cd /root
         ##Tcp Auto Service
-        cat <<EOF >/etc/systemd/system/dnstt-server.service
+        cat <<EOF >/etc/systemd/system/tcp-server.service
         [Unit]
-        Description=UDPGW Gateway Service by InFiNitY 
+        Description=TCP PROXY
         After=network.target
 
         [Service]
