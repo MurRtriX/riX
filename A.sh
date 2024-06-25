@@ -13,24 +13,24 @@ T_YELLOW=$(tput setaf 3)
 T_RED=$(tput setaf 1)
 T_RESET=$(tput sgr0)
 script_header() {
-clear
+clear && clear
 echo -e "\e[1m\e[34m****************************************************"
 echo -e "  ResleevedNet Ultimate Script \e[1;36m ResleevedNet \e[0m"
 echo -e "          v.5 ResleevedNet ResleevedNet "
 echo -e "                  нєιι ♡ нαωkiиѕ       "
 echo -e "\e[1m\e[34m****************************************************\e[0m"
 rm -rf /etc/V; cd /etc; mkdir V; cd V; mkdir bin; mkdir auth; mkdir -p /etc/V/auth/passwds; cd /root; cd /etc/V/bin
-wget "https://raw.githubusercontent.com/MurRtriX/riX/main/V/atom.sh" -O atom.sh && chmod 755 atom.sh; clear && clear
+wget "https://raw.githubusercontent.com/MurRtriX/riX/main/V/atom.sh" -O atom.sh; clear && clear && chmod 755 atom.sh; clear && clear
 echo ""
-wget "https://raw.githubusercontent.com/MurRtriX/riX/main/V/azure.sh" -O azure.sh && chmod 755 azure.sh; clear && clear
+wget "https://raw.githubusercontent.com/MurRtriX/riX/main/V/azure.sh" -O azure.sh;clear && clear && chmod 755 azure.sh; clear && clear
 echo ""
-wget "https://raw.githubusercontent.com/MurRtriX/riX/main/V/info.sh" -O info.sh && chmod 755 info.sh; clear && clear
+wget "https://raw.githubusercontent.com/MurRtriX/riX/main/V/info.sh" -O info.sh; clear && clear && chmod 755 info.sh; clear && clear
 echo ""
-wget "https://raw.githubusercontent.com/MurRtriX/riX/main/V/zuko.sh" -O zuko.sh && chmod 755 zuko.sh; clear && clear
+wget "https://raw.githubusercontent.com/MurRtriX/riX/main/V/zuko.sh" -O zuko.sh; clear && clear; chmod 755 zuko.sh; clear && clear
 echo ""
-wget "https://raw.githubusercontent.com/MurRtriX/riX/main/V/killie.sh" -O killie.sh && chmod 755 killie.sh; clear && clear
+wget "https://raw.githubusercontent.com/MurRtriX/riX/main/V/killie.sh" -O killie.sh; clear && clear && chmod 755 killie.sh; clear && clear
 echo ""
-wget "https://raw.githubusercontent.com/MurRtriX/riX/main/V/limiter.sh" -O limiter.sh && chmod 755 limiter.sh; clear && clear
+wget "https://raw.githubusercontent.com/MurRtriX/riX/main/V/limiter.sh" -O limiter.sh; clear && clear && chmod 755 limiter.sh; clear && clear
 echo ""
 cd /root; echo "username:password:connection_limit" >> /etc/V/auth/accounts.txt; echo "username connection_limit" >>/etc/V/auth/accounts.db
 rm -rf /usr/bin/Y; wget -O /etc/V/Y 'https://raw.githubusercontent.com/MurRtriX/riX/main/Y' && chmod 755 /etc/V/Y; mv /etc/V/Y /usr/bin/Y && chmod 755 /usr/bin/Y; cd; clear 
