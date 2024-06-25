@@ -125,7 +125,6 @@ echo ""
 echo "Exiting..."
 clear
 exit 0
-banner
 ;;
 *)
 echo ""
