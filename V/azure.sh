@@ -43,7 +43,6 @@ fi
 _userPass+="\n${_oP}:${user}"
 done <<<"${list_user}"
 tput sgr0
-echo ""
 if [ -a /tmp/exp ]; then
 rm /tmp/exp
 fi
@@ -96,7 +95,7 @@ exit 1
 else
 echo -ne "\033[1;32m"
 chage -E $sysdate $username
-echo "\033[1;36mUser Success $username new date: $udata \033[0m"
+echo -e "\033[1;36mUser Success $username new date: $udata \033[0m"
 echo -e "\033[1;36m────────────────────────────────────────────────────•\033[0m"
 exit 1
 fi
