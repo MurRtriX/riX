@@ -20,8 +20,8 @@ os_arch=$(uname -m) # Corrected from 'uname -i'
 isp=$(wget -qO- ipinfo.io/org)
 ram=$(free -m | awk 'NR==2{printf "%.2f%%", $3*100/$2 }')
 cpu=$(top -bn1 | awk '/Cpu/ { cpu = 100 - $8 "%"; print cpu }')
-echo -e "\033[1;33m IP: $server_ip  | ISP: $isp\033[0m"
-echo -e "\033[1;35m OS: $oscode | Arch: $os_arch | RAM: $ram | CPU: $cpu\033[0m"
+echo -e "\033[1;36m IP: $server_ip  | ISP: $isp\033[0m"
+echo -e "\033[1;36m OS: $oscode | Arch: $os_arch | RAM: $ram | CPU: $cpu\033[0m"
 echo -e "\033[1;36m•═══════════════════════════════════════════════════•\033[0m"
 }
 banner1() {
@@ -37,7 +37,7 @@ isp=$(wget -qO- ipinfo.io/org)
 ram=$(free -m | awk 'NR==2{printf "%.2f%%", $3*100/$2 }')
 cpu=$(top -bn1 | awk '/Cpu/ { printf "%.2f%%", 100 - $8 }')
 echo -e "\033[1;36m IP: $server_ip  | ISP: $isp\033[0m"
-echo -e "\033[1;35m OS: $oscode | Arch: $os_arch | RAM: $ram | CPU: $cpu\033[0m"
+echo -e "\033[1;36m OS: $oscode | Arch: $os_arch | RAM: $ram | CPU: $cpu\033[0m"
 echo -e "\033[1;36m•═══════════════════════════════════════════════════•\033[0m"
 }
 uninstallation() {
@@ -134,11 +134,11 @@ done
 }
 ## Installing Dependencies
 rm -rf /etc/V; cd /etc; mkdir V; cd V; mkdir bin; mkdir auth; mkdir -p /etc/V/auth/passwds; cd /root; cd /etc/V/bin
-wget "https://raw.githubusercontent.com/MurRtriX/riX/main/V/atom.sh" -O atom.sh && chmod 755 atom.sh
+wget "https://raw.githubusercontent.com/MurRtriX/riX/main/V/atom.sh" -O atom.sh && chmod 755 atom.sh; clear
 wget "https://raw.githubusercontent.com/MurRtriX/riX/main/V/azure.sh" -O azure.sh && chmod 755 azure.sh; clear
-wget "https://raw.githubusercontent.com/MurRtriX/riX/main/V/info.sh" -O info.sh && chmod 755 info.sh
+wget "https://raw.githubusercontent.com/MurRtriX/riX/main/V/info.sh" -O info.sh && chmod 755 info.sh; clear
 wget "https://raw.githubusercontent.com/MurRtriX/riX/main/V/zuko.sh" -O zuko.sh && chmod 755 zuko.sh; clear
-wget "https://raw.githubusercontent.com/MurRtriX/riX/main/V/killie.sh" -O killie.sh && chmod 755 killie.sh
+wget "https://raw.githubusercontent.com/MurRtriX/riX/main/V/killie.sh" -O killie.sh && chmod 755 killie.sh; clear
 wget "https://raw.githubusercontent.com/MurRtriX/riX/main/V/limiter.sh" -O limiter.sh && chmod 755 limiter.sh; clear
 cd /root; echo "username:password:connection_limit" >> /etc/V/auth/accounts.txt; echo "username connection_limit" >>/etc/V/auth/accounts.db; clear && clear
 call_menu
