@@ -47,7 +47,6 @@ sleep 5
 exit 1
 fi
 if [[ ! $(grep -c "^$user:" /etc/passwd) -eq 0 ]]; then
-echo -ne "\033[1;32m"
 read -p "New Password for $user : " password
 sizepass=${#password}
 if [[ ${#password} -lt 3 ]]; then
@@ -59,21 +58,19 @@ exit 1
 else
 ps x | grep $user | grep -v grep | grep -v pt > /tmp/rem
 if [[ $(grep -c $user /tmp/rem) -eq 0 ]]; then
-echo ""
-echo -e "\033[1;33mHashing password...\033[0m"
 hashed_password=$(openssl passwd -1 "$password")
 usermod --password "$hashed_password" "$user"
 echo -e "\033[1;36mPassword for $user Changed.\033[0m"
+echo ""
 echo "$password" > /etc/V/auth/passwds/$user
 exit 0
 else
 echo "Account logged in. Disconnecting..."
 pkill -f $user
-echo -e "\033[1;33mHashing password...\033[0m"
-echo ""
 hashed_password=$(openssl passwd -1 "$password")
 usermod --password "$hashed_password" "$user"
 echo -e "\033[1;36mPassword for $user Changed.\033[0m"
+echo ""
 echo "$password" > /etc/V/auth/passwds/$user
 exit 0
 fi
