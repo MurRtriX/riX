@@ -52,12 +52,12 @@ fi
 if [[ ! $(grep -c "^$user:" /etc/passwd) -eq 0 ]]; then
 echo ""
 echo -ne "\n\033[1;32mNew password for user \033[1;33m$user\033[1;37m: "
-read -p password
+read -p "Password: " password
 echo ""
 sizepass=${#password}
-if [[ $sizepass -lt 8 ]]; then
+if [[ ${#password} -lt 3 ]]; then
 echo ""
-echo "Empty or invalid password! Use at least 8 characters."
+echo "Empty or invalid password! Use at least 3 characters."
 sleep 1
 echo "Try again"
 sleep 5
