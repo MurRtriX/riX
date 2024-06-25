@@ -64,9 +64,7 @@ echo ""
 exit 1
 else
 if [[ $(grep -c /$username: /etc/passwd) -ne 0 ]]; then
-echo ""
-echo -e "\033[1;31m・EX:\033[1;33m(\033[1;32mDATE: \033[1;37mDay/Month/Year \033[1;33mOR \033[1;32mDAYS: \033[1;37m30\033[0m)"
-echo ""
+echo -e "\033[1;31mEX:\033[1;33m(\033[1;32mDATE: \033[1;37mDay/Month/Year \033[1;33mOR \033[1;32mDAYS: \033[1;37m30\033[0m)"
 echo -ne "\033[1;32mNew date or days for the user \033[1;33m$username: \033[1;37m"
 read inputdate
 if [[ "$(echo -e "$inputdate" | grep -c "/")" = "0" ]]; then
@@ -96,10 +94,10 @@ echo "For example: 01/01/2025"
 echo ""
 exit 1
 else
+echo -ne "\033[1;32m"
 chage -E $sysdate $username
-echo ""
-echo "・ User Success $username new date: $udata "
-echo ""
+echo "\033[1;36mUser Success $username new date: $udata \033[0m"
+echo -e "\033[1;36m────────────────────────────────────────────────────•\033[0m"
 exit 1
 fi
 else
