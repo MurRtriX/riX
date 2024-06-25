@@ -9,8 +9,8 @@ echo -e "\033[1;34m   ResleevedNet v.5 \033[0m  | \033[1;33m v.5 Release  | Resl
 echo -e "\033[1;36m╰═════════════════════════════════════════════════════╯\033[0m"
 }
 banner1
-echo -e "\033[1;33m  ⌯ Account Details\033[1;33m"
-echo -e "\033[1;36m•═══════════════════════════════════════════════════•\033[0m"
+echo -e "\033[1;33m  Account Details\033[1;33m"
+echo -e "\033[1;36m────────────────────────────────────────────────────•\033[0m"
 echo -e "\033[1;33m・Account    ・ Password     ・ limit    ・ validity \033[0m"
 echo ""
 [[ ! -e /bin/ver ]] && rm -rf /bin/menu
@@ -46,7 +46,7 @@ Passwords=$(printf '%-13s' "$passwds")
 Limit=$(printf '%-10s' "$lim")
 Data=$(printf '%-1s' "$data")
 echo -e "\033[1;33m$Users \033[1;37m$Passwords \033[1;37m$Limit \033[1;32m$Data\033[0m"
-echo -e "\033[0;34m・ ────────────────────────────────────────────────・ \033[0m"
+echo -e "\033[1;36m────────────────────────────────────────────────────•\033[0m"
 done
 echo ""
 _tuser=$(awk -F: '$3>=1000 {print $1}' /etc/passwd | grep -v nobody | wc -l)
