@@ -69,7 +69,7 @@ echo ""
 echo "Hashing password..."
 hashed_password=$(openssl passwd -1 "$password")
 echo ""
-echo -e "$hashed_password\n$hashed_password\n" | passwd --stdin "$user"
+usermod --password "$hashed_password" "$user"
 echo "Account password for $user has been changed."
 echo "$password" > /etc/V/auth/passwds/$user
 exit 0
@@ -80,7 +80,7 @@ pkill -f $user
 echo "Hashing password..."
 hashed_password=$(openssl passwd -1 "$password")
 echo ""
-echo -e "$hashed_password\n$hashed_password\n" | passwd --stdin "$user"
+usermod --password "$hashed_password" "$user"
 echo "Account password for $user has been changed."
 echo "$password" > /etc/V/auth/passwds/$user
 exit 0
