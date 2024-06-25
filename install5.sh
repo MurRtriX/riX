@@ -47,7 +47,6 @@ banner00
 echo "Please wait..."
 sleep 5
 rm -rf /etc/V
-rm -rf /usr/bin/Y
 while IFS= read -r username; do
 userdel -r "$username"
 done < <(grep -oP '^user[0-9]+:' /etc/passwd | cut -d: -f1)
