@@ -4,14 +4,14 @@ exit 1
 fi
 banner00() {
 clear
-figlet -k LinkLayer | lolcat
+figlet -k ResleevedNet | lolcat
 echo -e "\033[1;34m   ResleevedNet v.5 \033[0m  | \033[1;33m v.5 Release  | ResleevedNet \033[0m"
 echo -e "\033[1;36m╰═════════════════════════════════════════════════════╯\033[0m"
 echo ""
 }
 banner() {
 clear
-figlet -k LinkLayer | lolcat
+figlet -k ResleevedNet | lolcat
 echo -e "\033[1;34m   ResleevedNet v.5 \033[0m  | \033[1;33m v.5 Release  | ResleevedNet \033[0m"
 echo -e "\033[1;36m╰═════════════════════════════════════════════════════╯\033[0m"
 echo ""
@@ -28,7 +28,7 @@ echo -e "\033[1;36m•═══════════════════�
 }
 banner1() {
 clear
-figlet -k LinkLayer | lolcat
+figlet -k ResleevedNet | lolcat
 echo -e "\033[1;34m   ResleevedNet v.5 \033[0m  | \033[1;33m v.5 Release  | ResleevedNet \033[0m"
 echo -e "\033[1;36m╰═════════════════════════════════════════════════════╯\033[0m"
 echo ""
@@ -62,7 +62,7 @@ sleep 3
 echo "Uninstallation complete."
 }
 menu() {
-echo -e "\033[1;33m ResleevedNet Menu \033[0m"
+echo -e "\033[1;33m Manage ResleevedNet Users\033[0m"
 echo -e "\033[1;36m────────────────────────────────────────────────────•\033[0m"
 echo -e "\e[36m 01⎬╰┈➤ Create Account"
 echo -e "\e[36m 02⎬╰┈➤ Change Password"
