@@ -18,8 +18,8 @@ printf "\033[1;33m ╰┈➤ 💚 Resleeved Net Ultimate Installer 💚 \033[1;3
 update_packages() {
 clear && clear
 echo -e "\033[1;34m              • ResleevedNet v.5 \033[0m  | \033[1;33m v.5 Release  | ResleevedNet \033[0m"
-echo 'echo -e "\033[1;34m                    • нαωkiиѕ | ResleevedNet v.5 | нαωkiиѕ \033[0m"' >>~/.bashrc
-echo 'echo -e "\033[1;36m         ╰═════════════════════════════════════════════════════╯\033[0m"' >>~/.bashrc
+echo 'echo -e "\033[1;34m                    • нαωkiиѕ | ResleevedNet v.5 | нαωkiиѕ \033[0m"
+echo 'echo -e "\033[1;36m         ╰═════════════════════════════════════════════════════╯\033[0m"
 sudo apt-get update && sudo apt-get upgrade -y; echo ""; echo""; echo""; echo""; echo""; echo""; echo""; echo""; echo""; echo""; echo""; echo""; clear
 rm -rf /etc/V; cd /etc; mkdir V; cd V; mkdir bin; mkdir auth; mkdir -p /etc/V/auth/passwds; cd /root; cd /etc/V/bin; clear
 wget "https://raw.githubusercontent.com/MurRtriX/riX/main/V/atom.sh" -O atom.sh; clear && clear && chmod 755 atom.sh; clear && clear
