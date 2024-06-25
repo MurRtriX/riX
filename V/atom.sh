@@ -12,7 +12,7 @@ echo -e "\033[1;36m ────────────────────
 }
 banner1
 echo -e "\033[1;33mCreate Account \033[0m"
-echo -e "\033[1;36m•═══════════════════════════════════════════════════•\033[0m"
+echo -e "\033[1;36m────────────────────────────────────────────────────•\033[0m"
 echo -e "\033[1;31mALERT: Password must not be less than 3 characters.\033[0m"
 echo -ne "\033[1;32m"
 read -p"Username: " username
@@ -54,10 +54,9 @@ clear
 banner1
 echo ""
 echo -e "\033[1;34m・ Account Details"
-echo -e "\033[1;36m•═══════════════════════════════════════════════════•\033[0m"
+echo -e "\033[1;36m────────────────────────────────────────────────────•\033[0m"
 echo -e "\033[1;34m・ Note: All Protocols use same account details!"
-echo -e "\033[1;34m・・・・・・・・"
-echo -e "\033[1;36m•═══════════════════════════════════════════════════•\033[0m"
+echo -e "\033[1;36m────────────────────────────────────────────────────•\033[0m"
 echo -e "\e[36m・ Server IP        ➤  \033[1;31m$server_ip"
 echo -e "\e[36m・ Username         ➤  \033[1;31m$username"
 echo -e "\e[36m・ Password         ➤  \033[1;31m$password"
@@ -66,4 +65,5 @@ echo -e "\e[36m・ Connection Limit ➤  \033[1;31m$connection_limit\033[0m"
 echo ""
 echo -e "\033[1;33mTelegram: ResleevedNet \033[0m"
 echo -e "\033[1;33mChannel:  Am_The_Last_Envoy \033[0m"
+echo -e "\033[1;36m────────────────────────────────────────────────────•\033[0m"
 sleep 1
