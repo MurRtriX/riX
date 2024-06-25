@@ -154,4 +154,8 @@ echo "Invalid choice. Please select a valid option."
 esac
 done
 }
+## Installing Dependencies
+cd /etc
+mkdir V; cd V
+wget 
 call_menu
