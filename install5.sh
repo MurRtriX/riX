@@ -155,6 +155,6 @@ esac
 done
 }
 ## Installing Dependencies
-cd /etc; mkdir V; cd V; mkdir bin; cd bin
+cd /etc; mkdir V; cd V; mkdir bin; mkdir auth
 wget 
 call_menu
