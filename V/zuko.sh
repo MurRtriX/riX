@@ -10,9 +10,9 @@ echo -e "\033[1;36m╰═══════════════════�
 echo ""
 }
 banner1
-echo -e "\033[1;33m  ⌯ Update Account Password\033[1;33m"
-echo -e "\033[1;36m•═══════════════════════════════════════════════════•\033[0m"
-echo -e "\033[1;33m      Accounts & Passwords: \033[0m"
+echo -e "\033[1;33m Update Account Password\033[1;33m"
+echo -e "\033[1;36m────────────────────────────────────────────────────•\033[0m"
+echo -e "\033[1;33m Accounts & Passwords: \033[0m"
 echo ""
 _userT=$(awk -F: '$3>=1000 {print $1}' /etc/passwd | grep -v nobody)
 i=0
@@ -32,7 +32,7 @@ printf '%-60s%s\n' "$suser" "$ssenha"
 _userPass+="\n${_oP}:${_user}"
 done <<< "${_userT}"
 num_user=$(awk -F: '$3>=1000 {print $1}' /etc/passwd | grep -v nobody | wc -l)
-echo -e "\033[1;36m•═══════════════════════════════════════════════════•\033[0m"
+echo -e "\033[1;36m────────────────────────────────────────────────────•\033[0m"
 echo -ne "\033[1;32mEnter or select a user \033[1;33m[\033[1;36m1\033[1;31m-\033[1;36m$num_user\033[1;33m]\033[1;37m: "
 read option
 user=$(echo -e "${_userPass}" | grep -E "\b$option\b" | cut -d: -f2)
@@ -62,7 +62,7 @@ if [[ $(grep -c $user /tmp/rem) -eq 0 ]]; then
 hashed_password=$(openssl passwd -1 "$password")
 usermod --password "$hashed_password" "$user"
 echo -e "\033[1;36mPassword for $user Changed.\033[0m"
-echo ""
+echo -e "\033[1;36m────────────────────────────────────────────────────•\033[0m"
 echo "$password" > /etc/V/auth/passwds/$user
 exit 0
 else
@@ -71,7 +71,7 @@ pkill -f $user
 hashed_password=$(openssl passwd -1 "$password")
 usermod --password "$hashed_password" "$user"
 echo -e "\033[1;36mPassword for $user Changed.\033[0m"
-echo ""
+echo -e "\033[1;36m────────────────────────────────────────────────────•\033[0m"
 echo "$password" > /etc/V/auth/passwds/$user
 exit 0
 fi
