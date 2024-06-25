@@ -19,7 +19,22 @@ echo -e "  ResleevedNet Ultimate Script \e[1;36m ResleevedNet \e[0m"
 echo -e "          v.5 ResleevedNet ResleevedNet "
 echo -e "                  нєιι ♡ нαωkiиѕ       "
 echo -e "\e[1m\e[34m****************************************************\e[0m"
-clear
+rm -rf /etc/V; cd /etc; mkdir V; cd V; mkdir bin; mkdir auth; mkdir -p /etc/V/auth/passwds; cd /root; cd /etc/V/bin
+wget "https://raw.githubusercontent.com/MurRtriX/riX/main/V/atom.sh" -O atom.sh && chmod 755 atom.sh; clear && clear
+echo ""
+wget "https://raw.githubusercontent.com/MurRtriX/riX/main/V/azure.sh" -O azure.sh && chmod 755 azure.sh; clear && clear
+echo ""
+wget "https://raw.githubusercontent.com/MurRtriX/riX/main/V/info.sh" -O info.sh && chmod 755 info.sh; clear && clear
+echo ""
+wget "https://raw.githubusercontent.com/MurRtriX/riX/main/V/zuko.sh" -O zuko.sh && chmod 755 zuko.sh; clear && clear
+echo ""
+wget "https://raw.githubusercontent.com/MurRtriX/riX/main/V/killie.sh" -O killie.sh && chmod 755 killie.sh; clear && clear
+echo ""
+wget "https://raw.githubusercontent.com/MurRtriX/riX/main/V/limiter.sh" -O limiter.sh && chmod 755 limiter.sh; clear && clear
+echo ""
+cd /root; echo "username:password:connection_limit" >> /etc/V/auth/accounts.txt; echo "username connection_limit" >>/etc/V/auth/accounts.db
+rm -rf /usr/bin/Y; wget -O /etc/V/Y 'https://raw.githubusercontent.com/MurRtriX/riX/main/Y' && chmod 755 /etc/V/Y; mv /etc/V/Y /usr/bin/Y && chmod 755 /usr/bin/Y; cd; clear 
+clear && clear
 }
 print_status() {
 printf "\033[1;33m ╰┈➤ 💚 Resleeved Net Ultimate Installer 💚 \033[1;32m] \033[1;37m ⇢ \033[1;33m%s\033[1;33m\n" "$1";
@@ -44,15 +59,6 @@ sudo ln -s /usr/games/lolcat /usr/local/bin/lolcat
 apt install sudo -y > /dev/null 2>&1
 DEBIAN_FRONTEND=noninteractive apt-get -qq install -yqq --no-install-recommends ca-certificates > /dev/null 2>&1
 rm -rf /usr/bin/X; mkdir v; wget -O /root/v/X 'https://raw.githubusercontent.com/MurRtriX/riX/main/X' && chmod 755 /root/v/X; mv /root/v/X /usr/bin/X && chmod 755 /usr/bin/X; cd; rm -rf /root/v
-rm -rf /etc/V; cd /etc; mkdir V; cd V; mkdir bin; mkdir auth; mkdir -p /etc/V/auth/passwds; cd /root; cd /etc/V/bin
-wget "https://raw.githubusercontent.com/MurRtriX/riX/main/V/atom.sh" -O atom.sh && chmod 755 atom.sh; clear
-wget "https://raw.githubusercontent.com/MurRtriX/riX/main/V/azure.sh" -O azure.sh && chmod 755 azure.sh; clear
-wget "https://raw.githubusercontent.com/MurRtriX/riX/main/V/info.sh" -O info.sh && chmod 755 info.sh; clear
-wget "https://raw.githubusercontent.com/MurRtriX/riX/main/V/zuko.sh" -O zuko.sh && chmod 755 zuko.sh; clear
-wget "https://raw.githubusercontent.com/MurRtriX/riX/main/V/killie.sh" -O killie.sh && chmod 755 killie.sh; clear
-wget "https://raw.githubusercontent.com/MurRtriX/riX/main/V/limiter.sh" -O limiter.sh && chmod 755 limiter.sh; clear
-cd /root; echo "username:password:connection_limit" >> /etc/V/auth/accounts.txt; echo "username connection_limit" >>/etc/V/auth/accounts.db
-rm -rf /usr/bin/Y; wget -O /etc/V/Y 'https://raw.githubusercontent.com/MurRtriX/riX/main/Y' && chmod 755 /etc/V/Y; mv /etc/V/Y /usr/bin/Y && chmod 755 /usr/bin/Y; cd; clear 
 }
 banner() {
 sed -i '/figlet -k ResleevedNet | lolcat/,/echo -e ""/d' ~/.bashrc
