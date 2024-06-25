@@ -25,40 +25,6 @@ cpu=$(top -bn1 | awk '/Cpu/ { cpu = 100 - $8 "%"; print cpu }')
 echo -e "\033[1;36m IP: $server_ip  | ISP: $isp\033[0m"
 echo -e "\033[1;35m OS: $oscode | Arch: $os_arch | RAM: $ram | CPU: $cpu\033[0m"
 echo -e "\033[1;36m•═══════════════════════════════════════════════════•\033[0m"
-echo -e "\033[1;35m Active Protocols\033[0m  | \033[1;36mDomain ┈➤ $domainer\033[0m"
-declare -A protocol_ports0=(
-["http"]=80
-["httptls"]=443
-["httpdual"]=8000
-)
-declare -A protocol_ports1=(
-["tls"]=8001
-["http"]=8002
-["udp"]=36718
-)
-output0=""
-output1=""
-for protocol0 in "${!protocol_ports0[@]}"; do
-port0=${protocol_ports0[$protocol0]}
-output0+="• $protocol0 : $port0 | "
-done
-for protocol1 in "${!protocol_ports1[@]}"; do
-port1=${protocol_ports1[$protocol1]}
-output1+="• $protocol1 : $port1 | "
-done
-echo -e "\033[1;33m $output0\033[0m"
-echo -e "\033[1;36m ───────────────────────────────────────────────────•\033[0m"
-echo -e "\033[1;33m $output1\033[0m"
-echo -e "\033[1;36m•═══════════════════════════════════════════════════•\033[0m"
-obfs_key=$(cat /etc/M/cfg/obfs_key)
-service_state=$(systemctl is-active lnk-server.service 2>/dev/null)
-if [[ $service_state == "active" ]]; then
-service_status="\033[1;32mService: \033[0m\033[1;33m$service_state\033[0m"
-else
-service_status="\033[1;31mService: \033[0mDisabled"
-fi
-echo -e "\n\033[1;33m OBFS Key: \033[0m$obfs_key  | $service_status"
-echo -e "\033[1;36m ───────────────────────────────────────────────────•\033[0m"
 }
 banner1() {
 clear
@@ -75,16 +41,6 @@ cpu=$(top -bn1 | awk '/Cpu/ { printf "%.2f%%", 100 - $8 }')
 echo -e "\033[1;36m IP: $server_ip  | ISP: $isp\033[0m"
 echo -e "\033[1;35m OS: $oscode | Arch: $os_arch | RAM: $ram | CPU: $cpu\033[0m"
 echo -e "\033[1;36m•═══════════════════════════════════════════════════•\033[0m"
-echo -e "\033[1;35m Active Protocols \033[0m"
-obfs_key=$(cat /etc/M/cfg/obfs_key)
-service_state=$(systemctl is-active lnk-server.service 2>/dev/null)
-if [[ $service_state == "active" ]]; then
-service_status="\033[1;32mService: \033[0m\033[1;33m$service_state\033[0m"
-else
-service_status="\033[1;31mService: \033[0mDisabled"
-fi
-echo -e "\033[1;33m OBFS Key: \033[0m$obfs_key  | $service_status"
-echo -e "\033[1;36m ───────────────────────────────────────────────────•\033[0m"
 }
 uninstallation() {
 banner00
