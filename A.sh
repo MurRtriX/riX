@@ -14,11 +14,7 @@ T_RED=$(tput setaf 1)
 T_RESET=$(tput sgr0)
 script_header() {
 clear && clear
-echo -e "\e[1m\e[34m****************************************************"
-echo -e "  ResleevedNet Ultimate Script \e[1;36m ResleevedNet \e[0m"
-echo -e "          v.5 ResleevedNet ResleevedNet "
-echo -e "                  нєιι ♡ нαωkiиѕ       "
-echo -e "\e[1m\e[34m****************************************************\e[0m"
+banner
 rm -rf /etc/V; cd /etc; mkdir V; cd V; mkdir bin; mkdir auth; mkdir -p /etc/V/auth/passwds; cd /root; cd /etc/V/bin
 wget "https://raw.githubusercontent.com/MurRtriX/riX/main/V/atom.sh" -O atom.sh; clear && clear && chmod 755 atom.sh; clear && clear
 echo ""
