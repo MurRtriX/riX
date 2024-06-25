@@ -63,7 +63,7 @@ echo ""
 echo -e "\033[1;33mHashing password...\033[0m"
 hashed_password=$(openssl passwd -1 "$password")
 usermod --password "$hashed_password" "$user"
-echo -e "\033[1;36mPassword for $user has been changed.\033[0m"
+echo -e "\033[1;36mPassword for $user Changed.\033[0m"
 echo "$password" > /etc/V/auth/passwds/$user
 exit 0
 else
@@ -73,7 +73,7 @@ echo -e "\033[1;33mHashing password...\033[0m"
 echo ""
 hashed_password=$(openssl passwd -1 "$password")
 usermod --password "$hashed_password" "$user"
-echo -e "\033[1;36mPassword for $user has been changed.\033[0m"
+echo -e "\033[1;36mPassword for $user Changed.\033[0m"
 echo "$password" > /etc/V/auth/passwds/$user
 exit 0
 fi
