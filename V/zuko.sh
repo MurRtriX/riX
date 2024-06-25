@@ -59,7 +59,7 @@ exit 1
 else
 ps x | grep $user | grep -v grep | grep -v pt > /tmp/rem
 if [[ $(grep -c $user /tmp/rem) -eq 0 ]]; then
-echo -e "\033[1;33mHashing password...\033[0m"ord..."
+echo -e "\033[1;33mHashing password...\033[0m"
 hashed_password=$(openssl passwd -1 "$password")
 usermod --password "$hashed_password" "$user"
 echo -e "\033[1;36mPassword for $user has been changed.\033[0m"
