@@ -4,17 +4,15 @@ exit 1
 fi
 banner1() {
 clear
-figlet -k LinkLayer | lolcat
+figlet -k Resleeved | lolcat
 echo -e "\033[1;34m   ResleevedNet v.5 \033[0m  | \033[1;33m v.5 Release  | ResleevedNet \033[0m"
 echo -e "\033[1;36m╰═════════════════════════════════════════════════════╯\033[0m"
-echo ""
 }
 banner1
 echo -e "\033[1;33m  ⌯ Change Account Expiration Date\033[1;33m"
 echo -e "\033[1;36m•═══════════════════════════════════════════════════•\033[0m"
 echo -e "\033[1;33m・ Accounts & Expiration Date:\033[0m "
-echo ""
-database="/etc/M/layers/authy/accounts.db"
+database="/etc/V/auth/accounts.db"
 list_user=$(awk -F: '$3>=1000 {print $1}' /etc/passwd | grep -v nobody)
 i=0
 i=0
