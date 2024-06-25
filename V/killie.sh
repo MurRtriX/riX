@@ -11,11 +11,11 @@ echo ""
 }
 remove_user() {
 banner1
-echo -e "\033[1;33m  ⌯ Remove Account ⌯  \033[1;33m"
-echo -e "\033[1;36m•═══════════════════════════════════════════════════•\033[0m"
+echo -e "\033[1;33m Remove Account ⌯  \033[1;33m"
+echo -e "\033[1;36m────────────────────────────────────────────────────•\033[0m"
 echo ""
-echo -e "\033[1;33m・ List Of Accounts Available: \033[0m"
-echo -e "\033[1;36m•═══════════════════════════════════════════════════•\033[0m"
+echo -e "\033[1;33m List Of Accounts Available: \033[0m"
+echo -e "\033[1;36m────────────────────────────────────────────────────•\033[0m"
 _userT=$(awk -F: '$3>=1000 {print $1}' /etc/passwd | grep -v nobody)
 i=0
 unset _userPass
@@ -27,7 +27,7 @@ echo -e "\033[1;31m[\033[1;36m$i\033[1;31m] \033[1;37m- \033[1;32m$_username\033
 _userPass+="\n${_oP}:${_username}"
 done <<< "${_userT}"
 echo ""
-echo -e "\033[1;36m•═══════════════════════════════════════════════════•\033[0m"
+echo -e "\033[1;36m────────────────────────────────────────────────────•\033[0m"
 num_user=$(awk -F: '$3>=1000 {print $1}' /etc/passwd | grep -v nobody | wc -l)
 echo -ne "\033[1;32mEnter or select an account \033[1;33m[\033[1;36m1\033[1;31m-\033[1;36m$num_user\033[1;33m]\033[1;37m: "
 read option
