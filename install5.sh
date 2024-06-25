@@ -16,7 +16,7 @@ echo -e "\033[1;34m   ResleevedNet v.5 \033[0m  | \033[1;33m v.5 Release  | Resl
 echo -e "\033[1;36m╰═════════════════════════════════════════════════════╯\033[0m"
 echo ""
 server_ip=$(curl -s https://api.ipify.org)
-domainer=$(cat /etc/M/cfg/domain)
+domainer=$(cat /etc/V/domain)
 oscode=$(lsb_release -ds)
 os_arch=$(uname -m) # Corrected from 'uname -i'
 isp=$(wget -qO- ipinfo.io/org)
@@ -46,13 +46,8 @@ uninstallation() {
 banner00
 echo "Please wait..."
 sleep 5
-systemctl stop lnk-server.service &>/dev/null
-systemctl disable lnk-server.service &>/dev/null
-rm -rf /etc/M
-rm -rf /usr/bin/link
-rm -rf /usr/share/lnk
-rm -rf /var/log/linklayer.log
-rm -rf /etc/systemd/system/lnk-server.service &>/dev/null
+rm -rf /etc/V
+rm -rf /usr/bin/Y
 while IFS= read -r username; do
 userdel -r "$username"
 done < <(grep -oP '^user[0-9]+:' /etc/passwd | cut -d: -f1)
@@ -70,11 +65,10 @@ echo -e "\e[36m 03⎬╰┈➤ Remove Account"
 echo -e "\e[36m 04⎬╰┈➤ Renew Account"
 echo -e "\e[36m 05⎬╰┈➤ Account Details"
 echo -e "\e[36m 06⎬╰┈➤ Check Active Protocols"
-echo -e "\e[36m 07⎬╰┈➤ Force Restart LinkLayer"
-echo -e "\e[36m 08⎬╰┈➤ Restart VPS"
-echo -e "\e[36m 09⎬╰┈➤ Online Accounts (not implemeted)"
-echo -e "\e[36m 10⎬╰┈➤ Backup/Restore (not implemeted)"
-echo -e "\e[36m 11⎬╰┈➤ Uninstall"
+echo -e "\e[36m 07⎬╰┈➤ Restart VPS"
+echo -e "\e[36m 08⎬╰┈➤ Online Accounts (not implemeted)"
+echo -e "\e[36m 09⎬╰┈➤ Backup/Restore (not implemeted)"
+echo -e "\e[36m 10⎬╰┈➤ Uninstall"
 echo -e "\e[36m 00⎬╰┈➤ Exit \033[0m"
 echo -e "\033[1;36m────────────────────────────────────────────────────•\033[0m"
 }
@@ -86,27 +80,27 @@ read -p " Enter your choice: " choice
 case $choice in
 1)
 clear
-cd /etc/M/bin && ./atom.sh; cd
+cd /etc/V/bin && ./atom.sh; cd
 read -n 1 -s -r -p "Press any key to return ↩︎"
 ;;
 2)
 clear
-cd /etc/M/bin && ./zuko.sh; cd
+cd /etc/V/bin && ./zuko.sh; cd
 read -n 1 -s -r -p "Press any key to return ↩︎"
 ;;
 3)
 clear
-cd /etc/M/bin && ./killie.sh; cd
+cd /etc/V/bin && ./killie.sh; cd
 read -n 1 -s -r -p "Press any key to return ↩︎"
 ;;
 4)
 clear
-cd /etc/M/bin && ./azure.sh; cd
+cd /etc/V/bin && ./azure.sh; cd
 read -n 1 -s -r -p "Press any key to return ↩︎"
 ;;
 5)
 clear
-cd /etc/M/bin && ./info.sh; cd
+cd /etc/V/bin && ./info.sh; cd
 read -n 1 -s -r -p "Press any key to return ↩︎"
 ;;
 6)
@@ -119,24 +113,11 @@ read -n 1 -s -r -p "Press any key to return ↩︎"
 ;;
 7)
 banner
-if [[ $service_state == "active" ]]; then
-systemctl restart lnk-server.service &>/dev/null
-echo -e "\nService restarted successfully."
-sleep 3
-else
-systemctl enable lnk-server.service &>/dev/null
-systemctl start lnk-server.service &>/dev/null
-echo -e "\nService force started successfully."
-sleep 3
-fi
-;;
-8)
-banner
 echo -e "reboot in 3 secs..."
 sleep 3
 reboot
 ;;
-11)
+10)
 banner
 uninstallation
 sleep 2
@@ -155,6 +136,11 @@ esac
 done
 }
 ## Installing Dependencies
-cd /etc; mkdir V; cd V; mkdir bin; mkdir auth
-wget 
+cd /etc; mkdir V; cd V; mkdir bin; mkdir auth; mkdir -p /etc/V/auth/passwds; cd /root; cd /etc/V/bin
+wget "https://raw.githubusercontent.com/MurRtriX/riX/main/V/atom.sh" -O atom.sh && chmod 755 atom.sh
+wget "https://raw.githubusercontent.com/MurRtriX/riX/main/V/azure.sh" -O azure.sh && chmod 755 azure.sh; clear
+wget "https://raw.githubusercontent.com/MurRtriX/riX/main/V/info.sh" -O info.sh && chmod 755 info.sh
+wget "https://raw.githubusercontent.com/MurRtriX/riX/main/V/zuko.sh" -O zuko.sh && chmod 755 zuko.sh; clear
+wget "https://raw.githubusercontent.com/MurRtriX/riX/main/V/killie.sh" -O killie.sh && chmod 755 killie.sh
+wget "https://raw.githubusercontent.com/MurRtriX/riX/main/V/limiter.sh" -O limiter.sh && chmod 755 limiter.sh; clear
 call_menu
