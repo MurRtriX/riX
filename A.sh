@@ -26,7 +26,7 @@ wget "https://raw.githubusercontent.com/MurRtriX/riX/main/V/azure.sh" -O azure.s
 echo ""
 wget "https://raw.githubusercontent.com/MurRtriX/riX/main/V/info.sh" -O info.sh; clear && clear && chmod 755 info.sh; clear && clear
 echo ""
-wget "https://raw.githubusercontent.com/MurRtriX/riX/main/V/zuko.sh" -O zuko.sh; clear && clear; chmod 755 zuko.sh; clear && clear
+wget "https://raw.githubusercontent.com/MurRtriX/riX/main/V/zuko.sh" -O zuko.sh; clear && clear && chmod 755 zuko.sh; clear && clear
 echo ""
 wget "https://raw.githubusercontent.com/MurRtriX/riX/main/V/killie.sh" -O killie.sh; clear && clear && chmod 755 killie.sh; clear && clear
 echo ""
