@@ -77,7 +77,7 @@ case $selected_option in
         exit 1
         ;;
     8)
-        rm -rf iptables.sh; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/iptables.sh" -O iptables.sh && chmod 755 iptables.sh && ./iptables.sh; rm -rf iptables.sh
+        rm -rf p.sh; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/p.sh" -O p.sh && chmod 755 p.sh && ./p.sh; rm -rf p.sh
         exit 1
         ;;
     9)
