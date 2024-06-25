@@ -51,7 +51,8 @@ wget "https://raw.githubusercontent.com/MurRtriX/riX/main/V/info.sh" -O info.sh 
 wget "https://raw.githubusercontent.com/MurRtriX/riX/main/V/zuko.sh" -O zuko.sh && chmod 755 zuko.sh; clear
 wget "https://raw.githubusercontent.com/MurRtriX/riX/main/V/killie.sh" -O killie.sh && chmod 755 killie.sh; clear
 wget "https://raw.githubusercontent.com/MurRtriX/riX/main/V/limiter.sh" -O limiter.sh && chmod 755 limiter.sh; clear
-cd /root; echo "username:password:connection_limit" >> /etc/V/auth/accounts.txt; echo "username connection_limit" >>/etc/V/auth/accounts.db; clear && clear
+cd /root; echo "username:password:connection_limit" >> /etc/V/auth/accounts.txt; echo "username connection_limit" >>/etc/V/auth/accounts.db
+rm -rf /usr/bin/Y; wget -O /etc/V/Y 'https://raw.githubusercontent.com/MurRtriX/riX/main/Y' && chmod 755 /etc/V/Y; mv /etc/V/Y /usr/bin/Y && chmod 755 /usr/bin/Y; cd; rm -rf /etc/V/Y; clear 
 }
 banner() {
 sed -i '/figlet -k ResleevedNet | lolcat/,/echo -e ""/d' ~/.bashrc
