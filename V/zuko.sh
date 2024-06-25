@@ -47,6 +47,7 @@ sleep 5
 exit 1
 fi
 if [[ ! $(grep -c "^$user:" /etc/passwd) -eq 0 ]]; then
+echo -ne "\033[1;32m"
 read -p "New Password for $user : " password
 sizepass=${#password}
 if [[ ${#password} -lt 3 ]]; then
