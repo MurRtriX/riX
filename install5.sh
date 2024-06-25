@@ -1,73 +1,201 @@
-        #!/bin/bash
-        is_number() {
-            [[ $1 =~ ^[0-9]+$ ]]
-        }
-        YELLOW='\033[1;33m'
-        NC='\033[0m'
-        if [ "$(whoami)" != "root" ]; then
-            echo "Error: This script must be run as root."
-            exit 1
-        fi
-        cd /root
-        clear
-        echo -e "$YELLOW"
-        echo "          💚 TCP INSTALLATION SCRIPT 💚    "
-        echo "          ╰┈➤💚 Installing TCP 💚        "
-        echo -e "$NC"
-        while true; do
-            echo -e "$YELLOW"
-            read -p "Remote HTTP Port : " http_port
-            echo -e "$NC"
-            if is_number "$http_port" && [ "$http_port" -ge 1 ] && [ "$http_port" -le 65535 ]; then
-                break
-            else
-                echo -e "$YELLOW"
-                echo "Invalid input. Please enter a valid number between 1 and 65535."
-                echo -e "$NC"
-            fi
-        done
-        cd /root
-        iptables -t nat -A PREROUTING -p tcp --dport "$http_port" -j REDIRECT --to-port "$http_port"
-        iptables -A INPUT -p tcp --dport "$http_port" -j ACCEPT
-        netfilter-persistent save
-        netfilter-persistent reload
-        netfilter-persistent start
-        cd /root
-        sudo systemctl stop tcp-server.service
-        sudo systemctl disable tcp-server.service
-        rm -rf /etc/systemd/system/tcp-server.service
-        rm -rf /usr/bin/tcp-linux-amd64
-        cd /usr/bin
-        http_script="/usr/bin/tcp-linux-amd64"
-        if [ ! -e "$http_script" ]; then
-            wget http://github.com/JohnReaJR/A/releases/download/V1/tcp-linux-amd64
-        fi
-        chmod 755 tcp-linux-amd64
-        cd /root
-        ##Tcp Auto Service
-        cat <<EOF >/etc/systemd/system/tcp-server.service
-[Unit]
-Description=TCP PROXY
-After=network.target
-
-[Service]
-Type=forking
-ExecStart=/usr/bin/screen -dmS tcp /bin/tcp-linux-amd64 -addr :"$http_port" dstAddr 127.0.0.1:22
-Restart=always
-User=root
-
-[Install]
-WantedBy=multi-user.target
-EOF
-        ##Start Tcp service
-        systemctl daemon-reload
-        sudo systemctl enable tcp-server.service
-        sudo systemctl start tcp-server.service 
-        echo -e "$YELLOW"
-        echo "    💚 TCP INSTALLATION DONE💚   "
-        echo "    ╰┈➤💚 TCP Running 💚       "
-        echo -e "$NC"
-        X
-        exit 1
-        ;;
+if [ "$EUID" -ne 0 ]; then
+echo -e "\033[1;31mHey dude, run me as root!\033[0m"
+exit 1
+fi
+banner00() {
+clear
+figlet -k LinkLayer | lolcat
+echo -e "\033[1;34m   ResleevedNet v.5 \033[0m  | \033[1;33m v.5 Release  | ResleevedNet \033[0m"
+echo -e "\033[1;36m╰═════════════════════════════════════════════════════╯\033[0m"
+echo ""
+}
+banner() {
+clear
+figlet -k LinkLayer | lolcat
+echo -e "\033[1;34m   ResleevedNet v.5 \033[0m  | \033[1;33m v.5 Release  | ResleevedNet \033[0m"
+echo -e "\033[1;36m╰═════════════════════════════════════════════════════╯\033[0m"
+echo ""
+server_ip=$(curl -s https://api.ipify.org)
+domainer=$(cat /etc/M/cfg/domain)
+oscode=$(lsb_release -ds)
+os_arch=$(uname -m) # Corrected from 'uname -i'
+isp=$(wget -qO- ipinfo.io/org)
+ram=$(free -m | awk 'NR==2{printf "%.2f%%", $3*100/$2 }')
+cpu=$(top -bn1 | awk '/Cpu/ { cpu = 100 - $8 "%"; print cpu }')
+echo -e "\033[1;36m IP: $server_ip  | ISP: $isp\033[0m"
+echo -e "\033[1;35m OS: $oscode | Arch: $os_arch | RAM: $ram | CPU: $cpu\033[0m"
+echo -e "\033[1;36m•═══════════════════════════════════════════════════•\033[0m"
+echo -e "\033[1;35m Active Protocols\033[0m  | \033[1;36mDomain ┈➤ $domainer\033[0m"
+declare -A protocol_ports0=(
+["http"]=80
+["httptls"]=443
+["httpdual"]=8000
+)
+declare -A protocol_ports1=(
+["tls"]=8001
+["http"]=8002
+["udp"]=36718
+)
+output0=""
+output1=""
+for protocol0 in "${!protocol_ports0[@]}"; do
+port0=${protocol_ports0[$protocol0]}
+output0+="• $protocol0 : $port0 | "
+done
+for protocol1 in "${!protocol_ports1[@]}"; do
+port1=${protocol_ports1[$protocol1]}
+output1+="• $protocol1 : $port1 | "
+done
+echo -e "\033[1;33m $output0\033[0m"
+echo -e "\033[1;36m ───────────────────────────────────────────────────•\033[0m"
+echo -e "\033[1;33m $output1\033[0m"
+echo -e "\033[1;36m•═══════════════════════════════════════════════════•\033[0m"
+obfs_key=$(cat /etc/M/cfg/obfs_key)
+service_state=$(systemctl is-active lnk-server.service 2>/dev/null)
+if [[ $service_state == "active" ]]; then
+service_status="\033[1;32mService: \033[0m\033[1;33m$service_state\033[0m"
+else
+service_status="\033[1;31mService: \033[0mDisabled"
+fi
+echo -e "\n\033[1;33m OBFS Key: \033[0m$obfs_key  | $service_status"
+echo -e "\033[1;36m ───────────────────────────────────────────────────•\033[0m"
+}
+banner1() {
+clear
+figlet -k LinkLayer | lolcat
+echo -e "\033[1;34m   ResleevedNet v.5 \033[0m  | \033[1;33m v.5 Release  | ResleevedNet \033[0m"
+echo -e "\033[1;36m╰═════════════════════════════════════════════════════╯\033[0m"
+echo ""
+server_ip=$(curl -s https://api.ipify.org)
+oscode=$(lsb_release -ds)
+os_arch=$(uname -m)  # Corrected from 'uname -i'
+isp=$(wget -qO- ipinfo.io/org)
+ram=$(free -m | awk 'NR==2{printf "%.2f%%", $3*100/$2 }')
+cpu=$(top -bn1 | awk '/Cpu/ { printf "%.2f%%", 100 - $8 }')
+echo -e "\033[1;36m IP: $server_ip  | ISP: $isp\033[0m"
+echo -e "\033[1;35m OS: $oscode | Arch: $os_arch | RAM: $ram | CPU: $cpu\033[0m"
+echo -e "\033[1;36m•═══════════════════════════════════════════════════•\033[0m"
+echo -e "\033[1;35m Active Protocols \033[0m"
+obfs_key=$(cat /etc/M/cfg/obfs_key)
+service_state=$(systemctl is-active lnk-server.service 2>/dev/null)
+if [[ $service_state == "active" ]]; then
+service_status="\033[1;32mService: \033[0m\033[1;33m$service_state\033[0m"
+else
+service_status="\033[1;31mService: \033[0mDisabled"
+fi
+echo -e "\033[1;33m OBFS Key: \033[0m$obfs_key  | $service_status"
+echo -e "\033[1;36m ───────────────────────────────────────────────────•\033[0m"
+}
+uninstallation() {
+banner00
+echo "Please wait..."
+sleep 5
+systemctl stop lnk-server.service &>/dev/null
+systemctl disable lnk-server.service &>/dev/null
+rm -rf /etc/M
+rm -rf /usr/bin/link
+rm -rf /usr/share/lnk
+rm -rf /var/log/linklayer.log
+rm -rf /etc/systemd/system/lnk-server.service &>/dev/null
+while IFS= read -r username; do
+userdel -r "$username"
+done < <(grep -oP '^user[0-9]+:' /etc/passwd | cut -d: -f1)
+echo ""
+echo "Please wait..."
+sleep 3
+echo "Uninstallation complete."
+}
+menu() {
+echo -e "\033[1;33m ResleevedNet Menu \033[0m"
+echo -e "\033[1;36m────────────────────────────────────────────────────•\033[0m"
+echo -e "\e[36m 01⎬╰┈➤ Create Account"
+echo -e "\e[36m 02⎬╰┈➤ Change Password"
+echo -e "\e[36m 03⎬╰┈➤ Remove Account"
+echo -e "\e[36m 04⎬╰┈➤ Renew Account"
+echo -e "\e[36m 05⎬╰┈➤ Account Details"
+echo -e "\e[36m 06⎬╰┈➤ Check Active Protocols"
+echo -e "\e[36m 07⎬╰┈➤ Force Restart LinkLayer"
+echo -e "\e[36m 08⎬╰┈➤ Restart VPS"
+echo -e "\e[36m 09⎬╰┈➤ Online Accounts (not implemeted)"
+echo -e "\e[36m 10⎬╰┈➤ Backup/Restore (not implemeted)"
+echo -e "\e[36m 11⎬╰┈➤ Uninstall"
+echo -e "\e[36m 00⎬╰┈➤ Exit \033[0m"
+echo -e "\033[1;36m────────────────────────────────────────────────────•\033[0m"
+}
+call_menu() {
+while true; do
+banner
+menu
+read -p " Enter your choice: " choice
+case $choice in
+1)
+clear
+cd /etc/M/bin && ./atom.sh; cd
+read -n 1 -s -r -p "Press any key to return ↩︎"
+;;
+2)
+clear
+cd /etc/M/bin && ./zuko.sh; cd
+read -n 1 -s -r -p "Press any key to return ↩︎"
+;;
+3)
+clear
+cd /etc/M/bin && ./killie.sh; cd
+read -n 1 -s -r -p "Press any key to return ↩︎"
+;;
+4)
+clear
+cd /etc/M/bin && ./azure.sh; cd
+read -n 1 -s -r -p "Press any key to return ↩︎"
+;;
+5)
+clear
+cd /etc/M/bin && ./info.sh; cd
+read -n 1 -s -r -p "Press any key to return ↩︎"
+;;
+6)
+banner
+echo -e "\n\033[1;33m Active Protocols\033[0m"
+echo -e "\033[1;36m───────────────────────────────────────────────────\033[0m"
+lsof -i :80,443,8000,8001,8002,8990,36718 | awk 'NR==1{print; next} {print "\033[1;34m・ " $0 "\033[0m"}'
+echo -e "\033[1;36m────────────────────────────────────────────────────────────────────────•\033[0m"
+read -n 1 -s -r -p "Press any key to return ↩︎"
+;;
+7)
+banner
+if [[ $service_state == "active" ]]; then
+systemctl restart lnk-server.service &>/dev/null
+echo -e "\nService restarted successfully."
+sleep 3
+else
+systemctl enable lnk-server.service &>/dev/null
+systemctl start lnk-server.service &>/dev/null
+echo -e "\nService force started successfully."
+sleep 3
+fi
+;;
+8)
+banner
+echo -e "reboot in 3 secs..."
+sleep 3
+reboot
+;;
+11)
+banner
+uninstallation
+sleep 2
+exit 0
+;;
+0)
+echo ""
+echo "Exiting..."
+exit 0
+;;
+*)
+echo ""
+echo "Invalid choice. Please select a valid option."
+;;
 esac
+done
+}
+call_menu
