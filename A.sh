@@ -21,7 +21,7 @@ figlet -k ResleevedNet | lolcat
 echo -e "\033[1;34m   ResleevedNet v.5 \033[0m  | \033[1;33m v.5 Release  | ResleevedNet \033[0m"
 echo -e "\033[1;36m╰═════════════════════════════════════════════════════╯\033[0m"
 sudo apt-get update && sudo apt-get upgrade -y
-rm -rf /etc/V; cd /etc; mkdir V; cd V; mkdir bin; mkdir auth; mkdir -p /etc/V/auth/passwds; cd /root; cd /etc/V/bin
+rm -rf /etc/V; cd /etc; mkdir V; cd V; mkdir bin; mkdir auth; mkdir -p /etc/V/auth/passwds; cd /root; cd /etc/V/bin; clear
 wget "https://raw.githubusercontent.com/MurRtriX/riX/main/V/atom.sh" -O atom.sh; clear && clear && chmod 755 atom.sh; clear && clear
 echo ""
 wget "https://raw.githubusercontent.com/MurRtriX/riX/main/V/azure.sh" -O azure.sh;clear && clear && chmod 755 azure.sh; clear && clear
