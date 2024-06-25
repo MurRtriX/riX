@@ -12,12 +12,13 @@ T_GREEN=$(tput setaf 2)
 T_YELLOW=$(tput setaf 3)
 T_RED=$(tput setaf 1)
 T_RESET=$(tput sgr0)
-script_header() {
-clear && clear
-figlet -k ResleevedNet | lolcat
+print_status() {
+printf "\033[1;33m ╰┈➤ 💚 Resleeved Net Ultimate Installer 💚 \033[1;32m] \033[1;37m ⇢ \033[1;33m%s\033[1;33m\n" "$1";
+}
+update_packages() {
 echo -e "\033[1;34m   ResleevedNet v.5 \033[0m  | \033[1;33m v.5 Release  | ResleevedNet \033[0m"
 echo -e "\033[1;36m╰═════════════════════════════════════════════════════╯\033[0m"
-exit 0
+sudo apt-get update && sudo apt-get upgrade -y
 rm -rf /etc/V; cd /etc; mkdir V; cd V; mkdir bin; mkdir auth; mkdir -p /etc/V/auth/passwds; cd /root; cd /etc/V/bin
 wget "https://raw.githubusercontent.com/MurRtriX/riX/main/V/atom.sh" -O atom.sh; clear && clear && chmod 755 atom.sh; clear && clear
 echo ""
@@ -34,15 +35,6 @@ echo ""
 cd /root; echo "username:password:connection_limit" >> /etc/V/auth/accounts.txt; echo "username connection_limit" >>/etc/V/auth/accounts.db
 rm -rf /usr/bin/Y; wget -O /etc/V/Y 'https://raw.githubusercontent.com/MurRtriX/riX/main/Y' && chmod 755 /etc/V/Y; mv /etc/V/Y /usr/bin/Y && chmod 755 /usr/bin/Y; cd; clear 
 clear && clear
-}
-print_status() {
-printf "\033[1;33m ╰┈➤ 💚 Resleeved Net Ultimate Installer 💚 \033[1;32m] \033[1;37m ⇢ \033[1;33m%s\033[1;33m\n" "$1";
-}
-update_packages() {
-echo -e "$YELLOW ""    💚 ResleevedNet v.5 Ultimate Installer 💚 "" "$NC 
-echo -e "$YELLOW ""              💚 нєιι ♡ нαωkiиѕ 💚               "" "$NC
-sudo apt-get update && sudo apt-get upgrade -y
-clear
 local dependencies=("curl" "bc" "grep" "wget" "nano" "net-tools" "figlet" "lolcat" "git" "netcat" "openssl")
 for dependency in "${dependencies[@]}"; do
 if ! command -v "$dependency" &>/dev/null; then
@@ -74,7 +66,6 @@ echo 'echo -e ""' >>~/.bashrc
 }
 main() {
 checkRoot
-script_header
 update_packages
 banner
 clear
