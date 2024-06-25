@@ -12,9 +12,9 @@ banner1
 echo -e "\033[1;33m Change Account Expiration Date\033[1;33m"
 echo -e "\033[1;36m────────────────────────────────────────────────────•\033[0m"
 echo -e "\033[1;33m Accounts & Expiration Date:\033[0m "
+echo -e "\033[1;36m────────────────────────────────────────────────────•\033[0m"
 database="/etc/V/auth/accounts.db"
 list_user=$(awk -F: '$3>=1000 {print $1}' /etc/passwd | grep -v nobody)
-i=0
 i=0
 unset _userPass
 while read user; do
@@ -48,7 +48,8 @@ if [ -a /tmp/exp ]; then
 rm /tmp/exp
 fi
 num_user=$(awk -F: '$3>=1000 {print $1}' /etc/passwd | grep -v nobody | wc -l)
-echo -ne "\033[1;32m・ Enter or select a user \033[1;33m[\033[1;36m1\033[1;33m-\033[1;36m$num_user\033[1;33m]\033[1;37m: "
+echo -e "\033[1;36m────────────────────────────────────────────────────•\033[0m"
+echo -ne "\033[1;32mEnter or select a user \033[1;33m[\033[1;36m1\033[1;33m-\033[1;36m$num_user\033[1;33m]\033[1;37m: "
 read option
 if [[ -z $option ]]; then
 echo ""
@@ -66,7 +67,7 @@ if [[ $(grep -c /$username: /etc/passwd) -ne 0 ]]; then
 echo ""
 echo -e "\033[1;31m・EX:\033[1;33m(\033[1;32mDATE: \033[1;37mDay/Month/Year \033[1;33mOR \033[1;32mDAYS: \033[1;37m30\033[0m)"
 echo ""
-echo -ne "\033[1;32m・ New date or days for the user \033[1;33m$username: \033[1;37m"
+echo -ne "\033[1;32mNew date or days for the user \033[1;33m$username: \033[1;37m"
 read inputdate
 if [[ "$(echo -e "$inputdate" | grep -c "/")" = "0" ]]; then
 udata=$(date "+%d/%m/%Y" -d "+$inputdate days")
