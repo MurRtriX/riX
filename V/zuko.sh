@@ -32,17 +32,14 @@ printf '%-60s%s\n' "$suser" "$ssenha"
 _userPass+="\n${_oP}:${_user}"
 done <<< "${_userT}"
 num_user=$(awk -F: '$3>=1000 {print $1}' /etc/passwd | grep -v nobody | wc -l)
-echo ""
 echo -e "\033[1;36m•═══════════════════════════════════════════════════•\033[0m"
-echo -ne "\033[1;32m  Enter or select a user \033[1;33m[\033[1;36m1\033[1;31m-\033[1;36m$num_user\033[1;33m]\033[1;37m: "
+echo -ne "\033[1;32mEnter or select a user \033[1;33m[\033[1;36m1\033[1;31m-\033[1;36m$num_user\033[1;33m]\033[1;37m: "
 read option
 user=$(echo -e "${_userPass}" | grep -E "\b$option\b" | cut -d: -f2)
 if [[ -z $option ]]; then
-echo ""
 echo "Empty or invalid field!"
 exit 1
 elif [[ -z $user ]]; then
-echo ""
 echo "You entered an empty or invalid name!"
 sleep 1
 echo "Try again"
@@ -50,13 +47,10 @@ sleep 5
 exit 1
 fi
 if [[ ! $(grep -c "^$user:" /etc/passwd) -eq 0 ]]; then
-echo ""
 echo -ne "\033[1;32m"
 read -p "New Password for $user : " password
-echo ""
 sizepass=${#password}
 if [[ ${#password} -lt 3 ]]; then
-echo ""
 echo "Empty or invalid password! Use at least 3 characters."
 sleep 1
 echo "Try again"
@@ -65,23 +59,19 @@ exit 1
 else
 ps x | grep $user | grep -v grep | grep -v pt > /tmp/rem
 if [[ $(grep -c $user /tmp/rem) -eq 0 ]]; then
-echo ""
-echo "Hashing password..."
+echo -e "\033[1;33mHashing password...\033[0m"ord..."
 hashed_password=$(openssl passwd -1 "$password")
-echo ""
 usermod --password "$hashed_password" "$user"
-echo "Account password for $user has been changed."
+echo -e "\033[1;36mPassword for $user has been changed.\033[0m"
 echo "$password" > /etc/V/auth/passwds/$user
 exit 0
 else
-echo ""
 echo "Account logged in. Disconnecting..."
 pkill -f $user
-echo "Hashing password..."
+echo -e "\033[1;33mHashing password...\033[0m"
 hashed_password=$(openssl passwd -1 "$password")
-echo ""
 usermod --password "$hashed_password" "$user"
-echo "Account password for $user has been changed."
+echo -e "\033[1;36mPassword for $user has been changed.\033[0m"
 echo "$password" > /etc/V/auth/passwds/$user
 exit 0
 fi
