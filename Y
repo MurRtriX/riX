@@ -124,6 +124,7 @@ exit 0
 echo ""
 echo "Exiting..."
 clear
+X
 exit 0
 ;;
 *)
