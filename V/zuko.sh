@@ -52,7 +52,7 @@ fi
 if [[ ! $(grep -c "^$user:" /etc/passwd) -eq 0 ]]; then
 echo ""
 echo -ne "\033[1;32m"
-read -p "echo -ne ""\n\033[1;32mNew password for user \033[1;33m$user\033[1;37m: """ password
+read -p "New Password for $user : " password
 echo ""
 sizepass=${#password}
 if [[ ${#password} -lt 3 ]]; then
