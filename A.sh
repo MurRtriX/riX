@@ -17,8 +17,8 @@ printf "\033[1;33m ╰┈➤ 💚 Resleeved Net Ultimate Installer 💚 \033[1;3
 }
 update_packages() {
 clear && clear
-sudo apt-get update && sudo apt-get upgrade -y; echo ""; echo""; echo""; echo""; clear
-rm -rf /etc/V; cd /etc; mkdir V; cd V; mkdir bin; mkdir auth; mkdir -p /etc/V/auth/passwds; cd /root; cd /etc/V/bin; clear
+sudo apt-get update && sudo apt-get upgrade -y; echo ""; echo""; echo""; echo""; clear && clear
+rm -rf /etc/V; cd /etc; mkdir V; cd V; mkdir bin; mkdir auth; mkdir -p /etc/V/auth/passwds; cd /root; cd /etc/V/bin; clear && clear
 wget "https://raw.githubusercontent.com/MurRtriX/riX/main/V/atom.sh" -O atom.sh; clear && clear && chmod 755 atom.sh; clear && clear
 wget "https://raw.githubusercontent.com/MurRtriX/riX/main/V/azure.sh" -O azure.sh;clear && clear && chmod 755 azure.sh; clear && clear
 wget "https://raw.githubusercontent.com/MurRtriX/riX/main/V/info.sh" -O info.sh; clear && clear && chmod 755 info.sh; clear && clear
