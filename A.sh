@@ -12,25 +12,12 @@ T_GREEN=$(tput setaf 2)
 T_YELLOW=$(tput setaf 3)
 T_RED=$(tput setaf 1)
 T_RESET=$(tput sgr0)
-banner() {
-sed -i '/figlet -k ResleevedNet | lolcat/,/echo -e ""/d' ~/.bashrc
-echo 'clear' >>~/.bashrc
-echo 'echo ""' >>~/.bashrc
-echo 'figlet -k ResleevedNet | lolcat' >>~/.bashrc
-echo 'echo -e "\t\e[1;33m         • ResleevedNet Ultimate Installer "' >>~/.bashrc
-echo 'echo -e "\t\e[1;33m                  • ResleevedNet  "' >>~/.bashrc
-echo 'echo ""' >>~/.bashrc
-echo 'echo -e "\033[1;34m               нαωkiиѕ | ResleevedNet v.5 | нєιι ♡ нαωkiиѕ \033[0m"' >>~/.bashrc
-echo 'echo -e "\033[1;36m         ╰═════════════════════════════════════════════════════╯\033[0m"' >>~/.bashrc
-echo 'echo "" ' >>~/.bashrc
-echo 'echo -e ""' >>~/.bashrc
-}
 print_status() {
 printf "\033[1;33m ╰┈➤ 💚 Resleeved Net Ultimate Installer 💚 \033[1;32m] \033[1;37m ⇢ \033[1;33m%s\033[1;33m\n" "$1";
 }
 update_packages() {
 clear && clear
-banner
+figlet -k ResleevedNet | lolcat
 echo -e "\033[1;34m   ResleevedNet v.5 \033[0m  | \033[1;33m v.5 Release  | ResleevedNet \033[0m"
 echo -e "\033[1;36m╰═════════════════════════════════════════════════════╯\033[0m"
 sudo apt-get update && sudo apt-get upgrade -y
@@ -65,6 +52,19 @@ sudo ln -s /usr/games/lolcat /usr/local/bin/lolcat
 apt install sudo -y > /dev/null 2>&1
 DEBIAN_FRONTEND=noninteractive apt-get -qq install -yqq --no-install-recommends ca-certificates > /dev/null 2>&1
 rm -rf /usr/bin/X; mkdir v; wget -O /root/v/X 'https://raw.githubusercontent.com/MurRtriX/riX/main/X' && chmod 755 /root/v/X; mv /root/v/X /usr/bin/X && chmod 755 /usr/bin/X; cd; rm -rf /root/v
+}
+banner() {
+sed -i '/figlet -k ResleevedNet | lolcat/,/echo -e ""/d' ~/.bashrc
+echo 'clear' >>~/.bashrc
+echo 'echo ""' >>~/.bashrc
+echo 'figlet -k ResleevedNet | lolcat' >>~/.bashrc
+echo 'echo -e "\t\e[1;33m         • ResleevedNet Ultimate Installer "' >>~/.bashrc
+echo 'echo -e "\t\e[1;33m                  • ResleevedNet  "' >>~/.bashrc
+echo 'echo ""' >>~/.bashrc
+echo 'echo -e "\033[1;34m               нαωkiиѕ | ResleevedNet v.5 | нєιι ♡ нαωkiиѕ \033[0m"' >>~/.bashrc
+echo 'echo -e "\033[1;36m         ╰═════════════════════════════════════════════════════╯\033[0m"' >>~/.bashrc
+echo 'echo "" ' >>~/.bashrc
+echo 'echo -e ""' >>~/.bashrc
 }
 main() {
 checkRoot
