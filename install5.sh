@@ -4,31 +4,29 @@ exit 1
 fi
 banner00() {
 clear
-figlet -k ResleevedNet | lolcat
+figlet -k Resleeved | lolcat
 echo -e "\033[1;34m   ResleevedNet v.5 \033[0m  | \033[1;33m v.5 Release  | ResleevedNet \033[0m"
 echo -e "\033[1;36m╰═════════════════════════════════════════════════════╯\033[0m"
 echo ""
 }
 banner() {
 clear
-figlet -k ResleevedNet | lolcat
+figlet -k Resleeved | lolcat
 echo -e "\033[1;34m   ResleevedNet v.5 \033[0m  | \033[1;33m v.5 Release  | ResleevedNet \033[0m"
 echo -e "\033[1;36m╰═════════════════════════════════════════════════════╯\033[0m"
-echo ""
 server_ip=$(curl -s https://api.ipify.org)
-domainer=$(cat /etc/V/domain)
 oscode=$(lsb_release -ds)
 os_arch=$(uname -m) # Corrected from 'uname -i'
 isp=$(wget -qO- ipinfo.io/org)
 ram=$(free -m | awk 'NR==2{printf "%.2f%%", $3*100/$2 }')
 cpu=$(top -bn1 | awk '/Cpu/ { cpu = 100 - $8 "%"; print cpu }')
-echo -e "\033[1;36m IP: $server_ip  | ISP: $isp\033[0m"
+echo -e "\033[1;33m IP: $server_ip  | ISP: $isp\033[0m"
 echo -e "\033[1;35m OS: $oscode | Arch: $os_arch | RAM: $ram | CPU: $cpu\033[0m"
 echo -e "\033[1;36m•═══════════════════════════════════════════════════•\033[0m"
 }
 banner1() {
 clear
-figlet -k ResleevedNet | lolcat
+figlet -k Resleeved | lolcat
 echo -e "\033[1;34m   ResleevedNet v.5 \033[0m  | \033[1;33m v.5 Release  | ResleevedNet \033[0m"
 echo -e "\033[1;36m╰═════════════════════════════════════════════════════╯\033[0m"
 echo ""
