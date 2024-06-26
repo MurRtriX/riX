@@ -23,7 +23,7 @@ _oP=$i
 [[ $i == [1-9] ]] && i=0$i && oP+=" 0$i"
 expire="$(chage -l $user | grep -E "Account expires" | cut -d ' ' -f3-)"
 if [[ $expire == "never" ]]; then
-echo -e "\033[1;32m(\033[1;36m$i\033[1;32m) \033[1;37m \033[1;32m$user                             \033[1;36mUnlimited     \033[1;32mValid\033[0m"
+echo -e "\033[1;32m(\033[1;36m$i\033[1;32m) \033[1;37m \033[1;32m$user\033[0m"
 else
 databr="$(date -d "$expire" +"%Y%m%d")"
 hoje="$(date -d today +"%Y%m%d")"
