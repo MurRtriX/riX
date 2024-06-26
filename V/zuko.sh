@@ -7,13 +7,12 @@ clear
 figlet -k Resleeved | lolcat
 echo -e "\033[1;34m   ResleevedNet v.5 \033[0m  | \033[1;33m v.5 Release  | ResleevedNet \033[0m"
 echo -e "\033[1;36m╰═════════════════════════════════════════════════════╯\033[0m"
-echo ""
 }
 banner1
 echo -e "\033[1;33m Update Account Password\033[1;33m"
 echo -e "\033[1;36m────────────────────────────────────────────────────•\033[0m"
 echo -e "\033[1;33m Accounts & Passwords: \033[0m"
-echo ""
+echo -e "\033[1;36m────────────────────────────────────────────────────•\033[0m"
 _userT=$(awk -F: '$3>=1000 {print $1}' /etc/passwd | grep -v nobody)
 i=0
 unset _userPass
@@ -26,8 +25,8 @@ _senha="$(cat /etc/V/auth/passwds/$_user)"
 else
 _senha='Null'
 fi
-suser=$(echo -e "\033[1;31m[\033[1;36m$i\033[1;31m] \033[1;37m- \033[1;32m$_user\033[0m")
-ssenha=$(echo -e "\033[1;33mPassword\033[1;37m: $_senha")
+suser=$(echo -e "\033[1;32m[\033[1;36m$i\033[1;32m] \033[1;37m \033[1;32m$_user\033[0m")
+ssenha=$(echo -e "\033[1;36mPassword\033[1;32m: $_senha")
 printf '%-60s%s\n' "$suser" "$ssenha"
 _userPass+="\n${_oP}:${_user}"
 done <<< "${_userT}"
