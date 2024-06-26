@@ -9,7 +9,7 @@ echo -e "\033[1;34m   ResleevedNet v.5 \033[0m  | \033[1;33m v.5 Release  | Resl
 echo -e "\033[1;36m╰═════════════════════════════════════════════════════╯\033[0m"
 }
 banner1
-echo -e "\033[1;33m Account Details\033[1;33m"
+echo -e "\033[1;33m ResleevedNet v.5 Online Accounts\033[1;33m"
 echo -e "\033[1;36m────────────────────────────────────────────────────•\033[0m"
 echo -e "\033[1;36m Account Online      Password     Limit     Validity \033[0m"
 echo -e "\033[1;36m────────────────────────────────────────────────────•\033[0m"
