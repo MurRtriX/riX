@@ -13,7 +13,6 @@ echo -e "\033[1;33m Account Details\033[1;33m"
 echo -e "\033[1;36m────────────────────────────────────────────────────•\033[0m"
 echo -e "\033[1;36m Account Online      Password     Limit     Validity \033[0m"
 echo -e "\033[1;36m────────────────────────────────────────────────────•\033[0m"
-echo ""
 [[ ! -e /bin/ver ]] && rm -rf /bin/menu
 for users in `awk -F : '$3 > 900 { print $1 }' /etc/passwd |sort |grep -v "nobody" |grep -vi polkitd |grep -vi system- |grep -v "systemd-coredump" |grep -v "snap_daemon" |grep -v "ubuntu" |grep -v "lxd" |grep -v "core"`
 do
@@ -46,7 +45,7 @@ Users=$(printf ' %-15s' "$users")
 Passwords=$(printf '%-13s' "$passwds")
 Limit=$(printf '%-10s' "$lim")
 Data=$(printf '%-1s' "$data")
-echo -e "\033[1;32m$Users \033[1;32m     $Passwords \033[1;32m$Limit \033[1;32m$Data\033[0m"
+echo -e "\033[1;32m$Users \033[1;32m      $Passwords\033[1;32m$Limit\033[1;32m$Data\033[0m"
 echo -e "\033[1;36m────────────────────────────────────────────────────•\033[0m"
 done
 _tuser=$(awk -F: '$3>=1000 {print $1}' /etc/passwd | grep -v nobody | wc -l)
