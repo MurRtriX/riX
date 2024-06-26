@@ -25,14 +25,14 @@ _senha="$(cat /etc/V/auth/passwds/$_user)"
 else
 _senha='Null'
 fi
-suser=$(echo -e "\033[1;32m[\033[1;36m$i\033[1;32m] \033[1;37m \033[1;32m$_user\033[0m")
+suser=$(echo -e "\033[1;32m(\033[1;36m$i\033[1;32m) \033[1;37m \033[1;32m$_user\033[0m")
 ssenha=$(echo -e "\033[1;36mPassword\033[1;32m: $_senha")
 printf '%-60s%s\n' "$suser" "$ssenha"
 _userPass+="\n${_oP}:${_user}"
 done <<< "${_userT}"
 num_user=$(awk -F: '$3>=1000 {print $1}' /etc/passwd | grep -v nobody | wc -l)
 echo -e "\033[1;36m────────────────────────────────────────────────────•\033[0m"
-echo -ne "\033[1;32mEnter or select a user \033[1;33m[\033[1;36m1\033[1;31m-\033[1;36m$num_user\033[1;33m]\033[1;37m: "
+echo -ne "\033[1;32mEnter or select a user \033[1;33m(\033[1;36m1\033[1;32m-\033[1;36m$num_user\033[1;33m)\033[1;37m: "
 read option
 user=$(echo -e "${_userPass}" | grep -E "\b$option\b" | cut -d: -f2)
 if [[ -z $option ]]; then
