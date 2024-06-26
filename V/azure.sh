@@ -28,13 +28,13 @@ else
 databr="$(date -d "$expire" +"%Y%m%d")"
 hoje="$(date -d today +"%Y%m%d")"
 if [ $hoje -ge $databr ]; then
-_user=$(echo -e "\033[1;31m[\033[1;36m$i\033[1;31m] \033[1;37m- \033[1;32m$user\033[1;37m")
+_user=$(echo -e "\033[1;32m(\033[1;36m$i\033[1;32m) \033[1;37m \033[1;32m$user\033[1;37m")
 datanormal="$(echo -e "\033[1;31m$(date -d"$expire" '+%d/%m/%Y')")"
 expired=$(echo -e "\033[1;31m・ Expired\033[0m")
 printf '%-62s%-20s%s\n' "$_user" "$datanormal" "$expired"
 echo "exp" >/tmp/exp
 else
-_user=$(echo -e "\033[1;31m[\033[1;36m$i\033[1;31m] \033[1;37m- \033[1;32m$user\033[1;37m")
+_user=$(echo -e "\033[1;32m(\033[1;36m$i\033[1;32m) \033[1;37m \033[1;32m$user\033[1;37m")
 datanormal="$(echo -e "\033[1;33m$(date -d"$expire" '+%d/%m/%Y')")"
 ative=$(echo -e "\033[1;32mValid\033[0m")
 printf '%-62s%-20s%s\n' "$_user" "$datanormal" "$ative"
@@ -63,7 +63,7 @@ echo ""
 exit 1
 else
 if [[ $(grep -c /$username: /etc/passwd) -ne 0 ]]; then
-echo -e "\033[1;36mEX:\033[1;33m(\033[1;32mDATE: \033[1;37mDay/Month/Year \033[1;33mOR \033[1;32mDAYS: \033[1;37m30\033[0m)"
+echo -e "\033[1;36mEX:\033[1;33m(\033[1;32mDATE: \033[1;37mDay/Month/Year \033[1;33mOR \033[1;32mDAYS: \033[1;37m30)\033[0m"
 echo -ne "\033[1;32mNew date or days for the user \033[1;33m$username: \033[1;37m"
 read inputdate
 if [[ "$(echo -e "$inputdate" | grep -c "/")" = "0" ]]; then
