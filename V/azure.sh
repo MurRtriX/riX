@@ -23,20 +23,20 @@ _oP=$i
 [[ $i == [1-9] ]] && i=0$i && oP+=" 0$i"
 expire="$(chage -l $user | grep -E "Account expires" | cut -d ' ' -f3-)"
 if [[ $expire == "never" ]]; then
-echo -e "\033[1;32m(\033[1;36m$i\033[1;32m) \033[1;37m \033[1;32m$user       \033[1;36m00/00/0000     S/DATE\033[0m"
+echo -e "\033[1;32m(\033[1;36m$i\033[1;32m) \033[1;37m \033[1;32m$user                             \033[1;36mUnlimited     \033[1;32mValid\033[0m"
 else
 databr="$(date -d "$expire" +"%Y%m%d")"
 hoje="$(date -d today +"%Y%m%d")"
 if [ $hoje -ge $databr ]; then
 _user=$(echo -e "\033[1;32m(\033[1;36m$i\033[1;32m) \033[1;37m \033[1;32m$user\033[1;37m")
-datanormal="$(echo -e "\033[1;31m$(date -d"$expire" '+%d/%m/%Y')")"
+datanormal="$(echo -e "\033[1;36m$(date -d"$expire" '+%d/%m/%Y')")"
 expired=$(echo -e "\033[1;31m・ Expired\033[0m")
 printf '%-62s%-20s%s\n' "$_user" "$datanormal" "$expired"
 echo "exp" >/tmp/exp
 else
 _user=$(echo -e "\033[1;32m(\033[1;36m$i\033[1;32m) \033[1;37m \033[1;32m$user\033[1;37m")
-datanormal="$(echo -e "\033[1;33m$(date -d"$expire" '+%d/%m/%Y')")"
-ative=$(echo -e "\033[1;32mValid\033[0m")
+datanormal="$(echo -e "\033[1;36m$(date -d"$expire" '+%d/%m/%Y')")"
+ative=$(echo -e "\033[1;32m Valid\033[0m")
 printf '%-62s%-20s%s\n' "$_user" "$datanormal" "$ative"
 fi
 fi
