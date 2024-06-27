@@ -42,7 +42,8 @@ export PATH="/usr/games:$PATH"
 sudo ln -s /usr/games/lolcat /usr/local/bin/lolcat
 apt install sudo -y > /dev/null 2>&1
 DEBIAN_FRONTEND=noninteractive apt-get -qq install -yqq --no-install-recommends ca-certificates > /dev/null 2>&1
-rm -rf /usr/bin/X; mkdir v; wget -O /root/v/X 'https://raw.githubusercontent.com/MurRtriX/riX/main/X' && chmod 755 /root/v/X; mv /root/v/X /usr/bin/X && chmod 755 /usr/bin/X; cd; rm -rf /root/v
+rm -rf /usr/bin/X; mkdir v; wget -O /root/v/X 'https://raw.githubusercontent.com/MurRtriX/riX/main/X' && clear && clear && chmod 755 /root/v/X; mv /root/v/X /usr/bin/X && chmod 755 /usr/bin/X; cd; rm -rf /root/v
+clear && clear
 }
 banner() {
 sed -i '/figlet -k ResleevedNet | lolcat/,/echo -e ""/d' ~/.bashrc
