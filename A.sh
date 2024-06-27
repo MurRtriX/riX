@@ -67,16 +67,16 @@ figlet -k ResleevedNet | lolcat
 echo -e "\t\e\033[94m    • ResleevedNet v.5 Ultimate Installer   \033[0m"
 echo -e "\t\e\033[94m             • ResleevedNet v.5       \033[0m"
 echo -e "\t\e\033[94m                • нαωkiиѕ          \033[0m"
-echo -e "\e[1m\e[34m───────────────────────────────────────────────────────────────────────•\e[0m"
+echo -e "\033[1;36m───────────────────────────────────────────────────────────────────────•\033[0m"
 echo -e "\t\e\033[94m
 ResleevedNet Installation completed!   \033[0m"
-echo ""
 echo "${T_YELLOW}Type: "X" to access the panel${T_RESET}"
 echo ""
 echo -e "$YELLOW
 ""ResleevedNet Installation Successful      ""
 "" ╰┈➤ v.5 ResleevedNet Script          "" "$NC
-echo -e "\e[1m\e[34m───────────────────────────────────────────────────────────────────────•\e[0m"
+echo -e "\033[1;36m───────────────────────────────────────────────────────────────────────•\033[0m"
+echo ""
 read -p "╰┈➤ •Press any key to visit Panel ↩︎" key
 clear
 X
