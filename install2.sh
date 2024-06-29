@@ -41,6 +41,7 @@ echo -e "$YELLOW"
 cat /usr/bin/server.pub
 read -p "Copy the pubkey above and press Enter when done"
 read -p "Enter your Nameserver : " ns
+echo -e "$NC"
 ##Dnstt Auto Service
 cat <<EOF >/etc/systemd/system/dnstt-server.service
 [Unit]
@@ -60,7 +61,6 @@ EOF
 systemctl daemon-reload
 systemctl enable dnstt-server.service
 systemctl start dnstt-server.service
-echo -e "$NC"
 echo -e "$YELLOW"
 echo "           💚 DNSTT INSTALLED 💚      "
 echo "           ╰┈➤💚 Active 💚             "
