@@ -52,7 +52,7 @@ echo "net.core.rmem_default=83886080" >> /etc/sysctl.conf
 echo "net.core.wmem_default=83886080" >> /etc/sysctl.conf
 echo "net.ipv4.tcp_rmem=4096 87380 83886080" >> /etc/sysctl.conf
 echo "net.ipv4.tcp_wmem=4096 87380 16777216" >> /etc/sysctl.conf
-echo "net.ipv4.tcp_congestion_control=bbr" >> /etc/sysctl.conf
+echo "net.ipv4.tcp_congestion_control=htcp" >> /etc/sysctl.conf
 echo "net.core.somaxconn=65535" >> /etc/sysctl.conf
 echo "net.netfilter.nf_conntrack_max=1048576" >> /etc/sysctl.conf
 echo "net.ipv4.tcp_max_syn_backlog=4096" >> /etc/sysctl.conf
@@ -75,11 +75,10 @@ echo "net.ipv4.tcp_fin_timeout=60" >> /etc/sysctl.conf
 echo "net.core.optmem_max=20480" >> /etc/sysctl.conf
 echo "vm.dirty_background_ratio=2" >> /etc/sysctl.conf
 sysctl -p /etc/sysctl.conf
-sysctl -w net.ipv4.tcp_congestion_control=bbr
+sysctl -w net.ipv4.tcp_congestion_control=htcp
 systemctl daemon-reload
 echo -e "$YELLOW"
 echo "           💚 FIREWALL CONFIGURED 💚      "
 echo "              ╰┈➤💚 Active 💚             "
 echo -e "$NC"
-X
 exit 1
