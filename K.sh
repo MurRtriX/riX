@@ -35,7 +35,7 @@ sysctl -w net.netfilter.nf_conntrack_max=1048576
 sysctl -w net.ipv4.tcp_max_syn_backlog=4096
 sysctl -w net.ipv4.tcp_synack_retries=2
 sysctl -w net.ipv4.tcp_syncookies=0
-sysctl -w net.ipv4.tcp_keepalive_time=7200
+sysctl -w net.ipv4.tcp_keepalive_time=300
 sysctl -w net.ipv4.tcp_keepalive_probes=5
 sysctl -w net.ipv4.tcp_keepalive_intvl=15
 sysctl -w net.ipv4.tcp_rfc1337=1
@@ -52,7 +52,7 @@ echo "net.core.rmem_default=83886080" >> /etc/sysctl.conf
 echo "net.core.wmem_default=83886080" >> /etc/sysctl.conf
 echo "net.ipv4.tcp_rmem=4096 87380 83886080" >> /etc/sysctl.conf
 echo "net.ipv4.tcp_wmem=4096 87380 16777216" >> /etc/sysctl.conf
-echo "net.ipv4.tcp_congestion_control=htcp" >> /etc/sysctl.conf
+echo "net.ipv4.tcp_congestion_control=bbr" >> /etc/sysctl.conf
 echo "net.core.somaxconn=65535" >> /etc/sysctl.conf
 echo "net.netfilter.nf_conntrack_max=1048576" >> /etc/sysctl.conf
 echo "net.ipv4.tcp_max_syn_backlog=4096" >> /etc/sysctl.conf
@@ -66,7 +66,7 @@ echo "net.ipv4.tcp_notsent_lowat=16384" >> /etc/sysctl.conf
 echo "net.ipv4.ip_local_port_range=1024 60999" >> /etc/sysctl.conf
 echo "net.ipv4.tcp_synack_retries=2" >> /etc/sysctl.conf
 echo "net.ipv4.tcp_syncookies=0" >> /etc/sysctl.conf
-echo "net.ipv4.tcp_keepalive_time=7200" >> /etc/sysctl.conf
+echo "net.ipv4.tcp_keepalive_time=300" >> /etc/sysctl.conf
 echo "net.ipv4.tcp_keepalive_probes=5" >> /etc/sysctl.conf
 echo "net.ipv4.tcp_keepalive_intvl=15" >> /etc/sysctl.conf
 echo "net.ipv4.tcp_slow_start_after_idle=1" >> /etc/sysctl.conf
@@ -75,7 +75,7 @@ echo "net.ipv4.tcp_fin_timeout=60" >> /etc/sysctl.conf
 echo "net.core.optmem_max=20480" >> /etc/sysctl.conf
 echo "vm.dirty_background_ratio=2" >> /etc/sysctl.conf
 sysctl -p /etc/sysctl.conf
-sysctl -w net.ipv4.tcp_congestion_control=htcp
+sysctl -w net.ipv4.tcp_congestion_control=bbr
 systemctl daemon-reload
 echo -e "$YELLOW"
 echo "           💚 FIREWALL CONFIGURED 💚      "
