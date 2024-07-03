@@ -12,10 +12,9 @@ echo "          💚 DNSTT INSTALLATION SCRIPT 💚    "
 echo "        ╰┈➤💚 Installing DNSTT Binaries 💚          "
 echo -e "$NC"
 iptables -I INPUT -p udp --dport 5300 -j ACCEPT
-iptables -t nat -I PREROUTING -i $(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1) -p udp --dport 53 -j REDIRECT --to-ports 5300
+iptables -t nat -I PREROUTING -i $(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1) -p udp --dport 53 -j DNAT --to-destination :5300
 ip6tables -I INPUT -p udp --dport 5300 -j ACCEPT
-ip6tables -t nat -I PREROUTING -i $(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1) -p udp --dport 53 -j REDIRECT --to-ports 5300
-netfilter-persistent save
+ip6tables -t nat -I PREROUTING -i $(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1) -p udp --dport 53 -j DNAT --to-destination :5300
 netfilter-persistent reload
 netfilter-persistent start
 cd /root
