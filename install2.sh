@@ -13,6 +13,7 @@ echo "        ╰┈➤💚 Installing DNSTT Binaries 💚          "
 echo -e "$NC"
 iptables -I INPUT -p udp --dport 53 -j ACCEPT
 ip6tables -I INPUT -p udp --dport 53 -j ACCEPT
+netfilter-persistent save
 netfilter-persistent reload
 netfilter-persistent start
 cd /root
