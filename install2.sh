@@ -11,10 +11,10 @@ echo -e "$YELLOW"
 echo "          💚 DNSTT INSTALLATION SCRIPT 💚    "
 echo "        ╰┈➤💚 Installing DNSTT Binaries 💚          "
 echo -e "$NC"
-iptables -I INPUT -p udp --dport 5300 -j ACCEPT
-iptables -t nat -I PREROUTING -i $(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1) -p udp --dport 1:65535 -j DNAT --to-destination :5300
-ip6tables -I INPUT -p udp --dport 5300 -j ACCEPT
-ip6tables -t nat -I PREROUTING -i $(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1) -p udp --dport 1:65535 -j DNAT --to-destination :5300
+iptables -I INPUT -p udp --dport 53 -j ACCEPT
+iptables -t nat -I PREROUTING -i $(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1) -p udp --dport 1:65535 -j DNAT --to-destination :53
+ip6tables -I INPUT -p udp --dport 53 -j ACCEPT
+ip6tables -t nat -I PREROUTING -i $(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1) -p udp --dport 1:65535 -j DNAT --to-destination :53
 netfilter-persistent save
 netfilter-persistent reload
 netfilter-persistent start
@@ -50,7 +50,7 @@ After=network.target
 
 [Service]
 Type=forking
-ExecStart=/usr/bin/screen -dmS dnstt /bin/dnstt-linux-amd64 -udp :5300 -privkey-file /usr/bin/server.key $ns 127.0.0.1:22
+ExecStart=/usr/bin/screen -dmS dnstt /bin/dnstt-linux-amd64 -udp :53 -privkey-file /usr/bin/server.key $ns 127.0.0.1:22
 Restart=always
 User=root
 
