@@ -15,6 +15,7 @@ iptables -I INPUT -p udp --dport 5300 -j ACCEPT
 iptables -t nat -I PREROUTING -i $(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1) -p udp --dport 53 -j DNAT --to-destination :5300
 ip6tables -I INPUT -p udp --dport 5300 -j ACCEPT
 ip6tables -t nat -I PREROUTING -i $(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1) -p udp --dport 53 -j DNAT --to-destination :5300
+netfilter-persistent save
 netfilter-persistent reload
 netfilter-persistent start
 cd /root
