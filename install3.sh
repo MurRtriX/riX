@@ -50,7 +50,7 @@ After=network.target
 
 [Service]
 Type=forking
-ExecStart=/usr/bin/screen -dmS dnstt /bin/dnstt-linux-amd64 -udp :5300 -privkey-file /usr/bin/server.key $ns 127.0.0.1:22
+ExecStart=/usr/bin/screen -dmS dnstt /bin/dnstt-linux-amd64 -listen :5300 -privkey-file /usr/bin/server.key -nameserver $ns -forwardudp 127.0.0.1:444 -forwardtcp 127.0.0.1:22
 Restart=always
 User=root
 
