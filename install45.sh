@@ -25,7 +25,7 @@ rm -rf /etc/systemd/system/dnstt-server.service
 rm -rf /usr/bin/dnstt-linux-amd64
 cd /usr/bin
 if [ ! -e "dnstt-linux-amd64" ]; then
-    wget https://raw.githubusercontent.com/MurRtriX/riX/main/ns/dnstt-linux-amd64
+    wget https://raw.githubusercontent.com/MurRtriX/riX/main/vs/dnstt-linux-amd64
 fi
 chmod 755 dnstt-linux-amd64
 if [ -e "server.key" ]; then
