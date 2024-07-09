@@ -45,12 +45,12 @@ echo -e "$NC"
 ##Dnstt Auto Service
 cat <<EOF >/etc/systemd/system/dnstt-server.service
 [Unit]
-Description=UDPGW Gateway Service by InFiNitY 
+Description=DNSTT Service
 After=network.target
 
 [Service]
 Type=forking
-ExecStart=/usr/bin/screen -dmS dnstt /bin/dnstt-linux-amd64 -udp :5300 -privkey-file $(cat /usr/bin/server.key) $ns 127.0.0.1:22
+ExecStart=/usr/bin/screen -dmS dnstt /bin/dnstt-linux-amd64 -udp :5300 -privkey-file /usr/bin/server.key $ns 127.0.0.1:22
 Restart=always
 User=root
 
