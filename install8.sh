@@ -171,6 +171,7 @@ ExecReload=/bin/kill -HUP $MAINPID
 Restart=always
 RestartSec=2
 LimitNOFILE=infinity
+StandardOutput=file:/root/hy/hysteria.log
 
 [Install]
 WantedBy=multi-user.target
