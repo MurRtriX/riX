@@ -12,9 +12,9 @@ echo "          💚 DNSTT INSTALLATION SCRIPT 💚    "
 echo "        ╰┈➤💚 Installing DNSTT Binaries 💚          "
 echo -e "$NC"
 iptables -I INPUT -p udp --dport 5300 -j ACCEPT
-iptables -t nat -I PREROUTING -i $(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1) -p udp --dport 53 -j REDIRECT --to-ports $(curl -s https://api.ipify.org):5300
+iptables -t nat -I PREROUTING -i $(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1) -p udp --dport 53 -j DNAT --to-destination $(curl -s https://api.ipify.org):5300
 ip6tables -I INPUT -p udp --dport 5300 -j ACCEPT
-ip6tables -t nat -I PREROUTING -i $(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1) -p udp --dport 53 -j REDIRECT --to-ports $(curl -s https://api.ipify.org):5300
+ip6tables -t nat -I PREROUTING -i $(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1) -p udp --dport 53 -j DNAT --to-destination $(curl -6 icanhazip.com):5300
 netfilter-persistent save
 netfilter-persistent reload
 netfilter-persistent start
