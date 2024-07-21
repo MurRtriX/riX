@@ -54,6 +54,7 @@ netfilter-persistent save
 netfilter-persistent reload
 netfilter-persistent start
 cd /root
+sed -i 's/Prompt=lts/Prompt=normal/' /etc/update-manager/release-upgrades
 rm -rf /etc/sysctl.conf
 sysctl net.ipv4.conf.all.rp_filter=0
 sysctl net.ipv4.conf.$(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1).rp_filter=0
