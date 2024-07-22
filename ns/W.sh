@@ -15,6 +15,10 @@ if [ "$(whoami)" != "root" ]; then
 fi
 cd /root
 clear
+echo -e "$YELLOW
+      💚 INSTALLATIONS THAT REQUIRE WARP 💚      
+          ╰┈➤ 💚 Resleeved Net 💚               "
+echo -e "$NC
 echo -e "$YELLOW Warp Services "$NC
  echo -e "\033[32m 1.  WARP HYSTERIA \033[0m"
  echo -e "\033[32m 2.  WARP UDP CUSTOM \033[0m"
