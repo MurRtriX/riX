@@ -39,7 +39,8 @@ done
 clear
 case $selected_option in
     1)
-        rm -rf install8.sh; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/install8.sh" -O install8.sh && chmod 755 install8.sh && ./install8.sh; rm -rf install8.sh
+        rm -rf install54.sh; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/install54.sh" -O install54.sh && chmod 755 install54.sh && ./install54.sh; rm -rf install54.sh
+        X
         exit 1
         ;;
     2)
@@ -47,11 +48,13 @@ case $selected_option in
         exit 1
         ;;
     3)
-        rm -rf install10.sh; wget "https://raw.githubusercontent.com/JohnReaJR/A/main/install10.sh" -O install10.sh && chmod 755 install10.sh && ./install10.sh 5,22,53,68,80,143,444,445,5050,5300,7300,8080,9090; rm -rf install10.sh
+        rm -rf install5.sh; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/install5.sh" -O install5.sh && chmod 755 install5.sh && ./install5.sh; rm -rf install5.sh
+        X
         exit 1
         ;;
     4)
-        rm -rf install10.sh; wget "https://raw.githubusercontent.com/JohnReaJR/A/main/install10.sh" -O install10.sh && chmod 755 install10.sh && ./install10.sh 5,22,53,68,80,143,444,445,5050,5300,7300,8080,9090; rm -rf install10.sh
+        rm -rf ant.sh; wget "https://raw.githubusercontent.com/JohnReaJR/M/main/ant.sh" -O ant.sh && chmod 755 ant.sh && ./ant.sh; rm -rf ant.sh
+        X
         exit 1
         ;;
     5)
