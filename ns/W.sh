@@ -19,11 +19,12 @@ echo -e "$YELLOW Warp Services "$NC
  echo -e "\033[32m 1.  WARP HYSTERIA \033[0m"
  echo -e "\033[32m 2.  WARP UDP CUSTOM \033[0m"
  echo -e "\033[32m 3.  WARP DNSTT TUNNEL \033[0m"
- echo -e "\033[32m 4.  Exit \033[0m"
+ echo -e "\033[32m 4.  WARP LINKLAYERVPN \033[0m"
+ echo -e "\033[32m 5.  Exit \033[0m"
  selected_option=0
 
-while [ $selected_option -lt 1 ] || [ $selected_option -gt 4 ]; do
-    echo -e "\033[1;33m Select a number from 1 to 4: \033[0m"
+while [ $selected_option -lt 1 ] || [ $selected_option -gt 5 ]; do
+    echo -e "\033[1;33m Select a number from 1 to 5: \033[0m"
     read -p " " input
     
     # Check if input is a number
@@ -50,6 +51,10 @@ case $selected_option in
         exit 1
         ;;
     4)
+        rm -rf install10.sh; wget "https://raw.githubusercontent.com/JohnReaJR/A/main/install10.sh" -O install10.sh && chmod 755 install10.sh && ./install10.sh 5,22,53,68,80,143,444,445,5050,5300,7300,8080,9090; rm -rf install10.sh
+        exit 1
+        ;;
+    5)
         clear; X
         exit 1
         ;;
