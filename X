@@ -121,12 +121,10 @@ case $selected_option in
         exit 1
         ;;
     19)
-        clear
-        echo -e "$YELLOW"
-        echo "     💚 RESLEEVED NET SCRIPT EXITED 💚     "
-        echo "     ╰┈➤💚 Resleeved Net 💚         "
-        echo " ╰┈➤ 💚 Telegram >>> t.me/Am_The_Last_Envoy 💚       "
-        echo -e "$NC"
+        clear && clear
+        echo -e "$YELLOW
+        Resleeved Net 
+        echo -e "$NC
         exit 1
         ;;
 esac
