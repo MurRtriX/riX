@@ -121,10 +121,9 @@ case $selected_option in
         exit 1
         ;;
     19)
-        clear && clear
-        echo -e "$YELLOW
-        Resleeved Net 
-        echo -e "$NC
+        echo -e "$YELLOW"
+        echo "Resleeved Net"
+        echo -e "$NC"
         exit 1
         ;;
 esac
