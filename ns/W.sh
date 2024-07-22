@@ -16,8 +16,8 @@ fi
 cd /root
 clear
 echo -e "$YELLOW
-      💚 INSTALLATIONS THAT REQUIRE WARP 💚      
-          ╰┈➤ 💚 Resleeved Net 💚               "$NC
+💚 INSTALLATIONS THAT REQUIRE WARP 💚      
+    ╰┈➤ 💚 Resleeved Net 💚               "$NC
 echo ""          
 echo -e "$YELLOW Warp Services "$NC
  echo -e "\033[32m 1.  WARP HYSTERIA \033[0m"
