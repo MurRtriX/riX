@@ -117,7 +117,7 @@ case $selected_option in
         exit 1
         ;;
     18)
-        cd /etc/V/bin; ./W.sh; X
+        cd /etc/V/bin; ./W.sh; cd; X
         exit 1
         ;;
     19)
