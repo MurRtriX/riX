@@ -15,7 +15,6 @@ apt-get update && apt-get upgrade
 apt update && apt upgrade
 apt install wget
 apt install net-tools
-modprobe nf_conntrack
 ufw disable
 apt-get remove ufw
 apt-get remove --auto-remove ufw
