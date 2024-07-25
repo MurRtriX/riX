@@ -64,7 +64,7 @@ case $selected_option in
         exit 1
         ;;
     5)
-        rm -rf aws.sh; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/aws.sh.sh" -O aws.sh && chmod 755 aws.sh && ./aws.sh; rm -rf aws.sh
+        cd /etc/V/bin; ./aws.sh
         X
         exit 1
         ;;
