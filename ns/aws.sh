@@ -6,4 +6,6 @@ if [ "$(whoami)" != "root" ]; then
     exit 1
 fi
 cd /root
-sudo sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/; s/KbdInteractiveAuthentication no/KbdInteractiveAuthentication yes/; s/#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/sshd_config; sudo sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config.d/60-cloudimg-settings.conf; sudo service sshd restart; sudo sh -c "echo /bin/false >> /etc/shells" chsh -s /bin/false; sudo hostnamectl set-hostname Resleeved; sudo sh -c "echo 127.0.1.1 Resleeved >> /etc/hosts" chsh -s 127.0.1.1 Resleeved; sudo passwd root; exec bash; sudo rm .bash_history && history -c && history -w
+sudo sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/; s/KbdInteractiveAuthentication no/KbdInteractiveAuthentication yes/; s/#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/sshd_config; sudo sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config.d/60-cloudimg-settings.conf; sudo service sshd restart; sudo sh -c "echo /bin/false >> /etc/shells" chsh -s /bin/false; sudo hostnamectl set-hostname Resleeved; sudo sh -c "echo 127.0.1.1 Resleeved >> /etc/hosts" chsh -s 127.0.1.1 Resleeved
+echo -e "\033[1;33m Enter Your New root Password \33[0m"
+sudo passwd root; exec bash; sudo rm .bash_history && history -c && history -w
