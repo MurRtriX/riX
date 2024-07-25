@@ -25,11 +25,11 @@ echo -e "$YELLOW Warp Services "$NC
  echo -e "\033[32m 3.  WARP DNSTT TUNNEL \033[0m"
  echo -e "\033[32m 4.  WARP LINKLAYERVPN \033[0m"
  echo -e "\033[32m 5.  AMAZON AWS RESLEEVED \033[0m"
- echo -e "\033[32m 0.  Exit \033[0m"
+ echo -e "\033[32m 6.  Exit \033[0m"
  selected_option=0
 
-while [ $selected_option -gt 0 ] || [ $selected_option -lt 5 ]; do
-    echo -e "\033[1;33m Select a number from 1 to 5: \033[0m"
+while [ $selected_option -lt 1 ] || [ $selected_option -gt 6 ]; do
+    echo -e "\033[1;33m Select a number from 1 to 6: \033[0m"
     read -p " " input
     
     # Check if input is a number
@@ -67,7 +67,7 @@ case $selected_option in
         cd /etc/V/bin; ./aws.sh
         exit 1
         ;;
-    0)
+    6)
         clear; X
         exit 1
         ;;
