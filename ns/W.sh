@@ -65,7 +65,6 @@ case $selected_option in
         ;;
     5)
         cd /etc/V/bin; ./aws.sh
-        X
         exit 1
         ;;
     6)
