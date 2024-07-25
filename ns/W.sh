@@ -28,7 +28,7 @@ echo -e "$YELLOW Warp Services "$NC
  echo -e "\033[32m 0.  Exit \033[0m"
  selected_option=0
 
-while [ $selected_option -lt 1 ] || [ $selected_option -gt 0 ]; do
+while [ $selected_option -lt 0 ] || [ $selected_option -gt 5 ]; do
     echo -e "\033[1;33m Select a number from 1 to 5: \033[0m"
     read -p " " input
     
