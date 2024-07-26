@@ -16,9 +16,9 @@ fi
 cd /root
 clear
 figlet -k ResleevedNet | lolcat
-echo -e "\t\e\033[36m    • ResleevedNet v.5 Ultimate Installer   \033[0m"
-echo -e "\t\e\033[36m             • ResleevedNet v.5       \033[0m"
-echo -e "\t\e\033[36m                 • нαωkiиѕ          \033[0m"
+echo -e "\t\e\033[33m    • ResleevedNet v.5 Ultimate Installer   \033[0m"
+echo -e "\t\e\033[33m             • ResleevedNet v.5       \033[0m"
+echo -e "\t\e\033[36m                  • нαωkiиѕ          \033[0m"
 echo -e "\e[1m\e[34m───────────────────────────────────────────────────────────────────────•\e[0m"
 echo -e "$YELLOW ResleevedNet v.5 Menu "$NC
  echo -e "\033[32m 1.  UDP HYSTERIA                         11. IODINE TUNNEL    \033[0m"
