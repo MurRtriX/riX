@@ -66,14 +66,14 @@ checkRoot
 update_packages
 banner
 clear
-figlet -k Resleeved v.5 | lolcat
+figlet -k Resleeved | lolcat
 echo -e "\033[1;33m• ResleevedNet v.5 Ultimate Installer\033[0m"
 echo -e "\033[1;36m──────────────────────────────────────────────────────────•\033[0m"
 echo -e "\033[1;32mResleevedNet Installation completed!\033[0m"
 echo ""
 echo -e "\033[1;33mType: ""\033[1;36mX\033[1;33m\033[1;33m"" to access the menu\033[0m"
 echo ""
-read -p "┈➤ • Press any key to visit Panel ↩︎" key
+read -p "┈➤ Press any key to visit Panel ↩︎" key
 clear
 X
 }
