@@ -27,7 +27,7 @@ echo -e "$YELLOW ResleevedNet v.5 Menu "$NC
  echo -e "\033[32m 4.  BadVpn For Voip                      14. UDP REQUEST \033[0m"
  echo -e "\033[32m 5.  Install HTTP PROXY                   15. DNSTT TUNNEL \033[0m"
  echo -e "\033[32m 6.  Install STUNNEL                      16. Update Menu \033[0m"
- echo -e "\033[32m 7.  LinklayerVPN Script                  17. Manage Users \033[0m"
+ echo -e "\033[32m 7.  LynklayerVPN Script                  17. Manage Users \033[0m"
  echo -e "\033[32m 8.  RESLEEVED NET FIREWALL               18. Warp Extra  \033[0m"
  echo -e "\033[32m 9.  Install V2RAY PANNEL                 19. Exit Script \033[0m"
  echo -e "\033[32m 10. RESET VPS \033[0m"
