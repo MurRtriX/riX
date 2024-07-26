@@ -55,7 +55,7 @@ banner1
 echo ""
 echo -e "\033[1;34m・ Account Details"
 echo -e "\033[1;36m────────────────────────────────────────────────────•\033[0m"
-echo -e "\033[1;34m・ Note: \033[1;32mAll Protocols use same account details!"
+echo -e "\033[1;34m・ Note: All Protocols use same account details!"
 echo -e "\033[1;36m────────────────────────────────────────────────────•\033[0m"
 echo -e "\e[36m・ Server IP        ➤  \033[1;31m$server_ip"
 echo -e "\e[36m・ Username         ➤  \033[1;31m$username"
