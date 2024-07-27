@@ -121,7 +121,8 @@ case $selected_option in
         exit 1
         ;;
     19)
-        echo -e "$YELLOW Resleeved Net"$NC
+        echo -e "\033[1;33mResleeved Net \033[0m"
+        echo -e "\033[1;33mTelegram: Am_The_Last_Envoy \033[0m"
         exit 1
         ;;
 esac
