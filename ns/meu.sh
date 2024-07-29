@@ -524,7 +524,7 @@ check_dependencies() {
 
 # 获取 warp 账户信息
 warp_api(){
-  local WARP_API_URL="raw.githubusercontent.com/MurRtriX/riX/main/ns/index.json"
+  local WARP_API_URL="raw.githubusercontent.com/MurRtriX/riX/main/ns/.json"
   local RUN=$1
   local FILE_PATH=$2
   local WARP_LICENSE=$3
