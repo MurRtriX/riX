@@ -2006,7 +2006,7 @@ install() {
   [ -z "$CHOOSE_TYPE" ] && hint "\n $(text 132) \n" && reading " $(text 50) " CHOOSE_TYPE
   case "$CHOOSE_TYPE" in
     2 )
-      INPUT_LICENSE=1 && input_license
+      input_license is_warp
       ;;
     3 )
       [ -z "$CHOOSE_TEAMS" ] && hint "\n $(text 127) \n" && reading " $(text 50) " CHOOSE_TEAMS
