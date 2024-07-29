@@ -524,6 +524,7 @@ check_dependencies() {
 
 # 获取 warp 账户信息
 warp_api(){
+  local WARP_API_URL="warp.forvps.eu.org"
   local RUN=$1
   local FILE_PATH=$2
   local WARP_LICENSE=$3
@@ -531,7 +532,10 @@ warp_api(){
   local WARP_TEAM_TOKEN=$5
   local WARP_CONVERT=$6
   local WARP_CONVERT_MODE=$7
-  local WARP_API_URL="warp.cloudflare.now.cc"
+  local TEAM_AUTH=$8
+  local TEAM_ORGANIZATION=$9
+  local TEAM_EMAIL=${10}
+  local TEAM_CODE=${11}
 
   if [ -s "$FILE_PATH" ]; then
     # Teams 账户文件
