@@ -597,6 +597,12 @@ warp_api(){
   esac
 }
 
+# 通过 warp api 生成 plusKey
+generate_pluskey() {
+  local FILE_PATH="$1"
+  [ -n "$FILE_PATH" ] && warp_api pluskey | awk -F '"' '/licenseCode/{print $4}' > $FILE_PATH || warp_api pluskey | awk -F '"' '/licenseCode/{print $4}'
+}
+
 # 聚合 IP api 函数
 ip_info() {
   local CHECK_46="$1"
