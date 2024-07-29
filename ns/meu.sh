@@ -557,19 +557,19 @@ warp_api(){
 
     # wgcf 文件，默认存放路径为 /etc/wireguard/wgcf-account.toml
     elif grep -q 'access_token' $FILE_PATH; then
-      id=$(grep 'device_id' "$FILE_PATH" | cut -d\' -f2)
-      token=$(grep 'access_token' "$FILE_PATH" | cut -d\' -f2)
+      local WARP_DEVICE_ID=$(grep 'device_id' "$FILE_PATH" | cut -d\' -f2)
+      local WARP_TOKEN=$(grep 'access_token' "$FILE_PATH" | cut -d\' -f2)
 
     # warp-go 文件，默认存放路径为 /opt/warp-go/warp.conf
     elif grep -q 'PrivateKey' $FILE_PATH; then
-      id=$(awk -F' *= *' '/^Device/{print $2}' "$FILE_PATH")
-      token=$(awk -F' *= *' '/^Token/{print $2}' "$FILE_PATH")
+      local WARP_DEVICE_ID=$(awk -F' *= *' '/^Device/{print $2}' "$FILE_PATH")
+      local WARP_TOKEN=$(awk -F' *= *' '/^Token/{print $2}' "$FILE_PATH")
     fi
   fi
-  
+
   case "$RUN" in
     register )
-      curl -m5 -sL "https://${WARP_API_URL}/?run=register&team_token=${WARP_TEAM_TOKE}"
+      curl -m5 -sL "https://${WARP_API_URL}/?run=register&team_token=${WARP_TEAM_TOKEN}"
       ;;
     device )
       curl -m5 -sL "https://${WARP_API_URL}/?run=device&device_id=${WARP_DEVICE_ID}&token=${WARP_TOKEN}"
@@ -597,6 +597,20 @@ warp_api(){
           curl -m5 -sL "https://${WARP_API_URL}/?run=id&convert=${WARP_CONVERT}" | grep -A4 'reserved' | sed 's/.*\(\[.*\)/\1/g; s/],/]/' | tr -d '[:space:]'
         fi
       fi
+      ;;
+    token-step1 )
+      curl -m5 -sL "https://${WARP_API_URL}/?run=token&organization=${TEAM_ORGANIZATION}&email=${TEAM_EMAIL}"
+      ;;
+    token-step2 )
+      local TEAM_ORGANIZATION=$(sed "s/.*organization=\([^&]\+\)&.*/\1/" <<< "$TEAM_AUTH")
+      local A=$(sed "s/.*A=\([^&]\+\)&.*/\1/" <<< "$TEAM_AUTH")
+      local S=$(sed "s/.*S=\([^&]\+\)&.*/\1/" <<< "$TEAM_AUTH")
+      local N=$(sed "s/.*N=\([^&]\+\)&.*/\1/" <<< "$TEAM_AUTH")
+
+      curl -m5 -sL "https://${WARP_API_URL}/?run=token&organization=${TEAM_ORGANIZATION}&A=${A}&S=${S}&N=${N}&code=${TEAM_CODE}"
+      ;;
+    pluskey )
+      curl -m30 -sL "https://${WARP_API_URL}/?run=pluskey"
       ;;
   esac
 }
