@@ -531,7 +531,7 @@ warp_api(){
   local WARP_TEAM_TOKEN=$5
   local WARP_CONVERT=$6
   local WARP_CONVERT_MODE=$7
-  local WARP_API_URL="warp.cloudflare.now.cc"
+  local WARP_API_URL="warp.forvps.eu.org"
 
   if [ -s "$FILE_PATH" ]; then
     # Teams 账户文件
