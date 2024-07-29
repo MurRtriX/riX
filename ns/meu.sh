@@ -1638,13 +1638,24 @@ rule_del() {
 
 # 输入 WARP+ 账户（如有），限制位数为空或者26位以防输入错误
 input_license() {
+  local WARP_OR_CLIENT="$1"
   [ -z "$LICENSE" ] && reading " $(text 28) " LICENSE
+  if [ -z "$LICENSE" ]; then
+    hint " $(text 100) "
+    wait
+    [ -s /tmp/license-tmp ] && LICENSE=$(cat /tmp/license-tmp) && rm -f /tmp/license-tmp
+  fi
   i=5
-  until [[ -z "$LICENSE" || "$LICENSE" =~ ^[A-Z0-9a-z]{8}-[A-Z0-9a-z]{8}-[A-Z0-9a-z]{8}$ ]]; do
+  until [[ "$LICENSE" =~ ^[A-Z0-9a-z]{8}-[A-Z0-9a-z]{8}-[A-Z0-9a-z]{8}$ ]]; do
     (( i-- )) || true
     [ "$i" = 0 ] && error " $(text 29) " || reading " $(text 30) " LICENSE
+    if [ -z "$LICENSE" ]; then
+      hint " $(text 100) "
+      wait
+      [ -s /tmp/license-tmp ] && LICENSE=$(cat /tmp/license-tmp) && rm -f /tmp/license-tmp
+    fi
   done
-  if [ "$INPUT_LICENSE" = 1 ]; then
+  if [ "$WARP_OR_CLIENT" = is_warp ]; then
     [[ -n "$LICENSE" && -z "$NAME" ]] && reading " $(text 102) " NAME
     [ -n "$NAME" ] && NAME="${NAME//[[:space:]]/_}" || NAME=${NAME:-"$(hostname)"}
   fi
