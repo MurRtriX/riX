@@ -1712,10 +1712,16 @@ input_url_token() {
 # 升级 WARP+ 账户（如有），限制位数为空或者26位以防输入错误，WARP interface 可以自定义设备名(不允许字符串间有空格，如遇到将会以_代替)
 update_license() {
   [ -z "$LICENSE" ] && reading " $(text 61) " LICENSE
+  hint " $(text 100) " 
+  wait
+  [ -z "$LICENSE" ] && [ -s /tmp/license-tmp ] && LICENSE=$(cat /tmp/license-tmp) && rm -f /tmp/license-tmp
   i=5
   until [[ "$LICENSE" =~ ^[A-Z0-9a-z]{8}-[A-Z0-9a-z]{8}-[A-Z0-9a-z]{8}$ ]]; do
     (( i-- )) || true
-    [ "$i" = 0 ] && error " $(text 29) " || reading " $(text 100) " LICENSE
+    [ "$i" = 0 ] && error " $(text 29) " || reading " $(text 30) " LICENSE
+    hint " $(text 100) " 
+    wait
+    [ -z "$LICENSE" ] && [ -s /tmp/license-tmp ] && LICENSE=$(cat /tmp/license-tmp) && rm -f /tmp/license-tmp
   done
   [[ -z "$CLIENT_ACCOUNT" && "$CHOOSE_TYPE" = 2 && -n "$LICENSE" && -z "$NAME" ]] && reading " $(text 102) " NAME
   [ -n "$NAME" ] && NAME="${NAME//[[:space:]]/_}" || NAME=${NAME:-"$(hostname)"}
