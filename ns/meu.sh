@@ -9,7 +9,7 @@ export DEBIAN_FRONTEND=noninteractive
 # Github 反代加速代理
 GH_PROXY='https://ghproxy.lvedong.eu.org/'
 
-trap "rm -f /tmp/{wireguard-go-*,best_mtu,best_endpoint,endpoint,ip}; exit" INT
+trap "rm -f /tmp/{wireguard-go-*,best_mtu,best_endpoint,endpoint,ip,license-tmp}; exit" INT
 
 E[0]="\n Language:\n 1. English (default) \n 2. 简体中文"
 C[0]="${E[0]}"
