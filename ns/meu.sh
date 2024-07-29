@@ -3175,6 +3175,9 @@ fi
 # 自定义 WARP+ 设备名
 NAME=$3
 
+# 后台生成 plus key
+{ generate_pluskey /tmp/license-tmp; }&
+
 # 主程序运行 1/3
 check_cdn
 select_language
