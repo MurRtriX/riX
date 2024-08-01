@@ -1230,7 +1230,7 @@ uninstall() {
 
   # 删除本脚本安装在 /etc/wireguard/ 下的所有文件，如果删除后目录为空，一并把目录删除
   rm -f /usr/bin/wg-quick.{origin,reserved}
-  rm -f /tmp/{best_mtu,/tmp/best_endpoint,wireguard-go-*}
+  rm -f /tmp/{best_mtu,/tmp/best_endpoint,wireguard-go-*,license-tmp}
   rm -f /etc/wireguard/{wgcf-account.conf,warp-temp.conf,warp-account.conf,warp_unlock.sh,warp.conf.bak,warp.conf,up,proxy.conf.bak,proxy.conf,menu.sh,license,language,info-temp.log,info.log,down,account-temp.conf,NonGlobalUp.sh,NonGlobalDown.sh}
   [[ -e /etc/wireguard && -z "$(ls -A /etc/wireguard/)" ]] && rmdir /etc/wireguard
 
