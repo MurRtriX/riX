@@ -9,7 +9,7 @@ export DEBIAN_FRONTEND=noninteractive
 # Github 反代加速代理
 GH_PROXY='https://ghproxy.lvedong.eu.org/'
 
-trap "rm -f /tmp/{wireguard-go-*,best_mtu,best_endpoint,endpoint,ip,license-tmp}; exit" INT
+trap "rm -rf /tmp/{wireguard-go-*,best_mtu,best_endpoint,endpoint,ip,license-tmp}; exit" INT
 
 E[0]="\n Language:\n 1. English (default) \n 2. 简体中文"
 C[0]="${E[0]}"
@@ -1229,9 +1229,9 @@ uninstall() {
   done
 
   # 删除本脚本安装在 /etc/wireguard/ 下的所有文件，如果删除后目录为空，一并把目录删除
-  rm -f /usr/bin/wg-quick.{origin,reserved}
-  rm -f /tmp/{best_mtu,/tmp/best_endpoint,wireguard-go-*,license-tmp}
-  rm -f /etc/wireguard/{wgcf-account.conf,warp-temp.conf,warp-account.conf,warp_unlock.sh,warp.conf.bak,warp.conf,up,proxy.conf.bak,proxy.conf,menu.sh,license,language,info-temp.log,info.log,down,account-temp.conf,NonGlobalUp.sh,NonGlobalDown.sh}
+  rm -rf /usr/bin/wg-quick.{origin,reserved}
+  rm -rf /tmp/{best_mtu,best_endpoint,wireguard-go-*,license-tmp}
+  rm -rf /etc/wireguard/{wgcf-account.conf,warp-temp.conf,warp-account.conf,warp_unlock.sh,warp.conf.bak,warp.conf,up,proxy.conf.bak,proxy.conf,menu.sh,license,language,info-temp.log,info.log,down,account-temp.conf,NonGlobalUp.sh,NonGlobalDown.sh}
   [[ -e /etc/wireguard && -z "$(ls -A /etc/wireguard/)" ]] && rmdir /etc/wireguard
 
   # 选择自动卸载依赖执行以下
