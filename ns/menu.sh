@@ -1192,7 +1192,7 @@ uninstall() {
     if [ "$SYSTEM" = Alpine ]; then
       rc-update del wireproxy default
       rc-service wireproxy stop >/dev/null 2>&1
-      rm -f /etc/init.d/wireproxy
+      rm -rf /etc/init.d/wireproxy
     else
       systemctl disable --now wireproxy
     fi
