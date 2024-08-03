@@ -21,11 +21,8 @@ echo -e "$YELLOW
 echo ""          
 echo -e "$YELLOW Warp Services "$NC
  echo -e "\033[32m 1.  Change Obfs \033[0m"
- echo -e "\033[32m 2.  Auth ( Separate with commas ex: a,b,c \033[0m"
- echo -e "\033[32m 3.  WARP DNSTT TUNNEL \033[0m"
- echo -e "\033[32m 4.  WARP LINKLAYERVPN \033[0m"
- echo -e "\033[32m 5.  AMAZON AWS RESLEEVED \033[0m"
- echo -e "\033[32m 6.  Exit \033[0m"
+ echo -e "\033[32m 2.  Auth ( Separate with commas ex: a,b,c )\033[0m"
+ echo -e "\033[32m 3.  Exit \033[0m"
  selected_option=0
 
 while [ $selected_option -lt 1 ] || [ $selected_option -gt 6 ]; do
@@ -50,28 +47,63 @@ case $selected_option in
         echo -e "\033[1;31mThe New obfs: $obfs_pwd\033[0m"
         sed -i "s/\"obfs\":\"$old_pwd\"/\"obfs\":\"$obfs_pwd\"/" /root/hy/config.json
         systemctl restart hysteria-server.service
+        X
         exit 1
         ;;
     2)
-        rm -rf install10.sh; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/install10.sh" -O install10.sh && chmod 755 install10.sh && ./install10.sh; rm -rf install10.sh
+        while true; do
+            echo -e "$YELLOW"
+            read -p "Obfs : " obfs
+            echo -e "$NC"
+            if [ ! -z "$obfs" ]; then
+            break
+            fi
+        done
+            echo -e "$YELLOW"
+            read -p "Auth Str : " input_config
+            echo -e "$NC"
+            if [ -n "$input_config" ]; then
+                IFS=',' read -r -a config <<< "$input_config"
+                if [ ${#config[@]} -eq 1 ]; then
+                    config+=(${config[0]})
+                fi
+            else
+                echo -e "$YELLOW"
+                echo "Enter auth separatedbycommas"
+                echo -e "$NC"
+            fi
+        auth_str=$(printf "\"%s\"," "${config[@]}" | sed 's/,$//')
+        while true; do
+            echo -e "$YELLOW"
+            read -p "Remote UDP Port : " remote_udp_port
+            echo -e "$NC"
+            if is_number "$remote_udp_port" && [ "$remote_udp_port" -ge 1 ] && [ "$remote_udp_port" -le 65534 ]; then
+                if netstat -tulnp | grep -q "::$remote_udp_port"; then
+                    echo -e "$YELLOW"
+                    echo "Error : the selected port has already been used"
+                    echo -e "$NC"
+                else
+                    break
+                fi
+            else
+                echo -e "$YELLOW"
+                echo "Invalid input. Please enter a valid number between 1 and 65534."
+                echo -e "$NC"
+            fi
+        done
+        file_path="/root/hy/config.json"
+        json_content='{"listen":":'"$remote_udp_port"'","protocol":"udp","cert":"/root/hy/ca.crt","key":"/root/hy/ca.key","up":"100 Mbps","up_mbps":100,"down":"100 Mbps","down_mbps":100,"disable_udp":false,"obfs":"'"$obfs"'","auth":{"mode":"passwords","config":['"$auth_str"']}}'
+        echo "$json_content" > "$file_path"
+        if [ ! -e "$file_path" ]; then
+            echo -e "$YELLOW"
+            echo "Error: Unable to save the config.json file"
+            echo -e "$NC"
+            exit 1
+        fi
         X
         exit 1
         ;;
     3)
-        rm -rf install5.sh; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/install5.sh" -O install5.sh && chmod 755 install5.sh && ./install5.sh; rm -rf install5.sh
-        X
-        exit 1
-        ;;
-    4)
-        rm -rf ant.sh; wget "https://raw.githubusercontent.com/JohnReaJR/M/main/ant.sh" -O ant.sh && chmod 755 ant.sh && ./ant.sh; rm -rf ant.sh
-        X
-        exit 1
-        ;;
-    5)
-        cd /etc/V/bin; ./aws.sh
-        exit 1
-        ;;
-    6)
         clear; X
         exit 1
         ;;
