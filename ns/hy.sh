@@ -78,17 +78,7 @@ case $selected_option in
             read -p "Remote UDP Port : " remote_udp_port
             echo -e "$NC"
             if is_number "$remote_udp_port" && [ "$remote_udp_port" -ge 1 ] && [ "$remote_udp_port" -le 65534 ]; then
-                if netstat -tulnp | grep -q "::$remote_udp_port"; then
-                    echo -e "$YELLOW"
-                    echo "Error : the selected port has already been used"
-                    echo -e "$NC"
-                else
-                    break
-                fi
-            else
-                echo -e "$YELLOW"
-                echo "Invalid input. Please enter a valid number between 1 and 65534."
-                echo -e "$NC"
+            break
             fi
         done
         file_path="/root/hy/config.json"
