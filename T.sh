@@ -39,7 +39,7 @@ read -p "Enter auth separated by commas : " input_config
         config=("a")
     fi
 
-    new_config_str="\"config\": [$(printf "\"%s\"," "${config[@]}" | sed 's/,$//')]"
+    new_config_str="\"config\":[$(printf "\"%s\"," "${config[@]}" | sed 's/,$//')]"
 
     sed -i "s/\"config\":\[\"a\"]/${new_config_str}/" /root/hy/config.json
     
