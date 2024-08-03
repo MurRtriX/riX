@@ -90,6 +90,7 @@ case $selected_option in
             echo -e "$NC"
             exit 1
         fi
+        chmod 755 /root/hy/config.json
         X
         exit 1
         ;;
