@@ -45,9 +45,10 @@ case $selected_option in
         read -p "Set New obfs :  " obfs_pwd
         echo -e "$NC"
         [[ -z $obfs_pwd ]] && obfs_pwd=$(date +%s%N | md5sum | cut -c 1-16)
-        echo -e "\033[1;31mThe New obfs: $obfs_pwd\033[0m"
+        echo -e "\033[1;32mThe New obfs: $obfs_pwd\033[0m"
         sed -i "s/\"obfs\":\"$old_pwd\"/\"obfs\":\"$obfs_pwd\"/" /root/hy/config.json
         systemctl restart hysteria-server.service
+        sleep 2
         exit 1
         ;;
     2)
@@ -80,6 +81,7 @@ case $selected_option in
         fi
         chmod 755 /root/hy/config.json
         systemctl restart hysteria-server.service
+        sleep 2
         exit 1
         ;;
     3)
