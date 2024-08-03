@@ -69,12 +69,13 @@ case $selected_option in
             echo -e "$NC"
             if [ -n "$input_config" ]; then
                 IFS=',' read -r -a config <<< "$input_config"
-            if [ ${#config[@]} -eq 1 ]; then
-                config+=(${config[0]})
-            break
+                if [ ${#config[@]} -eq 1 ]; then
+                    config+=(${config[0]})
+                fi
+            else
+                auth_str="\"config\":[$(printf "\"%s\"," "${config[@]}" | sed 's/,$//')]"
             fi
         done
-        auth_str="\"config\":[$(printf "\"%s\"," "${config[@]}" | sed 's/,$//')]"
         while true; do
             echo -e "$YELLOW"
             read -p "Remote UDP Port : " remote_udp_port
