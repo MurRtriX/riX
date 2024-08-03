@@ -22,9 +22,9 @@ change_obfs(){
 
     sed -i "s/$old_pwd/$auth_pwd/" /root/hy/config.json
 
-    stopHysteria && startHysteria
+    systemctl restart hysteria-server.service
 
-    green "The configuration is modified successfully, please re-import the client configuration file"
+    echo "The configuration is modified successfully, please re-import the client configuration file"
 }
 
 menu() {
