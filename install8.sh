@@ -63,7 +63,6 @@ case $selected_option in
             break
             fi
         done
-        while true; do
             echo -e "$YELLOW"
             read -p "Auth Str : " input_config
             echo -e "$NC"
