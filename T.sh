@@ -44,7 +44,7 @@ menu() {
     echo ""
     read -rp "Please enter options [0-1]: " menuInput
     case $menuInput in
-        1 ) changeConf ;;
+        1 ) change_obfs ;;
         * ) exit 1 ;;
     esac
 }
