@@ -44,8 +44,12 @@ done
 clear
 case $selected_option in
     1)
-        rm -rf install54.sh; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/install54.sh" -O install54.sh && chmod 755 install54.sh && ./install54.sh; rm -rf install54.sh
-        X
+        old_pwd=$(cat /root/hy/config.json | grep obfs | awk -F',' 'NR == 1 {split($10,a,":");print a[2]}' | sed "s/\"//g" | sed "s/,//g")
+        read -p "Set New obfs :  " obfs_pwd
+        [[ -z $obfs_pwd ]] && obfs_pwd=$(date +%s%N | md5sum | cut -c 1-16)
+        echo -e "\033[1;31mThe New obfs: $obfs_pwd\033[0m"
+        sed -i "s/\"obfs\":\"$old_pwd\"/\"obfs\":\"$obfs_pwd\"/" /root/hy/config.json
+        systemctl restart hysteria-server.service
         exit 1
         ;;
     2)
