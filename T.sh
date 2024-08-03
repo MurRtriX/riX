@@ -41,7 +41,7 @@ read -p "Enter auth separated by commas : " input_config
 
     new_config_str="\"config\": [$(printf "\"%s\"," "${config[@]}" | sed 's/,$//')]"
 
-    sed -i "s/\"config\":\[\"a\"]/${new_config_str}" /root/hy/config.json
+    sed -i "s/\"config\":\[\"a\"]/${new_config_str}/" /root/hy/config.json
     
     systemctl restart hysteria-server.service
 
