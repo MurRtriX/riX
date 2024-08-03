@@ -48,7 +48,6 @@ case $selected_option in
         echo -e "\033[1;31mThe New obfs: $obfs_pwd\033[0m"
         sed -i "s/\"obfs\":\"$old_pwd\"/\"obfs\":\"$obfs_pwd\"/" /root/hy/config.json
         systemctl restart hysteria-server.service
-        X
         exit 1
         ;;
     2)
