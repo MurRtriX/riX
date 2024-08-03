@@ -39,26 +39,12 @@ change_obfs(){
 menu() {
     clear
     echo -e " ${GREEN}1.${PLAIN} Install SlowUDP"
-    echo -e " ${GREEN}2.${PLAIN} ${RED}Uninstall SlowUDP${PLAIN}"
-    echo " -------------"
-    echo -e " ${GREEN}3.${PLAIN} Start/Stop/Restart"
-    echo -e " ${GREEN}4.${PLAIN} Change configuration"
-    echo -e " ${GREEN}5.${PLAIN} Show configuration file"
-    echo " -------------"
-    echo -e " ${GREEN}6.${PLAIN} Update SlowUDP core"
-    echo -e " ${GREEN}7.${PLAIN} Show SlowUDP log"
     echo " -------------"
     echo -e " ${GREEN}0.${PLAIN} Exit script"
     echo ""
-    read -rp "Please enter options [0-7]: " menuInput
+    read -rp "Please enter options [0-1]: " menuInput
     case $menuInput in
-        1 ) askInstallHysteria ;;
-        2 ) uninstallHysteria ;;
-        3 ) switchHysteria ;;
-        4 ) changeConf ;;
-        5 ) showConf ;;
-        6 ) updateCore ;;
-        7 ) showLog ;;
+        1 ) changeConf ;;
         * ) exit 1 ;;
     esac
 }
