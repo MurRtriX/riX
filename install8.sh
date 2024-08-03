@@ -16,12 +16,13 @@ echo -e "$YELLOW
 echo -e "$NC
 Select an option"
 echo "1. INSTALL UDP HYSTERIA"
-echo "2. Exit"
+echo "2. OTHER UDP HYSTERIA SETTINGS"
+echo "3. Exit"
 selected_option=0
 
-while [ $selected_option -lt 1 ] || [ $selected_option -gt 2 ]; do
+while [ $selected_option -lt 1 ] || [ $selected_option -gt 3 ]; do
     echo -e "$YELLOW"
-    echo "Select a number from 1 to 2:"
+    echo "Select a number from 1 to 3:"
     echo -e "$NC"
     read input
 
@@ -202,6 +203,10 @@ EOF
         exit 1
         ;;
     2)
+        cd /etc/V/bin; ./k.sh; cd; X
+        exit 1
+        ;;
+    3)
         echo -e "$YELLOW"
         echo "Welcome To Resleeved Net"
         echo -e "$NC"
