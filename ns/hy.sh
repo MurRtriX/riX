@@ -78,7 +78,11 @@ case $selected_option in
             read -p "Remote UDP Port : " remote_udp_port
             echo -e "$NC"
             if is_number "$remote_udp_port" && [ "$remote_udp_port" -ge 1 ] && [ "$remote_udp_port" -le 65534 ]; then
-            break
+                break
+            else
+                echo -e "$YELLOW"
+                echo "Invalid input. Please enter a valid number between 1 and 65534."
+                echo -e "$NC"
             fi
         done
         file_path="/root/hy/config.json"
