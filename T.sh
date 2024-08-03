@@ -26,10 +26,9 @@ change_obfs(){
     green "The configuration is modified successfully, please re-import the client configuration file"
 }
 
-change_obfs(){
-    old_obfs=$(cat)
-    echo -e "ZIVPN UDP Passwords"
-read -p "Enter passwords separated by commas, example: pass1,pass2 (Press enter for Default 'zi'): " input_config
+change_auth(){
+    echo -e "Hysteria Udp Auth"
+read -p "Enter auth separated by commas : " input_config
 
     if [ -n "$input_config" ]; then
         IFS=',' read -r -a config <<< "$input_config"
@@ -37,13 +36,13 @@ read -p "Enter passwords separated by commas, example: pass1,pass2 (Press enter 
             config+=(${config[0]})
         fi
     else
-        config=("zi")
+        config=("a")
     fi
 
     new_config_str="\"config\": [$(printf "\"%s\"," "${config[@]}" | sed 's/,$//')]"
 
-    sed -i -E "s/\"config\": ?\[[[:space:]]*\"zi\"[[:space:]]*\]/${new_config_str}/g" /etc/zivpn/config.json
-
+    sed -i "s/\"config\":\[\"a\"]/${new_config_str}" /root/hy/config.json
+    
     systemctl restart hysteria-server.service
 
     green "The configuration is modified successfully, please re-import the client configuration file"
@@ -54,11 +53,14 @@ menu() {
     echo ""
     echo -e "1. Change Obfs"
     echo ""
+    echo -e "2. Change auth"
+    echo ""
     echo -e "0. Exit script"
     echo ""
-    read -rp "Please enter options [0-1]: " menuInput
+    read -rp "Please enter options [0-2]: " menuInput
     case $menuInput in
         1 ) change_obfs ;;
+        2 ) change_auth ;;
         * ) exit 1 ;;
     esac
 }
