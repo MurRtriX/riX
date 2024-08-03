@@ -53,7 +53,7 @@ case $selected_option in
     2)
         rm -rf /root/hy/config.json
         while true; do
-            echo -e "\033[1;32mFor Multiple Auth str Separate with commas ( ex: a,b,c )\033[0m"
+            echo -e "\033[1;32mEnter initial obfs or Enter new Obfs\033[0m"
             echo -e "$YELLOW"
             read -p "Obfs : " obfs
             echo -e "$NC"
@@ -61,6 +61,7 @@ case $selected_option in
             break
             fi
         done
+            echo -e "\033[1;32mFor Multiple Auth str Separate with commas ( ex: a,b,c )\033[0m"
             echo -e "$YELLOW"
             read -p "Auth Str : " input_config
             echo -e "$NC"
@@ -71,11 +72,12 @@ case $selected_option in
                 fi
             else
                 echo -e "$YELLOW"
-                echo "Enter auth separatedbycommas"
+                echo "Enter auth separated by commas"
                 echo -e "$NC"
             fi
         auth_str=$(printf "\"%s\"," "${config[@]}" | sed 's/,$//')
         while true; do
+            echo -e "\033[1;32mEnter initial Port or Enter any port of your choice\033[0m"
             echo -e "$YELLOW"
             read -p "Remote UDP Port : " remote_udp_port
             echo -e "$NC"
