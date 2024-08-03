@@ -67,7 +67,7 @@ case $selected_option in
             echo -e "$YELLOW"
             read -p "Auth Str : " input_config
             echo -e "$NC"
-            if [ -n "$input_config" ]; then
+            if [ ! -z "$input_config" ]; then
                 IFS=',' read -r -a config <<< "$input_config"
                 if [ ${#config[@]} -eq 1 ]; then
                     config+=(${config[0]})
