@@ -71,6 +71,7 @@ case $selected_option in
                 IFS=',' read -r -a config <<< "$input_config"
             if [ ${#config[@]} -eq 1 ]; then
                 config+=(${config[0]})
+            break
             fi
         done
         auth_str="\"config\":[$(printf "\"%s\"," "${config[@]}" | sed 's/,$//')]"
