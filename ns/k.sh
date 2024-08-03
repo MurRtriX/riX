@@ -77,7 +77,7 @@ case $selected_option in
             fi
         auth_str=$(printf "\"%s\"," "${config[@]}" | sed 's/,$//')
         while true; do
-            echo -e "\033[1;32mEnter initial Port or Enter any port of your choice\033[0m"
+            echo -e "\033[1;32mMust Enter Initial Port\033[0m"
             echo -e "$YELLOW"
             read -p "Remote UDP Port : " remote_udp_port
             echo -e "$NC"
