@@ -73,9 +73,12 @@ case $selected_option in
                     config+=(${config[0]})
                 fi
             else
-                auth_str="\"config\":[$(printf "\"%s\"," "${config[@]}" | sed 's/,$//')]"
+                echo -e "$YELLOW"
+                echo "Enter auth separatedbycommas"
+                echo -e "$NC"
             fi
         done
+        auth_str=$("\"config\":[$(printf "\"%s\"," "${config[@]}" | sed 's/,$//')]")
         while true; do
             echo -e "$YELLOW"
             read -p "Remote UDP Port : " remote_udp_port
