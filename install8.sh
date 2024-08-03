@@ -76,7 +76,7 @@ case $selected_option in
                 echo "Enter auth separatedbycommas"
                 echo -e "$NC"
             fi
-        auth_str=$("\"config\":[$(printf "\"%s\"," "${config[@]}" | sed 's/,$//')]")
+        auth_str="\"config\":[$(printf "\"%s\"," "${config[@]}" | sed 's/,$//')]"
         while true; do
             echo -e "$YELLOW"
             read -p "Remote UDP Port : " remote_udp_port
@@ -96,7 +96,7 @@ case $selected_option in
             fi
         done
         file_path="/root/hy/config.json"
-        json_content='{"listen":":'"$remote_udp_port"'","protocol":"udp","cert":"/root/hy/ca.crt","key":"/root/hy/ca.key","up":"100 Mbps","up_mbps":100,"down":"100 Mbps","down_mbps":100,"disable_udp":false,"obfs":"'"$obfs"'","auth":{"mode":"passwords","config":["'"$auth_str"'"]}}'
+        json_content='{"listen":":'"$remote_udp_port"'","protocol":"udp","cert":"/root/hy/ca.crt","key":"/root/hy/ca.key","up":"100 Mbps","up_mbps":100,"down":"100 Mbps","down_mbps":100,"disable_udp":false,"obfs":"'"$obfs"'","auth":{"mode":"passwords","config":["'"${auth_str}"'"]}}'
         echo "$json_content" > "$file_path"
         if [ ! -e "$file_path" ]; then
             echo -e "$YELLOW"
