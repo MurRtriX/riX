@@ -67,7 +67,7 @@ case $selected_option in
             echo -e "$YELLOW"
             read -p "Auth Str : " input_config
             echo -e "$NC"
-            if [ ! -z "$input_config" ]; then
+            if [ -n "$input_config" ]; then
                 IFS=',' read -r -a config <<< "$input_config"
                 if [ ${#config[@]} -eq 1 ]; then
                     config+=(${config[0]})
@@ -77,7 +77,6 @@ case $selected_option in
                 echo "Enter auth separatedbycommas"
                 echo -e "$NC"
             fi
-        done
         auth_str=$("\"config\":[$(printf "\"%s\"," "${config[@]}" | sed 's/,$//')]")
         while true; do
             echo -e "$YELLOW"
