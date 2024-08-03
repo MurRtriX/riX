@@ -19,9 +19,9 @@ echo -e "$YELLOW
 💚 ALL HYSTERIA UDP INSTALLATIONS 💚      
     ╰┈➤ 💚 Resleeved Net 💚               "$NC
 echo ""          
-echo -e "$YELLOW Warp Services "$NC
+echo -e "$YELLOW Hysteria UDP Services "$NC
  echo -e "\033[32m 1.  Change Obfs \033[0m"
- echo -e "\033[32m 2.  Auth ( Separate with commas ex: a,b,c )\033[0m"
+ echo -e "\033[32m 2.  Auth Logins \033[0m"
  echo -e "\033[32m 3.  Exit \033[0m"
  selected_option=0
 
@@ -55,6 +55,7 @@ case $selected_option in
     2)
         rm -rf /root/hy/config.json
         while true; do
+            echo "For Multiple Auth str Separate with commas ( ex: a,b,c )"
             echo -e "$YELLOW"
             read -p "Obfs : " obfs
             echo -e "$NC"
@@ -99,7 +100,6 @@ case $selected_option in
         fi
         chmod 755 /root/hy/config.json
         systemctl restart hysteria-server.service
-        X
         exit 1
         ;;
     3)
