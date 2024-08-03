@@ -15,7 +15,7 @@ inst_obfs(){
 change_obfs(){
     old_pwd=$(cat /root/hy/config.json | grep obfs | awk -F',' 'NR == 1 {split($10,a,":");print a[2]}' | sed "s/\"//g" | sed "s/,//g")
     inst_obfs
-    sed -i 's/\"obfs\":\"$old_pwd\"/\"obfs\":\"$obfs_pwd\"/' /root/hy/config.json
+    sed -i "s/\"obfs\":\"$old_pwd\"/\"obfs\":\"$obfs_pwd\"/" /root/hy/config.json
 
     systemctl restart hysteria-server.service
 
