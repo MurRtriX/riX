@@ -24,8 +24,8 @@ echo -e "$YELLOW Hysteria UDP Services "$NC
  echo -e "\033[32m 3.  Exit \033[0m"
  selected_option=0
 
-while [ $selected_option -lt 1 ] || [ $selected_option -gt 6 ]; do
-    echo -e "\033[1;33m Select a number from 1 to 6: \033[0m"
+while [ $selected_option -lt 1 ] || [ $selected_option -gt 3 ]; do
+    echo -e "\033[1;33m Select a number from 1 to 3: \033[0m"
     read -p " " input
     
     # Check if input is a number
