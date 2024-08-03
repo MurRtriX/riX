@@ -1,24 +1,15 @@
-echo -e "ZIVPN UDP Passwords"
-read -p "Enter passwords separated by commas, example: pass1,pass2 (Press enter for Default 'zi'): " input_config
-
-if [ -n "$input_config" ]; then
-    IFS=',' read -r -a config <<< "$input_config"
-    if [ ${#config[@]} -eq 1 ]; then
-        config+=(${config[0]})
-    fi
-else
-    config=("zi")
+checkRoot() {
+user=$(whoami)
+if [ ! "${user}" = "root" ]; then
+echo -e "\e[91mHey dude, run me as root!\e[0m" # Red text
+exit 1
 fi
-
-new_config_str="\"config\": [$(printf "\"%s\"," "${config[@]}" | sed 's/,$//')]"
-
-sed -i -E "s/\"config\": ?\[[[:space:]]*\"zi\"[[:space:]]*\]/${new_config_str}/g" /root/hy/config.json
-
+}
 
 inst_obfs(){
     read -p "Set SlowUDP obfuscation password (Enter for random password) :  " obfs_pwd
     [[ -z $obfs_pwd ]] && obfs_pwd=$(date +%s%N | md5sum | cut -c 1-16)
-    yellow "The obfs password used on the SlowUDP server is: $obfs_pwd"
+    echo "The obfs password used on the SlowUDP server is: $obfs_pwd"
     auth_pwd=$obfs_pwd
 }
 
