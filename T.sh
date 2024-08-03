@@ -14,7 +14,7 @@ inst_obfs(){
 }
 
 change_obfs(){
-    old_pwd=$(cat /root/hy/config.json | grep obfs | awk -F " " '{print $2}' | sed "s/\"//g" | sed "s/,//g")
+    old_pwd=$(cat /root/hy/config.json | grep obfs | awk -F',' 'NR == 1 {split($10,a,":");print a[2]}' | sed "s/\"//g" | sed "s/,//g")
     inst_obfs
     sed -i 's/\"obfs\":\"\"/\"obfs\":\"$obfs_pwd\"/' /root/hy/config.json
 
