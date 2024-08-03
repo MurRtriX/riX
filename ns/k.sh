@@ -51,16 +51,6 @@ case $selected_option in
         exit 1
         ;;
     2)
-        rm -rf /root/hy/config.json
-        while true; do
-            echo -e "\033[1;32mEnter initial obfs or Enter new Obfs\033[0m"
-            echo -e "$YELLOW"
-            read -p "Obfs : " obfs
-            echo -e "$NC"
-            if [ ! -z "$obfs" ]; then
-            break
-            fi
-        done
             echo -e "\033[1;32mFor Multiple Auth str Separate with commas ( ex: a,b,c )\033[0m"
             echo -e "$YELLOW"
             read -p "Auth Str : " input_config
@@ -76,19 +66,9 @@ case $selected_option in
                 echo -e "$NC"
             fi
         auth_str=$(printf "\"%s\"," "${config[@]}" | sed 's/,$//')
-        while true; do
-            echo -e "\033[1;32mMust Enter Initial Port\033[0m"
-            echo -e "$YELLOW"
-            read -p "Remote UDP Port : " remote_udp_port
-            echo -e "$NC"
-            if is_number "$remote_udp_port" && [ "$remote_udp_port" -ge 1 ] && [ "$remote_udp_port" -le 65534 ]; then
-                break
-            else
-                echo -e "$YELLOW"
-                echo "Invalid input. Please enter a valid number between 1 and 65534."
-                echo -e "$NC"
-            fi
-        done
+        remote_udp_port=$(cat /root/hy/config.json | grep listen | awk -F',' 'NR == 1 {split($1,a,":");print a[3]}' | sed "s/\"//g" | sed "s/,//g")
+        obfs=$(cat /root/hy/config.json | grep obfs | awk -F',' 'NR == 1 {split($10,a,":");print a[2]}' | sed "s/\"//g" | sed "s/,//g")
+        rm -rf /root/hy/config.json
         file_path="/root/hy/config.json"
         json_content='{"listen":":'"$remote_udp_port"'","protocol":"udp","cert":"/root/hy/ca.crt","key":"/root/hy/ca.key","up":"100 Mbps","up_mbps":100,"down":"100 Mbps","down_mbps":100,"disable_udp":false,"obfs":"'"$obfs"'","auth":{"mode":"passwords","config":['"$auth_str"']}}'
         echo "$json_content" > "$file_path"
