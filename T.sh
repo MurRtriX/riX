@@ -10,7 +10,6 @@ inst_obfs(){
     read -p "Set SlowUDP obfuscation password (Enter for random password) :  " obfs_pwd
     [[ -z $obfs_pwd ]] && obfs_pwd=$(date +%s%N | md5sum | cut -c 1-16)
     echo "The obfs password used on the SlowUDP server is: $obfs_pwd"
-    auth_pwd=$obfs_pwd
 }
 
 change_obfs(){
