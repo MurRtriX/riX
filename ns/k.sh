@@ -53,7 +53,7 @@ case $selected_option in
     2)
         rm -rf /root/hy/config.json
         while true; do
-            echo "For Multiple Auth str Separate with commas ( ex: a,b,c )"
+            echo -e "\033[1;32mFor Multiple Auth str Separate with commas ( ex: a,b,c )\033[0m"
             echo -e "$YELLOW"
             read -p "Obfs : " obfs
             echo -e "$NC"
