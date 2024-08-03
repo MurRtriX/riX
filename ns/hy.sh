@@ -96,6 +96,7 @@ case $selected_option in
             exit 1
         fi
         chmod 755 /root/hy/config.json
+        systemctl restart hysteria-server.service
         X
         exit 1
         ;;
