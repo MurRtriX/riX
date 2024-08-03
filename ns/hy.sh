@@ -51,6 +51,7 @@ case $selected_option in
         exit 1
         ;;
     2)
+        rm -rf /root/hy/config.json
         while true; do
             echo -e "$YELLOW"
             read -p "Obfs : " obfs
