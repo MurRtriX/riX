@@ -38,9 +38,9 @@ change_obfs(){
 
 menu() {
     clear
-    echo -e " ${GREEN}1.${PLAIN} Install SlowUDP"
+    echo -e "1. Install SlowUDP"
     echo " -------------"
-    echo -e " ${GREEN}0.${PLAIN} Exit script"
+    echo -e "0. Exit script"
     echo ""
     read -rp "Please enter options [0-1]: " menuInput
     case $menuInput in
