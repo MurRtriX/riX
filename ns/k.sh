@@ -14,7 +14,6 @@ if [ "$(whoami)" != "root" ]; then
     exit 1
 fi
 cd /root
-clear
 echo -e "$YELLOW
 💚 ALL HYSTERIA UDP INSTALLATIONS 💚      
     ╰┈➤ 💚 Resleeved Net 💚               "$NC
