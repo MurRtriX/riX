@@ -64,6 +64,7 @@ case $selected_option in
             break
             fi
         done
+            echo -e "\033[1;32mMultiple Auth Separate with commas ( ex: a,b,c )\033[0m"
             echo -e "$YELLOW"
             read -p "Auth Str : " input_config
             echo -e "$NC"
