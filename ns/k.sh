@@ -94,6 +94,7 @@ case $selected_option in
         echo ""
         read -p "┈➤ Press any key to exit ↩︎" key
         exit 1
+        ;;
     4)
         clear; X
         exit 1
