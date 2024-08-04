@@ -91,8 +91,8 @@ case $selected_option in
         echo ""
         echo -e "\033[1;32mActive Auth/Users\033[0m"
         echo ""
-        echo -e "\033[1;33m$(awk -F, 'NR==1 { print }' /root/hy/authusers | sed "s/\"/ /g" | sed "s/,/ /g")\033[0m"
-        echo -e "\033[1;32m───────────────────────•\033[0m"
+        echo -e "\033[1;33m1. $((awk -F, 'NR==1 { print }' /root/hy/authusers | sed "s/\"/  /g" | sed "s/,/  /g"))\033[0m"
+        11
         read -p "Press any key to exit ↩︎" key
         exit 1
         ;;
