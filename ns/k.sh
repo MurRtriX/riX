@@ -83,7 +83,7 @@ case $selected_option in
         fi
         chmod 755 /root/hy/config.json
         systemctl restart hysteria-server.service
-        sleep 2
+        sleep 1
         exit 1
         ;;
     3)
