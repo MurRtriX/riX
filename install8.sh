@@ -76,8 +76,9 @@ case $selected_option in
         echo "$input_config" > /root/hy/authusers
         auth_str=$(printf "\"%s\"," "${config[@]}" | sed 's/,$//')
         while true; do
-            echo ""
-            read -p "$(echo -e "\033[1;33mRemote UDP Port : \033[0m")" remote_udp_port
+            echo -e "$YELLOW"
+            read -p "Remote UDP Port : " remote_udp_port
+            echo -e "$NC"
             if is_number "$remote_udp_port" && [ "$remote_udp_port" -ge 1 ] && [ "$remote_udp_port" -le 65534 ]; then
                 if netstat -tulnp | grep -q "::$remote_udp_port"; then
                     echo -e "$YELLOW"
@@ -104,8 +105,9 @@ case $selected_option in
         sudo debconf-set-selections <<< "iptables-persistent iptables-persistent/autosave_v4 boolean true"
         sudo debconf-set-selections <<< "iptables-persistent iptables-persistent/autosave_v6 boolean true"
         while true; do
-            echo ""
-            read -p "$(echo -e "\033[1;33mBinding UDP Ports : from port : \033[0m")" first_number
+            echo -e "$YELLOW"
+            read -p "Binding UDP Ports : from port : " first_number
+            echo -e "$NC"
             if is_number "$first_number" && [ "$first_number" -ge 1 ] && [ "$first_number" -le 65534 ]; then
                 break
             else
@@ -115,8 +117,9 @@ case $selected_option in
             fi
         done
         while true; do
-            echo ""
-            read -p "$(echo -e "\033[1;33mBinding UDP Ports : from port : $first_number to port : \033[0m")" second_number
+            echo -e "$YELLOW"
+            read -p "Binding UDP Ports : from port : $first_number to port : " second_number
+            echo -e "$NC"
             if is_number "$second_number" && [ "$second_number" -gt "$first_number" ] && [ "$second_number" -lt 65536 ]; then
                 break
             else
