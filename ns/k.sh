@@ -19,9 +19,9 @@ echo -e "$YELLOW
     ╰┈➤ 💚 Resleeved Net 💚               "$NC
 echo ""          
 echo -e "$YELLOW Hysteria UDP Services "$NC
- echo -e "\033[32m 1.  Change Obfs \033[0m"
- echo -e "\033[32m 2.  Auth Logins \033[0m"
- echo -e "\033[32m 3.  Exit \033[0m"
+ echo -e "\033[1;32m 1.  Change Obfs \033[0m"
+ echo -e "\033[1;32m 2.  Auth Logins \033[0m"
+ echo -e "\033[1;32m 3.  Exit \033[0m"
  selected_option=0
 
 while [ $selected_option -lt 1 ] || [ $selected_option -gt 3 ]; do
