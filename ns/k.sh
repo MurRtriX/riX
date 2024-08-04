@@ -21,11 +21,12 @@ echo ""
 echo -e "$YELLOW Hysteria UDP Services "$NC
  echo -e "\033[1;32m 1.  Change Obfs \033[0m"
  echo -e "\033[1;32m 2.  Auth Logins \033[0m"
- echo -e "\033[1;32m 3.  Exit \033[0m"
+ echo -e "\033[1;32m 3.  Active Auth Logins \033[1;0m"
+ echo -e "\033[1;32m 4.  Exit \033[0m"
  selected_option=0
 
-while [ $selected_option -lt 1 ] || [ $selected_option -gt 3 ]; do
-    echo -e "\033[1;33m Select a number from 1 to 3: \033[0m"
+while [ $selected_option -lt 1 ] || [ $selected_option -gt 4 ]; do
+    echo -e "\033[1;33m Select a number from 1 to 4: \033[0m"
     read -p " " input
     
     # Check if input is a number
@@ -52,7 +53,7 @@ case $selected_option in
         exit 1
         ;;
     2)
-            echo -e "\033[1;33mActive auth: \033[1;32m(\033[1;33m $(cat /root/hy/authusers) \033[1;32m)\033[0m"
+            echo -e "\033[1;33mActive auth: \033[1;32m(\033[1;33m $(awk -F, 'NR==1 { print }' /root/hy/authusers | sed "s/\"/ /g" | sed "s/,/ /g") \033[1;32m)\033[0m"
             rm -rf /root/hy/authusers
             echo -e "\033[1;32mFor Multiple Auth str Separate with commas ( ex: a,b,c )\033[0m"
             echo -e "$YELLOW"
@@ -88,6 +89,12 @@ case $selected_option in
         exit 1
         ;;
     3)
+        echo -e "\033[1;32mActive Auth/Passwords\033[0m"
+        echo -e "\033[1;33m$(awk -F, 'NR==1 { print }' /root/hy/authusers | sed "s/\"//g" | sed "s/,/                                                                         /g")\033[0m"
+        echo ""
+        read -p "Press any key to exit :"
+        exit 1
+    4)
         clear; X
         exit 1
         ;;
