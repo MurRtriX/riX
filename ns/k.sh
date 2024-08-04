@@ -15,13 +15,13 @@ if [ "$(whoami)" != "root" ]; then
 fi
 cd /root
 echo -e "$YELLOW
-💚 ALL HYSTERIA UDP INSTALLATIONS 💚      
-    ╰┈➤ 💚 Resleeved Net 💚               "$NC
+💚 HYSTERIA INSTALLATIONS 💚      
+╰┈➤ 💚 Resleeved Net 💚               "$NC
 echo ""          
 echo -e "$YELLOW Hysteria UDP Services "$NC
- echo -e "\033[1;32m 1.  Change Obfs \033[0m"
+ echo -e "\033[1;32m 1.  New Obfs \033[0m"
  echo -e "\033[1;32m 2.  Auth Logins \033[0m"
- echo -e "\033[1;32m 3.  Active Auth Logins \033[1;0m"
+ echo -e "\033[1;32m 3.  Active Auth  \033[1;0m"
  echo -e "\033[1;32m 4.  Exit \033[0m"
  selected_option=0
 
