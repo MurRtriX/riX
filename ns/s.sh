@@ -23,8 +23,8 @@ echo -e "$YELLOW Hysteria UDP Services "$NC
  echo -e "\033[1;32m 2.  Auth Logins \033[0m"
  echo -e "\033[1;32m 3.  Active Auth  \033[1;0m"
  echo -e "\033[1;32m 0.  Exit \033[0m"
- selected_option=0
-
+ #Select an Option
+    
     read -p "$(echo -e "\033[1;33m Select a number from 0 to 3: \033[0m")" input
     
     # Check if input is a number
@@ -36,7 +36,7 @@ echo -e "$YELLOW Hysteria UDP Services "$NC
         echo -e "$NC"
     fi
 clear
-case $input in
+case $selected_option in
     1)
         echo -e "$YELLOW"
         old_pwd=$(cat /root/hy/config.json | grep obfs | awk -F',' 'NR == 1 {split($10,a,":");print a[2]}' | sed "s/\"//g" | sed "s/,//g")
