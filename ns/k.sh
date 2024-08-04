@@ -89,9 +89,10 @@ case $selected_option in
         exit 1
         ;;
     3)
+        echo -e \033[1;33mACTIVE HYSTERIA AUTH\033[0m"
         echo ""
-        echo -e "\033[1;33mActive Auth/Passwords\033[0m"
-        echo ""
+        echo -e "\033[1;32mActive Auth/Passwords\033[0m"
+        echo -e "\033[1;33m───────────────────────•\033[0m"
         echo -e "\033[1;32m$(awk -F, 'NR==1 { print }' /root/hy/authusers | sed "s/\"//g" | sed "s/,/                                                                         /g")\033[0m"
         echo -e "\033[1;33m───────────────────────•\033[0m"
         read -p "Press any key to exit ↩︎" key
