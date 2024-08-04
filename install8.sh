@@ -59,7 +59,7 @@ case $selected_option in
             break
             fi
         done
-            echo -e "\033[1;32mMultiple Auth Separate with commas ( ex: a,b,c )\033[0m"
+            echo -e "\033[1;32mMultiple Auth ( ex: a,b,c )\033[0m"
             echo -e "$YELLOW"
             read -p "Auth Str : " input_config
             echo -e "$NC"
@@ -70,7 +70,7 @@ case $selected_option in
                 fi
             else
                 echo -e "$YELLOW"
-                echo "Enter auth separatedbycommas"
+                echo "Enter auth separated by commas"
                 echo -e "$NC"
             fi
         echo "$input_config" > /root/hy/authusers
