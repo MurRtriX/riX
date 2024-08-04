@@ -52,7 +52,7 @@ case $selected_option in
         exit 1
         ;;
     2)
-            echo -e "\033[1;31mCurrent auth > $(cat /root/hy/authusers)\033[0m"
+            echo -e "\033[1;32mCurrent auth: [\033[1;33m$(cat /root/hy/authusers)\033[1;33m]\033[0m"
             rm -rf /root/hy/authusers
             echo ""
             echo -e "\033[1;32mFor Multiple Auth str Separate with commas ( ex: a,b,c )\033[0m"
