@@ -113,9 +113,7 @@ case $selected_option in
             fi
         done
         while true; do
-            echo -e "$YELLOW"
             read -p "$(echo -e "\033[1;33mBinding UDP Ports : from port : $first_number to port : \033[0m")" second_number
-            echo -e "$NC"
             if is_number "$second_number" && [ "$second_number" -gt "$first_number" ] && [ "$second_number" -lt 65536 ]; then
                 break
             else
