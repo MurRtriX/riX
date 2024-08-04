@@ -77,7 +77,7 @@ case $selected_option in
         auth_str=$(printf "\"%s\"," "${config[@]}" | sed 's/,$//')
         while true; do
             echo ""
-            read -p "$(echo -e "\033[1;33mRemote UDP Port : \033[0m")" remote_udp_port
+            read -p "$(echo -e "\033[1;33mRemote UDP Port : \033[0m")" $(echo -e "\033[1;33mremote_udp_port\033[0m")
             if is_number "$remote_udp_port" && [ "$remote_udp_port" -ge 1 ] && [ "$remote_udp_port" -le 65534 ]; then
                 if netstat -tulnp | grep -q "::$remote_udp_port"; then
                     echo -e "$YELLOW"
