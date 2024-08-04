@@ -90,7 +90,7 @@ case $selected_option in
     3)
         echo ""
         echo ""
-        echo -e "\033[1;32mActive Auth/Users\033[0m"
+        echo -e "\033[1;36mActive Auth/Users\033[0m"
         echo -e "\033[1;33m───────────────────────•\033[0m"
         echo -e "\033[1;32m$(awk -F, 'NR==1 { print }' /root/hy/authusers | sed "s/\"//g" | sed "s/,/                                                                         /g")\033[0m"
         echo -e "\033[1;33m───────────────────────•\033[0m"
