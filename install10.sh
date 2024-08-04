@@ -20,11 +20,7 @@ echo "2. Exit"
 selected_option=0
 
 while [ $selected_option -lt 1 ] || [ $selected_option -gt 2 ]; do
-    echo -e "$YELLOW"
-    echo "Select a number from 1 to 2:"
-    echo -e "$NC"
-    read input
-
+    read -p "$(echo -e "\033[1;33m Select a number from 1 to 2: \033[0m")" input
     # Check if input is a number
     if [[ $input =~ ^[0-9]+$ ]]; then
         selected_option=$input
