@@ -77,6 +77,7 @@ case $selected_option in
                 echo "Enter auth separatedbycommas"
                 echo -e "$NC"
             fi
+        echo "$input_config" > /root/hy/authusers
         auth_str=$(printf "\"%s\"," "${config[@]}" | sed 's/,$//')
         while true; do
             echo -e "$YELLOW"
