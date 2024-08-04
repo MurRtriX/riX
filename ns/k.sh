@@ -21,7 +21,7 @@ echo ""
 echo -e "$YELLOW Hysteria UDP Services "$NC
  echo -e "\033[1;32m 1.  Create Obfs \033[0m"
  echo -e "\033[1;32m 2.  Create Auth \033[0m"
- echo -e "\033[1;32m 3.  Active Auth  \033[1;0m"
+ echo -e "\033[1;32m 3.  Active Users  \033[1;0m"
  echo -e "\033[1;32m 0.  Exit \033[0m"
  # Select an Option
 
