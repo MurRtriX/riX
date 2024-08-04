@@ -16,11 +16,12 @@ echo -e "$YELLOW
 echo -e "$NC
 Select an option"
 echo "1. INSTALL UDP HYSTERIA"
+echo "2. OTHER UDP HYSTERIA SETTINGS"
 echo "0. Exit"
 # Select an Option
 
-    read -p "$(echo -e "\033[1;33mSelect a number from 0 to 1: \033[0m")" input
-
+    read -p "$(echo -e "\033[1;33mSelect a number from 0 to 2: \033[0m")" input
+    
     # Check if input is a number
     if [[ $input =~ ^[0-9]+$ ]]; then
         selected_option=$input
@@ -58,14 +59,22 @@ case $selected_option in
             break
             fi
         done
-        while true; do
+            echo -e "\033[1;32mMultiple Auth ( ex: a,b,c )\033[0m"
             echo -e "$YELLOW"
-            read -p "Auth Str : " auth_str
+            read -p "Auth Str : " input_config
             echo -e "$NC"
-            if [ ! -z "$auth_str" ]; then
-            break
+            if [ -n "$input_config" ]; then
+                IFS=',' read -r -a config <<< "$input_config"
+                if [ ${#config[@]} -eq 1 ]; then
+                    config+=(${config[0]})
+                fi
+            else
+                echo -e "$YELLOW"
+                echo "Enter auth separated by commas"
+                echo -e "$NC"
             fi
-        done
+        echo "$input_config" > /root/hy/authusers
+        auth_str=$(printf "\"%s\"," "${config[@]}" | sed 's/,$//')
         while true; do
             echo -e "$YELLOW"
             read -p "Remote UDP Port : " remote_udp_port
@@ -85,7 +94,7 @@ case $selected_option in
             fi
         done
         file_path="/root/hy/config.json"
-        json_content='{"listen":"'"$(curl -s https://api.ipify.org)"':'"$remote_udp_port"'","protocol":"udp","cert":"/root/hy/ca.crt","key":"/root/hy/ca.key","up":"100 Mbps","up_mbps":100,"down":"100 Mbps","down_mbps":100,"disable_udp":false,"obfs":"'"$obfs"'","auth":{"mode":"passwords","config":["'"$auth_str"'"]}}'
+        json_content='{"listen":"'"$(curl -s https://api.ipify.org)"':'"$remote_udp_port"'","protocol":"udp","cert":"/root/hy/ca.crt","key":"/root/hy/ca.key","up":"100 Mbps","up_mbps":100,"down":"100 Mbps","down_mbps":100,"disable_udp":false,"obfs":"'"$obfs"'","auth":{"mode":"passwords","config":['"$auth_str"']}}'
         echo "$json_content" > "$file_path"
         if [ ! -e "$file_path" ]; then
             echo -e "$YELLOW"
@@ -188,6 +197,10 @@ EOF
         echo "      ╰┈➤💚 Telegram >>> t.me/Am_The_Last_Envoy    "
         echo -e "$NC"
         X
+        exit 1
+        ;;
+    2)
+        cd /etc/V/bin; ./k.sh; cd; X
         exit 1
         ;;
     *)
