@@ -22,7 +22,7 @@ echo -e "\t\e\033[1;33m                 • нαωkiиѕ  \033[0m"
 echo -e "\e[1m\e[36m───────────────────────────────────────────────────────────────────•\e[0m"
 echo -e "$YELLOW ResleevedNet v.5 Menu "$NC
  echo -e "\033[32m 1.  UDP HYSTERIA                         11. IODINE DNS    \033[0m"
- echo -e "\033[32m 2.  HC UDP & HYSTERIA               12. HYSTERIA V2  \033[0m"
+ echo -e "\033[32m 2.  HC UDP & HYSTERIA                    12. HYSTERIA V2  \033[0m"
  echo -e "\033[32m 3.  HC UDP No HYSTERIA                   13. Mieru TCP \033[0m"
  echo -e "\033[32m 4.  BadVpn For Voip                      14. UDP REQUEST \033[0m"
  echo -e "\033[32m 5.  Install HTTP PROXY                   15. DNSTT TUNNEL \033[0m"
