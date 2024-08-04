@@ -92,7 +92,7 @@ case $selected_option in
         echo -e "\033[1;32mActive Auth/Passwords\033[0m"
         echo -e "\033[1;33m$(awk -F, 'NR==1 { print }' /root/hy/authusers | sed "s/\"//g" | sed "s/,/                                                                         /g")\033[0m"
         echo ""
-        read -p "Press any key to exit :"
+        read -p "┈➤ Press any key to exit ↩︎" key
         exit 1
     4)
         clear; X
