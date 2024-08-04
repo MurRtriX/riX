@@ -52,6 +52,7 @@ case $selected_option in
         exit 1
         ;;
     2)
+            rm -rf /root/hy/authusers
             echo -e "\033[1;32mFor Multiple Auth str Separate with commas ( ex: a,b,c )\033[0m"
             echo -e "$YELLOW"
             read -p "Auth Str : " input_config
@@ -66,6 +67,7 @@ case $selected_option in
                 echo "Enter auth separated by commas"
                 echo -e "$NC"
             fi
+        echo "$input_config" > /root/hy/authusers
         auth_str=$(printf "\"%s\"," "${config[@]}" | sed 's/,$//')
         remote_udp_port=$(cat /root/hy/config.json | grep listen | awk -F',' 'NR == 1 {split($1,a,":");print a[3]}' | sed "s/\"//g" | sed "s/,//g")
         obfs=$(cat /root/hy/config.json | grep obfs | awk -F',' 'NR == 1 {split($10,a,":");print a[2]}' | sed "s/\"//g" | sed "s/,//g")
