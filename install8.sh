@@ -17,7 +17,7 @@ echo -e "$NC
 Select an option"
 echo "1. INSTALL UDP HYSTERIA"
 echo "2. OTHER UDP HYSTERIA SETTINGS"
-echo "3. Exit"
+echo "0. Exit"
 # Select an Option
 
     read -p "$(echo -e "\033[1;33mSelect a number from 0 to 2: \033[0m")" input
@@ -203,7 +203,7 @@ EOF
         cd /etc/V/bin; ./k.sh; cd; X
         exit 1
         ;;
-    3)
+    *)
         echo -e "$YELLOW"
         echo "Welcome To Resleeved Net"
         echo -e "$NC"
