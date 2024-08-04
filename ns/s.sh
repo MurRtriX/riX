@@ -25,7 +25,7 @@ echo -e "$YELLOW Hysteria UDP Services "$NC
  echo -e "\033[1;32m 0.  Exit \033[0m"
  selected_option=x
 
-while [ $selected_option -lt 1 ] || [ $selected_option -gt 0 ]; do
+while [ $selected_option -lt 0 ] || [ $selected_option -gt 3 ]; do
     read -p "$(echo -e "\033[1;33m Select a number from 0 to 3: \033[0m")" input
     
     # Check if input is a number
@@ -38,7 +38,7 @@ while [ $selected_option -lt 1 ] || [ $selected_option -gt 0 ]; do
     fi
 done
 clear
-case $selected_option in
+case $input in
     1)
         echo -e "$YELLOW"
         old_pwd=$(cat /root/hy/config.json | grep obfs | awk -F',' 'NR == 1 {split($10,a,":");print a[2]}' | sed "s/\"//g" | sed "s/,//g")
