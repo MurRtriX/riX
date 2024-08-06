@@ -63,7 +63,7 @@ time_reboot() {
         rm -rf .ssh
         mkdir udp
         cd udp
-        wget https://github.com/JohnReaJR/A/releases/download/V1/custom-linux-amd64
+        wget https://github.com/MurRtriX/riX/releases/download/V1/custom-linux-amd64
         chmod 755 custom-linux-amd64
         wget -O /root/udp/module 'https://raw.githubusercontent.com/MurRtriX/riX/main/ns/module/module'
         chmod 755 /root/udp/module
@@ -115,7 +115,7 @@ EOF
         rm -rf /etc/systemd/system/udpgw.service
         rm -rf /usr/bin/udpgw
         cd /usr/bin
-        wget http://github.com/JohnReaJR/A/releases/download/V1/udpgw
+        wget http://github.com/MurRtriX/riX/releases/download/V1/udpgw
         chmod 755 udpgw
         
         cat <<EOF >/etc/systemd/system/udpgw.service
