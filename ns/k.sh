@@ -95,8 +95,8 @@ case $selected_option in
         read -p "Press any key to exit ↩︎" key
         exit 1
         ;;
-    0)
-        clear
-        exit 0
+    *)
+        clear; X
+        exit 1
         ;;
 esac
