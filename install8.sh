@@ -207,6 +207,7 @@ EOF
         echo -e "$YELLOW"
         echo "Welcome To Resleeved Net"
         echo -e "$NC"
+        X
         exit 1
         ;;
 esac
