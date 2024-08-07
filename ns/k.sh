@@ -96,8 +96,7 @@ case $selected_option in
         exit 1
         ;;
     *)
-        clear
+        clear; X
         exit 1
-        X
         ;;
 esac
