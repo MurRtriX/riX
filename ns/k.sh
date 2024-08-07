@@ -98,6 +98,7 @@ case $selected_option in
     0)
         clear
         exit 0
+        ;;
     *)
         clear; X
         exit 1
