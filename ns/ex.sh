@@ -1,57 +1,17 @@
+#!/bin/bash
+YELLOW='\033[1;33m'
+NC='\033[0m'
+if [ "$(whoami)" != "root" ]; then
+    echo "Error: This script must be run as root."
+    exit 1
+fi
 udp_dir='/root/udp'
 source $udp_dir/module
-exclude() {
-  title "${a20:-Exclude UDP ports}"
-  print_center -ama "${a21:-UDP CUSTOM covers full range of ports,}"
-  print_center -ama "${a22:-However, you can exclude UDP ports.}"
-  msg -bar3
-  print_center -ama "${a23:-Examples of ports you can exclude:}:"
-  print_center -ama "dnstt (slowdns) udp 53 5300"
-  print_center -ama "wireguard udp 51820"
-  print_center -ama "openvpn udp 1194"
-  msg -bar
-  print_center -verd "${a24:-enter the ports separated by spaces}"
-  print_center -verd "${a25:-Example}: 53 5300 51820 1194"
-  msg -bar3
-  in_opcion_down "${a26:-type ports or hit enter to skip}"
-  del 2
-  tmport=($opcion)
-  for ((i = 0; i < ${#tmport[@]}; i++)); do
-    num=$((${tmport[$i]}))
-    if [[ $num -gt 0 ]]; then
-      echo "$(msg -ama " ${a27:-port to exclude} >") $(msg -azu "$num") $(msg -verd "OK")"
-      Port+=" $num"
-    else
-      msg -verm2 " ${a28:-not a port} > ${tmport[$i]}?"
-      continue
-    fi
-  done
-
-  if [[ -z $Port ]]; then
-    unset Port
-    print_center -ama "${a29:-no ports excluded}"
-  else
-    Port=" -exclude=$(echo "$Port" | sed "s/ /,/g" | sed 's/,//')"
-  fi
-  msg -bar3
-}
-
-add_exclude() {
-  title "${a20:-Exclude UDP ports}"
-  print_center -ama "${a21:-UDP CUSTOM covers full range of ports,}"
-  print_center -ama "${a22:-However, you can exclude UDP ports.}"
-  msg -bar3
-  print_center -ama "${a23:-Examples of ports you can exclude:}:"
-  print_center -ama "dnstt (slowdns) udp 53 5300"
-  print_center -ama "wireguard udp 51820"
-  print_center -ama "openvpn udp 1194"
-  msg -bar
-  print_center -verd "${a24:-enter the ports separated by spaces}"
-  print_center -verd "${a25:-Example}: 53 5300 51820 1194"
-  in_opcion_down "${a26:-type ports or hit enter to skip}"
-  del 4
-  tmport=($opcion)
-  unset Port
+cd /root
+echo -e "\033[1;33mEnter ports to be Excluded separated spaces\033[0m"
+read -p "Enter the ports : " option
+tmport=($option)
+unset Port
   for ((i = 0; i < ${#tmport[@]}; i++)); do
     num=$((${tmport[$i]}))
     if [[ $num -gt 0 ]]; then
@@ -85,6 +45,4 @@ add_exclude() {
       systemctl start custom-server.service &>/dev/null
     fi
   fi
-  enter
-}
-add_exclude
+  exit 0
