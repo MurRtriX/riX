@@ -120,6 +120,6 @@ case $selected_option in
     *)
         echo -e "\033[1;33mResleeved Net \033[0m"
         echo -e "\033[1;33mTelegram: Am_The_Last_Envoy \033[0m"
-        exit 1
+        exit 0
         ;;
 esac
