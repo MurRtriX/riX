@@ -2,7 +2,7 @@ udp_dir='/etc/UDPCustom'
 source $udp_dir/module
 exclude() {
   title "${a20:-Exclude UDP ports}"
-  print_center -ama "${a21:-UDP-Request covers full range of ports,}"
+  print_center -ama "${a21:-UDP CUSTOM covers full range of ports,}"
   print_center -ama "${a22:-However, you can exclude UDP ports.}"
   msg -bar3
   print_center -ama "${a23:-Examples of ports you can exclude:}:"
@@ -38,7 +38,7 @@ exclude() {
 
 add_exclude() {
   title "${a20:-Exclude UDP ports}"
-  print_center -ama "${a21:-UDP-Request covers full range of ports,}"
+  print_center -ama "${a21:-UDP CUSTOM covers full range of ports,}"
   print_center -ama "${a22:-However, you can exclude UDP ports.}"
   msg -bar3
   print_center -ama "${a23:-Examples of ports you can exclude:}:"
@@ -66,23 +66,23 @@ add_exclude() {
     unset Port
     print_center -ama "${a29:-no ports excluded}"
   else
-    exclude=$(cat /etc/systemd/system/udp-request.service | grep 'exclude')
-    if systemctl is-active udp-request &>/dev/null; then
-      systemctl stop udp-request &>/dev/null
-      systemctl disable udp-request &>/dev/null
+    exclude=$(cat /etc/systemd/system/custom-server.service | grep 'exclude')
+    if systemctl is-active custom-server.service &>/dev/null; then
+      systemctl stop custom-server.service &>/dev/null
+      systemctl disable custom-server.service &>/dev/null
       iniciar=1
     fi
     if [[ -z $exclude ]]; then
       Port=" -exclude=$(echo "$Port" | sed "s/ /,/g" | sed 's/,//')"
-      sed -i "s/ -mode/$Port -mode/" /etc/systemd/system/udp-request.service
+      sed -i "s/ -mode/$Port -mode/" /etc/systemd/system/custom-server.service
     else
       exclude_port=$(echo $exclude | awk '{print $4}' | cut -d '=' -f2)
       Port="-exclude=$exclude_port$(echo "$Port" | sed "s/ /,/g")"
-      sed -i "s/-exclude=$exclude_port/$Port/" /etc/systemd/system/udp-request.service
+      sed -i "s/-exclude=$exclude_port/$Port/" /etc/systemd/system/custom-server.service
     fi
     if [[ $iniciar = 1 ]]; then
-      systemctl start udp-request &>/dev/null
-      systemctl enable udp-request &>/dev/null
+      systemctl enable custom-server.service &>/dev/null
+      systemctl start custom-server.service &>/dev/null
     fi
   fi
   enter
