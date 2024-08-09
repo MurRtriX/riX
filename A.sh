@@ -68,7 +68,7 @@ update_packages
 banner
 clear
 figlet -k Resleeved | lolcat
-echo -e "\033[1;33m• ResleevedNet v.5 Ultimate Installer\033[0m"
+echo -e "\033[1;33mResleevedNet v.5 Ultimate Installer\033[0m"
 echo -e "\033[1;36m──────────────────────────────────────────────────────────•\033[0m"
 echo -e "\033[1;32mResleevedNet Installation completed!\033[0m"
 echo ""
