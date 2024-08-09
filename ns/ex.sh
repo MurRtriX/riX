@@ -1,4 +1,4 @@
-udp_dir='/etc/UDPCustom'
+udp_dir='/root/udp'
 source $udp_dir/module
 exclude() {
   title "${a20:-Exclude UDP ports}"
