@@ -7,10 +7,8 @@ if [ "$(whoami)" != "root" ]; then
 fi
 cd /root
 clear
-echo -e "$YELLOW"
-echo "          💚 IPTABLES....SETTING UP YOUR FIREWALL 💚    "
-echo "             ╰┈➤💚 Resleeved Net Firewall 💚          "
-echo -e "$NC"
+echo -e "\033[1;33m💚 IPTABLES....SETTING UP YOUR FIREWALL 💚\033[0m"
+echo -e "\033[1;33m  ╰┈➤💚 Resleeved Net Firewall 💚\033[0m"
 apt-get update && apt-get upgrade
 apt update && apt upgrade
 apt install wget
