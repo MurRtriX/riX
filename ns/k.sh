@@ -30,7 +30,6 @@ echo -e "$YELLOW Hysteria UDP Services "$NC
     # Check if input is a number
     if [[ "$input" =~ ^[0-9]+$ ]]; then
         selected_option=$input
-    fi
     else
         echo -e "$YELLOW"
         echo "Invalid input. Please enter a valid number."
