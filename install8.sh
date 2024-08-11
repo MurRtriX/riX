@@ -33,10 +33,7 @@ echo "0. Exit"
 clear
 case $selected_option in
     1)
-        echo -e "$YELLOW"
-        echo "     💚 UDP HYSTERIA AUTO INSTALLATION 💚      "
-        echo "       ╰┈➤💚 Installing Binaries 💚           "
-        echo -e "$NC"
+        echo -e "\033[1;33mInstalling Hysteria Udp...\033[0m"
         cd /root
         systemctl stop hysteria-server.service
         systemctl disable hysteria-server.service
