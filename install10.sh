@@ -31,7 +31,6 @@ echo "0. Exit"
 clear
 case $selected_option in
     1)
-        echo ""
         echo -e "\033[1;33mInstalling HTTP Custom Udp...\033[0m"
         apt install -y curl
         apt install -y dos2unix
