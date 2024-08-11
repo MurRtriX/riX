@@ -31,10 +31,7 @@ echo "0. Exit"
 clear
 case $selected_option in
     1)
-        echo -e "$YELLOW"
-        echo "     💚 HTTP CUSTOM UDP AUTO INSTALLATION 💚      "
-        echo "        ╰┈➤💚 Installing Binaries 💚           "
-        echo -e "$NC"
+        echo -e "\033[1;33mInstalling HTTP CUSTOM UDP ....\033[0m"
         apt install -y curl
         apt install -y dos2unix
         apt install -y neofetch
