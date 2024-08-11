@@ -3120,11 +3120,11 @@ menu_setting() {
     check_stack
     case "$m" in
       [0-2] )
-        MENU_OPTION[1]="1 $(text 68)"
+        MENU_OPTION[1]="1. $(text 68)"
         ACTION[1]() { CONF=${CONF1[n]}; install; }
         ;;
       * )
-        MENU_OPTION[1]="1 $(text 68)"
+        MENU_OPTION[1]="1. $(text 68)"
         ACTION[1]() { CONF=${CONF1[n]}; install; }
     esac
   fi
@@ -3135,8 +3135,8 @@ menu_setting() {
     grep -q '#Table' /etc/wireguard/warp.conf && GLOBAL_OR_NOT="$(text 184)" || GLOBAL_OR_NOT="$(text 185)"
   fi
 
-  MENU_OPTION[2]="2 $(text 72)"
-  MENU_OPTION[0]="0 $(text 76)"
+  MENU_OPTION[2]="2. $(text 72)"
+  MENU_OPTION[0]="0. $(text 76)"
 
   ACTION[2]() { uninstall; }
   ACTION[0]() { exit; }
