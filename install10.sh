@@ -31,7 +31,7 @@ echo "0. Exit"
 clear
 case $selected_option in
     1)
-        echo -e "\033[1;33mInstalling HTTP CUSTOM UDP ....\033[0m"
+        echo -e "\033[1;33mInstalling Http Custom Udp......\033[0m"
         apt install -y curl
         apt install -y dos2unix
         apt install -y neofetch
