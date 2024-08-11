@@ -35,6 +35,7 @@ echo -e "$YELLOW Hysteria UDP Services "$NC
         echo "Invalid input. Please enter a valid number."
         echo -e "$NC"
     fi
+done
 clear
 case $selected_option in
     1)
