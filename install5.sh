@@ -7,10 +7,7 @@ if [ "$(whoami)" != "root" ]; then
 fi
 cd /root
 clear
-echo -e "$YELLOW"
-echo "          💚 DNSTT INSTALLATION SCRIPT 💚    "
-echo "        ╰┈➤💚 Installing DNSTT Binaries 💚          "
-echo -e "$NC"
+echo -e "\033[1;33mInstalling Dnstt Binaries...\033[0m"
 iptables -I INPUT -p udp --dport 5300 -j ACCEPT
 iptables -t nat -I PREROUTING -i $(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1) -p udp --dport 53 -j REDIRECT --to-ports 5300
 ip6tables -I INPUT -p udp --dport 5300 -j ACCEPT
