@@ -7,10 +7,7 @@ if [ "$(whoami)" != "root" ]; then
 fi
 cd /root
 clear
-echo -e "$YELLOW"
-echo "          💚 INSTALL BADVPN FOR VOIP SERVICES 💚    "
-echo "             ╰┈➤    💚 BadVpn 💚          "
-echo -e "$NC"
+echo -e "\033[1;33mInstalling Badvpn Udp...\033[0m"
 #Install Badvpn
 cd /root
 systemctl stop udpgw.service
