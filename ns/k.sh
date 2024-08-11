@@ -28,7 +28,7 @@ while true; do
     read -p "$(echo -e "\033[1;33m Select a number from 0 to 3: \033[0m")" input
     
     # Check if input is a number
-    if [[ "$input" =~ ^[0-9]+$ ]]; then
+    if [[ "$input" =~ ^-?[0-9]+$ ]] && [[ "$input" -gt 0 || "$input" -eq 0 ]]; then
         selected_option=$input
     else
         echo -e "$YELLOW"
