@@ -10,20 +10,19 @@ if [ "$(whoami)" != "root" ]; then
 fi
 cd /root
 clear
-echo -e "$YELLOW
-💚 RESLEEVED NET HYSTERIA SCRIPT 💚      
-  ╰┈➤ 💚 Resleeved Net 💚             "
-echo -e "$NC
-Select an option"
-echo "1. INSTALL UDP HYSTERIA"
-echo "2. OTHER UDP HYSTERIA SETTINGS"
-echo "0. Exit"
+echo ""
+echo -e "\033[1;33mHYSTERIA UDP Installations \033[0m"
+echo -e "\033[1;32m1. Install Hysteria \033[0m"
+echo -e "\033[1;32m2. Create Obfs \033[0m"
+echo -e "\033[1;32m3. Create Auth \033[0m"
+echo -e "\033[1;32m4. Active Users \033[0m"
+echo -e "\033[1;32m0. Exit \033[0m"
 # Select an Option
 
-    read -p "$(echo -e "\033[1;33mSelect a number from 0 to 2: \033[0m")" input
+    read -p "$(echo -e "\033[1;33mSelect a number from 0 to 4: \033[0m")" input
     
     # Check if input is a number
-    if [[ $input =~ ^[0-9]+$ ]]; then
+    if [[ "$input" =~ ^[0-9]+$ ]]; then
         selected_option=$input
     else
         echo -e "$YELLOW"
@@ -180,10 +179,10 @@ EOF
         #Start Services
         systemctl enable hysteria-server.service
         systemctl start hysteria-server.service
-        iptables -t nat -A PREROUTING -i $(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1) -p udp --dport "$first_number":"$second_number" -j DNAT --to-destination :$remote_udp_port
-        ip6tables -t nat -A PREROUTING -i $(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1) -p udp --dport "$first_number":"$second_number" -j DNAT --to-destination :$remote_udp_port
-        iptables -A INPUT -p udp --dport $remote_udp_port -j ACCEPT
-        ip6tables -A INPUT -p udp --dport $remote_udp_port -j ACCEPT
+        iptables -t nat -I PREROUTING -i $(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1) -p udp --dport "$first_number":"$second_number" -j DNAT --to-destination :$remote_udp_port
+        ip6tables -t nat -I PREROUTING -i $(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1) -p udp --dport "$first_number":"$second_number" -j DNAT --to-destination :$remote_udp_port
+        iptables -I INPUT -p udp --dport $remote_udp_port -j ACCEPT
+        ip6tables -I INPUT -p udp --dport $remote_udp_port -j ACCEPT
         netfilter-persistent save
         netfilter-persistent reload
         netfilter-persistent start
@@ -197,14 +196,68 @@ EOF
         exit 1
         ;;
     2)
-        cd /etc/V/bin; ./k.sh; cd; X
+        echo -e "$YELLOW"
+        old_pwd=$(cat /root/hy/config.json | grep obfs | awk -F',' 'NR == 1 {split($10,a,":");print a[2]}' | sed "s/\"//g" | sed "s/,//g")
+        read -p "Set New obfs :  " obfs_pwd
+        echo -e "$NC"
+        [[ -z $obfs_pwd ]] && obfs_pwd=$(date +%s%N | md5sum | cut -c 1-16)
+        echo -e "\033[1;32mThe New obfs: $obfs_pwd\033[0m"
+        sed -i "s/\"obfs\":\"$old_pwd\"/\"obfs\":\"$obfs_pwd\"/" /root/hy/config.json
+        systemctl restart hysteria-server.service
+        sleep 1
+        X
+        exit 1
+        ;;
+    3)
+            echo ""
+            echo -e "\033[1;33mActive auth: \033[1;36m(\033[1;33m $(awk -F, 'NR==1 { print }' /root/hy/authusers | sed "s/\"/ /g" | sed "s/,/ /g") \033[1;36m)\033[0m"
+            rm -rf /root/hy/authusers
+            echo -e "\033[1;32mMultiple Auth ( ex: a,b,c )\033[0m"
+            echo -e "$YELLOW"
+            read -p "Auth Str : " input_config
+            echo -e "$NC"
+            if [ -n "$input_config" ]; then
+                IFS=',' read -r -a config <<< "$input_config"
+                if [ ${#config[@]} -eq 1 ]; then
+                    config+=(${config[0]})
+                fi
+            else
+                echo -e "$YELLOW"
+                echo "Enter auth separated by commas"
+                echo -e "$NC"
+            fi
+        echo "$input_config" > /root/hy/authusers
+        auth_str=$(printf "\"%s\"," "${config[@]}" | sed 's/,$//')
+        remote_udp_port=$(cat /root/hy/config.json | grep listen | awk -F',' 'NR == 1 {split($1,a,":");print a[3]}' | sed "s/\"//g" | sed "s/,//g")
+        obfs=$(cat /root/hy/config.json | grep obfs | awk -F',' 'NR == 1 {split($10,a,":");print a[2]}' | sed "s/\"//g" | sed "s/,//g")
+        rm -rf /root/hy/config.json
+        file_path="/root/hy/config.json"
+        json_content='{"listen":"'"$(curl -s https://api.ipify.org)"':'"$remote_udp_port"'","protocol":"udp","cert":"/root/hy/ca.crt","key":"/root/hy/ca.key","up":"100 Mbps","up_mbps":100,"down":"100 Mbps","down_mbps":100,"disable_udp":false,"obfs":"'"$obfs"'","auth":{"mode":"passwords","config":['"$auth_str"']}}'
+        echo "$json_content" > "$file_path"
+        if [ ! -e "$file_path" ]; then
+            echo -e "$YELLOW"
+            echo "Error: Unable to save the config.json file"
+            echo -e "$NC"
+            exit 1
+        fi
+        chmod 755 /root/hy/config.json
+        systemctl restart hysteria-server.service
+        sleep 1
+        X
+        exit 1
+        ;;
+    4)
+        echo ""
+        echo -e "\033[1;32mActive Auth/Users:\033[0m"
+        echo ""
+        echo -e "\033[1;33m\033[1;36m[ \033[1;33m$(awk -F, 'NR==1 { print }' /root/hy/authusers | sed "s/\"/  /g" | sed "s/,/  /g") \033[1;36m]\033[0m"
+        echo ""
+        read -p "Press any key to exit ↩︎" key
+        X
         exit 1
         ;;
     *)
-        echo -e "$YELLOW"
-        echo "Welcome To Resleeved Net"
-        echo -e "$NC"
-        X
+        clear; X
         exit 1
         ;;
 esac
