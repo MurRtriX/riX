@@ -10,10 +10,8 @@ if [ "$(whoami)" != "root" ]; then
 fi
 cd /root
 clear
-echo -e "$YELLOW
-HYSTERIA SCRIPT "
-echo -e "$NC
-Select an option"
+echo ""
+echo -e "$YELLOW Hysteria UDP Installations "$NC
 echo "1. Install Hysteria"
 echo "2. Create Obfs"
 echo "3. Create Auth"
