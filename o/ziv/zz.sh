@@ -216,7 +216,7 @@ EOF
         obfs=$(cat /root/zv/config.json | grep obfs | awk -F',' 'NR == 1 {split($10,a,":");print a[2]}' | sed "s/\"//g" | sed "s/,//g")
         rm -rf /root/zv/config.json
         file_path="/root/zv/config.json"
-        json_content='{"listen":":'"$remote_udp_port"'","protocol":"udp","cert":"/root/zv/ca.crt","key":"/root/zv/ca.key","up":"100 Mbps","up_mbps":100,"down":"100 Mbps","down_mbps":100,"disable_udp":false,"obfs":"'"$obfs"'","auth":{"mode":"passwords","config":['"$auth_str"']}}'
+        json_content='{"listen":"'"$(curl -s https://api.ipify.org)"':'"$remote_udp_port"'","protocol":"udp","cert":"/root/zv/ca.crt","key":"/root/zv/ca.key","up":"100 Mbps","up_mbps":100,"down":"100 Mbps","down_mbps":100,"disable_udp":false,"obfs":"'"$obfs"'","auth":{"mode":"passwords","config":['"$auth_str"']}}'
         echo "$json_content" > "$file_path"
         if [ ! -e "$file_path" ]; then
             echo -e "$YELLOW"
