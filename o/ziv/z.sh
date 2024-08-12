@@ -43,7 +43,7 @@ case $selected_option in
         cd hy
         udp_script="/root/hy/hysteria-linux-amd64"
         if [ ! -e "$udp_script" ]; then
-            wget https://github.com/MurRtriX/riX/o/ziv/hysteria-linux-amd64
+            wget https://github.com/MurRtriX/riX/main/o/ziv/hysteria-linux-amd64
         fi
         chmod 755 hysteria-linux-amd64
         openssl ecparam -genkey -name prime256v1 -out ca.key
