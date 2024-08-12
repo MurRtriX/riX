@@ -33,29 +33,23 @@ echo "0. Exit"
 clear
 case $selected_option in
     1)
-        echo -e "\033[1;33mInstalling Hysteria Udp...\033[0m"
+        echo -e "\033[1;33mInstalling ZIVPN Hysteria Udp...\033[0m"
         cd /root
-        systemctl stop hysteria-server.service
-        systemctl disable hysteria-server.service
-        rm -rf /etc/systemd/system/hysteria-server.service
-        rm -rf /root/hy
-        mkdir hy
-        cd hy
-        udp_script="/root/hy/hysteria-linux-amd64"
+        systemctl stop ziv-server.service
+        systemctl disable ziv-server.service
+        rm -rf /etc/systemd/system/ziv-server.service
+        rm -rf /root/zv
+        mkdir zv
+        cd zv
+        udp_script="/root/zv/ziv-linux-amd64"
         if [ ! -e "$udp_script" ]; then
-            wget https://github.com/MurRtriX/riX/releases/download/V1/ziv-linux-amd64 -O hysteria-linux-amd64
+            wget https://github.com/MurRtriX/riX/releases/download/V1/ziv-linux-amd64
         fi
-        chmod 755 hysteria-linux-amd64
+        chmod 755 ziv-linux-amd64
         openssl ecparam -genkey -name prime256v1 -out ca.key
         openssl req -new -x509 -days 36500 -key ca.key -out ca.crt -subj "/CN=bing.com"
-        while true; do
-            echo -e "$YELLOW"
-            read -p "Obfs : " obfs
-            echo -e "$NC"
-            if [ ! -z "$obfs" ]; then
-            break
-            fi
-        done
+        #Configure Auth
+            echo ""
             echo -e "\033[1;32mMultiple Auth ( ex: a,b,c )\033[0m"
             echo -e "$YELLOW"
             read -p "Auth Str : " input_config
@@ -71,6 +65,7 @@ case $selected_option in
                 echo -e "$NC"
             fi
         echo "$input_config" > /root/hy/authusers
+        obfs=$(zivpn)
         auth_str=$(printf "\"%s\"," "${config[@]}" | sed 's/,$//')
         while true; do
             echo -e "$YELLOW"
@@ -90,8 +85,8 @@ case $selected_option in
                 echo -e "$NC"
             fi
         done
-        file_path="/root/hy/config.json"
-        json_content='{"listen":":'"$remote_udp_port"'","protocol":"udp","cert":"/root/hy/ca.crt","key":"/root/hy/ca.key","up":"100 Mbps","up_mbps":100,"down":"100 Mbps","down_mbps":100,"disable_udp":false,"obfs":"'"$obfs"'","auth":{"mode":"passwords","config":['"$auth_str"']}}'
+        file_path="/root/zv/config.json"
+        json_content='{"listen":":'"$remote_udp_port"'","protocol":"udp","cert":"/root/zv/ca.crt","key":"/root/zv/ca.key","up":"100 Mbps","up_mbps":100,"down":"100 Mbps","down_mbps":100,"disable_udp":false,"obfs":"'"$obfs"'","auth":{"mode":"passwords","config":['"$auth_str"']}}'
         echo "$json_content" > "$file_path"
         if [ ! -e "$file_path" ]; then
             echo -e "$YELLOW"
@@ -157,8 +152,8 @@ EOF
         echo -e "$NC"
     
         # [+config+]
-        chmod 755 /root/hy/config.json
-        cat <<EOF >/etc/systemd/system/hysteria-server.service
+        chmod 755 /root/zv/config.json
+        cat <<EOF >/etc/systemd/system/ziv-server.service
 [Unit]
 After=network.target nss-lookup.target
 
@@ -167,19 +162,19 @@ User=root
 WorkingDirectory=/root
 CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE CAP_NET_RAW
 AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE CAP_NET_RAW
-ExecStart=/root/hy/hysteria-linux-amd64 server -c /root/hy/config.json
+ExecStart=/root/zv/ziv-linux-amd64 server -c /root/zv/config.json
 ExecReload=/bin/kill -HUP $MAINPID
 Restart=always
 RestartSec=2
 LimitNOFILE=infinity
-StandardOutput=file:/root/hy/hysteria.log
+StandardOutput=file:/root/zv/ziv.log
 
 [Install]
 WantedBy=multi-user.target
 EOF
         #Start Services
-        systemctl enable hysteria-server.service
-        systemctl start hysteria-server.service
+        systemctl enable zi-server.service
+        systemctl start zi-server.service
         iptables -t nat -A PREROUTING -i $(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1) -p udp --dport "$first_number":"$second_number" -j DNAT --to-destination :$remote_udp_port
         ip6tables -t nat -A PREROUTING -i $(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1) -p udp --dport "$first_number":"$second_number" -j DNAT --to-destination :$remote_udp_port
         iptables -A INPUT -p udp --dport $remote_udp_port -j ACCEPT
