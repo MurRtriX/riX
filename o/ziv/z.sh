@@ -227,6 +227,7 @@ EOF
         chmod 755 /root/zv/config.json
         systemctl restart ziv-server.service
         sleep 1
+        X
         exit 1
         ;;
     3)
@@ -236,6 +237,7 @@ EOF
         echo -e "\033[1;33m\033[1;36m[ \033[1;33m$(awk -F, 'NR==1 { print }' /root/zv/authusers | sed "s/\"/  /g" | sed "s/,/  /g") \033[1;36m]\033[0m"
         echo ""
         read -p "Press any key to exit ↩︎" key
+        X
         exit 1
         ;;
     *)
