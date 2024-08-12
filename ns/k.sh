@@ -23,8 +23,7 @@ echo -e "$YELLOW Hysteria UDP Services "$NC
  echo -e "\033[1;32m 2.  Create Auth \033[0m"
  echo -e "\033[1;32m 3.  Active Users  \033[1;0m"
  echo -e "\033[1;32m 0.  Exit \033[0m"
- #Select an Option
-while [ $selected_option -gt 0 ] || [ $selected_option -lt 0  ]; do
+ # Select an Option
     read -p "$(echo -e "\033[1;33m Select a number from 0 to 3: \033[0m")" input
     
     # Check if input is a number
@@ -35,7 +34,6 @@ while [ $selected_option -gt 0 ] || [ $selected_option -lt 0  ]; do
         echo "Invalid input. Please enter a valid number."
         echo -e "$NC"
     fi
-done
 clear
 case $selected_option in
     1)
@@ -96,7 +94,7 @@ case $selected_option in
         read -p "Press any key to exit ↩︎" key
         exit 1
         ;;
-    0)
+    *)
         clear; X
         exit 1
         ;;
