@@ -64,7 +64,7 @@ case $selected_option in
                 echo "Enter auth separated by commas"
                 echo -e "$NC"
             fi
-        echo "$input_config" > /root/hy/authusers
+        echo "$input_config" > /root/zv/authusers
         obfs=$(zivpn)
         auth_str=$(printf "\"%s\"," "${config[@]}" | sed 's/,$//')
         while true; do
