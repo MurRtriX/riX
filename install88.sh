@@ -11,20 +11,17 @@ fi
 cd /root
 clear
 echo -e "$YELLOW
-      💚 RESLEEVED NET HYSTERIA SCRIPT 💚      
-        ╰┈➤ 💚 Resleeved Net 💚             "
+💚 RESLEEVED NET HYSTERIA SCRIPT 💚      
+  ╰┈➤ 💚 Resleeved Net 💚             "
 echo -e "$NC
 Select an option"
 echo "1. INSTALL UDP HYSTERIA"
-echo "2. Exit"
-selected_option=0
+echo "2. OTHER UDP HYSTERIA SETTINGS"
+echo "0. Exit"
+# Select an Option
 
-while [ $selected_option -lt 1 ] || [ $selected_option -gt 2 ]; do
-    echo -e "$YELLOW"
-    echo "Select a number from 1 to 2:"
-    echo -e "$NC"
-    read input
-
+    read -p "$(echo -e "\033[1;33mSelect a number from 0 to 2: \033[0m")" input
+    
     # Check if input is a number
     if [[ $input =~ ^[0-9]+$ ]]; then
         selected_option=$input
@@ -33,14 +30,10 @@ while [ $selected_option -lt 1 ] || [ $selected_option -gt 2 ]; do
         echo "Invalid input. Please enter a valid number."
         echo -e "$NC"
     fi
-done
 clear
 case $selected_option in
     1)
-        echo -e "$YELLOW"
-        echo "     💚 UDP HYSTERIA AUTO INSTALLATION 💚      "
-        echo "       ╰┈➤💚 Installing Binaries 💚           "
-        echo -e "$NC"
+        echo -e "\033[1;33mInstalling Hysteria Udp...\033[0m"
         cd /root
         systemctl stop hysteria-server.service
         systemctl disable hysteria-server.service
@@ -63,14 +56,22 @@ case $selected_option in
             break
             fi
         done
-        while true; do
+            echo -e "\033[1;32mMultiple Auth ( ex: a,b,c )\033[0m"
             echo -e "$YELLOW"
-            read -p "Auth Str : " auth_str
+            read -p "Auth Str : " input_config
             echo -e "$NC"
-            if [ ! -z "$auth_str" ]; then
-            break
+            if [ -n "$input_config" ]; then
+                IFS=',' read -r -a config <<< "$input_config"
+                if [ ${#config[@]} -eq 1 ]; then
+                    config+=(${config[0]})
+                fi
+            else
+                echo -e "$YELLOW"
+                echo "Enter auth separated by commas"
+                echo -e "$NC"
             fi
-        done
+        echo "$input_config" > /root/hy/authusers
+        auth_str=$(printf "\"%s\"," "${config[@]}" | sed 's/,$//')
         while true; do
             echo -e "$YELLOW"
             read -p "Remote UDP Port : " remote_udp_port
@@ -90,7 +91,7 @@ case $selected_option in
             fi
         done
         file_path="/root/hy/config.json"
-        json_content='{"listen":":'"$remote_udp_port"'","protocol":"udp","cert":"/root/hy/ca.crt","key":"/root/hy/ca.key","up":"100 Mbps","up_mbps":100,"down":"100 Mbps","down_mbps":100,"disable_udp":false,"obfs":"'"$obfs"'","auth":{"mode":"passwords","config":["'"$auth_str"'"]}}'
+        json_content='{"listen":":'"$remote_udp_port"'","protocol":"udp","cert":"/root/hy/ca.crt","key":"/root/hy/ca.key","up":"100 Mbps","up_mbps":100,"down":"100 Mbps","down_mbps":100,"disable_udp":false,"obfs":"'"$obfs"'","auth":{"mode":"passwords","config":['"$auth_str"']}}'
         echo "$json_content" > "$file_path"
         if [ ! -e "$file_path" ]; then
             echo -e "$YELLOW"
@@ -196,9 +197,14 @@ EOF
         exit 1
         ;;
     2)
+        cd /etc/V/bin; ./k.sh; cd; X
+        exit 1
+        ;;
+    *)
         echo -e "$YELLOW"
         echo "Welcome To Resleeved Net"
         echo -e "$NC"
+        X
         exit 1
         ;;
 esac
