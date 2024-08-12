@@ -19,7 +19,7 @@ echo -e "\033[1;32m4. Active Users \033[0m"
 echo -e "\033[1;32m0. Exit \033[0m"
 # Select an Option
 
-    read -p "$(echo -e "\033[1;33mSelect a number from 0 to 2: \033[0m")" input
+    read -p "$(echo -e "\033[1;33mSelect a number from 0 to 4: \033[0m")" input
     
     # Check if input is a number
     if [[ "$input" =~ ^[0-9]+$ ]]; then
