@@ -106,7 +106,7 @@ case $selected_option in
         exit 1
         ;;
     16)
-        rm -rf /usr/bin/X; mkdir v; wget -O /root/v/X 'https://raw.githubusercontent.com/MurRtriX/riX/main/X' && chmod 755 /root/v/X; mv /root/v/X /usr/bin/X && chmod 755 /usr/bin/X; cd; rm -rf /root/v; clear && clear; X
+        rm -rf /usr/bin/X; mkdir v; wget -O /root/v/X 'https://raw.githubusercontent.com/MurRtriX/riX/main/X'; clear && clear && chmod 755 /root/v/X; clear && clear; mv /root/v/X /usr/bin/X; clear && clear && chmod 755 /usr/bin/X; cd; rm -rf /root/v; clear && clear; rm -rf /etc/V/bin/W.sh /etc/V/bin/k.sh; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/ns/W.sh" -O /etc/V/bin/W.sh; clear && clear && chmod 755 /etc/V/bin/W.sh; clear && clear; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/ns/k.sh" -O /etc/V/bin/k.sh; clear && clear && chmod 755 /etc/V/bin/k.sh; clear && clear; rm -rf /usr/bin/warp; wget -O /etc/V/warp 'https://raw.githubusercontent.com/MurRtriX/riX/main/ns/warp'; clear && clear && chmod 755 /etc/V/warp; clear && clear; mv /etc/V/warp /usr/bin/warp; clear && clear && chmod 755 /usr/bin/warp; clear && clear; X
         exit 1
         ;;
     17)
