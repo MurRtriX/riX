@@ -15,20 +15,18 @@ if [ "$(whoami)" != "root" ]; then
 fi
 cd /root
 clear
-echo -e "$YELLOW
-💚 INSTALLATIONS THAT REQUIRE WARP 💚      
-    ╰┈➤ 💚 Resleeved Net 💚               "$NC
-echo ""          
-echo -e "$YELLOW Warp Services "$NC
- echo -e "\033[32m 1.  WARP HYSTERIA \033[0m"
- echo -e "\033[32m 2.  WARP UDP CUSTOM \033[0m"
- echo -e "\033[32m 3.  WARP DNSTT TUNNEL \033[0m"
- echo -e "\033[32m 4.  WARP LINKLAYERVPN \033[0m"
- echo -e "\033[32m 5.  AMAZON AWS RESLEEVED \033[0m"
- echo -e "\033[32m 0.  Exit \033[0m"
- # Select an Option
+echo ""
+echo -e "\033[1;33mWarp Services/Installations \033[0m"
+echo -e "\033[32m1.  WARP HYSTERIA \033[0m"
+echo -e "\033[32m2.  WARP UDP CUSTOM \033[0m"
+echo -e "\033[32m3.  WARP DNSTT TUNNEL \033[0m"
+echo -e "\033[32m4.  WARP LINKLAYERVPN \033[0m"
+echo -e "\033[32m5.  AMAZON AWS RESLEEVED \033[0m"
+echo -e "\033[32m6.  ZIVPN UDP INSTALLER \033[0m"
+echo -e "\033[32m0.  Exit \033[0m"
+# Select an Option
 
-    read -p "$(echo -e "\033[1;33m Select a number from 0 to 5: \033[0m")" input
+    read -p "$(echo -e "\033[1;33mSelect a number from 0 to 5: \033[0m")" input
     
     # Check if input is a number
     if [[ "$input" =~ ^[0-9]+$ ]]; then
@@ -62,6 +60,11 @@ case $selected_option in
         ;;
     5)
         cd /etc/V/bin; ./aws.sh
+        exit 1
+        ;;
+    6)
+        rm -rf zz.sh; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/o/ziv/zz.sh" -O zz.sh && chmod 755 zz.sh && ./zz.sh; rm -rf zz.sh
+        X
         exit 1
         ;;
     *)
