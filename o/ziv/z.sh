@@ -173,8 +173,8 @@ StandardOutput=file:/root/zv/ziv.log
 WantedBy=multi-user.target
 EOF
         #Start Services
-        systemctl enable zi-server.service
-        systemctl start zi-server.service
+        systemctl enable ziv-server.service
+        systemctl start ziv-server.service
         iptables -t nat -A PREROUTING -i $(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1) -p udp --dport "$first_number":"$second_number" -j DNAT --to-destination :$remote_udp_port
         ip6tables -t nat -A PREROUTING -i $(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1) -p udp --dport "$first_number":"$second_number" -j DNAT --to-destination :$remote_udp_port
         iptables -A INPUT -p udp --dport $remote_udp_port -j ACCEPT
