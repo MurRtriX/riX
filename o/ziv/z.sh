@@ -11,8 +11,8 @@ fi
 cd /root
 clear
 echo -e "$YELLOW
-💚 ZIVPN HYSTERIA INSTALLATIONS 💚      
-  ╰┈➤ 💚 Resleeved Net 💚               "$NC
+💚 ZIVPN INSTALLATIONS 💚      
+╰┈➤💚 Resleeved Net 💚               "$NC
 echo ""          
 echo -e "$YELLOW Zivpn UDP Services "$NC
  echo -e "\033[1;32m 1.  Zivpn Udp\033[0m"
@@ -21,7 +21,7 @@ echo -e "$YELLOW Zivpn UDP Services "$NC
  echo -e "\033[1;32m 0.  Exit \033[0m"
  # Select an Option
 
-    read -p "$(echo -e "\033[1;33mSelect a number from 0 to 3: \033[0m")" input
+    read -p "$(echo -e "\033[1;33m Select a number from 0 to 3: \033[0m")" input
     
     # Check if input is a number
     if [[ "$input" =~ ^[0-9]+$ ]]; then
