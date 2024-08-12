@@ -11,7 +11,7 @@ fi
 cd /root
 clear
 echo ""
-echo -e "$YELLOW Hysteria UDP Installations "$NC
+echo -e "\033[1;33mHysteria UDP Installations \033[0m"
 echo "1. Install Hysteria"
 echo "2. Create Obfs"
 echo "3. Create Auth"
