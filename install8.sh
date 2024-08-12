@@ -11,13 +11,12 @@ fi
 cd /root
 clear
 echo ""
-echo -e "\033[1;33mHysteria UDP Installations \033[0m"
-echo "1. Install Hysteria"
-echo "2. Create Obfs"
-echo "3. Create Auth"
-echo "4. Active Users"
-echo "0. Exit"
-
+echo -e "\033[1;33mHYSTERIA UDP Installations \033[0m"
+echo -e "\033[1;32m1. Install Hysteria \033[0m"
+echo -e "\033[1;32m2. Create Obfs \033[0m"
+echo -e "\033[1;32m3. Create Auth \033[0m"
+echo -e "\033[1;32m4. Active Users \033[0m"
+echo -e "\033[1;32m0. Exit \033[0m"
 # Select an Option
 
     read -p "$(echo -e "\033[1;33mSelect a number from 0 to 2: \033[0m")" input
