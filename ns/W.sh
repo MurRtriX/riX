@@ -16,17 +16,17 @@ fi
 cd /root
 clear
 echo ""
-echo -e "\033[1;33mWarp Services/Installations \033[0m"
-echo -e "\033[32m1.  WARP HYSTERIA \033[0m"
-echo -e "\033[32m2.  WARP UDP CUSTOM \033[0m"
-echo -e "\033[32m3.  WARP DNSTT TUNNEL \033[0m"
-echo -e "\033[32m4.  WARP LINKLAYERVPN \033[0m"
-echo -e "\033[32m5.  AMAZON AWS RESLEEVED \033[0m"
-echo -e "\033[32m6.  ZIVPN UDP INSTALLER \033[0m"
-echo -e "\033[32m0.  Exit \033[0m"
+echo -e "\033[1;33mWarp Installations \033[0m"
+echo -e "\033[32m1. WARP HYSTERIA \033[0m"
+echo -e "\033[32m2. WARP UDP CUSTOM \033[0m"
+echo -e "\033[32m3. WARP DNSTT TUNNEL \033[0m"
+echo -e "\033[32m4. WARP LINKLAYERVPN \033[0m"
+echo -e "\033[32m5. AMAZON AWS RESLEEVED \033[0m"
+echo -e "\033[32m6. ZIVPN UDP INSTALLER \033[0m"
+echo -e "\033[32m0. Exit \033[0m"
 # Select an Option
 
-    read -p "$(echo -e "\033[1;33mSelect a number from 0 to 5: \033[0m")" input
+    read -p "$(echo -e "\033[1;33mSelect a number from 0 to 6: \033[0m")" input
     
     # Check if input is a number
     if [[ "$input" =~ ^[0-9]+$ ]]; then
