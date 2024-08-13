@@ -48,7 +48,7 @@ case $selected_option in
         openssl req -new -x509 -days 36500 -key ca.key -out ca.crt -subj "/CN=bing.com"
         #Configure Auth
             echo ""
-            echo -e "\033[1;33mCreate Zivpn Passwords\033[0m"
+            echo -e "\033[1;33mZivpn Passwords\033[0m"
             echo -e "\033[1;32mNote: Multiple Auth ( ex: a,b,c )\033[0m"
             echo -e "$YELLOW"
             read -p "Auth Str : " input_config
