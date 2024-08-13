@@ -210,7 +210,7 @@ EOF
         echo "$input_config" > /root/zv/authusers
         auth_str=$(printf "\"%s\"," "${config[@]}" | sed 's/,$//')
         remote_udp_port=$(cat /root/zv/config.json | grep listen | awk -F',' 'NR == 1 {split($1,a,":");print a[3]}' | sed "s/\"//g" | sed "s/,//g")
-        obfs=$(cat /root/zv/config.json | grep obfs | awk -F',' 'NR == 1 {split($10,a,":");print a[2]}' | sed "s/\"//g" | sed "s/,//g")
+        obfs=$(cat /root/zv/config.json | grep obfs | awk -F',' 'NR == 1 {split($4,a,":");print a[2]}' | sed "s/\"//g" | sed "s/,//g")
         rm -rf /root/zv/config.json
         file_path="/root/zv/config.json"
         json_content='{"listen":"'"$(curl -s https://api.ipify.org)"':'"$remote_udp_port"'","protocol":"udp","cert":"/root/zv/ca.crt","key":"/root/zv/ca.key","up":"100 Mbps","up_mbps":100,"down":"100 Mbps","down_mbps":100,"disable_udp":false,"obfs":"'"$obfs"'","auth":{"mode":"passwords","config":['"$auth_str"']}}'
