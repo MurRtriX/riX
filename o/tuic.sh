@@ -55,8 +55,6 @@ EOF
 #Create Tuic Service
 cat <<EOF >/etc/systemd/system/tuic-server.service
 [Unit]
-Description=tuic service
-Documentation=by ResleevedNet
 After=network.target nss-lookup.target
 
 [Service]
@@ -64,10 +62,12 @@ User=root
 WorkingDirectory=/root
 CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE CAP_NET_RAW
 AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE CAP_NET_RAW
-ExecStart=/root/tuic/tuic-linux-amd64 -c /root/tuic/config.json
-Restart=on-failure
-RestartSec=10
+ExecStart=/root/tuic/tuic-linux-amd64 server -c /root/tuic/config.json
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=always
+RestartSec=2
 LimitNOFILE=infinity
+StandardOutput=file:/root/tuic/tuic.log
 
 [Install]
 WantedBy=multi-user.target
