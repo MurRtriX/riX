@@ -87,19 +87,22 @@ EOF
 
         cat <<EOF >/etc/systemd/system/custom-server.service
 [Unit]
-Description=UDP Custom by InFiNitY
+After=network.target nss-lookup.target
 
 [Service]
 User=root
-Type=simple
-ExecStart=/root/udp/custom-linux-amd64 server -c /root/udp/config.json
-WorkingDirectory=/root/udp/
+WorkingDirectory=/root
+CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE CAP_NET_RAW
+AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE CAP_NET_RAW
+ExecStart=/root/udp/custom-linux-amd64 server -c /root/udp/config.json -exclude 53,5300,7300
+ExecReload=/bin/kill -HUP $MAINPID
 Restart=always
 RestartSec=2
+LimitNOFILE=infinity
 StandardOutput=file:/root/udp/custom.log
 
 [Install]
-WantedBy=default.target
+WantedBy=multi-user.target
 EOF
         #Start Services
         systemctl enable custom-server.service
