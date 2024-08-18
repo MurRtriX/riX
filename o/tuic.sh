@@ -10,14 +10,22 @@ clear
 echo -e "\033[1;33mInstalling TUIC Udp...\033[0m"
 #Install Tuic UDP
 cd /root
+apt install uuid-runtime
 systemctl stop tuic-server.service
 systemctl disable tuic-server.service
 rm -rf /etc/systemd/system/tuic-server.service
-apt install uuid-runtime
+rm -rf /root/tuic
 mkdir tuic
 cd tuic
 wget -O tuic-linux-amd64 https://github.com/EAimTY/tuic/releases/download/tuic-server-1.0.0/tuic-server-1.0.0-x86_64-unknown-linux-gnu
 chmod 755 tuic-linux-amd64
+cat <<EOF >/root/tuic/config.json
+
+
+
+EOF
+openssl ecparam -genkey -name prime256v1 -out ca.key
+openssl req -new -x509 -days 36500 -key ca.key -out ca.crt -subj "/CN=bing.com"
 cat <<EOF >/etc/systemd/system/tuic-server.service
 [Unit]
 Description=UDPGW Gateway Service by InFiNitY 
