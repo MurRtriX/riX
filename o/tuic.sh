@@ -23,7 +23,7 @@ openssl ecparam -genkey -name prime256v1 -out ca.key
 openssl req -new -x509 -days 36500 -key ca.key -out ca.crt -subj "/CN=bing.com"
 echo "$(uuidgen)" > uuid
 echo -e "\033[1;33m$(cat uuid)\033[0m"
-read -p "(echo -e "\033[1;32mCopy the Token and press enter to continue:\033[0m")"
+read -p "$(echo -e "\033[1;32mCopy the Token and press enter to continue:\033[0m")"
 uid=$(cat uuid)
 echo ""
 echo -e "\033[1;32mConfigure Tuic Port:\033[0m"
