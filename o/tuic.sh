@@ -21,6 +21,7 @@ wget -O tuic-linux-amd64 https://github.com/EAimTY/tuic/releases/download/tuic-s
 chmod 755 tuic-linux-amd64
 uuidgen
 uid="uuidgen"
+echo
 cat <<EOF >/root/tuic/config.json
 {
   "server": "[::]:8880",
