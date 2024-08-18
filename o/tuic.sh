@@ -19,14 +19,20 @@ mkdir tuic
 cd tuic
 wget -O tuic-linux-amd64 https://github.com/EAimTY/tuic/releases/download/tuic-server-1.0.0/tuic-server-1.0.0-x86_64-unknown-linux-gnu
 chmod 755 tuic-linux-amd64
+openssl ecparam -genkey -name prime256v1 -out ca.key
+openssl req -new -x509 -days 36500 -key ca.key -out ca.crt -subj "/CN=bing.com"
 uuidgen
 uid="uuidgen"
-echo
+echo ""
+read -p "$(echo -e "\033[1;32mPort: \033[0m")" port
+echo ""
+echo -e "\033[1;33mCreate Tuic Password\033[0m"
+read -p "$(echo -e "\033[1;32mPassword: \033[0m")" password
 cat <<EOF >/root/tuic/config.json
 {
-  "server": "[::]:8880",
+  "server": "[::]:$port",
   "users": {
-    "766ee75a-bfc8-40d2-b44a-7adfec5d1e8c": "iSegaro"
+    "$uid": "$password"
   },
   "certificate": "/root/tuic/ca.crt",
   "private_key": "/root/tuic/ca.key",
@@ -46,8 +52,7 @@ cat <<EOF >/root/tuic/config.json
 "log_level": "warn"
 }
 EOF
-openssl ecparam -genkey -name prime256v1 -out ca.key
-openssl req -new -x509 -days 36500 -key ca.key -out ca.crt -subj "/CN=bing.com"
+#Create Tuic Service
 cat <<EOF >/etc/systemd/system/tuic-server.service
 [Unit]
 Description=UDPGW Gateway Service by InFiNitY 
