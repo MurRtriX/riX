@@ -7,19 +7,18 @@ if [ "$(whoami)" != "root" ]; then
 fi
 cd /root
 clear
-echo -e "\033[1;33mInstalling Badvpn Udp...\033[0m"
-#Install Badvpn
+echo -e "\033[1;33mInstalling TUIC Udp...\033[0m"
+#Install Tuic UDP
 cd /root
-systemctl stop udpgw.service
-systemctl disable udpgw.service
-rm -rf /etc/systemd/system/udpgw.service
-rm -rf /usr/bin/udpgw
+systemctl stop tuic-server.service
+systemctl disable tuic-server.service
+rm -rf /etc/systemd/system/tuic-server.service
 apt install uuid-runtime
 mkdir tuic
 cd tuic
 wget -O tuic-linux-amd64 https://github.com/EAimTY/tuic/releases/download/tuic-server-1.0.0/tuic-server-1.0.0-x86_64-unknown-linux-gnu
 chmod 755 tuic-linux-amd64
-cat <<EOF >/etc/systemd/system/udpgw.service
+cat <<EOF >/etc/systemd/system/tuic-server.service
 [Unit]
 Description=UDPGW Gateway Service by InFiNitY 
 After=network.target
@@ -33,12 +32,11 @@ User=root
 [Install]
 WantedBy=multi-user.target
 EOF
-#start badvpn
-systemctl enable udpgw.service
-systemctl start udpgw.service
+#start TUIC udp
+systemctl enable tuic-server.service
+systemctl start tuic-server.service
 echo -e "$YELLOW"
-echo "           💚 BADVPN INSTALLED SUCCESSFULLY 💚      "
-echo "             ╰┈➤💚 BadVpn Activated 💚             "
+echo "           💚 TUic INSTALLED SUCCESSFULLY 💚      "
+echo "             ╰┈➤💚 Tuic Activated 💚             "
 echo -e "$NC"
-X
 exit 1
