@@ -23,10 +23,11 @@ openssl ecparam -genkey -name prime256v1 -out ca.key
 openssl req -new -x509 -days 36500 -key ca.key -out ca.crt -subj "/CN=bing.com"
 uid=$(uuidgen)
 echo ""
-read -p "$(echo -e "\033[1;32mPort: \033[0m")" port
+echo -e "\033[1;32mConfigure Tuic Port:\033[0m"
+read -p "$(echo -e "\033[1;33mRemote Port: \033[0m")" port
 echo ""
-echo -e "\033[1;33mCreate Tuic Password\033[0m"
-read -p "$(echo -e "\033[1;32mPassword: \033[0m")" password
+echo -e "\033[1;32mCreate Tuic Password:\033[0m"
+read -p "$(echo -e "\033[1;33mPassword: \033[0m")" password
 cat <<EOF >/root/tuic/config.json
 {
 "server": "[::]:$port",
@@ -74,8 +75,5 @@ EOF
 #start TUIC udp
 systemctl enable tuic-server.service
 systemctl start tuic-server.service
-echo -e "$YELLOW"
-echo "           💚 TUic INSTALLED SUCCESSFULLY 💚      "
-echo "             ╰┈➤💚 Tuic Activated 💚             "
-echo -e "$NC"
+echo -e "\033[1;33mTUIC UDP Installed and Running\033[0m"
 exit 1
