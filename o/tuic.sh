@@ -55,14 +55,19 @@ EOF
 #Create Tuic Service
 cat <<EOF >/etc/systemd/system/tuic-server.service
 [Unit]
-Description=UDPGW Gateway Service by InFiNitY 
-After=network.target
+Description=tuic service
+Documentation=by ResleevedNet
+After=network.target nss-lookup.target
 
 [Service]
-Type=forking
-ExecStart=/usr/bin/screen -dmS udpgw /bin/udpgw --listen-addr 127.0.0.1:7300 --max-clients 1000 --max-connections-for-client 1000
-Restart=always
 User=root
+WorkingDirectory=/root
+CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE CAP_NET_RAW
+AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE CAP_NET_RAW
+ExecStart=/root/tuic/tuic-linux-amd64 -c /root/tuic/config.json
+Restart=on-failure
+RestartSec=10
+LimitNOFILE=infinity
 
 [Install]
 WantedBy=multi-user.target
