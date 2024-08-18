@@ -19,10 +19,31 @@ mkdir tuic
 cd tuic
 wget -O tuic-linux-amd64 https://github.com/EAimTY/tuic/releases/download/tuic-server-1.0.0/tuic-server-1.0.0-x86_64-unknown-linux-gnu
 chmod 755 tuic-linux-amd64
+uuidgen
+uid="uuidgen"
 cat <<EOF >/root/tuic/config.json
-
-
-
+{
+  "server": "[::]:8880",
+  "users": {
+    "766ee75a-bfc8-40d2-b44a-7adfec5d1e8c": "iSegaro"
+  },
+  "certificate": "/root/tuic/ca.crt",
+  "private_key": "/root/tuic/ca.key",
+  "congestion_control": "bbr",
+  "alpn": ["h3", "spdy/3.1"],
+  "udp_relay_ipv6": true,
+  "zero_rtt_handshake": false,
+  "dual_stack": true,
+  "auth_timeout": "3s",
+  "task_negotiation_timeout": "3s",
+  "max_idle_time": "10s",
+  "max_external_packet_size": 1500,
+  "send_window": 16777216,
+  "receive_window": 8388608,
+  "gc_interval": "3s",
+  "gc_lifetime": "15s",
+"log_level": "warn"
+}
 EOF
 openssl ecparam -genkey -name prime256v1 -out ca.key
 openssl req -new -x509 -days 36500 -key ca.key -out ca.crt -subj "/CN=bing.com"
