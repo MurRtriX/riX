@@ -21,8 +21,7 @@ wget -O tuic-linux-amd64 https://github.com/EAimTY/tuic/releases/download/tuic-s
 chmod 755 tuic-linux-amd64
 openssl ecparam -genkey -name prime256v1 -out ca.key
 openssl req -new -x509 -days 36500 -key ca.key -out ca.crt -subj "/CN=bing.com"
-uuidgen
-uid="uuidgen"
+uid=$(uuidgen)
 echo ""
 read -p "$(echo -e "\033[1;32mPort: \033[0m")" port
 echo ""
