@@ -29,25 +29,25 @@ echo -e "\033[1;33mCreate Tuic Password\033[0m"
 read -p "$(echo -e "\033[1;32mPassword: \033[0m")" password
 cat <<EOF >/root/tuic/config.json
 {
-  "server": "[::]:$port",
-  "users": {
-    "$uid": "$password"
-  },
-  "certificate": "/root/tuic/ca.crt",
-  "private_key": "/root/tuic/ca.key",
-  "congestion_control": "bbr",
-  "alpn": ["h3", "spdy/3.1"],
-  "udp_relay_ipv6": true,
-  "zero_rtt_handshake": false,
-  "dual_stack": true,
-  "auth_timeout": "3s",
-  "task_negotiation_timeout": "3s",
-  "max_idle_time": "10s",
-  "max_external_packet_size": 1500,
-  "send_window": 16777216,
-  "receive_window": 8388608,
-  "gc_interval": "3s",
-  "gc_lifetime": "15s",
+"server": "[::]:$port",
+"users": {
+"$uid": "$password"
+},
+"certificate": "/root/tuic/ca.crt",
+"private_key": "/root/tuic/ca.key",
+"congestion_control": "bbr",
+"alpn": ["h3", "spdy/3.1"],
+"udp_relay_ipv6": true,
+"zero_rtt_handshake": false,
+"dual_stack": true,
+"auth_timeout": "3s",
+"task_negotiation_timeout": "3s",
+"max_idle_time": "10s",
+"max_external_packet_size": 1500,
+"send_window": 16777216,
+"receive_window": 8388608,
+"gc_interval": "3s",
+"gc_lifetime": "15s",
 "log_level": "warn"
 }
 EOF
