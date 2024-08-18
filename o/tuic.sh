@@ -52,6 +52,7 @@ cat <<EOF >/root/tuic/config.json
 "log_level": "warn"
 }
 EOF
+chmod 755 config.json
 #Create Tuic Service
 cat <<EOF >/etc/systemd/system/tuic-server.service
 [Unit]
