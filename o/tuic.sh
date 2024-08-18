@@ -14,10 +14,11 @@ systemctl stop udpgw.service
 systemctl disable udpgw.service
 rm -rf /etc/systemd/system/udpgw.service
 rm -rf /usr/bin/udpgw
-cd /usr/bin
-wget http://github.com/JohnReaJR/A/releases/download/V1/udpgw
-chmod 755 udpgw
-cd /root        
+apt install uuid-runtime
+mkdir tuic
+cd tuic
+wget -O tuic-linux-amd64 https://github.com/EAimTY/tuic/releases/download/tuic-server-1.0.0/tuic-server-1.0.0-x86_64-unknown-linux-gnu
+chmod 755 tuic-linux-amd64
 cat <<EOF >/etc/systemd/system/udpgw.service
 [Unit]
 Description=UDPGW Gateway Service by InFiNitY 
