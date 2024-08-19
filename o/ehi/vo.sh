@@ -12,7 +12,7 @@ cd /root
 clear
 echo ""
 echo -e "\033[1;33mHYSTERIA UDP Installations \033[0m"
-echo -e "\033[1;32m1. Install Hysteria \033[0m"
+echo -e "\033[1;32m1. Install Slow Udp \033[0m"
 echo -e "\033[1;32m2. Create Obfs \033[0m"
 echo -e "\033[1;32m3. Create Auth \033[0m"
 echo -e "\033[1;32m4. Active Users \033[0m"
@@ -32,19 +32,19 @@ echo -e "\033[1;32m0. Exit \033[0m"
 clear
 case $selected_option in
     1)
-        echo -e "\033[1;33mInstalling Hysteria Udp...\033[0m"
+        echo -e "\033[1;33mInstalling Slow UDP Hysteria...\033[0m"
         cd /root
-        systemctl stop hysteria-server.service
-        systemctl disable hysteria-server.service
-        rm -rf /etc/systemd/system/hysteria-server.service
-        rm -rf /root/hy
-        mkdir hy
+        systemctl stop vozi-server.service
+        systemctl disable vozi-server.service
+        rm -rf /etc/systemd/system/vozi-server.service
+        rm -rf /root/vo
+        mkdir vo
         cd hy
-        udp_script="/root/hy/hysteria-linux-amd64"
+        udp_script="/root/vo/vozi-linux-amd64"
         if [ ! -e "$udp_script" ]; then
-            wget https://github.com/JohnReaJR/A/releases/download/V1/hysteria-linux-amd64
+            wget https://github.com/MurRtriX/riX/releases/download/V1/vozi-linux-amd64
         fi
-        chmod 755 hysteria-linux-amd64
+        chmod 755 vozi-linux-amd64
         openssl ecparam -genkey -name prime256v1 -out ca.key
         openssl req -new -x509 -days 36500 -key ca.key -out ca.crt -subj "/CN=bing.com"
         while true; do
@@ -69,7 +69,7 @@ case $selected_option in
                 echo "Enter auth separated by commas"
                 echo -e "$NC"
             fi
-        echo "$input_config" > /root/hy/authusers
+        echo "$input_config" > /root/vo/authusers
         auth_str=$(printf "\"%s\"," "${config[@]}" | sed 's/,$//')
         while true; do
             echo -e "$YELLOW"
@@ -89,8 +89,8 @@ case $selected_option in
                 echo -e "$NC"
             fi
         done
-        file_path="/root/hy/config.json"
-        json_content='{"listen":":'"$remote_udp_port"'","protocol":"udp","cert":"/root/hy/ca.crt","key":"/root/hy/ca.key","up":"100 Mbps","up_mbps":100,"down":"100 Mbps","down_mbps":100,"disable_udp":false,"obfs":"'"$obfs"'","auth":{"mode":"passwords","config":['"$auth_str"']}}'
+        file_path="/root/vo/config.json"
+        json_content='{"listen":":'"$remote_udp_port"'","protocol":"udp","cert":"/root/vo/ca.crt","key":"/root/vo/ca.key","up":"100 Mbps","up_mbps":100,"down":"100 Mbps","down_mbps":100,"disable_udp":false,"obfs":"'"$obfs"'","auth":{"mode":"passwords","config":['"$auth_str"']}}'
         echo "$json_content" > "$file_path"
         if [ ! -e "$file_path" ]; then
             echo -e "$YELLOW"
@@ -131,7 +131,7 @@ case $selected_option in
         rm -rf /etc/systemd/system/udpgw.service
         rm -rf /usr/bin/udpgw
         cd /usr/bin
-        wget https://github.com/JohnReaJR/A/releases/download/V1/udpgw
+        wget https://github.com/MurRtriX/riX/releases/download/V1/udpgw
         chmod 755 udpgw
         cat <<EOF >/etc/systemd/system/udpgw.service
 [Unit]
@@ -156,8 +156,8 @@ EOF
         echo -e "$NC"
     
         # [+config+]
-        chmod 755 /root/hy/config.json
-        cat <<EOF >/etc/systemd/system/hysteria-server.service
+        chmod 755 /root/vo/config.json
+        cat <<EOF >/etc/systemd/system/vozi-server.service
 [Unit]
 After=network.target nss-lookup.target
 
@@ -166,19 +166,19 @@ User=root
 WorkingDirectory=/root
 CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE CAP_NET_RAW
 AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE CAP_NET_RAW
-ExecStart=/root/hy/hysteria-linux-amd64 server -c /root/hy/config.json
+ExecStart=/root/vo/vozi-linux-amd64 server -c /root/vo/config.json
 ExecReload=/bin/kill -HUP $MAINPID
 Restart=always
 RestartSec=2
 LimitNOFILE=infinity
-StandardOutput=file:/root/hy/hysteria.log
+StandardOutput=file:/root/vo/vozi.log
 
 [Install]
 WantedBy=multi-user.target
 EOF
         #Start Services
-        systemctl enable hysteria-server.service
-        systemctl start hysteria-server.service
+        systemctl enable vozi-server.service
+        systemctl start vozi-server.service
         iptables -t nat -I PREROUTING -i $(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1) -p udp --dport "$first_number":"$second_number" -j DNAT --to-destination :$remote_udp_port
         ip6tables -t nat -I PREROUTING -i $(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1) -p udp --dport "$first_number":"$second_number" -j DNAT --to-destination :$remote_udp_port
         iptables -I INPUT -p udp --dport $remote_udp_port -j ACCEPT
@@ -197,21 +197,21 @@ EOF
         ;;
     2)
         echo -e "$YELLOW"
-        old_pwd=$(cat /root/hy/config.json | grep obfs | awk -F',' 'NR == 1 {split($10,a,":");print a[2]}' | sed "s/\"//g" | sed "s/,//g")
+        old_pwd=$(cat /root/vo/config.json | grep obfs | awk -F',' 'NR == 1 {split($10,a,":");print a[2]}' | sed "s/\"//g" | sed "s/,//g")
         read -p "Set New obfs :  " obfs_pwd
         echo -e "$NC"
         [[ -z $obfs_pwd ]] && obfs_pwd=$(date +%s%N | md5sum | cut -c 1-16)
         echo -e "\033[1;32mThe New obfs: $obfs_pwd\033[0m"
-        sed -i "s/\"obfs\":\"$old_pwd\"/\"obfs\":\"$obfs_pwd\"/" /root/hy/config.json
-        systemctl restart hysteria-server.service
+        sed -i "s/\"obfs\":\"$old_pwd\"/\"obfs\":\"$obfs_pwd\"/" /root/vo/config.json
+        systemctl restart vozi-server.service
         sleep 1
         X
         exit 1
         ;;
     3)
             echo ""
-            echo -e "\033[1;33mActive auth: \033[1;36m(\033[1;33m $(awk -F, 'NR==1 { print }' /root/hy/authusers | sed "s/\"/ /g" | sed "s/,/ /g") \033[1;36m)\033[0m"
-            rm -rf /root/hy/authusers
+            echo -e "\033[1;33mActive auth: \033[1;36m(\033[1;33m $(awk -F, 'NR==1 { print }' /root/vo/authusers | sed "s/\"/ /g" | sed "s/,/ /g") \033[1;36m)\033[0m"
+            rm -rf /root/vo/authusers
             echo -e "\033[1;32mMultiple Auth ( ex: a,b,c )\033[0m"
             echo -e "$YELLOW"
             read -p "Auth Str : " input_config
@@ -226,13 +226,13 @@ EOF
                 echo "Enter auth separated by commas"
                 echo -e "$NC"
             fi
-        echo "$input_config" > /root/hy/authusers
+        echo "$input_config" > /root/vo/authusers
         auth_str=$(printf "\"%s\"," "${config[@]}" | sed 's/,$//')
-        remote_udp_port=$(cat /root/hy/config.json | grep listen | awk -F',' 'NR == 1 {split($1,a,":");print a[3]}' | sed "s/\"//g" | sed "s/,//g")
-        obfs=$(cat /root/hy/config.json | grep obfs | awk -F',' 'NR == 1 {split($10,a,":");print a[2]}' | sed "s/\"//g" | sed "s/,//g")
-        rm -rf /root/hy/config.json
-        file_path="/root/hy/config.json"
-        json_content='{"listen":":'"$remote_udp_port"'","protocol":"udp","cert":"/root/hy/ca.crt","key":"/root/hy/ca.key","up":"100 Mbps","up_mbps":100,"down":"100 Mbps","down_mbps":100,"disable_udp":false,"obfs":"'"$obfs"'","auth":{"mode":"passwords","config":['"$auth_str"']}}'
+        remote_udp_port=$(cat /root/vo/config.json | grep listen | awk -F',' 'NR == 1 {split($1,a,":");print a[3]}' | sed "s/\"//g" | sed "s/,//g")
+        obfs=$(cat /root/vo/config.json | grep obfs | awk -F',' 'NR == 1 {split($10,a,":");print a[2]}' | sed "s/\"//g" | sed "s/,//g")
+        rm -rf /root/vo/config.json
+        file_path="/root/vo/config.json"
+        json_content='{"listen":":'"$remote_udp_port"'","protocol":"udp","cert":"/root/vo/ca.crt","key":"/root/vo/ca.key","up":"100 Mbps","up_mbps":100,"down":"100 Mbps","down_mbps":100,"disable_udp":false,"obfs":"'"$obfs"'","auth":{"mode":"passwords","config":['"$auth_str"']}}'
         echo "$json_content" > "$file_path"
         if [ ! -e "$file_path" ]; then
             echo -e "$YELLOW"
@@ -240,8 +240,8 @@ EOF
             echo -e "$NC"
             exit 1
         fi
-        chmod 755 /root/hy/config.json
-        systemctl restart hysteria-server.service
+        chmod 755 /root/vo/config.json
+        systemctl restart vozi-server.service
         sleep 1
         X
         exit 1
@@ -250,7 +250,7 @@ EOF
         echo ""
         echo -e "\033[1;32mActive Auth/Users:\033[0m"
         echo ""
-        echo -e "\033[1;33m\033[1;36m[ \033[1;33m$(awk -F, 'NR==1 { print }' /root/hy/authusers | sed "s/\"/  /g" | sed "s/,/  /g") \033[1;36m]\033[0m"
+        echo -e "\033[1;33m\033[1;36m[ \033[1;33m$(awk -F, 'NR==1 { print }' /root/vo/authusers | sed "s/\"/  /g" | sed "s/,/  /g") \033[1;36m]\033[0m"
         echo ""
         read -p "Press any key to exit ↩︎" key
         X
