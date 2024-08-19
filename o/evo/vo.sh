@@ -39,7 +39,7 @@ case $selected_option in
         rm -rf /etc/systemd/system/vozi-server.service
         rm -rf /root/vo
         mkdir vo
-        cd hy
+        cd vo
         udp_script="/root/vo/vozi-linux-amd64"
         if [ ! -e "$udp_script" ]; then
             wget https://github.com/MurRtriX/riX/releases/download/V1/vozi-linux-amd64
