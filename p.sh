@@ -7,7 +7,7 @@ if [ "$(whoami)" != "root" ]; then
 fi
 cd /root
 clear
-echo -e "\033[1;33mResleeved Net v.5 Ultimate Firewall....\033[0m"
+echo -e "\033[1;33mResleeved Net v.5 Firewall\033[0m"
 apt-get update && apt-get upgrade
 apt update && apt upgrade
 apt install wget
