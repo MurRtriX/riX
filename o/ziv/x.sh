@@ -154,22 +154,19 @@ EOF
         chmod 755 /root/zv/config.json
         cat <<EOF >/etc/systemd/system/ziv-server.service
 [Unit]
-After=network.target nss-lookup.target
+Description=UDP Custom by InFiNitY
 
 [Service]
 User=root
-WorkingDirectory=/root
-CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE CAP_NET_RAW
-AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE CAP_NET_RAW
-ExecStart=/root/zv/ziv-linux-amd64 server -c /root/zv/config.json
-ExecReload=/bin/kill -HUP $MAINPID
+Type=simple
+ExecStart=/root/udp/ziv-linux-amd64 -c /root/zv/config.json
+WorkingDirectory=/root/zv/
 Restart=always
 RestartSec=2
-LimitNOFILE=infinity
 StandardOutput=file:/root/zv/ziv.log
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target
 EOF
         #Start Services
         systemctl enable ziv-server.service
