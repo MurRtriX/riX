@@ -159,7 +159,7 @@ Description=UDP Custom by InFiNitY
 [Service]
 User=root
 Type=simple
-ExecStart=/root/udp/ziv-linux-amd64 -c /root/zv/config.json
+ExecStart=/root/zv/ziv-linux-amd64 -c /root/zv/config.json
 WorkingDirectory=/root/zv/
 Restart=always
 RestartSec=2
