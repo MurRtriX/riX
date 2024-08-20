@@ -240,6 +240,6 @@ EOF
         ;;
     *)
         clear; X
-        exit 1
+        exit 0
         ;;
 esac
