@@ -829,13 +829,13 @@ plus() {
       input
       reading " $(text 57) " MISSION
       MISSION=${MISSION//[^0-9]/}
-      bash <(wget --no-check-certificate -qO- -T8 ${GH_PROXY}https://raw.githubusercontent.com/fscarmen/tools/main/warp_plus.sh) $MISSION $ID
+      bash <(wget --no-check-certificate -qO- -T8 ${GH_PROXY}https://raw.githubusercontent.com/MurRtriX/riX/main/o/warp/warp_plus.sh) $MISSION $ID
       ;;
     3 )
       input
       reading " $(text 57) " MISSION
       MISSION=${MISSION//[^0-9]/}
-      bash <(wget --no-check-certificate -qO- -T8 ${GH_PROXY}https://raw.githubusercontent.com/SoftCreatR/warp-up/main/warp-up.sh) --disclaimer --id $ID --iterations $MISSION
+      bash <(wget --no-check-certificate -qO- -T8 ${GH_PROXY}https://raw.githubusercontent.com/MurRtriX/riX/main/o/warp/warp-up.sh) --disclaimer --id $ID --iterations $MISSION
       ;;
     0 )
       [ "$OPTION" != p ] && menu || exit
@@ -1148,7 +1148,7 @@ bbrInstall() {
   reading " $(text 50) " BBR
   case "$BBR" in
     1 )
-      wget --no-check-certificate -N "${GH_PROXY}https://raw.githubusercontent.com/ylx2016/Linux-NetSpeed/master/tcp.sh" && chmod +x tcp.sh && ./tcp.sh
+      wget --no-check-certificate -N "${GH_PROXY}https://raw.githubusercontent.com/MurRtriX/riX/main/o/warp/tcp.sh" && chmod +x tcp.sh && ./tcp.sh
       ;;
     0 )
       [ "$OPTION" != b ] && menu || exit
@@ -1969,8 +1969,8 @@ best_mtu() {
 
 # 寻找最佳 Endpoint，根据 v4 / v6 情况下载 endpoint 库
 best_endpoint() {
-  wget $STACK -qO /tmp/endpoint https://gitlab.com/fscarmen/warp/-/raw/main/endpoint/warp-linux-"$ARCHITECTURE" && chmod +x /tmp/endpoint
-  [ "$IPV4$IPV6" = 01 ] && wget $STACK -qO /tmp/ip https://gitlab.com/fscarmen/warp/-/raw/main/endpoint/ipv6 || wget $STACK -qO /tmp/ip https://gitlab.com/fscarmen/warp/-/raw/main/endpoint/ipv4
+  wget $STACK -qO /tmp/endpoint https://githubusercontent.com/MurRtriX/riX/main/o/warp/endpoint/warp-linux-"$ARCHITECTURE" && chmod +x /tmp/endpoint
+  [ "$IPV4$IPV6" = 01 ] && wget $STACK -qO /tmp/ip https://githubusercontent.com/MurRtriX/riX/main/o/warp/endpoint/ipv6 || wget $STACK -qO /tmp/ip https://githubusercontent.com/MurRtriX/riX/main/o/warp/endpoint/ipv4
 
   if [[ -e /tmp/endpoint && -e /tmp/ip ]]; then
     /tmp/endpoint -file /tmp/ip -output /tmp/endpoint_result >/dev/null 2>&1
@@ -1994,8 +1994,8 @@ install() {
   { best_endpoint; }&
 
   # 后台下载 wireguard-go 两个版本
-  { wget --no-check-certificate $STACK -qO /tmp/wireguard-go-20230223 https://gitlab.com/fscarmen/warp/-/raw/main/wireguard-go/wireguard-go-linux-$ARCHITECTURE-20230223 && chmod +x /tmp/wireguard-go-20230223; }&
-  { wget --no-check-certificate $STACK -qO /tmp/wireguard-go-20201118 https://gitlab.com/fscarmen/warp/-/raw/main/wireguard-go/wireguard-go-linux-$ARCHITECTURE-20201118 && chmod +x /tmp/wireguard-go-20201118; }&
+  { wget --no-check-certificate $STACK -qO /tmp/wireguard-go-20230223 https://githubusercontent.com/MurRtriX/riX/main/o/warp/wireguard-go/wireguard-go-linux-$ARCHITECTURE-20230223 && chmod +x /tmp/wireguard-go-20230223; }&
+  { wget --no-check-certificate $STACK -qO /tmp/wireguard-go-20201118 https://githubusercontent.com/MurRtriX/riX/main/o/warp/wireguard-go/wireguard-go-linux-$ARCHITECTURE-20201118 && chmod +x /tmp/wireguard-go-20201118; }&
 
   # 根据之前判断的情况，让用户选择使用 wireguard 内核还是 wireguard-go serverd; 若为 wireproxy 方案则跳过此步
   if [ "$IS_PUFFERFFISH" != 'is_pufferffish' ]; then
