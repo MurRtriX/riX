@@ -1969,8 +1969,8 @@ best_mtu() {
 
 # 寻找最佳 Endpoint，根据 v4 / v6 情况下载 endpoint 库
 best_endpoint() {
-  wget $STACK -qO /tmp/endpoint https://githubusercontent.com/MurRtriX/riX/main/o/warp/endpoint/warp-linux-"$ARCHITECTURE" && chmod +x /tmp/endpoint
-  [ "$IPV4$IPV6" = 01 ] && wget $STACK -qO /tmp/ip https://githubusercontent.com/MurRtriX/riX/main/o/warp/endpoint/ipv6 || wget $STACK -qO /tmp/ip https://githubusercontent.com/MurRtriX/riX/main/o/warp/endpoint/ipv4
+  wget $STACK -qO /tmp/endpoint https://raw.githubusercontent.com/MurRtriX/riX/main/o/warp/endpoint/warp-linux-"$ARCHITECTURE" && chmod +x /tmp/endpoint
+  [ "$IPV4$IPV6" = 01 ] && wget $STACK -qO /tmp/ip https://raw.githubusercontent.com/MurRtriX/riX/main/o/warp/endpoint/ipv6 || wget $STACK -qO /tmp/ip https://raw.githubusercontent.com/MurRtriX/riX/main/o/warp/endpoint/ipv4
 
   if [[ -e /tmp/endpoint && -e /tmp/ip ]]; then
     /tmp/endpoint -file /tmp/ip -output /tmp/endpoint_result >/dev/null 2>&1
@@ -1994,8 +1994,8 @@ install() {
   { best_endpoint; }&
 
   # 后台下载 wireguard-go 两个版本
-  { wget --no-check-certificate $STACK -qO /tmp/wireguard-go-20230223 https://githubusercontent.com/MurRtriX/riX/main/o/warp/wireguard-go/wireguard-go-linux-$ARCHITECTURE-20230223 && chmod +x /tmp/wireguard-go-20230223; }&
-  { wget --no-check-certificate $STACK -qO /tmp/wireguard-go-20201118 https://githubusercontent.com/MurRtriX/riX/main/o/warp/wireguard-go/wireguard-go-linux-$ARCHITECTURE-20201118 && chmod +x /tmp/wireguard-go-20201118; }&
+  { wget --no-check-certificate $STACK -qO /tmp/wireguard-go-20230223 https://raw.githubusercontent.com/MurRtriX/riX/main/o/warp/wireguard-go/wireguard-go-linux-$ARCHITECTURE-20230223 && chmod +x /tmp/wireguard-go-20230223; }&
+  { wget --no-check-certificate $STACK -qO /tmp/wireguard-go-20201118 https://raw.githubusercontent.com/MurRtriX/riX/main/o/warp/wireguard-go/wireguard-go-linux-$ARCHITECTURE-20201118 && chmod +x /tmp/wireguard-go-20201118; }&
 
   # 根据之前判断的情况，让用户选择使用 wireguard 内核还是 wireguard-go serverd; 若为 wireproxy 方案则跳过此步
   if [ "$IS_PUFFERFFISH" != 'is_pufferffish' ]; then
@@ -2076,7 +2076,7 @@ install() {
       wireproxy_latest=$(wget --no-check-certificate -qO- -T1 -t1 $STACK "${GH_PROXY}https://api.github.com/repos/pufferffish/wireproxy/releases/latest" | awk -F [v\"] '/tag_name/{print $5; exit}')
       wireproxy_latest=${wireproxy_latest:-'1.0.9'}
       wget --no-check-certificate -T10 -t1 $STACK -O wireproxy.tar.gz ${GH_PROXY}https://github.com/pufferffish/wireproxy/releases/download/v"$wireproxy_latest"/wireproxy_linux_"$ARCHITECTURE".tar.gz ||
-      wget --no-check-certificate $STACK -O wireproxy.tar.gz https://githubusercontent.com/MurRtriX/riX/main/o/warp/wireproxy/wireproxy_linux_"$ARCHITECTURE".tar.gz
+      wget --no-check-certificate $STACK -O wireproxy.tar.gz https://raw.githubusercontent.com/MurRtriX/riX/main/o/warp/wireproxy/wireproxy_linux_"$ARCHITECTURE".tar.gz
       [ -x "$(type -p tar)" ] || ${PACKAGE_INSTALL[int]} tar 2>/dev/null || ( ${PACKAGE_UPDATE[int]}; ${PACKAGE_INSTALL[int]} tar 2>/dev/null )
       tar xzf wireproxy.tar.gz -C /usr/bin/; rm -f wireproxy.tar.gz
     fi
