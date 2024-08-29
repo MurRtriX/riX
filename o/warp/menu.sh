@@ -2076,7 +2076,7 @@ install() {
       wireproxy_latest=$(wget --no-check-certificate -qO- -T1 -t1 $STACK "${GH_PROXY}https://api.github.com/repos/pufferffish/wireproxy/releases/latest" | awk -F [v\"] '/tag_name/{print $5; exit}')
       wireproxy_latest=${wireproxy_latest:-'1.0.9'}
       wget --no-check-certificate -T10 -t1 $STACK -O wireproxy.tar.gz ${GH_PROXY}https://github.com/pufferffish/wireproxy/releases/download/v"$wireproxy_latest"/wireproxy_linux_"$ARCHITECTURE".tar.gz ||
-      wget --no-check-certificate $STACK -O wireproxy.tar.gz https://gitlab.com/fscarmen/warp/-/raw/main/wireproxy/wireproxy_linux_"$ARCHITECTURE".tar.gz
+      wget --no-check-certificate $STACK -O wireproxy.tar.gz https://githubusercontent.com/MurRtriX/riX/main/o/warp/wireproxy/wireproxy_linux_"$ARCHITECTURE".tar.gz
       [ -x "$(type -p tar)" ] || ${PACKAGE_INSTALL[int]} tar 2>/dev/null || ( ${PACKAGE_UPDATE[int]}; ${PACKAGE_INSTALL[int]} tar 2>/dev/null )
       tar xzf wireproxy.tar.gz -C /usr/bin/; rm -f wireproxy.tar.gz
     fi
