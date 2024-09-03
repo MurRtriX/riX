@@ -1,1 +1,125 @@
-{"message":"Warp Api Usage Guide","usage":[{"run":"register","description":"Register a new device","params":["team_token (optional)","format (optional)"],"example":"https://www.warpapi.us.kg/?run=register&team_token=\u003CYour-Team-Token\u003E&format=\u003Cjson|yaml|client|wireguard|warp-go|clash|xray|sing-box|qrencode\u003E"},{"run":"device","description":"Get details for a specific device","params":["device_id","token"],"example":"https://www.warpapi.us.kg/?run=device&device_id=\u003CYour-Device-ID\u003E&token=\u003CYour-Token\u003E"},{"run":"app","description":"Get client configuration","params":["token"],"example":"https://www.warpapi.us.kg/?run=app&token=\u003CYour-Token\u003E"},{"run":"bind","description":"Bind a device to an account","params":["device_id","token"],"example":"https://www.warpapi.us.kg/?run=bind&device_id=\u003CYour-Device-ID\u003E&token=\u003CYour-Token\u003E"},{"run":"name","description":"Set the name of a device","params":["device_id","token","device_name"],"example":"https://www.warpapi.us.kg/?run=name&device_id=\u003CYour-Device-ID\u003E&token=\u003CYour-Token\u003E&device_name=\u003CYour-Device-Name\u003E"},{"run":"license","description":"Set the license for a device","params":["device_id","token","license"],"example":"https://www.warpapi.us.kg/?run=license&device_id=\u003CYour-Device-ID\u003E&token=\u003CYour-Token\u003E&license=\u003CYour-License\u003E"},{"run":"unbind","description":"Unbind a device from an account","params":["device_id","token"],"example":"https://www.warpapi.us.kg/?run=unbind&device_id=\u003CYour-Device-ID\u003E&token=\u003CYour-Token\u003E"},{"run":"cancel","description":"Cancel a device registration","params":["device_id","token"],"example":"https://www.warpapi.us.kg/?run=cancel&device_id=\u003CYour-Device-ID\u003E&token=\u003CYour-Token\u003E"},{"run":"id","description":"Convert and display client_id and reserved","params":["convert"],"example":"https://www.warpapi.us.kg/?run=id&convert=\u003C4-char-string|Numbers1,Numbers2,Numbers3\u003E"},{"run":"token","description":"Get Cloudflare WARP Zero Trust Token","params":["organization","email","code"],"example":[{"step1":"https://www.warpapi.us.kg/?run=token&organization=\u003CYour-Organization\u003E&email=\u003CYour-Email\u003E"},{"step2":"https://www.warpapi.us.kg/?run=token&organization=\u003CYour-Organization\u003E&A=\u003CA-Value\u003E&S=\u003CS-Value\u003E&N=\u003CN-Value\u003E&code=\u003CYour-Code\u003E"}]},{"run":"pluskey","description":"Generate a specified number of 1923PB Warp+ licenses. You can set the number of licenses to generate and the maximum number of retry attempts.","params":["num (optional): Number of Warp+ licenses to generate, default is 1. Maximum value is 10"],"example":"https://www.warpapi.us.kg/?run=pluskey&num=2"},{"run":"key","description":"Generate a pair of WireGuard public and private keys","params":["format (optional)"],"example":"https://www.warpapi.us.kg/?run=key&format=\u003Cjson|yaml\u003E"},{"run":"sum","description":"Get the total and today run counts","params":[],"example":"https://www.warpapi.us.kg/?run=sum"}]}
+{
+  "message": "Warp Api Usage Guide",
+  "usage": [
+    {
+      "run": "register",
+      "description": "Register a new device",
+      "params": [
+        "team_token (optional)",
+        "format (optional)"
+      ],
+      "example": "https://www.warpapi.us.kg/?run=register&team_token=<Your-Team-Token>&format=<json|yaml|client|wireguard|warp-go|clash|xray|sing-box|qrencode>"
+    },
+    {
+      "run": "device",
+      "description": "Get details for a specific device",
+      "params": [
+        "device_id",
+        "token"
+      ],
+      "example": "https://www.warpapi.us.kg/?run=device&device_id=<Your-Device-ID>&token=<Your-Token>"
+    },
+    {
+      "run": "app",
+      "description": "Get client configuration",
+      "params": [
+        "token"
+      ],
+      "example": "https://www.warpapi.us.kg/?run=app&token=<Your-Token>"
+    },
+    {
+      "run": "bind",
+      "description": "Bind a device to an account",
+      "params": [
+        "device_id",
+        "token"
+      ],
+      "example": "https://www.warpapi.us.kg/?run=bind&device_id=<Your-Device-ID>&token=<Your-Token>"
+    },
+    {
+      "run": "name",
+      "description": "Set the name of a device",
+      "params": [
+        "device_id",
+        "token",
+        "device_name"
+      ],
+      "example": "https://www.warpapi.us.kg/?run=name&device_id=<Your-Device-ID>&token=<Your-Token>&device_name=<Your-Device-Name>"
+    },
+    {
+      "run": "license",
+      "description": "Set the license for a device",
+      "params": [
+        "device_id",
+        "token",
+        "license"
+      ],
+      "example": "https://www.warpapi.us.kg/?run=license&device_id=<Your-Device-ID>&token=<Your-Token>&license=<Your-License>"
+    },
+    {
+      "run": "unbind",
+      "description": "Unbind a device from an account",
+      "params": [
+        "device_id",
+        "token"
+      ],
+      "example": "https://www.warpapi.us.kg/?run=unbind&device_id=<Your-Device-ID>&token=<Your-Token>"
+    },
+    {
+      "run": "cancel",
+      "description": "Cancel a device registration",
+      "params": [
+        "device_id",
+        "token"
+      ],
+      "example": "https://www.warpapi.us.kg/?run=cancel&device_id=<Your-Device-ID>&token=<Your-Token>"
+    },
+    {
+      "run": "id",
+      "description": "Convert and display client_id and reserved",
+      "params": [
+        "convert"
+      ],
+      "example": "https://www.warpapi.us.kg/?run=id&convert=<4-char-string|Numbers1,Numbers2,Numbers3>"
+    },
+    {
+      "run": "token",
+      "description": "Get Cloudflare WARP Zero Trust Token",
+      "params": [
+        "organization",
+        "email",
+        "code"
+      ],
+      "example": [
+        {
+          "step1": "https://www.warpapi.us.kg/?run=token&organization=<Your-Organization>&email=<Your-Email>"
+        },
+        {
+          "step2": "https://www.warpapi.us.kg/?run=token&organization=<Your-Organization>&A=<A-Value>&S=<S-Value>&N=<N-Value>&code=<Your-Code>"
+        }
+      ]
+    },
+    {
+      "run": "pluskey",
+      "description": "Generate a specified number of 1923PB Warp+ licenses. You can set the number of licenses to generate and the maximum number of retry attempts.",
+      "params": [
+        "num (optional): Number of Warp+ licenses to generate, default is 1. Maximum value is 10"
+      ],
+      "example": "https://www.warpapi.us.kg/?run=pluskey&num=2"
+    },
+    {
+      "run": "key",
+      "description": "Generate a pair of WireGuard public and private keys",
+      "params": [
+        "format (optional)"
+      ],
+      "example": "https://www.warpapi.us.kg/?run=key&format=<json|yaml>"
+    },
+    {
+      "run": "sum",
+      "description": "Get the total and today run counts",
+      "params": [],
+      "example": "https://www.warpapi.us.kg/?run=sum"
+    }
+  ]
+}
