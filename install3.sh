@@ -66,4 +66,4 @@ echo "           💚 DNSTT INSTALLED 💚      "
 echo "           ╰┈➤💚 Active 💚             "
 echo -e "$NC"
 X
-exit 1
+exit 0
