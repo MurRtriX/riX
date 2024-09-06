@@ -188,7 +188,7 @@ EOF
         echo "      ╰┈➤💚 Telegram >>> t.me/Am_The_Last_Envoy    "
         echo -e "$NC"
         X
-        exit 1
+        exit 0
         ;;
     2)
             echo ""
@@ -226,7 +226,7 @@ EOF
         systemctl restart ziv-server.service
         sleep 1
         X
-        exit 1
+        exit 0
         ;;
     3)
         echo ""
@@ -236,7 +236,7 @@ EOF
         echo ""
         read -p "Press any key to exit ↩︎" key
         X
-        exit 1
+        exit 0
         ;;
     *)
         clear; X
