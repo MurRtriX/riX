@@ -236,7 +236,7 @@ EOF
         exit 0
         ;;
     *)
-        clear; 
+        clear; X
         exit 0
         ;;
 esac
