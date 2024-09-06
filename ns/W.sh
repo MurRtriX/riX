@@ -41,35 +41,35 @@ case $selected_option in
     1)
         rm -rf install54.sh; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/install54.sh" -O install54.sh && chmod 755 install54.sh && ./install54.sh; rm -rf install54.sh
         X
-        exit 1
+        exit 0
         ;;
     2)
         rm -rf install10.sh; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/install10.sh" -O install10.sh && chmod 755 install10.sh && ./install10.sh; rm -rf install10.sh
         X
-        exit 1
+        exit 0
         ;;
     3)
         rm -rf install5.sh; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/install5.sh" -O install5.sh && chmod 755 install5.sh && ./install5.sh; rm -rf install5.sh
         X
-        exit 1
+        exit 0
         ;;
     4)
         rm -rf ant.sh; wget "https://raw.githubusercontent.com/JohnReaJR/M/main/ant.sh" -O ant.sh && chmod 755 ant.sh && ./ant.sh; rm -rf ant.sh
         X
-        exit 1
+        exit 0
         ;;
     5)
         cd /etc/V/bin; ./aws.sh
-        exit 1
+        exit 0
         ;;
     6)
         rm -rf zz.sh; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/o/ziv/zz.sh" -O zz.sh && chmod 755 zz.sh && ./zz.sh; rm -rf zz.sh
         X
-        exit 1
+        exit 0
         ;;
     *)
         clear; X
-        exit 1
+        exit 0
         ;;
 esac
 done
