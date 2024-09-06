@@ -122,4 +122,4 @@ echo "           💚 FIREWALL CONFIGURED 💚      "
 echo "              ╰┈➤💚 Active 💚             "
 echo -e "$NC"
 X
-exit 1
+exit 0
