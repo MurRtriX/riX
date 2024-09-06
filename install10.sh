@@ -137,14 +137,14 @@ EOF
         echo " ╰┈➤ 💚 HTTP CUSTOM UDP SUCCESSFULLY INSTALLED 💚       "
         echo -e "$NC"
         X
-        exit 1
+        exit 0
         ;;
     *)
         echo -e "$YELLOW"
         echo "Welcome To Resleeved Net"
         echo -e "$NC"
         X
-        exit 1
+        exit 0
         ;;
 esac
 done
