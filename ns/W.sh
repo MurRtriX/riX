@@ -40,17 +40,14 @@ clear
 case $selected_option in
     1)
         rm -rf install54.sh; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/install54.sh" -O install54.sh && chmod 755 install54.sh && ./install54.sh; rm -rf install54.sh
-        X
         exit 0
         ;;
     2)
         rm -rf install10.sh; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/install10.sh" -O install10.sh && chmod 755 install10.sh && ./install10.sh; rm -rf install10.sh
-        X
         exit 0
         ;;
     3)
         rm -rf install5.sh; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/install5.sh" -O install5.sh && chmod 755 install5.sh && ./install5.sh; rm -rf install5.sh
-        X
         exit 0
         ;;
     4)
@@ -64,7 +61,6 @@ case $selected_option in
         ;;
     6)
         rm -rf zz.sh; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/o/ziv/zz.sh" -O zz.sh && chmod 755 zz.sh && ./zz.sh; rm -rf zz.sh
-        X
         exit 0
         ;;
     *)
