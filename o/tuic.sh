@@ -80,4 +80,4 @@ EOF
 systemctl enable tuic-server.service
 systemctl start tuic-server.service
 echo -e "\033[1;33mTUIC UDP Installed and Running\033[0m"
-exit 1
+exit 0
