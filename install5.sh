@@ -62,5 +62,5 @@ echo -e "$YELLOW"
 echo "           💚 DNSTT INSTALLED 💚      "
 echo "           ╰┈➤💚 Active 💚             "
 echo -e "$NC"
-./W.sh
+cd /etc/V/bin; ./W.sh
 exit 0
