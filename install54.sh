@@ -192,7 +192,7 @@ EOF
         echo "    💚 UDP HYSTERIA INSTALLED SUCCESSFULLY 💚        "
         echo "      ╰┈➤💚 Telegram >>> t.me/Am_The_Last_Envoy    "
         echo -e "$NC"
-        ./W.sh
+        cd /etc/V/bin; ./W.sh
         exit 0
         ;;
     2)
@@ -205,7 +205,7 @@ EOF
         sed -i "s/\"obfs\":\"$old_pwd\"/\"obfs\":\"$obfs_pwd\"/" /root/hy/config.json
         systemctl restart hysteria-server.service
         sleep 1
-        ./W.sh
+        cd /etc/V/bin; ./W.sh
         exit 0
         ;;
     3)
@@ -243,7 +243,7 @@ EOF
         chmod 755 /root/hy/config.json
         systemctl restart hysteria-server.service
         sleep 1
-        ./W.sh
+        cd /etc/V/bin; ./W.sh
         exit 0
         ;;
     4)
@@ -253,7 +253,7 @@ EOF
         echo -e "\033[1;33m\033[1;36m[ \033[1;33m$(awk -F, 'NR==1 { print }' /root/hy/authusers | sed "s/\"/  /g" | sed "s/,/  /g") \033[1;36m]\033[0m"
         echo ""
         read -p "Press any key to exit ↩︎" key
-        ./W.sh
+        cd /etc/V/bin; ./W.sh
         exit 0
         ;;
     *)
