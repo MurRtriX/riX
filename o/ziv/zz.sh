@@ -187,7 +187,7 @@ EOF
         echo "    💚 UDP HYSTERIA INSTALLED SUCCESSFULLY 💚        "
         echo "      ╰┈➤💚 Telegram >>> t.me/Am_The_Last_Envoy    "
         echo -e "$NC"
-        X
+        ./W.sh
         exit 0
         ;;
     2)
@@ -225,7 +225,7 @@ EOF
         chmod 755 /root/zv/config.json
         systemctl restart ziv-server.service
         sleep 1
-        X
+        ./W.sh
         exit 0
         ;;
     3)
@@ -235,7 +235,7 @@ EOF
         echo -e "\033[1;33m\033[1;36m[ \033[1;33m$(awk -F, 'NR==1 { print }' /root/zv/authusers | sed "s/\"/  /g" | sed "s/,/  /g") \033[1;36m]\033[0m"
         echo ""
         read -p "Press any key to exit ↩︎" key
-        X
+        ./W.sh
         exit 0
         ;;
     *)
