@@ -52,7 +52,7 @@ case $selected_option in
         ;;
     4)
         rm -rf ant.sh; wget "https://raw.githubusercontent.com/JohnReaJR/M/main/ant.sh" -O ant.sh && chmod 755 ant.sh && ./ant.sh; rm -rf ant.sh
-        X
+        ./W.sh
         exit 0
         ;;
     5)
