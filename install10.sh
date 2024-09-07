@@ -136,7 +136,7 @@ EOF
         echo "     ╰┈➤💚 Badvpn Activated 💚         "
         echo " ╰┈➤ 💚 HTTP CUSTOM UDP SUCCESSFULLY INSTALLED 💚       "
         echo -e "$NC"
-        ./W.sh
+        cd /etc/V/bin; ./W.sh
         exit 0
         ;;
     *)
