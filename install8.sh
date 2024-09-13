@@ -197,7 +197,8 @@ EOF
         ;;
     2)
         echo "" 
-        echo -e "\033[1;32mNote: Configure OBFS\033[0m"
+        echo -e "\033[1;33mConfigure OBFS\033[0m"
+        echo -e "\033[1;32mActive OBFS: \033[1,33m$(cat /root/hy/config.json | grep obfs | awk -F',' 'NR == 1 {split($10,a,":");print a[2]}' | sed "s/\"//g" | sed "s/,//g")\033[0m"
         old_pwd=$(cat /root/hy/config.json | grep obfs | awk -F',' 'NR == 1 {split($10,a,":");print a[2]}' | sed "s/\"//g" | sed "s/,//g")
         read -p "$(echo -e "\033[1;33mSet New OBFS : \033[0m")" obfs_pwd
         [[ -z $obfs_pwd ]] && obfs_pwd=$(date +%s%N | md5sum | cut -c 1-16)
