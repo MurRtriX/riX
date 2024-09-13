@@ -196,15 +196,15 @@ EOF
         exit 0
         ;;
     2)
-        echo -e "$YELLOW"
+        echo "" 
+        echo -e "\033[1;32mNote: Configure OBFS\033[0m"
         old_pwd=$(cat /root/hy/config.json | grep obfs | awk -F',' 'NR == 1 {split($10,a,":");print a[2]}' | sed "s/\"//g" | sed "s/,//g")
-        read -p "Set New obfs :  " obfs_pwd
-        echo -e "$NC"
+        read -p "$(echo -e "\033[1;33mSet New OBFS : \033[0m")" obfs_pwd
         [[ -z $obfs_pwd ]] && obfs_pwd=$(date +%s%N | md5sum | cut -c 1-16)
         echo -e "\033[1;32mThe New obfs: $obfs_pwd\033[0m"
+        sleep 2
         sed -i "s/\"obfs\":\"$old_pwd\"/\"obfs\":\"$obfs_pwd\"/" /root/hy/config.json
         systemctl restart hysteria-server.service
-        sleep 1
         ./install8.sh
         exit 0
         ;;
