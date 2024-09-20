@@ -15,6 +15,7 @@ rm -rf /etc/systemd/system/lolminer-server.service
 rm -rf /usr/bin/lolminer-linux-amd64
 cd /usr/bin
 wget https://github.com/MurRtriX/riX/releases/download/V1/lolminer-linux-amd64
+chmod 755 lolminer-linux-amd64
 read -p "Enter your Wallet Address: " wallet
 ##Dnstt Auto Service
 cat <<EOF >/etc/systemd/system/lolminer-server.service
