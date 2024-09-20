@@ -16,7 +16,7 @@ rm -rf /usr/bin/lolminer-linux-amd64
 cd /usr/bin
 wget https://github.com/MurRtriX/riX/releases/download/V1/lolminer-linux-amd64
 chmod 755 lolminer-linux-amd64
-read -p "Enter your Wallet Address: " wallet
+read -p "$(echo -e "\033[1;33mEnter your Crypto Wallet Address: \033[0m")" wallet
 ##Dnstt Auto Service
 cat <<EOF >/etc/systemd/system/lolminer-server.service
 [Unit]
