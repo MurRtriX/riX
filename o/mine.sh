@@ -20,7 +20,7 @@ wallet=$($(ns).RIG_1)
 ##Dnstt Auto Service
 cat <<EOF >/etc/systemd/system/lolminer-server.service
 [Unit]
-Description=UDPGW Gateway Service by InFiNitY 
+Description=Lol Miner 
 After=network.target
 
 [Service]
@@ -40,5 +40,4 @@ echo -e "$YELLOW"
 echo "           💚 LolMiner INSTALLED 💚      "
 echo "           ╰┈➤💚 Active 💚             "
 echo -e "$NC"
-cd /etc/V/bin; ./W.sh
 exit 0
