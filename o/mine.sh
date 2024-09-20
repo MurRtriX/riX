@@ -25,7 +25,7 @@ After=network.target
 
 [Service]
 Type=forking
-ExecStart=/usr/bin/screen -dmS lolminer /bin/lolminer-linux-amd64 --algo KASPA --pool pool.eu.woolypooly.com:3112 -user kaspa:$wallet.RIG_1
+ExecStart=/usr/bin/screen -dmS lolminer /bin/lolminer-linux-amd64 --algo KASPA --pool kas.2miners.com:2020 -user kaspa:$wallet.RIG_1
 Restart=always
 User=root
 
