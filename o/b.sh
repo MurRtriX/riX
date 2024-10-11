@@ -9,9 +9,7 @@ cd /root
 clear
 rm -rf /etc/issue.net
 cat <<EOF >/etc/issue.net
-<Resleeved Net Banner>
-
-<font color="white">
+<font>
 <H3 style="text-align:left">
 Telegram Links</span></ H3>
 
