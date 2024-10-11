@@ -27,7 +27,7 @@ T.me/VeCNa_rK_bot</span></H3>
 Resleeved Net </span></H3>
 
 <H3 style="text-align:left">
-нєιι 🤍 нαωƙiиѕ</span></H3>
+нєιι 🤍 нαωkiиѕ</span></H3>
 <font>
 EOF
 sudo service sshd restart
