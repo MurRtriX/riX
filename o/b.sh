@@ -29,7 +29,7 @@ Resleeved Net </span></H3>
 <font>
 EOF
 chmod 755 /etc/issue.net
-x=$(/etc/issue.net)
-sudo sed -i 's/#Banner none/Banner x/' /etc/ssh/sshd_config
+x="/etc/issue.net"
+sudo sed -i 's/#Banner none/Banner $x/' /etc/ssh/sshd_config
 sudo service sshd restart
 exit 0
