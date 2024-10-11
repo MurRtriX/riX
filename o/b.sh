@@ -9,7 +9,7 @@ cd /root
 clear
 rm -rf /etc/issue.net
 cat <<EOF >/etc/issue.net
-<!--- Resleeved Net Banner--->
+<Resleeved Net Banner>
 
 <font color="white">
 <H3 style="text-align:left">
