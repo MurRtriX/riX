@@ -29,6 +29,6 @@ Resleeved Net </span></H3>
 <font>
 EOF
 x="/etc/issue.net"
-sudo sed -i 's/#Banner none/Banner $x/' /etc/ssh/sshd_config
+sudo sed -i 's/#Banner none/Banner /etc/issue.net/' /etc/ssh/sshd_config
 sudo service sshd restart
 exit 0
