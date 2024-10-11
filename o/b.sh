@@ -8,8 +8,6 @@ fi
 cd /root
 clear
 rm -rf /etc/issue.net
-x=$(/etc/issue.net)
-sudo sed -i 's/#Banner none/Banner x/' /etc/ssh/sshd_config
 cat <<EOF >/etc/issue.net
 <!--- Resleeved Net Banner--->
 
@@ -30,5 +28,7 @@ Resleeved Net </span></H3>
 нєιι 🤍 нαωkiиѕ</span></H3>
 <font>
 EOF
+x=$(/etc/issue.net)
+sudo sed -i 's/#Banner none/Banner x/' /etc/ssh/sshd_config
 sudo service sshd restart
 exit 0
