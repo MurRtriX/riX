@@ -9,21 +9,26 @@ cd /root
 clear
 rm -rf /etc/issue.net
 cat <<EOF >/etc/issue.net
-<font>
+<!--- Resleeved Net Banner--->
+
+<font color="white">
+<H3 style="text-align:left">
+Resleeved Net </span></H3>
+
 <H3 style="text-align:left">
 Telegram Links</span></ H3>
+
+<H3 style="text-align:left">
+T.me/VeCNa_rK_bot</span>< /H3>
 
 <H3 style="text-align:left">
 T.me/Am_The_Last_Envoy</span></H3>
 
 <H3 style="text-align:left">
-T.me/VeCNa_rK_bot</span></H3>
+Resleeved Net нєιι 🤍 нαωkiиѕ</span></H3>
 
 <H3 style="text-align:left">
-Resleeved Net </span></H3>
-
-<H3 style="text-align:left">
-нєιι 🤍 нαωkiиѕ</span></H3>
+Resleeved Net Has no Whatsapp Channel</span></H3>
 <font>
 EOF
 chmod 755 /etc/issue.net
