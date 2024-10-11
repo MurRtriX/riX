@@ -8,5 +8,6 @@ fi
 cd /root
 clear
 rm -rf /etc/issue.net
-
+x=$(/etc/issue.net)
+sudo sed -i 's/#Banner none/Banner x/' /etc/ssh/sshd_config
 exit 0
