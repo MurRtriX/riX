@@ -29,6 +29,6 @@ EOF
 chmod 755 /etc/issue.net
 x="#Banner none"
 v="Banner /etc/issue.net"
-sed -i 's|@x|@v|' /etc/ssh/sshd_config
+sed -i 's|$x|$v|' /etc/ssh/sshd_config
 sudo service sshd restart
 exit 0
