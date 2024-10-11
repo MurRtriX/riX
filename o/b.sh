@@ -25,7 +25,7 @@ T.me/VeCNa_rK_bot ✅</span></H3>
 T.me/Am_The_Last_Envoy ✅</span></H3>
 
 <H3 style="text-align:left">
-Resleeved Net нєιι 🤍 нαωkiиѕ</span></H3>
+нєιι 🤍 нαωkiиѕ Verified Access</span></H3>
 
 <H3 style="text-align:left">
 Resleeved Net Has no Whatsapp Channel</span></H3>
