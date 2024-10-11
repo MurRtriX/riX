@@ -10,4 +10,25 @@ clear
 rm -rf /etc/issue.net
 x=$(/etc/issue.net)
 sudo sed -i 's/#Banner none/Banner x/' /etc/ssh/sshd_config
+cat <<EOF >/etc/issue.net
+<!--- Resleeved Net Banner--->
+
+<font color="white">
+<H3 style="text-align:left">
+Telegram Links</span></ H3>
+
+<H3 style="text-align:left">
+T.me/Am_The_Last_Envoy</span></H3>
+
+<H3 style="text-align:left">
+T.me/VeCNa_rK_bot</span></H3>
+
+<H3 style="text-align:left">
+Resleeved Net </span></H3>
+
+<H3 style="text-align:left">
+нєιι 🤍 нαωƙiиѕ</span></H3>
+<font>
+EOF
+sudo service sshd restart
 exit 0
