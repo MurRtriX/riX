@@ -23,6 +23,7 @@ rm -rf /usr/bin/dnstt-linux-amd64
 git clone https://www.bamsoftware.com/git/dnstt.git
 cd dnstt/dnstt-server
 go build
+cd /root
 mv dnstt/dnstt-server/dnstt-server /usr/bin/dnstt-linux-amd64
 rm -rf dnstt
 cd /usr/bin
