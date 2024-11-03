@@ -26,6 +26,7 @@ go build
 cd /root
 mv dnstt/dnstt-server/dnstt-server /usr/bin/dnstt-linux-amd64
 rm -rf dnstt
+rm -rf go
 cd /usr/bin
 chmod 755 dnstt-linux-amd64
 if [ -e "server.key" ]; then
