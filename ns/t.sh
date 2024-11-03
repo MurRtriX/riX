@@ -20,13 +20,10 @@ systemctl stop dnstt-server.service
 systemctl disable dnstt-server.service
 rm -rf /etc/systemd/system/dnstt-server.service
 rm -rf /usr/bin/dnstt-linux-amd64
-git clone https://www.bamsoftware.com/git/dnstt.git
-cd dnstt/dnstt-server
-go build
-cd /root
-mv dnstt/dnstt-server/dnstt-server /usr/bin/dnstt-linux-amd64
-rm -rf dnstt
 cd /usr/bin
+if [ ! -e "dnstt-linux-amd64" ]; then
+    wget "https://raw.githubusercontent.com/MurRtriX/riX/main/o/dnstt-linux-amd64"
+fi
 chmod 755 dnstt-linux-amd64
 if [ -e "server.key" ]; then
     rm server.key
