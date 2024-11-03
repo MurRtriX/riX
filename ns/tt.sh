@@ -23,8 +23,9 @@ rm -rf /usr/bin/dnstt-linux-amd64
 git clone https://www.bamsoftware.com/git/dnstt.git
 cd dnstt/dnstt-server
 go build
-mv dnstt/dnstt-server/dnstt-server /usr/bin
+mv dnstt/dnstt-server/dnstt-server /usr/bin/dnstt-linux-amd64
 rm -rf dnstt
+cd /usr/bin
 chmod 755 dnstt-linux-amd64
 if [ -e "server.key" ]; then
     rm server.key
