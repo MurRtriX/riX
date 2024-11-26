@@ -119,8 +119,8 @@ if [[ ! -e /etc/wireguard/wg0.conf ]]; then
 		apt-get install -y wget
 	fi
 	clear
-	echo -e "\033[1;33mResleeved Net Wireguard Installer\033[0m"
-        echo -e "\033[1;36mConfigure Remote Port\033[0m"
+	echo -e "\033[1;33mResleeved Net Wireguard\033[0m"
+        echo -e "\033[1;32mRemote Port:\033[0m"
 	# If system has a single IPv4, it is selected automatically. Else, ask the user
 	if [[ $(ip -4 addr | grep inet | grep -vEc '127(\.[0-9]{1,3}){3}') -eq 1 ]]; then
 		ip=$(ip -4 addr | grep inet | grep -vE '127(\.[0-9]{1,3}){3}' | cut -d '/' -f 1 | grep -oE '[0-9]{1,3}(\.[0-9]{1,3}){3}')
@@ -161,7 +161,6 @@ if [[ ! -e /etc/wireguard/wg0.conf ]]; then
 		[[ -z "$ip6_number" ]] && ip6_number="1"
 		ip6=$(ip -6 addr | grep 'inet6 [23]' | cut -d '/' -f 1 | grep -oE '([0-9a-fA-F]{0,4}:){1,7}[0-9a-fA-F]{0,4}' | sed -n "$ip6_number"p)
 	fi
-        echo ""
 	read -p "Remote Port [36718]: " port
 	until [[ -z "$port" || "$port" =~ ^[0-9]+$ && "$port" -le 65535 ]]; do
 		echo "$port: invalid port."
@@ -350,16 +349,16 @@ EOF
 	fi
 	echo
         mkdir /etc/Wire
-	qrencode -t ANSI256UTF8 < /root/etc/Wire/"$client.conf"
+	qrencode -t ANSI256UTF8 < /etc/Wire/"$client.conf"
 	echo -e '\xE2\x86\x91 That is a QR code containing the client configuration.'
 else
 	clear
-	echo "Resleeved Net Wireguard Running"
-	echo "Select an option:"
-	echo "   1) Add a new client"
-	echo "   2) Remove an existing client"
-	echo "   3) Remove WireGuard"
-	echo "   4) Exit"
+	echo -e "\033[1;33mResleeved Net Wireguard Running\033[0m"
+	echo -e "\033[1;32mSelect an option:\033[0m"
+	echo "1) Add a new client"
+	echo "2) Remove an existing client"
+	echo "3) Remove WireGuard"
+	echo "4) Exit"
 	read -p "Option: " option
 	until [[ "$option" =~ ^[1-4]$ ]]; do
 		echo "$option: invalid selection."
@@ -382,7 +381,7 @@ else
 			# Append new client configuration to the WireGuard interface
 			wg addconf wg0 <(sed -n "/^# BEGIN_PEER $client/,/^# END_PEER $client/p" /etc/wireguard/wg0.conf)
 			echo
-			qrencode -t ANSI256UTF8 < /root/etc/Wire/"$client.conf"
+			qrencode -t ANSI256UTF8 < /etc/Wire/"$client.conf"
 			echo -e '\xE2\x86\x91 That is a QR code containing your client configuration.'
 			echo "$client added"
 			exit
