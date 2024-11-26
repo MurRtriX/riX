@@ -349,13 +349,9 @@ EOF
 		{ crontab -l 2>/dev/null; echo "$(( $RANDOM % 60 )) $(( $RANDOM % 3 + 3 )) * * * /usr/local/sbin/boringtun-upgrade &>/dev/null" ; } | crontab -
 	fi
 	echo
-	qrencode -t ANSI256UTF8 < ~/"$client.conf"
+        mkdir /root/etc/V/WireGuard
+	qrencode -t ANSI256UTF8 < ~/etc/V/WireGuard/"$client.conf"
 	echo -e '\xE2\x86\x91 That is a QR code containing the client configuration.'
-	echo
-	echo "Finished!"
-	echo
-	echo "The client configuration is available in:" ~/"$client.conf"
-	echo "New clients can be added by running this script again."
 else
 	clear
 	echo "Resleeved Net Wireguard Running"
@@ -466,11 +462,13 @@ else
 				if [[ "$use_boringtun" -eq 0 ]]; then
 				        # Ubuntu
 				        rm -rf /etc/wireguard/
+                                        rm -rf /root/etc/Wire
 				        apt-get remove --purge -y wireguard wireguard-tools
                                 else
 					{ crontab -l 2>/dev/null | grep -v '/usr/local/sbin/boringtun-upgrade' ; } | crontab -
 				        # Ubuntu
 				        rm -rf /etc/wireguard/
+	                                rm -rf /root/etc/Wire
 				        apt-get remove --purge -y wireguard-tools
 	                                rm -rf /usr/local/sbin/boringtun /usr/local/sbin/boringtun-upgrade
                                 fi
