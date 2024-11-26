@@ -63,7 +63,7 @@ else
 	resolv_conf="/run/systemd/resolve/resolv.conf"
 fi
 # Extract nameservers and provide them in the required format
-dns="8.8.8.8, 8.8.4.4"
+dns=$(grep -v '^#\|^;' "$resolv_conf" | grep '^nameserver' | grep -v '127.0.0.53' | grep -oE '[0-9]{1,3}(\.[0-9]{1,3}){3}' | xargs | sed -e 's/ /, /g')
 }
 new_client_setup () {
 	# Given a list of the assigned internal IPv4 addresses, obtain the lowest still
