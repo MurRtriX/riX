@@ -166,7 +166,7 @@ if [[ ! -e /etc/wireguard/wg0.conf ]]; then
 		read -p "Port [36718]: " port
 	done
 	[[ -z "$port" ]] && port="36718"
-        default_client=$(Resleeved)
+        default_client="$Resleeved"
 	# Allow a limited lenght and set of characters to avoid conflicts
 	client=$(sed 's/[^0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_-]/_/g' <<< "$default_client" | cut -c-15)
 	[[ -z "$client" ]] && client="client"
