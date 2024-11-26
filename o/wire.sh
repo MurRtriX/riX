@@ -502,15 +502,18 @@ else
 				        # Ubuntu
 				        rm -rf /etc/wireguard/
 				        apt-get remove --purge -y wireguard wireguard-tools
-	                        fi
                                 else
 					{ crontab -l 2>/dev/null | grep -v '/usr/local/sbin/boringtun-upgrade' ; } | crontab -
 				        # Ubuntu
 				        rm -rf /etc/wireguard/
 				        apt-get remove --purge -y wireguard-tools
+	                                rm -rf /usr/local/sbin/boringtun /usr/local/sbin/boringtun-upgrade
                                 fi
-			        rm -rf /usr/local/sbin/boringtun /usr/local/sbin/boringtun-upgrade
+			        echo
 				echo "WireGuard removed!"
+                        else
+                                echo
+				echo "WireGuard removal aborted!"
                         fi
 			exit
 		;;
