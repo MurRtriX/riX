@@ -95,7 +95,9 @@ AllowedIPs = 10.7.0.$octet/32$(grep -q 'fddd:2c4:2c4:2c4::1' /etc/wireguard/wg0.
 # END_PEER $client
 EOF
 	# Create client configuration
-	cat << EOF > ~/"$client".conf
+        rm -rf /root/etc/Wire
+	mkdir /etc/Wire
+	cat << EOF > /root/etc/Wire/"$client".conf
 [Interface]
 Address = 10.7.0.$octet/24$(grep -q 'fddd:2c4:2c4:2c4::1' /etc/wireguard/wg0.conf && echo ", fddd:2c4:2c4:2c4::$octet/64")
 DNS = $dns
@@ -347,8 +349,6 @@ EOF
 		# Add cron job to run the updater daily at a random time between 3:00 and 5:59
 		{ crontab -l 2>/dev/null; echo "$(( $RANDOM % 60 )) $(( $RANDOM % 3 + 3 )) * * * /usr/local/sbin/boringtun-upgrade &>/dev/null" ; } | crontab -
 	fi
-	echo
-        mkdir /etc/Wire
 	qrencode -t ANSI256UTF8 < /etc/Wire/"$client.conf"
 	echo -e '\xE2\x86\x91 That is a QR code containing the client configuration.'
 else
