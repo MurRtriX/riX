@@ -189,7 +189,6 @@ if [[ ! -e /etc/wireguard/wg0.conf ]]; then
 			fi
 		fi
 	fi
-	echo -e "Resleeved Net Wireguard Installer"
 	# Install a firewall if firewalld or iptables are not already available
 	if ! systemctl is-active --quiet firewalld.service && ! hash iptables 2>/dev/null; then
 		if [[ "$os" == "centos" || "$os" == "fedora" ]]; then
@@ -202,7 +201,6 @@ if [[ ! -e /etc/wireguard/wg0.conf ]]; then
 			firewall=$(iptables)
 		fi
 	fi
-	read -n1 -r -p "Press any key to continue..."
 	# Install WireGuard
 	# If BoringTun is not required, set up with the WireGuard kernel module
 	if [[ "$use_boringtun" -eq 0 ]]; then
