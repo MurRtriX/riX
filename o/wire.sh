@@ -119,7 +119,7 @@ if [[ ! -e /etc/wireguard/wg0.conf ]]; then
 		apt-get install -y wget
 	fi
 	clear
-	echo 'Welcome to this WireGuard road warrior installer!'
+	echo -e "\033m[1;31Resleeved Net Wireguard Installer\033[0m"
 	# If system has a single IPv4, it is selected automatically. Else, ask the user
 	if [[ $(ip -4 addr | grep inet | grep -vEc '127(\.[0-9]{1,3}){3}') -eq 1 ]]; then
 		ip=$(ip -4 addr | grep inet | grep -vE '127(\.[0-9]{1,3}){3}' | cut -d '/' -f 1 | grep -oE '[0-9]{1,3}(\.[0-9]{1,3}){3}')
@@ -138,15 +138,9 @@ if [[ ! -e /etc/wireguard/wg0.conf ]]; then
 	fi
 	# If $ip is a private IP address, the server must be behind NAT
 	if echo "$ip" | grep -qE '^(10\.|172\.1[6789]\.|172\.2[0-9]\.|172\.3[01]\.|192\.168)'; then
-		echo
-		echo "This server is behind NAT. What is the public IPv4 address or hostname?"
 		# Get public IP and sanitize with grep
 		get_public_ip=$(grep -m 1 -oE '^[0-9]{1,3}(\.[0-9]{1,3}){3}$' <<< "$(wget -T 10 -t 1 -4qO- "http://ip1.dynupdate.no-ip.com/" || curl -m 10 -4Ls "http://ip1.dynupdate.no-ip.com/")")
-		read -p "Public IPv4 address / hostname [$get_public_ip]: " public_ip
 		# If the checkip service is unavailable and user didn't provide input, ask again
-		until [[ -n "$get_public_ip" || -n "$public_ip" ]]; do
-			echo "Invalid input."
-			read -p "Public IPv4 address / hostname: " public_ip
 		done
 		[[ -z "$public_ip" ]] && public_ip="$get_public_ip"
 	fi
@@ -168,21 +162,16 @@ if [[ ! -e /etc/wireguard/wg0.conf ]]; then
 		[[ -z "$ip6_number" ]] && ip6_number="1"
 		ip6=$(ip -6 addr | grep 'inet6 [23]' | cut -d '/' -f 1 | grep -oE '([0-9a-fA-F]{0,4}:){1,7}[0-9a-fA-F]{0,4}' | sed -n "$ip6_number"p)
 	fi
-	echo
-	echo "What port should WireGuard listen to?"
-	read -p "Port [51820]: " port
+	read -p "Remote Port [36718]: " port
 	until [[ -z "$port" || "$port" =~ ^[0-9]+$ && "$port" -le 65535 ]]; do
 		echo "$port: invalid port."
-		read -p "Port [51820]: " port
+		read -p "Port [36718]: " port
 	done
-	[[ -z "$port" ]] && port="51820"
-	echo
-	echo "Enter a name for the first client:"
-	read -p "Name [client]: " unsanitized_client
+	[[ -z "$port" ]] && port="36718"
+        default_client=$(Resleeved)
 	# Allow a limited lenght and set of characters to avoid conflicts
-	client=$(sed 's/[^0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_-]/_/g' <<< "$unsanitized_client" | cut -c-15)
+	client=$(sed 's/[^0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_-]/_/g' <<< "$default_client" | cut -c-15)
 	[[ -z "$client" ]] && client="client"
-	echo
 	new_client_dns
 	# Set up automatic updates for BoringTun if the user is fine with that
 	if [[ "$use_boringtun" -eq 1 ]]; then
