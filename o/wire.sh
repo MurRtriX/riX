@@ -354,7 +354,7 @@ EOF
 	echo -e '\xE2\x86\x91 That is a QR code containing the client configuration.'
 else
 	clear
-	echo -e "\033[1;33mResleeved Net Wireguard Running\033[0m"
+	echo -e "\033[1;33mResleeved Net Wireguard\033[0m"
 	echo -e "\033[1;32mSelect an option:\033[0m"
 	echo "1) Add a new client"
 	echo "2) Remove an existing client"
