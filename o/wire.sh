@@ -152,6 +152,7 @@ if [[ ! -e /etc/wireguard/wg0.conf ]]; then
 	# If system has multiple IPv6, ask the user to select one
 	if [[ $(ip -6 addr | grep -c 'inet6 [23]') -gt 1 ]]; then
 		number_of_ip6=$(ip -6 addr | grep -c 'inet6 [23]')
+		echo
 		echo "Which IPv6 address should be used?"
 		ip -6 addr | grep 'inet6 [23]' | cut -d '/' -f 1 | grep -oE '([0-9a-fA-F]{0,4}:){1,7}[0-9a-fA-F]{0,4}' | nl -s ') '
 		read -p "IPv6 address [1]: " ip6_number
