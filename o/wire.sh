@@ -349,8 +349,8 @@ EOF
 		{ crontab -l 2>/dev/null; echo "$(( $RANDOM % 60 )) $(( $RANDOM % 3 + 3 )) * * * /usr/local/sbin/boringtun-upgrade &>/dev/null" ; } | crontab -
 	fi
 	echo
-        mkdir ~/etc/Wire
-	qrencode -t ANSI256UTF8 < ~/etc/Wire/"$client.conf"
+        mkdir /root/etc/Wire
+	qrencode -t ANSI256UTF8 < /root/etc/Wire/"$client.conf"
 	echo -e '\xE2\x86\x91 That is a QR code containing the client configuration.'
 else
 	clear
@@ -382,10 +382,9 @@ else
 			# Append new client configuration to the WireGuard interface
 			wg addconf wg0 <(sed -n "/^# BEGIN_PEER $client/,/^# END_PEER $client/p" /etc/wireguard/wg0.conf)
 			echo
-			qrencode -t ANSI256UTF8 < ~/etc/Wire/"$client.conf"
+			qrencode -t ANSI256UTF8 < /root/etc/Wire/"$client.conf"
 			echo -e '\xE2\x86\x91 That is a QR code containing your client configuration.'
-			echo
-			echo "$client added. Configuration available in:" ~/etc/Wire/"$client.conf"
+			echo "$client added"
 			exit
 		;;
 		2)
