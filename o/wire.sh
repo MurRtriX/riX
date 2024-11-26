@@ -119,8 +119,8 @@ if [[ ! -e /etc/wireguard/wg0.conf ]]; then
 		apt-get install -y wget
 	fi
 	clear
-	echo -e "\033[1;31mResleeved Net Wireguard Installer\033[0m"
-        apt-get update 
+	echo -e "\033[1;33mResleeved Net Wireguard Installer\033[0m"
+        echo ""; echo ""; echo""
 	# If system has a single IPv4, it is selected automatically. Else, ask the user
 	if [[ $(ip -4 addr | grep inet | grep -vEc '127(\.[0-9]{1,3}){3}') -eq 1 ]]; then
 		ip=$(ip -4 addr | grep inet | grep -vE '127(\.[0-9]{1,3}){3}' | cut -d '/' -f 1 | grep -oE '[0-9]{1,3}(\.[0-9]{1,3}){3}')
@@ -168,7 +168,7 @@ if [[ ! -e /etc/wireguard/wg0.conf ]]; then
 		read -p "Port [36718]: " port
 	done
 	[[ -z "$port" ]] && port="36718"
-        default_client="$Resleeved"
+        default_client="Resleeved"
 	# Allow a limited lenght and set of characters to avoid conflicts
 	client=$(sed 's/[^0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_-]/_/g' <<< "$default_client" | cut -c-15)
 	[[ -z "$client" ]] && client="client"
