@@ -97,7 +97,7 @@ EOF
 	# Create client configuration
         rm -rf /root/etc/Wire
 	mkdir /etc/Wire
-	cat << EOF > /root/etc/Wire/"$client".conf
+	cat << EOF > /etc/Wire/"$client".conf
 [Interface]
 Address = 10.7.0.$octet/24$(grep -q 'fddd:2c4:2c4:2c4::1' /etc/wireguard/wg0.conf && echo ", fddd:2c4:2c4:2c4::$octet/64")
 DNS = $dns
@@ -425,11 +425,10 @@ else
 			exit
 		;;
 		3)
-			echo
-			read -p "Confirm WireGuard removal? [y/N]: " remove
+			read -p "Uninstall Wireguard! [Y/N]: " remove
 			until [[ "$remove" =~ ^[yYnN]*$ ]]; do
 				echo "$remove: invalid selection."
-				read -p "Confirm WireGuard removal? [y/N]: " remove
+				read -p "Uninstall Wireguard! [Y/N]: " remove
 			done
 			if [[ "$remove" =~ ^[yY]$ ]]; then
 				port=$(grep '^ListenPort' /etc/wireguard/wg0.conf | cut -d " " -f 3)
@@ -470,10 +469,8 @@ else
 				        apt-get remove --purge -y wireguard-tools
 	                                rm -rf /usr/local/sbin/boringtun /usr/local/sbin/boringtun-upgrade
                                 fi
-			        echo
 				echo "WireGuard removed!"
                         else
-                                echo
 				echo "WireGuard removal aborted!"
                         fi
 			exit
