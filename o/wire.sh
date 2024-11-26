@@ -175,7 +175,7 @@ if [[ ! -e /etc/wireguard/wg0.conf ]]; then
 	read -p "Name [client]: " unsanitized_client
 	# Allow a limited lenght and set of characters to avoid conflicts
 	client=$(sed 's/[^0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_-]/_/g' <<< "$unsanitized_client" | cut -c-15)
-	[[ -z "$client" ]] && client="client"
+	[[ -z "$client" ]] && client=$(client)
 	echo
 	new_client_dns
 	# Set up automatic updates for BoringTun if the user is fine with that
