@@ -511,6 +511,7 @@ else
                                 fi
 			        rm -rf /usr/local/sbin/boringtun /usr/local/sbin/boringtun-upgrade
 				echo "WireGuard removed!"
+                        fi
                         else
 			        echo
 				echo "WireGuard removal aborted!"
