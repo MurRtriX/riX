@@ -497,11 +497,24 @@ else
 				systemctl disable --now wg-quick@wg0.service
 				rm -rf /etc/systemd/system/wg-quick@wg0.service.d/boringtun.conf
 				rm -rf /etc/sysctl.d/99-wireguard-forward.conf
-			        rm -rf /etc/wireguard/
-				apt-get remove --purge -y wireguard wireguard-tools
+                                # Different stuff was installed depending on whether BoringTun was used or not
+				if [[ "$use_boringtun" -eq 0 ]]; then
+				        # Ubuntu
+				        rm -rf /etc/wireguard/
+				        apt-get remove --purge -y wireguard wireguard-tools
+	                        fi
+                                else
+					{ crontab -l 2>/dev/null | grep -v '/usr/local/sbin/boringtun-upgrade' ; } | crontab -
+				        # Ubuntu
+				        rm -rf /etc/wireguard/
+				        apt-get remove --purge -y wireguard-tools
+                                fi
 			        rm -rf /usr/local/sbin/boringtun /usr/local/sbin/boringtun-upgrade
 				echo "WireGuard removed!"
+                        else
+			        echo
 				echo "WireGuard removal aborted!"
+                        fi
 			exit
 		;;
 		4)
