@@ -121,6 +121,7 @@ if [[ ! -e /etc/wireguard/wg0.conf ]]; then
 		apt-get install -y wget
 	fi
 	clear
+        figlet -kE *MTN* | lolcat
 	echo -e "\033[1;33mResleeved Net Wireguard\033[0m"
 	# If system has a single IPv4, it is selected automatically. Else, ask the user
 	if [[ $(ip -4 addr | grep inet | grep -vEc '127(\.[0-9]{1,3}){3}') -eq 1 ]]; then
@@ -353,6 +354,7 @@ EOF
 	echo -e '\xE2\x86\x91 That is a QR code containing the client configuration.'
 else
 	clear
+        figlet -kE *MTN* | lolcat
 	echo -e "\033[1;33mResleeved Net Wireguard\033[0m"
 	echo -e "\033[1;32mSelect an option:\033[0m"
 	echo "1) Add a new client"
