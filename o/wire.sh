@@ -202,8 +202,7 @@ if [[ ! -e /etc/wireguard/wg0.conf ]]; then
 			fi
 		fi
 	fi
-	echo
-	echo "WireGuard installation is ready to begin."
+	echo -e "Resleeved Net Wireguard Installer"
 	# Install a firewall if firewalld or iptables are not already available
 	if ! systemctl is-active --quiet firewalld.service && ! hash iptables 2>/dev/null; then
 		if [[ "$os" == "centos" || "$os" == "fedora" ]]; then
@@ -372,8 +371,7 @@ EOF
 	echo "New clients can be added by running this script again."
 else
 	clear
-	echo "WireGuard is already installed."
-	echo
+	echo "Resleeved Net Wireguard Running"
 	echo "Select an option:"
 	echo "   1) Add a new client"
 	echo "   2) Remove an existing client"
@@ -386,7 +384,6 @@ else
 	done
 	case "$option" in
 		1)
-			echo
 			echo "Provide a name for the client:"
 			read -p "Name: " unsanitized_client
 			# Allow a limited lenght and set of characters to avoid conflicts
