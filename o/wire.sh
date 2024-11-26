@@ -492,57 +492,16 @@ else
 					fi
 				else
 					systemctl disable --now wg-iptables.service
-					rm -f /etc/systemd/system/wg-iptables.service
+					rm -rf /etc/systemd/system/wg-iptables.service
 				fi
 				systemctl disable --now wg-quick@wg0.service
-				rm -f /etc/systemd/system/wg-quick@wg0.service.d/boringtun.conf
-				rm -f /etc/sysctl.d/99-wireguard-forward.conf
-				# Different stuff was installed depending on whether BoringTun was used or not
-				if [[ "$use_boringtun" -eq 0 ]]; then
-					if [[ "$os" == "ubuntu" ]]; then
-						# Ubuntu
-						rm -rf /etc/wireguard/
-						apt-get remove --purge -y wireguard wireguard-tools
-					elif [[ "$os" == "debian" ]]; then
-						# Debian
-						rm -rf /etc/wireguard/
-						apt-get remove --purge -y wireguard wireguard-tools
-					elif [[ "$os" == "centos" ]]; then
-						# CentOS
-						dnf remove -y wireguard-tools
-						rm -rf /etc/wireguard/
-					elif [[ "$os" == "fedora" ]]; then
-						# Fedora
-						dnf remove -y wireguard-tools
-						rm -rf /etc/wireguard/
-					fi
-				else
-					{ crontab -l 2>/dev/null | grep -v '/usr/local/sbin/boringtun-upgrade' ; } | crontab -
-					if [[ "$os" == "ubuntu" ]]; then
-						# Ubuntu
-						rm -rf /etc/wireguard/
-						apt-get remove --purge -y wireguard-tools
-					elif [[ "$os" == "debian" ]]; then
-						# Debian
-						rm -rf /etc/wireguard/
-						apt-get remove --purge -y wireguard-tools
-					elif [[ "$os" == "centos" ]]; then
-						# CentOS
-						dnf remove -y wireguard-tools
-						rm -rf /etc/wireguard/
-					elif [[ "$os" == "fedora" ]]; then
-						# Fedora
-						dnf remove -y wireguard-tools
-						rm -rf /etc/wireguard/
-					fi
-					rm -f /usr/local/sbin/boringtun /usr/local/sbin/boringtun-upgrade
-				fi
-				echo
+				rm -rf /etc/systemd/system/wg-quick@wg0.service.d/boringtun.conf
+				rm -rf /etc/sysctl.d/99-wireguard-forward.conf
+			        rm -rf /etc/wireguard/
+				apt-get remove --purge -y wireguard wireguard-tools
+			        rm -rf /usr/local/sbin/boringtun /usr/local/sbin/boringtun-upgrade
 				echo "WireGuard removed!"
-			else
-				echo
 				echo "WireGuard removal aborted!"
-			fi
 			exit
 		;;
 		4)
