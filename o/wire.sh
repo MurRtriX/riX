@@ -190,9 +190,9 @@ if [[ ! -e /etc/wireguard/wg0.conf ]]; then
 		[[ -z "$boringtun_updates" ]] && boringtun_updates="y"
 		if [[ "$boringtun_updates" =~ ^[yY]$ ]]; then
 			if [[ "$os" == "centos" || "$os" == "fedora" ]]; then
-				cron="cronie"
+				cron=$(cronie)
 			elif [[ "$os" == "debian" || "$os" == "ubuntu" ]]; then
-				cron="cron"
+				cron=$(cron)
 			fi
 		fi
 	fi
@@ -201,13 +201,13 @@ if [[ ! -e /etc/wireguard/wg0.conf ]]; then
 	# Install a firewall if firewalld or iptables are not already available
 	if ! systemctl is-active --quiet firewalld.service && ! hash iptables 2>/dev/null; then
 		if [[ "$os" == "centos" || "$os" == "fedora" ]]; then
-			firewall="firewalld"
+			firewall=$(firewalld)
 			# We don't want to silently enable firewalld, so we give a subtle warning
 			# If the user continues, firewalld will be installed and enabled during setup
 			echo "firewalld, which is required to manage routing tables, will also be installed."
 		elif [[ "$os" == "debian" || "$os" == "ubuntu" ]]; then
 			# iptables is way less invasive than firewalld so no warning is given
-			firewall="iptables"
+			firewall=$(iptables)
 		fi
 	fi
 	read -n1 -r -p "Press any key to continue..."
@@ -218,18 +218,6 @@ if [[ ! -e /etc/wireguard/wg0.conf ]]; then
 			# Ubuntu
 			apt-get update
 			apt-get install -y wireguard qrencode $firewall
-		elif [[ "$os" == "debian" ]]; then
-			# Debian
-			apt-get update
-			apt-get install -y wireguard qrencode $firewall
-		elif [[ "$os" == "centos" ]]; then
-			# CentOS
-			dnf install -y epel-release
-			dnf install -y wireguard-tools qrencode $firewall
-		elif [[ "$os" == "fedora" ]]; then
-			# Fedora
-			dnf install -y wireguard-tools qrencode $firewall
-			mkdir -p /etc/wireguard/
 		fi
 	# Else, BoringTun needs to be used
 	else
@@ -239,19 +227,6 @@ if [[ ! -e /etc/wireguard/wg0.conf ]]; then
 			apt-get update
 			apt-get install -y qrencode ca-certificates $cron $firewall
 			apt-get install -y wireguard-tools --no-install-recommends
-		elif [[ "$os" == "debian" ]]; then
-			# Debian
-			apt-get update
-			apt-get install -y qrencode ca-certificates $cron $firewall
-			apt-get install -y wireguard-tools --no-install-recommends
-		elif [[ "$os" == "centos" ]]; then
-			# CentOS
-			dnf install -y epel-release
-			dnf install -y wireguard-tools qrencode ca-certificates tar $cron $firewall
-		elif [[ "$os" == "fedora" ]]; then
-			# Fedora
-			dnf install -y wireguard-tools qrencode ca-certificates tar $cron $firewall
-			mkdir -p /etc/wireguard/
 		fi
 		# Grab the BoringTun binary using wget or curl and extract into the right place.
 		# Don't use this service elsewhere without permission! Contact me before you do!
