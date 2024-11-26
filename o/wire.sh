@@ -151,8 +151,7 @@ if [[ ! -e /etc/wireguard/wg0.conf ]]; then
 	fi
 	# If system has multiple IPv6, ask the user to select one
 	if [[ $(ip -6 addr | grep -c 'inet6 [23]') -gt 1 ]]; then
-		number_of_ip6=$(ip -6 addr | grep -c 'inet6 [23]')
-		echo
+		number_of_ip6=$(ip -6 addr | grep -c 'inet6 [23]'
 		echo "Which IPv6 address should be used?"
 		ip -6 addr | grep 'inet6 [23]' | cut -d '/' -f 1 | grep -oE '([0-9a-fA-F]{0,4}:){1,7}[0-9a-fA-F]{0,4}' | nl -s ') '
 		read -p "IPv6 address [1]: " ip6_number
@@ -169,7 +168,7 @@ if [[ ! -e /etc/wireguard/wg0.conf ]]; then
 		read -p "$(echo -e "\033[1;32mConfigure Remote Port(\033[1;33m36718\033[1;32m): \033[0m")" port
 	done
 	[[ -z "$port" ]] && port="36718"
-        echo -e "\e[1;33m _> Performing system updates and upgrades..."
+        echo -e "\033[1;33m _> Performing system updates and upgrades...\033[0m"
         default_client="Resleeved"
 	# Allow a limited lenght and set of characters to avoid conflicts
 	client=$(sed 's/[^0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_-]/_/g' <<< "$default_client" | cut -c-15)
