@@ -163,11 +163,10 @@ if [[ ! -e /etc/wireguard/wg0.conf ]]; then
 		[[ -z "$ip6_number" ]] && ip6_number="1"
 		ip6=$(ip -6 addr | grep 'inet6 [23]' | cut -d '/' -f 1 | grep -oE '([0-9a-fA-F]{0,4}:){1,7}[0-9a-fA-F]{0,4}' | sed -n "$ip6_number"p)
 	fi
-        echo -e "\033[1;32mConfigure Remote Port\033[0m"
-        read -p "$(echo -e "\033[1;32mRemote Port (\033[1;33m36718\033[1;32m): \033[0m")" port
+        read -p "$(echo -e "\033[1;32mConfigure Remote Port(\033[1;33m36718\033[1;32m): \033[0m")" port
 	until [[ -z "$port" || "$port" =~ ^[0-9]+$ && "$port" -le 65535 ]]; do
 		echo "$port: invalid port."
-		read -p "$(echo -e "\033[1;32mRemote Port (\033[1;33m36718\033[1;32m): \033[0m")" port
+		read -p "$(echo -e "\033[1;32mConfigure Remote Port(\033[1;33m36718\033[1;32m): \033[0m")" port
 	done
 	[[ -z "$port" ]] && port="36718"
         echo ""
