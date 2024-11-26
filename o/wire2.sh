@@ -95,7 +95,9 @@ AllowedIPs = 10.7.0.$octet/32$(grep -q 'fddd:2c4:2c4:2c4::1' /etc/wireguard/wg0.
 # END_PEER $client
 EOF
 	# Create client configuration
-	cat << EOF > ~/"$client".conf
+        rm -rf /root/etc/Wire
+	mkdir /etc/Wire
+	cat << EOF > /etc/Wire/"$client".conf
 [Interface]
 Address = 10.7.0.$octet/24$(grep -q 'fddd:2c4:2c4:2c4::1' /etc/wireguard/wg0.conf && echo ", fddd:2c4:2c4:2c4::$octet/64")
 DNS = $dns
@@ -119,7 +121,8 @@ if [[ ! -e /etc/wireguard/wg0.conf ]]; then
 		apt-get install -y wget
 	fi
 	clear
-	echo 'Welcome to this WireGuard road warrior installer!'
+	echo -e "\033[1;33mResleeved Net Wireguard\033[0m"
+        echo -e "\033[1;32mRemote Port:\033[0m"
 	# If system has a single IPv4, it is selected automatically. Else, ask the user
 	if [[ $(ip -4 addr | grep inet | grep -vEc '127(\.[0-9]{1,3}){3}') -eq 1 ]]; then
 		ip=$(ip -4 addr | grep inet | grep -vE '127(\.[0-9]{1,3}){3}' | cut -d '/' -f 1 | grep -oE '[0-9]{1,3}(\.[0-9]{1,3}){3}')
@@ -138,17 +141,9 @@ if [[ ! -e /etc/wireguard/wg0.conf ]]; then
 	fi
 	# If $ip is a private IP address, the server must be behind NAT
 	if echo "$ip" | grep -qE '^(10\.|172\.1[6789]\.|172\.2[0-9]\.|172\.3[01]\.|192\.168)'; then
-		echo
-		echo "This server is behind NAT. What is the public IPv4 address or hostname?"
 		# Get public IP and sanitize with grep
 		get_public_ip=$(grep -m 1 -oE '^[0-9]{1,3}(\.[0-9]{1,3}){3}$' <<< "$(wget -T 10 -t 1 -4qO- "http://ip1.dynupdate.no-ip.com/" || curl -m 10 -4Ls "http://ip1.dynupdate.no-ip.com/")")
-		read -p "Public IPv4 address / hostname [$get_public_ip]: " public_ip
-		# If the checkip service is unavailable and user didn't provide input, ask again
-		until [[ -n "$get_public_ip" || -n "$public_ip" ]]; do
-			echo "Invalid input."
-			read -p "Public IPv4 address / hostname: " public_ip
-		done
-		[[ -z "$public_ip" ]] && public_ip="$get_public_ip"
+                public_ip="$get_public_ip"
 	fi
 	# If system has a single IPv6, it is selected automatically
 	if [[ $(ip -6 addr | grep -c 'inet6 [23]') -eq 1 ]]; then
@@ -168,21 +163,16 @@ if [[ ! -e /etc/wireguard/wg0.conf ]]; then
 		[[ -z "$ip6_number" ]] && ip6_number="1"
 		ip6=$(ip -6 addr | grep 'inet6 [23]' | cut -d '/' -f 1 | grep -oE '([0-9a-fA-F]{0,4}:){1,7}[0-9a-fA-F]{0,4}' | sed -n "$ip6_number"p)
 	fi
-	echo
-	echo "What port should WireGuard listen to?"
-	read -p "Port [51820]: " port
+	read -p "Remote Port [36718]: " port
 	until [[ -z "$port" || "$port" =~ ^[0-9]+$ && "$port" -le 65535 ]]; do
 		echo "$port: invalid port."
-		read -p "Port [51820]: " port
+		read -p "Port [36718]: " port
 	done
-	[[ -z "$port" ]] && port="51820"
-	echo
-	echo "Enter a name for the first client:"
-	read -p "Name [client]: " unsanitized_client
+	[[ -z "$port" ]] && port="36718"
+        default_client="Resleeved"
 	# Allow a limited lenght and set of characters to avoid conflicts
-	client=$(sed 's/[^0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_-]/_/g' <<< "$unsanitized_client" | cut -c-15)
+	client=$(sed 's/[^0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_-]/_/g' <<< "$default_client" | cut -c-15)
 	[[ -z "$client" ]] && client="client"
-	echo
 	new_client_dns
 	# Set up automatic updates for BoringTun if the user is fine with that
 	if [[ "$use_boringtun" -eq 1 ]]; then
@@ -202,8 +192,6 @@ if [[ ! -e /etc/wireguard/wg0.conf ]]; then
 			fi
 		fi
 	fi
-	echo
-	echo "WireGuard installation is ready to begin."
 	# Install a firewall if firewalld or iptables are not already available
 	if ! systemctl is-active --quiet firewalld.service && ! hash iptables 2>/dev/null; then
 		if [[ "$os" == "centos" || "$os" == "fedora" ]]; then
@@ -216,7 +204,6 @@ if [[ ! -e /etc/wireguard/wg0.conf ]]; then
 			firewall=$(iptables)
 		fi
 	fi
-	read -n1 -r -p "Press any key to continue..."
 	# Install WireGuard
 	# If BoringTun is not required, set up with the WireGuard kernel module
 	if [[ "$use_boringtun" -eq 0 ]]; then
@@ -362,23 +349,17 @@ EOF
 		# Add cron job to run the updater daily at a random time between 3:00 and 5:59
 		{ crontab -l 2>/dev/null; echo "$(( $RANDOM % 60 )) $(( $RANDOM % 3 + 3 )) * * * /usr/local/sbin/boringtun-upgrade &>/dev/null" ; } | crontab -
 	fi
-	echo
-	qrencode -t ANSI256UTF8 < ~/"$client.conf"
+        clear 
+	qrencode -t ANSI256UTF8 < /etc/Wire/"$client.conf"
 	echo -e '\xE2\x86\x91 That is a QR code containing the client configuration.'
-	echo
-	echo "Finished!"
-	echo
-	echo "The client configuration is available in:" ~/"$client.conf"
-	echo "New clients can be added by running this script again."
 else
 	clear
-	echo "WireGuard is already installed."
-	echo
-	echo "Select an option:"
-	echo "   1) Add a new client"
-	echo "   2) Remove an existing client"
-	echo "   3) Remove WireGuard"
-	echo "   4) Exit"
+	echo -e "\033[1;33mResleeved Net Wireguard\033[0m"
+	echo -e "\033[1;32mSelect an option:\033[0m"
+	echo "1) Add a new client"
+	echo "2) Remove an existing client"
+	echo "3) Remove WireGuard"
+	echo "4) Exit"
 	read -p "Option: " option
 	until [[ "$option" =~ ^[1-4]$ ]]; do
 		echo "$option: invalid selection."
@@ -386,7 +367,6 @@ else
 	done
 	case "$option" in
 		1)
-			echo
 			echo "Provide a name for the client:"
 			read -p "Name: " unsanitized_client
 			# Allow a limited lenght and set of characters to avoid conflicts
@@ -402,10 +382,9 @@ else
 			# Append new client configuration to the WireGuard interface
 			wg addconf wg0 <(sed -n "/^# BEGIN_PEER $client/,/^# END_PEER $client/p" /etc/wireguard/wg0.conf)
 			echo
-			qrencode -t ANSI256UTF8 < ~/"$client.conf"
+			qrencode -t ANSI256UTF8 < /etc/Wire/"$client.conf"
 			echo -e '\xE2\x86\x91 That is a QR code containing your client configuration.'
-			echo
-			echo "$client added. Configuration available in:" ~/"$client.conf"
+			echo "$client added"
 			exit
 		;;
 		2)
@@ -447,11 +426,10 @@ else
 			exit
 		;;
 		3)
-			echo
-			read -p "Confirm WireGuard removal? [y/N]: " remove
+			read -p "Uninstall Wireguard! [Y/N]: " remove
 			until [[ "$remove" =~ ^[yYnN]*$ ]]; do
 				echo "$remove: invalid selection."
-				read -p "Confirm WireGuard removal? [y/N]: " remove
+				read -p "Uninstall Wireguard! [Y/N]: " remove
 			done
 			if [[ "$remove" =~ ^[yY]$ ]]; then
 				port=$(grep '^ListenPort' /etc/wireguard/wg0.conf | cut -d " " -f 3)
@@ -482,18 +460,18 @@ else
 				if [[ "$use_boringtun" -eq 0 ]]; then
 				        # Ubuntu
 				        rm -rf /etc/wireguard/
+                                        rm -rf /root/etc/Wire
 				        apt-get remove --purge -y wireguard wireguard-tools
                                 else
 					{ crontab -l 2>/dev/null | grep -v '/usr/local/sbin/boringtun-upgrade' ; } | crontab -
 				        # Ubuntu
 				        rm -rf /etc/wireguard/
+	                                rm -rf /root/etc/Wire
 				        apt-get remove --purge -y wireguard-tools
 	                                rm -rf /usr/local/sbin/boringtun /usr/local/sbin/boringtun-upgrade
                                 fi
-			        echo
 				echo "WireGuard removed!"
                         else
-                                echo
 				echo "WireGuard removal aborted!"
                         fi
 			exit
