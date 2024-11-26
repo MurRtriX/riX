@@ -77,8 +77,8 @@ new_client_setup () {
 		echo "253 clients are already configured. The WireGuard internal subnet is full!"
 		exit
 	fi
-	key="wg genkey"
-	psk="wg genpsk"
+	key=$(wg genkey)
+	psk=$(wg genpsk)
 	# Configure client in the server
 	cat << EOF >> /etc/wireguard/wg0.conf
 # BEGIN_PEER $client
