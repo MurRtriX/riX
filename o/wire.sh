@@ -26,13 +26,13 @@ fi
 # Detect if BoringTun (userspace WireGuard) needs to be used
 if ! systemd-detect-virt -cq; then
 	# Not running inside a container
-	use_boringtun=$(0)
+	use_boringtun="0"
 elif grep -q '^wireguard ' /proc/modules; then
 	# Running inside a container, but the wireguard kernel module is available
-	use_boringtun=$(0)
+	use_boringtun="0"
 else
 	# Running inside a container and the wireguard kernel module is not available
-	use_boringtun=$(1)
+	use_boringtun="1"
 fi
 
 if [[ "$EUID" -ne 0 ]]; then
@@ -77,8 +77,8 @@ new_client_setup () {
 		echo "253 clients are already configured. The WireGuard internal subnet is full!"
 		exit
 	fi
-	key=$(wg genkey)
-	psk=$(wg genpsk)
+	key="wg genkey"
+	psk="wg genpsk"
 	# Configure client in the server
 	cat << EOF >> /etc/wireguard/wg0.conf
 # BEGIN_PEER $client
