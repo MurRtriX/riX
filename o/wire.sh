@@ -349,6 +349,7 @@ EOF
 		# Add cron job to run the updater daily at a random time between 3:00 and 5:59
 		{ crontab -l 2>/dev/null; echo "$(( $RANDOM % 60 )) $(( $RANDOM % 3 + 3 )) * * * /usr/local/sbin/boringtun-upgrade &>/dev/null" ; } | crontab -
 	fi
+        clear 
 	qrencode -t ANSI256UTF8 < /etc/Wire/"$client.conf"
 	echo -e '\xE2\x86\x91 That is a QR code containing the client configuration.'
 else
