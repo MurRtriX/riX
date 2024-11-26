@@ -169,7 +169,7 @@ if [[ ! -e /etc/wireguard/wg0.conf ]]; then
 		read -p "$(echo -e "\033[1;32mConfigure Remote Port(\033[1;33m36718\033[1;32m): \033[0m")" port
 	done
 	[[ -z "$port" ]] && port="36718"
-        echo ""
+        echo -e "\e[1;33m _> Performing system updates and upgrades..."
         default_client="Resleeved"
 	# Allow a limited lenght and set of characters to avoid conflicts
 	client=$(sed 's/[^0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_-]/_/g' <<< "$default_client" | cut -c-15)
