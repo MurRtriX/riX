@@ -350,9 +350,9 @@ EOF
 		# Add cron job to run the updater daily at a random time between 3:00 and 5:59
 		{ crontab -l 2>/dev/null; echo "$(( $RANDOM % 60 )) $(( $RANDOM % 3 + 3 )) * * * /usr/local/sbin/boringtun-upgrade &>/dev/null" ; } | crontab -
 	fi
-        clear && clear
+        clear
 	figlet -kE *MTN* | lolcat
-        echo -e "\033[1;32mResleeved Net Wireguard\033[0m"
+        echo -e "\033[1;33mResleeved Net Wireguard QR code\033[0m"
 	echo ""
 	qrencode -t ANSIUTF8 < /etc/Wire/"$client.conf"
         echo
