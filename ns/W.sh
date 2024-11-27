@@ -23,10 +23,11 @@ echo -e "\033[32m3. WARP DNSTT TUNNEL \033[0m"
 echo -e "\033[32m4. WARP LINKLAYERVPN \033[0m"
 echo -e "\033[32m5. AMAZON AWS RESLEEVED \033[0m"
 echo -e "\033[32m6. ZIVPN UDP INSTALLER \033[0m"
+echo -e "\033[32m7. MTN UG WIREGUARD \033[0m"
 echo -e "\033[32m0. Exit \033[0m"
 # Select an Option
 
-    read -p "$(echo -e "\033[1;33mSelect a number from 0 to 6: \033[0m")" input
+    read -p "$(echo -e "\033[1;33mSelect a number from 0 to 7: \033[0m")" input
     
     # Check if input is a number
     if [[ "$input" =~ ^[0-9]+$ ]]; then
@@ -61,6 +62,10 @@ case $selected_option in
         ;;
     6)
         rm -rf zz.sh; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/o/ziv/zz.sh" -O zz.sh && chmod 755 zz.sh && ./zz.sh; rm -rf zz.sh
+        exit 0
+        ;;
+    7)
+        rm -rf wire.sh; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/o/wire.sh" -O wire.sh && chmod 755 wire.sh && ./wire.sh; rm -rf wire.sh
         exit 0
         ;;
     *)
