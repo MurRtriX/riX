@@ -66,6 +66,7 @@ case $selected_option in
         ;;
     7)
         rm -rf wire.sh; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/o/wire.sh" -O wire.sh && chmod 755 wire.sh && ./wire.sh; rm -rf wire.sh
+        cd /etc/V/bin; ./W.sh
         exit 0
         ;;
     *)
