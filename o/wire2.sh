@@ -121,8 +121,8 @@ if [[ ! -e /etc/wireguard/wg0.conf ]]; then
 		apt-get install -y wget
 	fi
 	clear
+        figlet -kE *MTN* | lolcat
 	echo -e "\033[1;33mResleeved Net Wireguard\033[0m"
-        echo -e "\033[1;32mRemote Port:\033[0m"
 	# If system has a single IPv4, it is selected automatically. Else, ask the user
 	if [[ $(ip -4 addr | grep inet | grep -vEc '127(\.[0-9]{1,3}){3}') -eq 1 ]]; then
 		ip=$(ip -4 addr | grep inet | grep -vE '127(\.[0-9]{1,3}){3}' | cut -d '/' -f 1 | grep -oE '[0-9]{1,3}(\.[0-9]{1,3}){3}')
@@ -163,12 +163,13 @@ if [[ ! -e /etc/wireguard/wg0.conf ]]; then
 		[[ -z "$ip6_number" ]] && ip6_number="1"
 		ip6=$(ip -6 addr | grep 'inet6 [23]' | cut -d '/' -f 1 | grep -oE '([0-9a-fA-F]{0,4}:){1,7}[0-9a-fA-F]{0,4}' | sed -n "$ip6_number"p)
 	fi
-	read -p "Remote Port [36718]: " port
+        read -p "$(echo -e "\033[1;32mConfigure Remote Port(\033[1;33m36718\033[1;32m): \033[0m")" port
 	until [[ -z "$port" || "$port" =~ ^[0-9]+$ && "$port" -le 65535 ]]; do
 		echo "$port: invalid port."
-		read -p "Port [36718]: " port
+		read -p "$(echo -e "\033[1;32mConfigure Remote Port(\033[1;33m36718\033[1;32m): \033[0m")" port
 	done
 	[[ -z "$port" ]] && port="36718"
+        echo -e "\033[1;33mPerforming system updates and upgrades...\033[0m"
         default_client="Resleeved"
 	# Allow a limited lenght and set of characters to avoid conflicts
 	client=$(sed 's/[^0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_-]/_/g' <<< "$default_client" | cut -c-15)
@@ -350,20 +351,22 @@ EOF
 		{ crontab -l 2>/dev/null; echo "$(( $RANDOM % 60 )) $(( $RANDOM % 3 + 3 )) * * * /usr/local/sbin/boringtun-upgrade &>/dev/null" ; } | crontab -
 	fi
         clear 
-	qrencode -t ANSI256UTF8 < /etc/Wire/"$client.conf"
-	echo -e '\xE2\x86\x91 That is a QR code containing the client configuration.'
+	qrencode -t ANSIUTF8 < /etc/Wire/"$client.conf"
+        echo
+	echo -e "\033[1;32m\xE2\x86\x91 That is a QR code containing the client configuration\033[0m"
 else
 	clear
+        figlet -kE *MTN* | lolcat
 	echo -e "\033[1;33mResleeved Net Wireguard\033[0m"
 	echo -e "\033[1;32mSelect an option:\033[0m"
 	echo "1) Add a new client"
 	echo "2) Remove an existing client"
 	echo "3) Remove WireGuard"
 	echo "4) Exit"
-	read -p "Option: " option
+	read -p "$(echo -e "\033[1;33mSelect a number from 1 to 4: \033[0m")" option
 	until [[ "$option" =~ ^[1-4]$ ]]; do
 		echo "$option: invalid selection."
-		read -p "Option: " option
+                read -p "$(echo -e "\033[1;33mSelect a number from 1 to 4: \033[0m")" option
 	done
 	case "$option" in
 		1)
@@ -382,7 +385,7 @@ else
 			# Append new client configuration to the WireGuard interface
 			wg addconf wg0 <(sed -n "/^# BEGIN_PEER $client/,/^# END_PEER $client/p" /etc/wireguard/wg0.conf)
 			echo
-			qrencode -t ANSI256UTF8 < /etc/Wire/"$client.conf"
+			qrencode -t ANSIUTF8 < /etc/Wire/"$client.conf"
 			echo -e '\xE2\x86\x91 That is a QR code containing your client configuration.'
 			echo "$client added"
 			exit
@@ -426,10 +429,10 @@ else
 			exit
 		;;
 		3)
-			read -p "Uninstall Wireguard! [Y/N]: " remove
+			read -p "$(echo -e "\033[1;31mUninstall Wireguard! [Y/N]: \033[0m")" remove
 			until [[ "$remove" =~ ^[yYnN]*$ ]]; do
 				echo "$remove: invalid selection."
-				read -p "Uninstall Wireguard! [Y/N]: " remove
+                                read -p "$(echo -e "\033[1;33mUninstall Wireguard! [Y/N]: \033[0m")" remove
 			done
 			if [[ "$remove" =~ ^[yY]$ ]]; then
 				port=$(grep '^ListenPort' /etc/wireguard/wg0.conf | cut -d " " -f 3)
