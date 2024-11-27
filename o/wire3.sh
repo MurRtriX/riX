@@ -278,7 +278,13 @@ EOF
 			firewall-cmd --permanent --direct --add-rule ipv6 nat PREROUTING -i $(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1) -p udp --dport 1:65535 -j DNAT --to-destination :"$port"
 		fi
 	else
-		# Create a service to set up persistent iptables rules
+		# Create a service to set up persistent iptables rule
+                iptables -I INPUT -p udp --dport "$port" -j ACCEPT
+                iptables -t nat -I PREROUTING -i $(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1) -p udp --dport 1:65535 -j DNAT --to-destination :"$port"
+		ip6tables -t nat -I PREROUTING -i $(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1) -p udp --dport 1:65535 -j DNAT --to-destination :"$port"
+                netfilter-persistent save
+		netfilter-persistent reload
+                netfilter-persistent start
 		iptables_path=$(command -v iptables)
 		ip6tables_path=$(command -v ip6tables)
 		# nf_tables is not available as standard in OVZ kernels. So use iptables-legacy
