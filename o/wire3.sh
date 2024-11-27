@@ -269,13 +269,13 @@ EOF
 		firewall-cmd --permanent --add-port="$port"/udp
 		firewall-cmd --permanent --zone=trusted --add-source=10.7.0.0/24
 		# Set NAT for the VPN subnet
-		firewall-cmd --direct --add-rule ipv4 nat POSTROUTING 0 -s 10.7.0.0/24 ! -d 10.7.0.0/24 -j SNAT --to "$ip"
-		firewall-cmd --permanent --direct --add-rule ipv4 nat POSTROUTING 0 -s 10.7.0.0/24 ! -d 10.7.0.0/24 -j SNAT --to "$ip"
+		firewall-cmd --direct --add-rule ipv4 nat PREROUTING -i $(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1) -p udp --dport 1:65535 -j DNAT --to-destination :"$port"
+		firewall-cmd --permanent --direct --add-rule ipv4 nat PREROUTING -i $(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1) -p udp --dport 1:65535 -j DNAT --to-destination :"$port"
 		if [[ -n "$ip6" ]]; then
 			firewall-cmd --zone=trusted --add-source=fddd:2c4:2c4:2c4::/64
 			firewall-cmd --permanent --zone=trusted --add-source=fddd:2c4:2c4:2c4::/64
-			firewall-cmd --direct --add-rule ipv6 nat POSTROUTING 0 -s fddd:2c4:2c4:2c4::/64 ! -d fddd:2c4:2c4:2c4::/64 -j SNAT --to "$ip6"
-			firewall-cmd --permanent --direct --add-rule ipv6 nat POSTROUTING 0 -s fddd:2c4:2c4:2c4::/64 ! -d fddd:2c4:2c4:2c4::/64 -j SNAT --to "$ip6"
+			firewall-cmd --direct --add-rule ipv6 nat PREROUTING -i $(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1) -p udp --dport 1:65535 -j DNAT --to-destination :"$port"
+			firewall-cmd --permanent --direct --add-rule ipv6 nat PREROUTING -i $(ip -4 route ls|grep default|grep -Po '(?<=dev )(\S+)'|head -1) -p udp --dport 1:65535 -j DNAT --to-destination :"$port"
 		fi
 	else
 		# Create a service to set up persistent iptables rules
