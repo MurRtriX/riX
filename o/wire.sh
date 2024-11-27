@@ -351,9 +351,6 @@ EOF
 		{ crontab -l 2>/dev/null; echo "$(( $RANDOM % 60 )) $(( $RANDOM % 3 + 3 )) * * * /usr/local/sbin/boringtun-upgrade &>/dev/null" ; } | crontab -
 	fi
         clear
-	figlet -kE *MTN* | lolcat
-        echo -e "\033[1;33mResleeved Net Wireguard QR code\033[0m"
-	echo ""
 	qrencode -t ANSIUTF8 < /etc/Wire/"$client.conf"
         echo
 	echo -e "\033[1;36m\xE2\x86\x91Snap this QR code and Import in a Wireguard Client\033[0m"
