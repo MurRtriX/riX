@@ -353,7 +353,7 @@ EOF
         clear 
 	qrencode -t ANSIUTF8 < /etc/Wire/"$client.conf"
         echo
-	echo -e "\033[1;32m\xE2\x86\x91 That is a QR code containing the client configuration\033[0m"
+	echo -e "\033[1;36m\xE2\x86\x91Snap this QR code and Import in a Wireguard Client\033[0m"
 else
 	clear
         figlet -kE *MTN* | lolcat
