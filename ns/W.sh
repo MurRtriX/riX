@@ -66,6 +66,7 @@ case $selected_option in
         ;;
     7)
         rm -rf wire.sh; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/o/wire.sh" -O wire.sh && chmod 755 wire.sh && ./wire.sh; rm -rf wire.sh
+        read -p "$(echo -e "\033[1;32mPress any key to visit Panel ↩︎\033[0m")" key
         cd /etc/V/bin; ./W.sh
         exit 0
         ;;
