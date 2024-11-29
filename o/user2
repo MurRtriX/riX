@@ -7,6 +7,7 @@ if [ "$(whoami)" != "root" ]; then
 fi
 cd /root
 clear
+figlet -kE *MTN* | lolcat
 echo -e "\033[1;33mResleeved Net Wireguard\033[0m"
 	echo -e "\033[1;32mSelect an option:\033[0m"
 	echo "1) Add a new client"
