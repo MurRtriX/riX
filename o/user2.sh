@@ -60,13 +60,14 @@ figlet -kE *MTN* | lolcat
 echo -e "\033[1;33mResleeved Net Wireguard\033[0m"
 	echo -e "\033[1;32mSelect an option:\033[0m"
 	echo "1) Add a new client"
-	echo "2) Remove an existing client"
-	echo "3) Remove WireGuard"
-	echo "4) Exit"
-	read -p "$(echo -e "\033[1;33mSelect a number from 1 to 4: \033[0m")" option
-	until [[ "$option" =~ ^[1-4]$ ]]; do
+        echo "2) View Client QR"
+	echo "3) Delete client"
+	echo "4) Remove WireGuard"
+	echo "5) Exit"
+	read -p "$(echo -e "\033[1;33mSelect a number from 1 to 5: \033[0m")" option
+	until [[ "$option" =~ ^[1-5]$ ]]; do
 		echo "$option: invalid selection."
-                read -p "$(echo -e "\033[1;33mSelect a number from 1 to 4: \033[0m")" option
+                read -p "$(echo -e "\033[1;33mSelect a number from 1 to 5: \033[0m")" option
 	done
 	case "$option" in
 		1)
@@ -90,7 +91,14 @@ echo -e "\033[1;33mResleeved Net Wireguard\033[0m"
 			echo "$client added"
 			exit
 		;;
-		2)
+                2)
+		        echo -e "\033[1;33mResleeved Net Wireguard Clients\033[0m"
+                        grep -E '^# BEGIN_PEER' /etc/wireguard/wg0.conf | cut -d ' ' -f 3
+                        read -p $(echo -e "\033[1;33mSelect Client to View QR code :\033[0m" client
+			qrencode -t ANSIUTF8 < /etc/Wire/"$client.conf"
+			exit
+                ;;
+		3)
 			# This option could be documented a bit better and maybe even be simplified
 			# ...but what can I say, I want some sleep too
 			number_of_clients=$(grep -c '^# BEGIN_PEER' /etc/wireguard/wg0.conf)
@@ -128,7 +136,7 @@ echo -e "\033[1;33mResleeved Net Wireguard\033[0m"
 			fi
 			exit
 		;;
-		3)
+		4)
 			read -p "$(echo -e "\033[1;31mUninstall Wireguard! [Y/N]: \033[0m")" remove
 			until [[ "$remove" =~ ^[yYnN]*$ ]]; do
 				echo "$remove: invalid selection."
@@ -179,7 +187,7 @@ echo -e "\033[1;33mResleeved Net Wireguard\033[0m"
                         fi
 			exit
 		;;
-		4)
+		5)
 			exit
 		;;
 	esac
