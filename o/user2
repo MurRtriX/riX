@@ -98,7 +98,10 @@ echo -e "\033[1;33mResleeved Net Wireguard\033[0m"
                         grep -E '^# BEGIN_PEER' /etc/wireguard/wg0.conf | cut -d ' ' -f 3
                         echo
                         read -p "$(echo -e "\033[1;36mSelect Client to View QR code :\033[0m")" client
+                        echo -e "\033[1;33mResleeved Net Wireguard QR Code\033[0m"
 			qrencode -t ANSIUTF8 < /etc/Wire/"$client.conf"
+                        echo
+                        echo -e "\033[1;36m\xE2\x86\x91Snap this QR code and Import in a Wireguard Client\033[0m"
 			exit
                 ;;
 		3)
