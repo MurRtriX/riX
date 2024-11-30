@@ -98,6 +98,7 @@ echo -e "\033[1;33mResleeved Net Wireguard\033[0m"
                         grep -E '^# BEGIN_PEER' /etc/wireguard/wg0.conf | cut -d ' ' -f 3
                         echo -e "\033[1;36m ───────────────────────────────────────•\033[0m"
                         read -p "$(echo -e "\033[1;32mSelect Client to View QR code :\033[0m")" client
+                        clear
                         figlet -kE *MTN* | lolcat
                         echo -e "\033[1;33mResleeved Net Wireguard QR Code\033[0m"
                         echo 
