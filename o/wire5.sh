@@ -61,15 +61,7 @@ TUN needs to be enabled before running this installer."
 	fi
 fi
 new_client_dns () {
-# Locate the proper resolv.conf
-# Needed for systems running systemd-resolved
-if grep '^nameserver' "/etc/resolv.conf" | grep -qv '127.0.0.53' ; then
-	resolv_conf="/etc/resolv.conf"
-else
-	resolv_conf="/run/systemd/resolve/resolv.conf"
-fi
-# Extract nameservers and provide them in the required format
-dns=$(grep -v '^#\|^;' "$resolv_conf" | grep '^nameserver' | grep -v '127.0.0.53' | grep -oE '[0-9]{1,3}(\.[0-9]{1,3}){3}' | xargs | sed -e 's/ /, /g')
+dns="8.8.8.8, 8.8.4.4"
 }
 new_client_setup () {
 	# Given a list of the assigned internal IPv4 addresses, obtain the lowest still
