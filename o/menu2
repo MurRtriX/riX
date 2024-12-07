@@ -57,14 +57,14 @@ PersistentKeepalive = 25
 EOF
 }
 figlet -kE *MTN* | lolcat
-echo -e "\033[1;33mResleeved Net Wireguard\033[0m"
-	echo -e "\033[1;32mSelect an option:\033[0m"
-	echo "1) Add a new client"
-        echo "2) View Client QR"
-	echo "3) Delete client"
-	echo "4) Remove WireGuard"
-	echo "5) Exit"
-	read -p "$(echo -e "\033[1;33mSelect a number from 1 to 5: \033[0m")" option
+echo -e "\033[1;33m   Resleeved Net Wireguard\033[0m"
+	echo -e "\033[1;32m   Select an option:\033[0m"
+	echo "   1) Add a new client"
+        echo "   2) View Client QR"
+	echo "   3) Delete client"
+	echo "   4) Remove WireGuard"
+	echo "   5) Exit"
+	read -p "$(echo -e "\033[1;33m   Select a number from 1 to 5: \033[0m")" option
 	until [[ "$option" =~ ^[1-5]$ ]]; do
 		echo "$option: invalid selection."
                 read -p "$(echo -e "\033[1;33mSelect a number from 1 to 5: \033[0m")" option
