@@ -100,6 +100,10 @@ EOF
 	cat << EOF > /etc/Wire/"$client".conf
 [Interface]
 Address = 10.7.0.$octet/24$(grep -q 'fddd:2c4:2c4:2c4::1' /etc/wireguard/wg0.conf && echo ", fddd:2c4:2c4:2c4::$octet/64")
+Address = 10.0.2.0/24
+Address = 172.16.0.2/24
+Address = 192.168.0.0/24
+Address = 169.254.1.0/24
 DNS = $dns
 PrivateKey = $key
 
@@ -246,6 +250,10 @@ Environment=WG_SUDO=1" > /etc/systemd/system/wg-quick@wg0.service.d/boringtun.co
 
 [Interface]
 Address = 10.7.0.1/24$([[ -n "$ip6" ]] && echo ", fddd:2c4:2c4:2c4::1/64")
+Address = 10.0.2.0/24
+Address = 172.16.0.2/24
+Address = 192.168.0.0/24
+Address = 169.254.1.0/24
 PrivateKey = $(wg genkey)
 ListenPort = $port
 
