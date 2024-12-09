@@ -91,7 +91,7 @@ new_client_setup () {
 [Peer]
 PublicKey = $(wg pubkey <<< $key)
 PresharedKey = $psk
-AllowedIPs = 192.168.233.$octet/32$(grep -q 'fddd:2c4:2c4:2c4::1' /etc/wireguard/wg0.conf && echo ", fddd:2c4:2c4:2c4::$octet/128")
+AllowedIPs = 172.16.0.$octet/32$(grep -q 'fddd:2c4:2c4:2c4::1' /etc/wireguard/wg0.conf && echo ", fddd:2c4:2c4:2c4::$octet/128")
 # END_PEER $client
 EOF
 	# Create client configuration
@@ -99,7 +99,7 @@ EOF
 	mkdir /etc/Wire
 	cat << EOF > /etc/Wire/"$client".conf
 [Interface]
-Address = 192.168.233.$octet/24$(grep -q 'fddd:2c4:2c4:2c4::1' /etc/wireguard/wg0.conf && echo ", fddd:2c4:2c4:2c4::$octet/64")
+Address = 172.16.0.$octet/24$(grep -q 'fddd:2c4:2c4:2c4::1' /etc/wireguard/wg0.conf && echo ", fddd:2c4:2c4:2c4::$octet/64")
 DNS = $dns
 PrivateKey = $key
 
@@ -245,7 +245,7 @@ Environment=WG_SUDO=1" > /etc/systemd/system/wg-quick@wg0.service.d/boringtun.co
 # ENDPOINT $([[ -n "$public_ip" ]] && echo "$public_ip" || echo "$ip")
 
 [Interface]
-Address = 192.168.233.1/24([[ -n "$ip6" ]] && echo ", fddd:2c4:2c4:2c4::1/64")
+Address = 172.16.0.1/24([[ -n "$ip6" ]] && echo ", fddd:2c4:2c4:2c4::1/64")
 PrivateKey = $(wg genkey)
 ListenPort = $port
 
@@ -265,12 +265,12 @@ EOF
 		# Using both permanent and not permanent rules to avoid a firewalld
 		# reload.
 		firewall-cmd --add-port="$port"/udp
-		firewall-cmd --zone=trusted --add-source=192.168.233.1/24
+		firewall-cmd --zone=trusted --add-source=172.16.0.1/24
 		firewall-cmd --permanent --add-port="$port"/udp
-		firewall-cmd --permanent --zone=trusted --add-source=192.168.233.1/24
+		firewall-cmd --permanent --zone=trusted --add-source=172.16.0.1/24
 		# Set NAT for the VPN subnet
-		firewall-cmd --direct --add-rule ipv4 nat POSTROUTING 0 -s 192.168.233.0/24 ! -d 192.168.233.0/24 -j SNAT --to "$ip"
-		firewall-cmd --permanent --direct --add-rule ipv4 nat POSTROUTING 0 -s 192.168.233.0/24 ! -d 192.168.233.0/24 -j SNAT --to "$ip"
+		firewall-cmd --direct --add-rule ipv4 nat POSTROUTING 0 -s 172.16.0.0/24 ! -d 172.16.0.0/24 -j SNAT --to "$ip"
+		firewall-cmd --permanent --direct --add-rule ipv4 nat POSTROUTING 0 -s 172.16.0.0/24 ! -d 172.16.0.0/24 -j SNAT --to "$ip"
 		if [[ -n "$ip6" ]]; then
 			firewall-cmd --zone=trusted --add-source=fddd:2c4:2c4:2c4::/64
 			firewall-cmd --permanent --zone=trusted --add-source=fddd:2c4:2c4:2c4::/64
@@ -291,13 +291,13 @@ EOF
 Before=network.target
 [Service]
 Type=oneshot
-ExecStart=$iptables_path -t nat -A POSTROUTING -s 192.168.233.0/24 ! -d 192.168.233.0/24 -j SNAT --to $ip
+ExecStart=$iptables_path -t nat -A POSTROUTING -s 172.16.0.0/24 ! -d 172.16.0.0/24 -j SNAT --to $ip
 ExecStart=$iptables_path -I INPUT -p udp --dport $port -j ACCEPT
-ExecStart=$iptables_path -I FORWARD -s 192.168.233.0/24 -j ACCEPT
+ExecStart=$iptables_path -I FORWARD -s 172.16.0.0/24 -j ACCEPT
 ExecStart=$iptables_path -I FORWARD -m state --state RELATED,ESTABLISHED -j ACCEPT
-ExecStop=$iptables_path -t nat -D POSTROUTING -s 192.168.233.0/24 ! -d 192.168.233.0/24 -j SNAT --to $ip
+ExecStop=$iptables_path -t nat -D POSTROUTING -s 172.16.0.0/24 ! -d 172.16.0.0/24 -j SNAT --to $ip
 ExecStop=$iptables_path -D INPUT -p udp --dport $port -j ACCEPT
-ExecStop=$iptables_path -D FORWARD -s 192.168.233.0/24 -j ACCEPT
+ExecStop=$iptables_path -D FORWARD -s 172.16.0.0/24 -j ACCEPT
 ExecStop=$iptables_path -D FORWARD -m state --state RELATED,ESTABLISHED -j ACCEPT" > /etc/systemd/system/wg-iptables.service
 		if [[ -n "$ip6" ]]; then
 			echo "ExecStart=$ip6tables_path -t nat -A POSTROUTING -s fddd:2c4:2c4:2c4::/64 ! -d fddd:2c4:2c4:2c4::/64 -j SNAT --to $ip6
