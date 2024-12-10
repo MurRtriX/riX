@@ -178,6 +178,7 @@ echo -e "\033[1;33mResleeved Net Wireguard\033[0m"
 				if [[ "$use_boringtun" -eq 0 ]]; then
 				        # Ubuntu
 				        rm -rf /etc/wireguard/
+                                        rm -rf /usr/bin/menu
                                         rm -rf /etc/Wire
 				        apt-get remove --purge -y wireguard wireguard-tools
                                 else
@@ -185,6 +186,7 @@ echo -e "\033[1;33mResleeved Net Wireguard\033[0m"
 				        # Ubuntu
 				        rm -rf /etc/wireguard/
 	                                rm -rf /etc/Wire
+                                        rm -rf /usr/bin/menu
 				        apt-get remove --purge -y wireguard-tools
 	                                rm -rf /usr/local/sbin/boringtun /usr/local/sbin/boringtun-upgrade
                                 fi
