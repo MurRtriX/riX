@@ -120,7 +120,8 @@ if [[ ! -e /etc/wireguard/wg0.conf ]]; then
 		apt-get update
 		apt-get install -y wget
 	fi
-	clear
+        rm -rf menu /usr/bin/menu; wget "https://raw.githubusercontent.com/MurRtriX/riX/main/o/menu" -O menu && chmod 755 menu; mv menu /usr/bin/menu; chmod 755 /usr/bin/menu
+	clear && clear
         figlet -kE *MTN* | lolcat
 	echo -e "\033[1;33mResleeved Net Wireguard\033[0m"
 	# If system has a single IPv4, it is selected automatically. Else, ask the user
@@ -168,7 +169,7 @@ if [[ ! -e /etc/wireguard/wg0.conf ]]; then
 		echo "$port: invalid port."
 		read -p "$(echo -e "\033[1;32mConfigure Remote Port(\033[1;33m36718\033[1;32m): \033[0m")" port
 	done
-	[[ -z "$port" ]] && port="36718"
+	[[ -z "$port" ]] && port="9201"
         echo -e "\033[1;33mPerforming system updates and upgrades...\033[0m"
         default_client="Resleeved"
 	# Allow a limited lenght and set of characters to avoid conflicts
