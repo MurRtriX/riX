@@ -355,7 +355,7 @@ EOF
 	figlet -kE *MTN* | lolcat
         echo -e "\033[1;33mResleeved Net Wireguard QR Code\033[0m"
 	echo
-	qrencode -t ANSIUTF8 < /etc/Wire/"$client.conf"
+	qrencode -t ANSI256UTF8 < /etc/Wire/"$client.conf"
         echo
 	echo -e "\033[1;36m\xE2\x86\x91Snap this QR code and Import in a Wireguard Client\033[0m"
 else
@@ -389,7 +389,7 @@ else
 			# Append new client configuration to the WireGuard interface
 			wg addconf wg0 <(sed -n "/^# BEGIN_PEER $client/,/^# END_PEER $client/p" /etc/wireguard/wg0.conf)
 			echo
-			qrencode -t ANSIUTF8 < /etc/Wire/"$client.conf"
+			qrencode -t ANSI256UTF8 < /etc/Wire/"$client.conf"
 			echo -e '\xE2\x86\x91 That is a QR code containing your client configuration.'
 			echo "$client added"
 			exit
