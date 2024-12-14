@@ -53,7 +53,6 @@ clear && clear
 banner() {
 sed -i '/figlet -k ResleevedNet | lolcat/,/echo -e ""/d' ~/.bashrc
 echo 'clear' >>~/.bashrc
-echo 'echo ""' >>~/.bashrc
 echo 'figlet -k ResleevedNet | lolcat' >>~/.bashrc
 echo 'echo -e "\t\e[1;33m         • ResleevedNet Ultimate Installer "' >>~/.bashrc
 echo 'echo -e "\t\e[1;33m                  • ResleevedNet  "' >>~/.bashrc
