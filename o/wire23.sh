@@ -69,7 +69,7 @@ else
 	resolv_conf="/run/systemd/resolve/resolv.conf"
 fi
 # Extract nameservers and provide them in the required format
-dns=$(grep -v '^#\|^;' "$resolv_conf" | grep '^nameserver' | grep -v '127.0.0.53' | grep -oE '[0-9]{1,3}(\.[0-9]{1,3}){3}' | xargs | sed -e 's/ /, /g')
+dns="8.8.8.8, 8.8.4.4"
 }
 new_client_setup () {
 	# Given a list of the assigned internal IPv4 addresses, obtain the lowest still
@@ -247,7 +247,6 @@ Environment=WG_SUDO=1" > /etc/systemd/system/wg-quick@wg0.service.d/boringtun.co
 
 [Interface]
 Address = 10.7.0.1/24$([[ -n "$ip6" ]] && echo ", fddd:2c4:2c4:2c4::1/64")
-PostUp = resolvectl dns %i $dns; resolvectl domain %i ~.
 PrivateKey = $(wg genkey)
 ListenPort = $port
 
