@@ -20,8 +20,12 @@ systemctl stop dnstt-server.service
 systemctl disable dnstt-server.service
 rm -rf /etc/systemd/system/dnstt-server.service
 rm -rf /usr/bin/dnstt-linux-amd64
+apt-get install golang-go
 git clone https://www.bamsoftware.com/git/dnstt.git
 cd dnstt/dnstt-server
+wget https://golang.org/dl/go1.21.0.linux-amd64.tar.gz
+tar xvf go1.21.0.linux-amd64.tar.gz
+sudo mv go /usr/local; export GOROOT=/usr/local/go; export GOPATH=$HOME/go; export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 go build
 cd /root
 mv dnstt/dnstt-server/dnstt-server /usr/bin/dnstt-linux-amd64
